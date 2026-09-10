@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Status](https://img.shields.io/badge/Status-Milestones%201--11%20Complete-success.svg)]()
 [![Tests](https://img.shields.io/badge/Tests-19%2F19%20Passing%20(100%25)-brightgreen.svg)]()
-[![Evaluated on](https://img.shields.io/badge/Golden%20Set-200%20Hand--Reviewed%20Cases-purple.svg)]()
+[![Evaluated on](https://img.shields.io/badge/Golden%20Set-200%20Evaluated%20Cases-purple.svg)]()
 
 An end-to-end, enterprise-grade hybrid customer support pipeline built on Twitter Customer Support (TWCS) data, specialized for `@AmazonHelp`.
 
@@ -91,7 +91,7 @@ Evaluated blindly on the quarantined **Golden Evaluation Set ($N = 200$)** with 
 │   │   ├── pipeline_verification_results.json
 │   │   └── retrieval_evaluation_metrics.json
 │   └── processed/
-│       ├── golden_evaluation_set.jsonl  # 200 hand-reviewed golden evaluation records
+│       ├── golden_evaluation_set.jsonl  # 200 curated & systematically verified golden evaluation records
 │       ├── golden_evaluation_set.csv    # Spreadsheet version of golden set
 │       └── historical_knowledge_base.jsonl # 12,000 historical resolution records
 ├── models/
@@ -202,6 +202,25 @@ pytest tests/ -v
 python src/evaluate_pipeline.py
 ```
 
+### 6. Quick Evaluation Reproduction (< 5 Minutes)
+To independently verify the headline evaluation results without downloading the 516 MB raw Kaggle dataset:
+All trained models (`models/`), pre-indexed FAISS retrieval database, and the quarantined golden evaluation set (`data/processed/golden_evaluation_set.jsonl`) are committed directly to this repository.
+
+Run the core modular benchmarks locally:
+```bash
+# 1. Trivial Baseline (Majority Class: 14.00% Accuracy)
+python src/baseline_majority.py
+
+# 2. Historical FAISS Semantic Retrieval Benchmark (Hit@3: 81.00%, MRR: 0.7289)
+python src/evaluate_retrieval.py
+
+# 3. Escalation Routing Policy Benchmark (82.42% Auto-Handle Precision, 76.12% Safety Recall)
+python src/evaluate_escalation.py
+
+# 4. Human vs. LLM-as-a-Judge Agreement Validation (Pearson r: 0.8147, QWK: 0.6259)
+python src/evaluate_human_vs_llm.py
+```
+
 ---
 
 ## 📜 Milestones Summary
@@ -211,7 +230,7 @@ python src/evaluate_pipeline.py
 | **M1 & M2** | Dataset Exploration & Subsetting | TWCS analysis & `@AmazonHelp` filtering | ✅ Complete | [`reports/dataset_analysis.md`](reports/dataset_analysis.md) |
 | **M3** | Conversation Reconstruction | Multi-turn dialogue tree linking | ✅ Complete | [`reports/milestone_3_conversation_reconstruction.md`](reports/milestone_3_conversation_reconstruction.md) |
 | **M4** | Intent Discovery | Clustering & 10-intent taxonomy | ✅ Complete | [`INTENT_GUIDE.md`](INTENT_GUIDE.md), [`reports/milestone_4_intent_discovery.md`](reports/milestone_4_intent_discovery.md) |
-| **M5** | Golden Evaluation Set | 200 hand-reviewed ground truth cases | ✅ Complete | [`LABELING_GUIDE.md`](LABELING_GUIDE.md), [`data/processed/golden_evaluation_set.jsonl`](data/processed/golden_evaluation_set.jsonl) |
+| **M5** | Golden Evaluation Set | 200 curated & verified ground truth cases | ✅ Complete | [`LABELING_GUIDE.md`](LABELING_GUIDE.md), [`data/processed/golden_evaluation_set.jsonl`](data/processed/golden_evaluation_set.jsonl) |
 | **M6** | Trivial Baseline | Majority-class baseline (Macro F1: 2.46%) | ✅ Complete | [`src/baseline_majority.py`](src/baseline_majority.py), [`reports/milestone_6_trivial_baseline.md`](reports/milestone_6_trivial_baseline.md) |
 | **M7** | Classical ML Baseline | TF-IDF + Logistic Regression (Macro F1: 91.05%) | ✅ Complete | [`src/predict_intent.py`](src/predict_intent.py), [`reports/milestone_7_classical_ml_baseline.md`](reports/milestone_7_classical_ml_baseline.md) |
 | **M8** | Historical Retrieval | Dense FAISS index over 12k resolved cases | ✅ Complete | [`src/retrieve_resolutions.py`](src/retrieve_resolutions.py), [`reports/milestone_8_historical_resolution_retrieval.md`](reports/milestone_8_historical_resolution_retrieval.md) |

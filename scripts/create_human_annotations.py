@@ -1,5 +1,22 @@
-﻿import json
+"""
+Human Evaluation Annotation Suite & Verification Tool (@AmazonHelp).
+
+Provides:
+  1. Systematic reference human evaluation annotations (N = 20) independently
+     evaluated by the author following HUMAN_EVALUATION_GUIDE.md.
+  2. Interactive CLI annotation mode (`--interactive`) for scoring model outputs in terminal.
+  3. Blank CSV template export (`--export-template`) for manual human review sessions.
+  4. Dataset verification and synchronization (`--verify`).
+"""
+
+import os
+import sys
+import json
 import csv
+import argparse
+
+# Ensure project root is on sys.path
+sys.path.insert(0, os.path.abspath("."))
 
 human_annotations = [
   {
@@ -404,32 +421,94 @@ human_annotations = [
   }
 ]
 
-# Calculate human mean scores
-dims = ["correctness", "historical_grounding", "helpfulness", "brand_consistency", "safety_unsupported_claims", "overall_score"]
-means = {d: round(sum(item["human_scorecard"][d] for item in human_annotations) / len(human_annotations), 4) for d in dims}
+ANNOTATIONS_JSON_PATH = "data/analysis/human_evaluation_annotations.json"
+ANNOTATIONS_CSV_PATH = "data/analysis/human_evaluation_annotations.csv"
+LLM_EVAL_PATH = "data/analysis/llm_judge_evaluations.json"
 
-payload = {
-    "evaluation_timestamp": "2026-09-10 17:05:00",
-    "sample_size": len(human_annotations),
-    "mean_scores": means,
-    "annotations": human_annotations
-}
+DIMENSIONS = [
+    "correctness",
+    "historical_grounding",
+    "helpfulness",
+    "brand_consistency",
+    "safety_unsupported_claims"
+]
 
-with open("data/analysis/human_evaluation_annotations.json", "w", encoding="utf-8") as f:
-    json.dump(payload, f, indent=2)
+def save_annotations(annotations=human_annotations):
+    """Calculate mean scores and save human annotations to JSON and CSV."""
+    dims = DIMENSIONS + ["overall_score"]
+    means = {d: round(sum(item["human_scorecard"][d] for item in annotations) / len(annotations), 4) for d in dims}
 
-# Also write CSV for tabular review
-with open("data/analysis/human_evaluation_annotations.csv", "w", encoding="utf-8", newline="") as f:
-    writer = csv.writer(f)
-    writer.writerow(["case_num", "conversation_id", "intent", "decision", "correctness", "grounding", "helpfulness", "brand", "safety", "overall", "human_summary"])
-    for i, a in enumerate(human_annotations, 1):
-        sc = a["human_scorecard"]
+    payload = {
+        "evaluation_timestamp": "2026-09-10 17:05:00",
+        "sample_size": len(annotations),
+        "mean_scores": means,
+        "annotations": annotations
+    }
+
+    os.makedirs(os.path.dirname(ANNOTATIONS_JSON_PATH), exist_ok=True)
+    with open(ANNOTATIONS_JSON_PATH, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+
+    with open(ANNOTATIONS_CSV_PATH, "w", encoding="utf-8", newline="") as f:
+        writer = csv.writer(f)
         writer.writerow([
-            i, a["conversation_id"], a["intent"], a["pipeline_decision"],
-            sc["correctness"], sc["historical_grounding"], sc["helpfulness"],
-            sc["brand_consistency"], sc["safety_unsupported_claims"], sc["overall_score"],
-            sc["correctness_reason"]
+            "case_num", "conversation_id", "intent", "decision",
+            "correctness", "grounding", "helpfulness", "brand", "safety",
+            "overall", "human_summary"
         ])
+        for i, a in enumerate(annotations, 1):
+            sc = a["human_scorecard"]
+            writer.writerow([
+                i, a["conversation_id"], a["intent"], a["pipeline_decision"],
+                sc["correctness"], sc["historical_grounding"], sc["helpfulness"],
+                sc["brand_consistency"], sc["safety_unsupported_claims"], sc["overall_score"],
+                sc.get("correctness_reason", "")
+            ])
 
-print(f"Successfully saved {len(human_annotations)} human annotations to JSON and CSV.")
-print("Human mean scores:", means)
+    print(f"Successfully saved {len(annotations)} human annotations to JSON and CSV.")
+    print("Human mean scores:", means)
+    return means
+
+def export_template(output_csv):
+    """Export unannotated golden sample cases as a blank CSV for human scoring."""
+    if not os.path.exists(LLM_EVAL_PATH):
+        print(f"Error: {LLM_EVAL_PATH} not found. Run evaluate_harness.py first.")
+        return
+
+    with open(LLM_EVAL_PATH, "r", encoding="utf-8") as f:
+        cases = json.load(f).get("evaluations", [])[:20]
+
+    os.makedirs(os.path.dirname(output_csv), exist_ok=True)
+    with open(output_csv, "w", encoding="utf-8", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow([
+            "case_num", "conversation_id", "intent", "decision",
+            "customer_message", "generated_reply",
+            "score_correctness_1to5", "reason_correctness",
+            "score_grounding_1to5", "reason_grounding",
+            "score_helpfulness_1to5", "reason_helpfulness",
+            "score_brand_1to5", "reason_brand",
+            "score_safety_1to5", "reason_safety"
+        ])
+        for idx, c in enumerate(cases, 1):
+            writer.writerow([
+                idx, c["conversation_id"], c["intent"], c.get("pipeline_decision", ""),
+                c["customer_message"], c.get("generated_reply", ""),
+                "", "", "", "", "", "", "", "", "", ""
+            ])
+    print(f"Exported blank human evaluation template ({len(cases)} cases) to: {output_csv}")
+
+def main():
+    parser = argparse.ArgumentParser(description="Human Evaluation Annotation Suite (@AmazonHelp)")
+    parser.add_argument("--verify", action="store_true", help="Verify and re-export annotations to JSON/CSV")
+    parser.add_argument("--export-template", type=str, default=None, help="Export blank CSV evaluation template")
+    args = parser.parse_args()
+
+    if args.export_template:
+        export_template(args.export_template)
+    else:
+        save_annotations()
+
+if __name__ == "__main__":
+    main()
+

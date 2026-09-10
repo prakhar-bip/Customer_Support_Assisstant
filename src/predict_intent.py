@@ -25,6 +25,11 @@ def get_model(model_path: str = DEFAULT_MODEL_PATH):
                 f"Please run 'python src/train_classical_baseline.py' first."
             )
         _cached_model = joblib.load(model_path)
+        # Handle cross-version compatibility between scikit-learn versions
+        if hasattr(_cached_model, "steps") and len(_cached_model.steps) > 0:
+            clf = _cached_model.steps[-1][1]
+            if not hasattr(clf, "multi_class"):
+                clf.multi_class = "auto"
     return _cached_model
 
 def predict_intent(text: str, model_path: str = DEFAULT_MODEL_PATH) -> dict:

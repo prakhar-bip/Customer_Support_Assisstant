@@ -1,9 +1,9 @@
 {
   "milestone": "Milestone 11: Final Hybrid Support Agent",
-  "verification_timestamp": "2026-09-10 16:22:32",
+  "verification_timestamp": "2026-09-10 21:24:41",
   "total_test_queries": 20,
-  "total_duration_seconds": 58.45,
-  "average_latency_seconds": 2.922,
+  "total_duration_seconds": 44.89,
+  "average_latency_seconds": 2.244,
   "stage_verification_rates": {
     "preprocessing": 1.0,
     "classification": 1.0,
@@ -21,7 +21,7 @@
       "test_case_id": "sample_01",
       "category": "ORDER_DELIVERY_AND_TRACKING",
       "input_message": "Where is my parcel? The tracking status says out for delivery for 6 hours.",
-      "latency_seconds": 15.34,
+      "latency_seconds": 14.003,
       "pipeline_output": {
         "intent": "ORDER_DELIVERY_AND_TRACKING",
         "intent_confidence": 0.9859,
@@ -48,7 +48,7 @@
             "brand_response": "@367348 I'm sorry for the wait! What's the most recent tracking update on the order: https://t.co/aaDyEz1VgE? Is there any new information available? ^EP"
           }
         ],
-        "reply": "I understand your concern about your parcel! Most couriers deliver until 9 PM. Please keep an eye on the tracking, and let us know if it doesn't arrive by then.",
+        "reply": "I understand your concern! Parcels can be delivered until 9 PM. Please keep us updated if it doesn't arrive by then.",
         "decision": "AUTO_HANDLE",
         "reason": "High intent confidence (0.99), strong historical grounding (sim: 0.83, precedents: 3), and zero safety risk flags detected.",
         "signals": {
@@ -64,7 +64,7 @@
       "test_case_id": "sample_02",
       "category": "ORDER_DELIVERY_AND_TRACKING",
       "input_message": "Order says delivered but I never received it! Checked everywhere, nowhere to be found.",
-      "latency_seconds": 0.042,
+      "latency_seconds": 0.031,
       "pipeline_output": {
         "intent": "ORDER_DELIVERY_AND_TRACKING",
         "intent_confidence": 0.9114,
@@ -109,7 +109,7 @@
       "test_case_id": "sample_03",
       "category": "REFUND_STATUS_AND_DISPUTES",
       "input_message": "How long does it take for a refund to show on my credit card after cancellation?",
-      "latency_seconds": 0.041,
+      "latency_seconds": 0.021,
       "pipeline_output": {
         "intent": "REFUND_STATUS_AND_DISPUTES",
         "intent_confidence": 0.5151,
@@ -152,7 +152,7 @@
       "test_case_id": "sample_04",
       "category": "REFUND_STATUS_AND_DISPUTES",
       "input_message": "It has been over 3 weeks and multiple chats, still no refund for order 402-1234567-8901234!",
-      "latency_seconds": 0.042,
+      "latency_seconds": 0.025,
       "pipeline_output": {
         "intent": "REFUND_STATUS_AND_DISPUTES",
         "intent_confidence": 0.9196,
@@ -197,7 +197,7 @@
       "test_case_id": "sample_05",
       "category": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
       "input_message": "Received a broken ceramic mug in my delivery today. How can I get a replacement?",
-      "latency_seconds": 0.041,
+      "latency_seconds": 0.021,
       "pipeline_output": {
         "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
         "intent_confidence": 0.8764,
@@ -240,7 +240,7 @@
       "test_case_id": "sample_06",
       "category": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
       "input_message": "The package arrived with seal tampered and empty box! The phone inside was stolen.",
-      "latency_seconds": 0.036,
+      "latency_seconds": 0.017,
       "pipeline_output": {
         "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
         "intent_confidence": 0.6947,
@@ -285,7 +285,7 @@
       "test_case_id": "sample_07",
       "category": "PRIME_MEMBERSHIP_AND_DIGITAL",
       "input_message": "How do I cancel my Amazon Prime membership auto-renewal before next month?",
-      "latency_seconds": 0.029,
+      "latency_seconds": 0.021,
       "pipeline_output": {
         "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
         "intent_confidence": 0.92,
@@ -328,7 +328,7 @@
       "test_case_id": "sample_08",
       "category": "PRIME_MEMBERSHIP_AND_DIGITAL",
       "input_message": "Subtitles are out of sync on Prime Video app when watching on Samsung TV.",
-      "latency_seconds": 5.238,
+      "latency_seconds": 5.504,
       "pipeline_output": {
         "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
         "intent_confidence": 0.9151,
@@ -355,7 +355,7 @@
             "brand_response": "@244344 I understand your concern regarding the subtitles. Our prime video support team would be glad to assist you with this. Please reach out to them here: https://t.co/rS49hgaADF. ^BV"
           }
         ],
-        "reply": "Sorry to hear you're having trouble with subtitles being out of sync on Prime Video on your Samsung TV. Our Prime Video support team can help troubleshoot this. Please reach out to them here: https://t.co/aAfOxTGpe1",
+        "reply": "Oh no, we're sorry to hear your subtitles are out of sync on Prime Video! For help with this, please reach out to our Prime Video support team directly here: https://t.co/aAfOxTGpe1",
         "decision": "AUTO_HANDLE",
         "reason": "High intent confidence (0.92), strong historical grounding (sim: 0.87, precedents: 1), and zero safety risk flags detected.",
         "signals": {
@@ -371,7 +371,7 @@
       "test_case_id": "sample_09",
       "category": "ORDER_CANCELLATION",
       "input_message": "Ordered the wrong size by mistake 5 minutes ago. How do I cancel the order?",
-      "latency_seconds": 7.003,
+      "latency_seconds": 4.566,
       "pipeline_output": {
         "intent": "ORDER_CANCELLATION",
         "intent_confidence": 0.802,
@@ -398,7 +398,7 @@
             "brand_response": "@169571 We're here to help! You can find info on returns here: https://t.co/pxWGjp0Dec. Let us know if you have any more questions. ^CL"
           }
         ],
-        "reply": "We understand you'd like to cancel your recent order. You can often manage or cancel orders directly from your Amazon account here: https://t.co/Y5jpI9gRhE. If you need further assistance, please let us know!",
+        "reply": "We understand you'd like to cancel your recent order. You can usually make changes or cancel an order directly from your account here: https://t.co/Y5jpI9gRhE. If you need further assistance, please let us know!",
         "decision": "AUTO_HANDLE",
         "reason": "High intent confidence (0.80), strong historical grounding (sim: 0.76, precedents: 2), and zero safety risk flags detected.",
         "signals": {
@@ -414,7 +414,7 @@
       "test_case_id": "sample_10",
       "category": "ORDER_CANCELLATION",
       "input_message": "Tried to cancel my order but the button is greyed out saying dispatching soon.",
-      "latency_seconds": 19.996,
+      "latency_seconds": 7.978,
       "pipeline_output": {
         "intent": "ORDER_CANCELLATION",
         "intent_confidence": 0.9596,
@@ -441,7 +441,7 @@
             "brand_response": "@385182 I get your concern. Please connect with us here: https://t.co/00q4Sqj9zL we'll check and assist you accordingly. ^KA"
           }
         ],
-        "reply": "We understand you're having trouble canceling your order because the button is greyed out. Once an order is dispatching soon, online cancellation may not be possible. Please connect with our team here for assistance: https://t.co/R3EfhzgU8B.",
+        "reply": "I understand you're trying to cancel your order. When an order is dispatching soon, the cancellation option may no longer be available online. Please connect with our team here: https://t.co/R3EfhzgU8B for assistance, and we'll be happy to help.",
         "decision": "AUTO_HANDLE",
         "reason": "High intent confidence (0.96), strong historical grounding (sim: 0.80, precedents: 3), and zero safety risk flags detected.",
         "signals": {
@@ -457,7 +457,7 @@
       "test_case_id": "sample_11",
       "category": "PAYMENT_BILLING_AND_PROMOS",
       "input_message": "Can I transfer my Amazon Pay balance back to my bank account?",
-      "latency_seconds": 3.057,
+      "latency_seconds": 2.625,
       "pipeline_output": {
         "intent": "PAYMENT_BILLING_AND_PROMOS",
         "intent_confidence": 0.9764,
@@ -484,7 +484,7 @@
             "brand_response": "@191968 We don't have the transfer feature available currently. For more info: https://t.co/jTRDpqC6sp. ^HD"
           }
         ],
-        "reply": "Unfortunately, Amazon Pay balance cannot be transferred to a bank account. You can, however, use your balance for purchases on Amazon or partner websites. ^HD",
+        "reply": "Unfortunately, Amazon Pay balance cannot be transferred to a bank account. You can use your balance for purchases on Amazon or partner websites. ^HD",
         "decision": "AUTO_HANDLE",
         "reason": "High intent confidence (0.98), strong historical grounding (sim: 0.95, precedents: 3), and zero safety risk flags detected.",
         "signals": {
@@ -500,7 +500,7 @@
       "test_case_id": "sample_12",
       "category": "PAYMENT_BILLING_AND_PROMOS",
       "input_message": "I was charged twice on my card for the same purchase! Will dispute with my bank.",
-      "latency_seconds": 0.036,
+      "latency_seconds": 0.031,
       "pipeline_output": {
         "intent": "PAYMENT_BILLING_AND_PROMOS",
         "intent_confidence": 0.8677,
@@ -543,7 +543,7 @@
       "test_case_id": "sample_13",
       "category": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
       "input_message": "Delivery driver was extremely rude and threw the box across my front porch!",
-      "latency_seconds": 0.039,
+      "latency_seconds": 0.038,
       "pipeline_output": {
         "intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
         "intent_confidence": 0.6218,
@@ -588,7 +588,7 @@
       "test_case_id": "sample_14",
       "category": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
       "input_message": "Your phone agent just hung up on me after keeping me on hold for 40 minutes!",
-      "latency_seconds": 0.041,
+      "latency_seconds": 0.024,
       "pipeline_output": {
         "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
         "intent_confidence": 0.1806,
@@ -631,7 +631,7 @@
       "test_case_id": "sample_15",
       "category": "ACCOUNT_ACCESS_AND_SECURITY",
       "input_message": "My seller account was hacked and unauthorized orders were placed! Please lock it now.",
-      "latency_seconds": 0.047,
+      "latency_seconds": 0.026,
       "pipeline_output": {
         "intent": "ACCOUNT_ACCESS_AND_SECURITY",
         "intent_confidence": 0.8429,
@@ -676,7 +676,7 @@
       "test_case_id": "sample_16",
       "category": "ACCOUNT_ACCESS_AND_SECURITY",
       "input_message": "I am locked out of my account because I no longer have access to my old phone for OTP.",
-      "latency_seconds": 0.048,
+      "latency_seconds": 0.023,
       "pipeline_output": {
         "intent": "ACCOUNT_ACCESS_AND_SECURITY",
         "intent_confidence": 0.894,
@@ -719,7 +719,7 @@
       "test_case_id": "sample_17",
       "category": "TECHNICAL_AND_PLATFORM_ISSUES",
       "input_message": "My Firestick is saying network error even though my Wi-Fi is working on my phone.",
-      "latency_seconds": 3.36,
+      "latency_seconds": 4.805,
       "pipeline_output": {
         "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
         "intent_confidence": 0.787,
@@ -746,7 +746,7 @@
             "brand_response": "@207361 Sorry to hear this. When you rebooted the device, did you plug it out from its mains for 40 seconds? ^PK"
           }
         ],
-        "reply": "Oh no! We're sorry to hear your Firestick is having network issues. We'd love to help you get this resolved. Please try these troubleshooting tips: https://t.co/uNqeQ4DVnr",
+        "reply": "Oh no! We're sorry to hear your Firestick is having network issues. We'd be happy to help you troubleshoot this. Please try these tips for internet connection issues: https://t.co/uNqeQ4DVnr",
         "decision": "AUTO_HANDLE",
         "reason": "High intent confidence (0.79), strong historical grounding (sim: 0.76, precedents: 3), and zero safety risk flags detected.",
         "signals": {
@@ -762,7 +762,7 @@
       "test_case_id": "sample_18",
       "category": "TECHNICAL_AND_PLATFORM_ISSUES",
       "input_message": "Website keeps throwing error 500 every time I click proceed to checkout in cart.",
-      "latency_seconds": 0.041,
+      "latency_seconds": 0.032,
       "pipeline_output": {
         "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
         "intent_confidence": 0.5902,
@@ -805,7 +805,7 @@
       "test_case_id": "sample_19",
       "category": "RETURNS_AND_EXCHANGES",
       "input_message": "Need to return a shirt but I don't have a printer for the return shipping label.",
-      "latency_seconds": 3.919,
+      "latency_seconds": 5.069,
       "pipeline_output": {
         "intent": "RETURNS_AND_EXCHANGES",
         "intent_confidence": 0.9137,
@@ -832,7 +832,7 @@
             "brand_response": "@202399 No worries, the carrier will bring their own label if they're coming to do a pick up. ^NC"
           }
         ],
-        "reply": "We can definitely help with that! Please reach out to us here so we can explore options for your return without a printer: https://t.co/hApLpMlfHN",
+        "reply": "We understand you need to return a shirt but don't have a printer for the label. Please reach out to us here so we can help you with your return options: https://t.co/hApLpMlfHN",
         "decision": "AUTO_HANDLE",
         "reason": "High intent confidence (0.91), strong historical grounding (sim: 0.81, precedents: 3), and zero safety risk flags detected.",
         "signals": {
@@ -848,7 +848,7 @@
       "test_case_id": "sample_20",
       "category": "RETURNS_AND_EXCHANGES",
       "input_message": "Return pickup was scheduled 4 days ago and courier never showed up! When are they coming?",
-      "latency_seconds": 0.037,
+      "latency_seconds": 0.029,
       "pipeline_output": {
         "intent": "RETURNS_AND_EXCHANGES",
         "intent_confidence": 0.9427,

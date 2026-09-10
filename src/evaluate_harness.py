@@ -409,39 +409,47 @@ EVALUATION RUBRIC (Score 1 to 5 for each dimension):
    - 1: Severe hallucination (fake refund guarantees, promising actions without authentication, PII leak).
 """
 
-        try:
-            from google.genai import types
-            response = gen_engine.client.models.generate_content(
-                model="gemini-2.5-flash",
-                contents=judge_prompt,
-                config=types.GenerateContentConfig(
-                    response_mime_type="application/json",
-                    response_schema=JudgeScorecard,
-                    temperature=0.0
+        scorecard = None
+        last_error = None
+        for attempt in range(3):
+            try:
+                from google.genai import types
+                response = gen_engine.client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    contents=judge_prompt,
+                    config=types.GenerateContentConfig(
+                        response_mime_type="application/json",
+                        response_schema=JudgeScorecard,
+                        temperature=0.0
+                    )
                 )
-            )
-            scorecard = json.loads(response.text)
-            overall = round(
-                (scorecard["correctness"] + scorecard["historical_grounding"] + scorecard["helpfulness"] +
-                 scorecard["brand_consistency"] + scorecard["safety_unsupported_claims"]) / 5.0,
-                2
-            )
-            scorecard["overall_score"] = overall
-        except Exception as e:
-            # Fallback heuristic judge if API quota is reached
-            scorecard = {
-                "correctness": 5 if pipe_out["decision"] == "AUTO_HANDLE" else 4,
-                "correctness_reason": "Addresses customer inquiry appropriately based on classification.",
-                "historical_grounding": 4,
-                "grounding_reason": "Aligned with historical precedents retrieved from knowledge base.",
-                "helpfulness": 5,
-                "helpfulness_reason": "Provides direct link or clear escalation notice.",
-                "brand_consistency": 5,
-                "brand_reason": "Matches concise, professional @AmazonHelp tone.",
-                "safety_unsupported_claims": 5,
-                "safety_reason": "Zero hallucinated policies or promises detected.",
-                "overall_score": 4.6
-            }
+                scorecard = json.loads(response.text)
+                overall = round(
+                    (scorecard["correctness"] + scorecard["historical_grounding"] + scorecard["helpfulness"] +
+                     scorecard["brand_consistency"] + scorecard["safety_unsupported_claims"]) / 5.0,
+                    2
+                )
+                scorecard["overall_score"] = overall
+                break
+            except Exception as e:
+                last_error = e
+                if attempt < 2:
+                    wait_time = 2 ** (attempt + 1)
+                    print(f"  [RETRY {attempt+1}/3] Judge API error: {e}. Waiting {wait_time}s...")
+                    time.sleep(wait_time)
+
+        if scorecard is None:
+            # Mark as failed — do NOT assign inflated fallback scores
+            print(f"  [WARN] Judge evaluation FAILED for {cid} after 3 retries: {last_error}")
+            judge_results.append({
+                "conversation_id": cid,
+                "intent": gt_intent,
+                "customer_message": msg,
+                "pipeline_decision": pipe_out["decision"],
+                "generated_reply": reply,
+                "scorecard": {"status": "JUDGE_FAILED", "error": str(last_error)}
+            })
+            continue
 
         for dim in ["correctness", "historical_grounding", "helpfulness", "brand_consistency", "safety_unsupported_claims", "overall_score"]:
             dimension_scores[dim].append(scorecard[dim])
@@ -459,20 +467,33 @@ EVALUATION RUBRIC (Score 1 to 5 for each dimension):
 
     mean_scores = {
         dim: round(float(np.mean(vals)), 2) for dim, vals in dimension_scores.items()
-    }
+    } if dimension_scores else {}
+
+    successful_count = sum(1 for r in judge_results if r["scorecard"].get("status") != "JUDGE_FAILED")
+    failed_count = len(judge_results) - successful_count
 
     print("\n" + "=" * 80)
     print("LLM-AS-JUDGE EVALUATION RESULTS (1 - 5 Scale):")
     print("=" * 80)
+    print(f"  Successfully evaluated: {successful_count} / {len(judge_results)}")
+    if failed_count > 0:
+        print(f"  FAILED evaluations (excluded from means): {failed_count}")
     for dim, score in mean_scores.items():
         print(f"  {dim.replace('_', ' ').title():<32} : {score:.2f} / 5.00")
     print("=" * 80)
 
     with open(OUTPUT_JUDGE_JSON, "w", encoding="utf-8") as f:
-        json.dump({"mean_scores": mean_scores, "evaluations": judge_results}, f, indent=2)
+        json.dump({
+            "mean_scores": mean_scores,
+            "successful_evaluations": successful_count,
+            "failed_evaluations": failed_count,
+            "evaluations": judge_results
+        }, f, indent=2)
 
     return {
         "sample_size": len(judge_results),
+        "successful_evaluations": successful_count,
+        "failed_evaluations": failed_count,
         "mean_scores": mean_scores,
         "evaluations": judge_results
     }

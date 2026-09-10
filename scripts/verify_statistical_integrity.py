@@ -30,21 +30,93 @@ def wilson_score_interval(k, n, confidence=0.95):
     ci_upper = min(1.0, center + margin)
     return p, ci_lower, ci_upper
 
+HARNESS_PATH = "data/analysis/comprehensive_evaluation_harness.json"
+INTENT_METRICS_PATH = "data/analysis/intent_metrics.json"
+
 def main():
     print("=== Computing Statistical Confidence Intervals ===")
     
-    # 1. Headline Binomial Metrics (N=200 unless otherwise specified)
+    # Dynamically load from evaluation results if available
+    harness_data = {}
+    if os.path.exists(HARNESS_PATH):
+        with open(HARNESS_PATH, "r", encoding="utf-8") as f:
+            harness_data = json.load(f)
+            print(f"Loaded dynamic evaluation harness results from {HARNESS_PATH}")
+            
+    intent_data = {}
+    if os.path.exists(INTENT_METRICS_PATH):
+        with open(INTENT_METRICS_PATH, "r", encoding="utf-8") as f:
+            intent_data = json.load(f)
+            print(f"Loaded dynamic intent taxonomy distribution from {INTENT_METRICS_PATH}")
+
+    # Extract dynamic counts from harness
+    n_golden = harness_data.get("total_evaluation_records", 200)
+    dim1 = harness_data.get("dimension_1_intent_classification", {})
+    dim2 = harness_data.get("dimension_2_retrieval_quality", {})
+    dim4 = harness_data.get("dimension_4_escalation_routing", {})
+    cm_esc = dim4.get("confusion_matrix", {})
+    
+    tp_auto = cm_esc.get("true_auto_handle", 75)
+    fp_auto = cm_esc.get("false_auto_handle", 16)
+    tp_esc = cm_esc.get("true_escalate", 51)
+    fp_esc = cm_esc.get("false_escalate", 58)
+    
+    n_true_esc = tp_esc + fp_auto
+    n_pred_auto = tp_auto + fp_auto
+    n_true_auto = tp_auto + fp_esc
+
+    # 1. Headline Binomial Metrics
     metrics_spec = {
-        "intent_classification_accuracy": {"k": 181, "n": 200, "desc": "Overall Intent Accuracy on Golden Set"},
-        "retrieval_hit_at_1": {"k": 130, "n": 200, "desc": "Top-1 Intent Hit Rate"},
-        "retrieval_hit_at_3": {"k": 162, "n": 200, "desc": "Top-3 Intent Hit Rate"},
-        "retrieval_hit_at_5": {"k": 170, "n": 200, "desc": "Top-5 Intent Hit Rate"},
-        "escalation_policy_accuracy": {"k": 126, "n": 200, "desc": "Overall Policy Routing Accuracy"},
-        "automation_rate": {"k": 91, "n": 200, "desc": "Proportion of Inquiries Auto-Handled"},
-        "escalation_safety_recall": {"k": 51, "n": 67, "desc": "True Human Escalations Caught (Safety Recall)"},
-        "escalation_false_negative_rate": {"k": 16, "n": 67, "desc": "Critical Escalations Missed (False Auto-Handle)"},
-        "auto_handle_precision": {"k": 75, "n": 91, "desc": "Auto-Handled Cases that were Truly Safe"},
-        "false_escalation_rate": {"k": 58, "n": 133, "desc": "Benign Cases Unnecessarily Escalated (Efficiency Loss)"},
+        "intent_classification_accuracy": {
+            "k": int(round(dim1.get("accuracy", 0.905) * n_golden)),
+            "n": n_golden,
+            "desc": "Overall Intent Accuracy on Golden Set"
+        },
+        "retrieval_hit_at_1": {
+            "k": int(round(dim2.get("hit_at_1", 0.65) * n_golden)),
+            "n": n_golden,
+            "desc": "Top-1 Intent Hit Rate"
+        },
+        "retrieval_hit_at_3": {
+            "k": int(round(dim2.get("hit_at_3", 0.81) * n_golden)),
+            "n": n_golden,
+            "desc": "Top-3 Intent Hit Rate"
+        },
+        "retrieval_hit_at_5": {
+            "k": int(round(dim2.get("hit_at_5", 0.85) * n_golden)),
+            "n": n_golden,
+            "desc": "Top-5 Intent Hit Rate"
+        },
+        "escalation_policy_accuracy": {
+            "k": tp_auto + tp_esc,
+            "n": n_golden,
+            "desc": "Overall Policy Routing Accuracy"
+        },
+        "automation_rate": {
+            "k": n_pred_auto,
+            "n": n_golden,
+            "desc": "Proportion of Inquiries Auto-Handled"
+        },
+        "escalation_safety_recall": {
+            "k": tp_esc,
+            "n": n_true_esc,
+            "desc": "True Human Escalations Caught (Safety Recall)"
+        },
+        "escalation_false_negative_rate": {
+            "k": fp_auto,
+            "n": n_true_esc,
+            "desc": "Critical Escalations Missed (False Auto-Handle)"
+        },
+        "auto_handle_precision": {
+            "k": tp_auto,
+            "n": n_pred_auto,
+            "desc": "Auto-Handled Cases that were Truly Safe"
+        },
+        "false_escalation_rate": {
+            "k": fp_esc,
+            "n": n_true_auto,
+            "desc": "Benign Cases Unnecessarily Escalated (Efficiency Loss)"
+        },
     }
     
     ci_results = {}
@@ -66,46 +138,61 @@ def main():
 
     # 2. Natural vs Stratified Frequency Re-weighting
     print("\n=== Computing Natural Frequency Re-weighting ===")
-    natural_frequencies = {
-        "ORDER_DELIVERY_AND_TRACKING": 3686,
-        "REFUND_STATUS_AND_DISPUTES": 3108,
-        "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": 2382,
-        "PRIME_MEMBERSHIP_AND_DIGITAL": 1973,
-        "ORDER_CANCELLATION": 1430,
-        "PAYMENT_BILLING_AND_PROMOS": 1075,
-        "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": 862,
-        "ACCOUNT_ACCESS_AND_SECURITY": 709,
-        "TECHNICAL_AND_PLATFORM_ISSUES": 546,
-        "RETURNS_AND_EXCHANGES": 541
-    }
+    
+    # Extract natural counts from intent_metrics.json
+    natural_frequencies = {}
+    if "intent_distributions" in intent_data:
+        for dist in intent_data["intent_distributions"]:
+            natural_frequencies[dist["intent_name"]] = dist["total_count"]
+    else:
+        natural_frequencies = {
+            "ORDER_DELIVERY_AND_TRACKING": 3686,
+            "REFUND_STATUS_AND_DISPUTES": 3108,
+            "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": 2382,
+            "PRIME_MEMBERSHIP_AND_DIGITAL": 1973,
+            "ORDER_CANCELLATION": 1430,
+            "PAYMENT_BILLING_AND_PROMOS": 1075,
+            "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": 862,
+            "ACCOUNT_ACCESS_AND_SECURITY": 709,
+            "TECHNICAL_AND_PLATFORM_ISSUES": 546,
+            "RETURNS_AND_EXCHANGES": 541
+        }
     total_natural = sum(natural_frequencies.values())
     
-    golden_support = {
-        "ORDER_DELIVERY_AND_TRACKING": 28,
-        "REFUND_STATUS_AND_DISPUTES": 26,
-        "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": 25,
-        "PRIME_MEMBERSHIP_AND_DIGITAL": 22,
-        "ORDER_CANCELLATION": 20,
-        "PAYMENT_BILLING_AND_PROMOS": 18,
-        "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": 16,
-        "ACCOUNT_ACCESS_AND_SECURITY": 15,
-        "TECHNICAL_AND_PLATFORM_ISSUES": 15,
-        "RETURNS_AND_EXCHANGES": 15
-    }
+    # Extract golden support & per-intent F1 from harness
+    golden_support = {}
+    per_intent_f1 = {}
+    per_intent_harness = dim1.get("per_intent_metrics", {})
+    if per_intent_harness:
+        for intent_name, metrics in per_intent_harness.items():
+            golden_support[intent_name] = metrics["support"]
+            per_intent_f1[intent_name] = metrics["f1_score"]
+    else:
+        golden_support = {
+            "ORDER_DELIVERY_AND_TRACKING": 28,
+            "REFUND_STATUS_AND_DISPUTES": 26,
+            "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": 25,
+            "PRIME_MEMBERSHIP_AND_DIGITAL": 22,
+            "ORDER_CANCELLATION": 20,
+            "PAYMENT_BILLING_AND_PROMOS": 18,
+            "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": 16,
+            "ACCOUNT_ACCESS_AND_SECURITY": 15,
+            "TECHNICAL_AND_PLATFORM_ISSUES": 15,
+            "RETURNS_AND_EXCHANGES": 15
+        }
+        per_intent_f1 = {
+            "ORDER_DELIVERY_AND_TRACKING": 0.9057,
+            "REFUND_STATUS_AND_DISPUTES": 0.7843,
+            "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": 0.8936,
+            "PRIME_MEMBERSHIP_AND_DIGITAL": 0.9302,
+            "ORDER_CANCELLATION": 0.9524,
+            "PAYMENT_BILLING_AND_PROMOS": 0.9000,
+            "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": 0.9677,
+            "ACCOUNT_ACCESS_AND_SECURITY": 0.8966,
+            "TECHNICAL_AND_PLATFORM_ISSUES": 0.9375,
+            "RETURNS_AND_EXCHANGES": 0.9375
+        }
     total_golden = sum(golden_support.values())
-    
-    per_intent_f1 = {
-        "ORDER_DELIVERY_AND_TRACKING": 0.9057,
-        "REFUND_STATUS_AND_DISPUTES": 0.7843,
-        "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": 0.8936,
-        "PRIME_MEMBERSHIP_AND_DIGITAL": 0.9302,
-        "ORDER_CANCELLATION": 0.9524,
-        "PAYMENT_BILLING_AND_PROMOS": 0.9000,
-        "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": 0.9677,
-        "ACCOUNT_ACCESS_AND_SECURITY": 0.8966,
-        "TECHNICAL_AND_PLATFORM_ISSUES": 0.9375,
-        "RETURNS_AND_EXCHANGES": 0.9375
-    }
     
     macro_f1 = float(np.mean(list(per_intent_f1.values())))
     golden_weighted_f1 = sum(per_intent_f1[k] * (golden_support[k] / total_golden) for k in per_intent_f1)

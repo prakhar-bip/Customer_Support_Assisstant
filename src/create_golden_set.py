@@ -54,9 +54,13 @@ def build_golden_set():
     print(f"Loaded {total_rows:,} rows.")
 
     # Load candidate strata computed from build_clean_ids
-    strata_file = "C:/Users/prakh/.gemini/antigravity/brain/8930736f-8012-48b4-9963-c24696218ff6/scratch/candidate_strata.json"
+    strata_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "processed", "candidate_strata.json")
     if not os.path.exists(strata_file):
-        raise FileNotFoundError("Run scratch/build_clean_ids.py first to generate candidate strata.")
+        raise FileNotFoundError(
+            f"Candidate strata file not found at {strata_file}. "
+            "This file is pre-generated during golden set construction. "
+            "The golden set (data/processed/golden_evaluation_set.jsonl) is already committed."
+        )
 
     with open(strata_file, "r") as f:
         strata = json.load(f)

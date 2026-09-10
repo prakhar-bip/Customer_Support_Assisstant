@@ -21,6 +21,8 @@ import seaborn as sns
 sys.path.insert(0, os.path.abspath("."))
 
 HARNESS_JSON_PATH = "data/analysis/comprehensive_evaluation_harness.json"
+MAJORITY_PATH = "data/analysis/baseline_majority_metrics.json"
+CLASSICAL_PATH = "data/analysis/baseline_logistic_regression_metrics.json"
 FIGURES_DIR = "reports/figures"
 
 # Set publication style
@@ -43,6 +45,30 @@ def generate_plots(harness_path: str = HARNESS_JSON_PATH, output_dir: str = FIGU
     with open(harness_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
+    # Load Baseline 1 metrics
+    b1_acc, b1_macro_f1, b1_weighted_f1 = 14.0, 2.46, 3.44
+    if os.path.exists(MAJORITY_PATH):
+        try:
+            with open(MAJORITY_PATH, "r", encoding="utf-8") as f:
+                b1_data = json.load(f)["metrics"]
+                b1_acc = b1_data["accuracy"] * 100
+                b1_macro_f1 = b1_data["macro_f1"] * 100
+                b1_weighted_f1 = b1_data["weighted_f1"] * 100
+        except Exception:
+            pass
+
+    # Load Baseline 2 metrics
+    b2_acc, b2_macro_f1, b2_weighted_f1 = 90.5, 91.05, 90.43
+    if os.path.exists(CLASSICAL_PATH):
+        try:
+            with open(CLASSICAL_PATH, "r", encoding="utf-8") as f:
+                b2_data = json.load(f)["golden_set_performance"]
+                b2_acc = b2_data["accuracy"] * 100
+                b2_macro_f1 = b2_data["macro_f1"] * 100
+                b2_weighted_f1 = b2_data["weighted_f1"] * 100
+        except Exception:
+            pass
+
     # -------------------------------------------------------------
     # Figure 1: Baseline 1 vs Baseline 2 vs Final Hybrid Comparison
     # -------------------------------------------------------------
@@ -50,9 +76,9 @@ def generate_plots(harness_path: str = HARNESS_JSON_PATH, output_dir: str = FIGU
     fig, ax = plt.subplots(figsize=(9, 5.5), dpi=300)
 
     systems = ["Baseline 1\n(Majority)", "Baseline 2\n(Classical ML)", "Final Hybrid\nSystem"]
-    accuracies = [14.0, 90.5, data["dimension_1_intent_classification"]["accuracy"] * 100]
-    macro_f1s = [2.46, 91.05, data["dimension_1_intent_classification"]["macro_f1"] * 100]
-    weighted_f1s = [3.44, 90.43, data["dimension_1_intent_classification"]["weighted_f1"] * 100]
+    accuracies = [b1_acc, b2_acc, data["dimension_1_intent_classification"]["accuracy"] * 100]
+    macro_f1s = [b1_macro_f1, b2_macro_f1, data["dimension_1_intent_classification"]["macro_f1"] * 100]
+    weighted_f1s = [b1_weighted_f1, b2_weighted_f1, data["dimension_1_intent_classification"]["weighted_f1"] * 100]
 
     x = np.arange(len(systems))
     width = 0.25

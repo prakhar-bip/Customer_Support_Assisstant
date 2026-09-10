@@ -30,8 +30,8 @@ from dotenv import load_dotenv, find_dotenv
 sys.path.insert(0, os.path.abspath("."))
 
 # Load environment variables
-dotenv_path = find_dotenv() or os.path.expanduser(r"~\OneDrive\Desktop\.env")
-if os.path.exists(dotenv_path):
+dotenv_path = find_dotenv()
+if dotenv_path and os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
 
 from google.oauth2.credentials import Credentials
@@ -237,16 +237,29 @@ class ResponseGenerator:
             retrieved_cases=retrieved_cases,
         )
 
-        # Step 4: Call LLM with Structured Schema
-        response = self.client.models.generate_content(
-            model=self.model_name,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
-                response_schema=GroundedResponse,
-                temperature=0.2,
-            ),
-        )
+        # Step 4: Call LLM with Structured Schema (with retry logic)
+        response = None
+        last_exc = None
+        for attempt in range(3):
+            try:
+                response = self.client.models.generate_content(
+                    model=self.model_name,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        response_mime_type="application/json",
+                        response_schema=GroundedResponse,
+                        temperature=0.2,
+                    ),
+                )
+                break
+            except Exception as e:
+                last_exc = e
+                if attempt < 2:
+                    wait_time = 2 ** (attempt + 1)
+                    time.sleep(wait_time)
+
+        if response is None:
+            raise RuntimeError(f"LLM generation failed after 3 attempts: {last_exc}") from last_exc
 
         # Step 5: Parse Structured JSON
         raw_text = response.text.strip()

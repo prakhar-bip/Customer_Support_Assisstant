@@ -85,7 +85,7 @@ The system uses a modular, four-stage hybrid architecture designed for speed, de
 
 ## 3. Experimental Results & Baselines
 
-We evaluated the system blindly on the untouched, hand-curated **Golden Evaluation Set ($N=200$)**, benchmarking against two baseline architectures.
+We evaluated the system blindly on the untouched, systematically labelled **Golden Evaluation Set ($N=200$)**, benchmarking against two baseline architectures.
 
 ### 3.1 3-Way Comparative Evaluation Matrix
 
@@ -133,7 +133,7 @@ We evaluated the system blindly on the untouched, hand-curated **Golden Evaluati
 ## 4. Evaluation Methodology & Validation
 
 ### 4.1 Golden Set Curation & Anti-Leakage Protocol
-- **Volume & Stratification:** 200 hand-audited conversations sampled across all 10 intents.
+- **Volume & Stratification:** 200 systematically labelled conversations sampled across all 10 intents, using deterministic domain rules derived from data analysis.
 - **Difficulty Distribution:** Deliberately structured into **45% Easy** ($N=90$), **35% Medium** ($N=70$), and **20% Hard** ($N=40$).
 - **Anti-Leakage Quarantine:** All 200 conversation IDs were strictly excluded from model training, validation tuning, and the 12,000-case retrieval knowledge base ($\text{Train} \cap \text{Golden} = \emptyset$).
 
@@ -141,7 +141,7 @@ We evaluated the system blindly on the untouched, hand-curated **Golden Evaluati
 To evaluate response generation, we implemented a frozen judge prompt using `gemini-2.5-flash`. The judge scored responses on a 1–5 Likert scale across five explicit operational dimensions: Correctness, Grounding, Helpfulness, Brand Consistency, and Safety.
 
 ### 4.3 Human vs. LLM Judge Validation
-To prove our automated judge was reliable rather than self-congratulatory, independent human experts evaluated the exact same 20 representative cases across all 100 paired ratings.
+To prove our automated judge was reliable rather than self-congratulatory, the author independently evaluated the exact same 20 representative cases across all 100 paired ratings using the rubric defined in `HUMAN_EVALUATION_GUIDE.md`.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
@@ -213,6 +213,8 @@ An executive viewing our headline numbers (**90.50% Intent Accuracy, 81.00% Retr
    On our $N=200$ golden set ($N=67$ true escalations), the 95% Wilson confidence interval on Escalation Recall spans **[64.67%, 84.73%]** (a 20.06% span). True population safety recall could be as low as **64.7%**. False auto-handle on escalations has a 95% CI of **[15.27%, 35.33%]**.
 4. **The Natural Frequency Drop & Curated Horizon:**  
    Our Golden Set was artificially balanced. In the natural `@AmazonHelp` corpus, delivery and refunds constitute 46.1% of volume. Re-weighting per-intent F1 scores by natural dataset frequency causes performance to drop from **91.05% to 89.25%** (falling below 90%). Furthermore, our evaluation was conducted on the **18.49%** of conversations that matched our 10-intent taxonomy; the remaining **81.51%** of raw Twitter conversations fall outside the evaluated closed-world domain.
+5. **Rule-Derived Taxonomy & Circular Validation Bias:**  
+   Both the classical classifier's training pseudo-labels and the golden evaluation set labels were generated using the same underlying domain regex rules and precedence taxonomy. Consequently, our 90.50% intent accuracy measures how effectively the TF-IDF feature space models our rule-based intent boundaries, rather than absolute semantic agreement with unconstrained human intent perceptions in the wild. Real-world messy phrasing outside these lexical bounds will inevitably show lower precision.
 
 ---
 
