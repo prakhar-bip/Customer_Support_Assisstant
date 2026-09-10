@@ -1,0 +1,32 @@
+{
+  "milestone": "Milestone 8: Historical Resolution Retrieval",
+  "created_at": "2026-09-10 15:30:02",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "faiss_index_type": "IndexFlatIP",
+  "similarity_metric": "Cosine Similarity (via L2-normalized Inner Product)",
+  "total_kb_records": 12000,
+  "golden_quarantined_count": 200,
+  "golden_overlap_count": 0,
+  "samples_per_class_target": 1200,
+  "class_distribution": {
+    "ACCOUNT_ACCESS_AND_SECURITY": 1200,
+    "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": 1200,
+    "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": 1200,
+    "ORDER_CANCELLATION": 1200,
+    "ORDER_DELIVERY_AND_TRACKING": 1200,
+    "PAYMENT_BILLING_AND_PROMOS": 1200,
+    "PRIME_MEMBERSHIP_AND_DIGITAL": 1200,
+    "REFUND_STATUS_AND_DISPUTES": 1200,
+    "RETURNS_AND_EXCHANGES": 1200,
+    "TECHNICAL_AND_PLATFORM_ISSUES": 1200
+  },
+  "mean_intent_confidence": 0.7537,
+  "encoding_time_seconds": 150.59,
+  "encoding_throughput_sentences_per_sec": 79.7,
+  "total_runtime_seconds": 173.31,
+  "faiss_file_path": "models/historical_knowledge_base.faiss",
+  "faiss_file_size_mb": 17.58,
+  "metadata_file_path": "data/processed/historical_knowledge_base.jsonl",
+  "metadata_file_size_mb": 13.03
+}

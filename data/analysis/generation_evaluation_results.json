@@ -1,0 +1,1017 @@
+{
+  "milestone": "Milestone 9: Historically Grounded Response Generation",
+  "timestamp": "2026-09-10 16:02:18",
+  "total_test_samples": 20,
+  "llm_model": "gemini-2.5-flash",
+  "retrieval_engine": "sentence-transformers (all-MiniLM-L6-v2) + FAISS IndexFlatIP",
+  "metrics": {
+    "evidence_citation_rate": 1.0,
+    "conciseness_rate": 1.0,
+    "hidden_cot_free_rate": 1.0,
+    "average_generation_latency_seconds": 5.76,
+    "retrieval_quality_distribution": {
+      "retrieval_helps_count": 6,
+      "partially_useful_count": 12,
+      "retrieval_fails_count": 2
+    }
+  },
+  "detailed_results": [
+    {
+      "case_index": 1,
+      "conversation_id": "conv_699493",
+      "customer_message": "100s of ppl have been scammed from my Seller Acct that was hacked..called 2x about it 3wks ago. When will you actually do something?",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "predicted_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "intent_classification_correct": true,
+      "difficulty": "easy",
+      "expected_action": "RECOVER_ACCOUNT_SECURITY",
+      "top1_similarity": 0.651,
+      "top1_retrieved_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "We're very sorry to hear about the issues with your Seller Account and the frustration this has caused. We'd like to look into this for you right away. Please send us your details via this secure link so we can investigate: https://t.co/mgbgvyzQI2",
+      "reasoning_summary": "The reply expresses empathy for the customer's hacked account and offers a direct path to investigation by requesting details through a secure link, consistent with how @AmazonHelp addresses similar account security issues and delays in resolution.",
+      "cited_evidence_ids": [
+        "conv_954149",
+        "conv_1135907"
+      ],
+      "evidence_cited_count": 2,
+      "is_concise": true,
+      "word_count": 42,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 6.73,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_930371",
+          "similarity": 0.651,
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "historical_problem": "account HACKED and all seller money stollen NO HELP > ANGRY",
+          "historical_resolution": "@340711 Hello, I am very sorry to hear this. What were you advised when you reached out to us ? ^CR"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_954149",
+          "similarity": 0.6389,
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "historical_problem": "It's been over 55hrs and no help/call back after fraud on my account. 3 people have promised it. The...",
+          "historical_resolution": "@346398 I'm sorry to hear this! Have you checked your Spam/Junk folders for an e-mail from an Account Specialist? ^GL"
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_1135907",
+          "similarity": 0.6373,
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "historical_problem": "Hello @AmazonHelp still waiting for someone to call me about my hacked account please 🙃🙃🙃🙃 haven’t g...",
+          "historical_resolution": "@162656 Apologies Poppy. Please forward your details - https://t.co/tkLCr7DNil we'd like to investigate further. ^TP"
+        }
+      ]
+    },
+    {
+      "case_index": 2,
+      "conversation_id": "conv_183045",
+      "customer_message": "trying to register my #firestick but says my login details are not valid, yet I am logged in on my phone on your website ??#help",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "predicted_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "intent_classification_correct": false,
+      "difficulty": "hard",
+      "expected_action": "RECOVER_ACCOUNT_SECURITY",
+      "top1_similarity": 0.6558,
+      "top1_retrieved_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "Oh no, sorry to hear you're having trouble logging into your Fire Stick! It sounds frustrating. Please ensure your device is registered correctly, as this often resolves login issues. You can find more info here: https://t.co/37p15JwXtR",
+      "reasoning_summary": "The reply addresses the customer's Fire Stick login issue by suggesting device registration, a common troubleshooting step for such problems, and provides a relevant help link, consistent with how @AmazonHelp resolved similar Fire Stick login/registration issues.",
+      "cited_evidence_ids": [
+        "conv_252801"
+      ],
+      "evidence_cited_count": 1,
+      "is_concise": true,
+      "word_count": 36,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 4.8,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_1103687",
+          "similarity": 0.6558,
+          "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+          "historical_problem": "why doesnt the firestick recognize @6592 I should be able to download their app and log in with TV p...",
+          "historical_resolution": "@126055 I'm sorry for the trouble, Jared. Have you followed the steps here: https://t.co/yZdbD0cOYo ? ^DG"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_252801",
+          "similarity": 0.6376,
+          "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+          "historical_problem": "Hi, logged on to firestick, can I also log on to mobile app at same time? Get this error msg https:/...",
+          "historical_resolution": "@176077 Sorry for the trouble you're having! Have you ensured your devices are registered? More info here: https://t.co/..."
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_777242",
+          "similarity": 0.6351,
+          "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+          "historical_problem": "#Firestick isn't pairing with the remote or the remote app. Any suggestions? @115821",
+          "historical_resolution": "@305550 Oh no! Here's some tips to try: https://t.co/fEQmXtujdQ ^AG"
+        }
+      ]
+    },
+    {
+      "case_index": 3,
+      "conversation_id": "conv_420304",
+      "customer_message": "#fraud company#worst customer service # amazon https://t.co/V6CzaPwl6Y",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "predicted_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "intent_classification_correct": true,
+      "difficulty": "easy",
+      "expected_action": "ESCALATE_SERVICE_GRIEVANCE",
+      "top1_similarity": 0.7718,
+      "top1_retrieved_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "retrieval_quality_category": "retrieval_helps",
+      "generated_reply": "That's quite a remark. We're sorry to hear you feel this way. Please tell us more about what happened so we can try to help. ^AM",
+      "reasoning_summary": "The reply acknowledges the customer's strong negative feedback and offers assistance by asking for more details, consistent with how @AmazonHelp handles complaints about \"worst customer service\" and \"fraud\" in similar historical cases.",
+      "cited_evidence_ids": [
+        "conv_836479",
+        "conv_1322931"
+      ],
+      "evidence_cited_count": 2,
+      "is_concise": true,
+      "word_count": 26,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 4.37,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_836479",
+          "similarity": 0.7718,
+          "intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+          "historical_problem": "Worst customer service by #AmazonIndia..",
+          "historical_resolution": "@319110 That's quite a remark. I would like to help! May I know what went wrong? ^HR"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_1322931",
+          "similarity": 0.7617,
+          "intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+          "historical_problem": "Amazon Is Amazing In Providing Worst Online Shopping Experience. Couldn't Ask Worst Than This. #Anno...",
+          "historical_resolution": "@428735 That's quite a remark, Robin. Please do let us know what went wrong, we'd like to help you. ^EM"
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_673231",
+          "similarity": 0.7616,
+          "intent": "REFUND_STATUS_AND_DISPUTES",
+          "historical_problem": "#Amazon.in #Amazon #worstservice waiting for refund for the past one month... #AmazonIndia",
+          "historical_resolution": "@280580 Very sorry for the experience you had, Venu. Have you tried reporting this our support team here:https://t.co/vl..."
+        }
+      ]
+    },
+    {
+      "case_index": 4,
+      "conversation_id": "conv_182513",
+      "customer_message": "Hey @115850 Please arrange pickup for return, it was fixed today but nobody visited 4 pickup. Tracking ID: 710388293771 Worst experience👎👎",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "predicted_intent": "RETURNS_AND_EXCHANGES",
+      "intent_classification_correct": false,
+      "difficulty": "hard",
+      "expected_action": "ESCALATE_SERVICE_GRIEVANCE",
+      "top1_similarity": 0.7086,
+      "top1_retrieved_intent": "RETURNS_AND_EXCHANGES",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "I'm sorry to hear about the trouble with your return pickup. Please connect with us here: https://t.co/vlvfJr4nN9 so we can look into this for you. For your privacy, please avoid sharing personal details like tracking IDs on public posts.",
+      "reasoning_summary": "Historical cases show that @AmazonHelp addresses missed return pickups by apologizing, directing customers to a private link for resolution, and advising against sharing personal information publicly.",
+      "cited_evidence_ids": [
+        "conv_424264",
+        "conv_388419",
+        "conv_349976"
+      ],
+      "evidence_cited_count": 3,
+      "is_concise": true,
+      "word_count": 39,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 4.87,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_424264",
+          "similarity": 0.7086,
+          "intent": "RETURNS_AND_EXCHANGES",
+          "historical_problem": "twice i have requested for item return but still no one has contacted me for pickup... https://t.co/...",
+          "historical_resolution": "@215986 Apologies for the ordeal Aman. Please share your details here: https://t.co/GIJyeYqKE0 and I'll get back to you...."
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_388419",
+          "similarity": 0.7038,
+          "intent": "RETURNS_AND_EXCHANGES",
+          "historical_problem": "Return pickup was scheduled for 8th Oct by @149473 with tracking ID 69956957825 but still not picked...",
+          "historical_resolution": "@207919 I'm sorry to know about that. Kindly connect with us here: https://t.co/vlvfJr4nN9 we'd like to help. (1/2)"
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_349976",
+          "similarity": 0.6977,
+          "intent": "RETURNS_AND_EXCHANGES",
+          "historical_problem": "your return pickup has been delayed. When can I expect someone to pick it up? Order: 171-3098591-013...",
+          "historical_resolution": "@190545 I'm sorry for the delay with the return pick up, call us here: https://t.co/vlvfJr4nN9 & we'll fix this for you...."
+        }
+      ]
+    },
+    {
+      "case_index": 5,
+      "conversation_id": "conv_130747",
+      "customer_message": "1/ @115850 Are you guys leaking email ids of user who applied for Amazon BTS offer?My bro got this spam email: http://t.co/6YtfYm0aLN",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "predicted_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "intent_classification_correct": false,
+      "difficulty": "easy",
+      "expected_action": "REPLACE_DAMAGED_DEFECTIVE_ITEM",
+      "top1_similarity": 0.695,
+      "top1_retrieved_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "We're sorry to hear your brother received a suspicious email. We take these matters seriously. You can report any suspicious emails claiming to be from Amazon here: https://t.co/NQJ8QwRBRY",
+      "reasoning_summary": "The reply addresses the customer's concern about a suspicious email by providing a link to report it, consistent with how @AmazonHelp has handled similar reports of spam or phishing emails in the past.",
+      "cited_evidence_ids": [
+        "conv_275165"
+      ],
+      "evidence_cited_count": 1,
+      "is_concise": true,
+      "word_count": 28,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 5.42,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_275165",
+          "similarity": 0.695,
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "historical_problem": "hey Amazon, getting more spam emails, but they're from an @115821.co.uk email. How is this??",
+          "historical_resolution": "@181738 Are they advertisement emails? Or people pretending to be Amazon? ^AS"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_303518",
+          "similarity": 0.6662,
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "historical_problem": "Received an email change message from @115821 @AmazonHelp thinking it was a scam, but somebody has a...",
+          "historical_resolution": "@188456 I'm sorry to hear this, Nay! We'd like to look into this further with you here: https://t.co/hApLpMlfHN ^HC"
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_1221893",
+          "similarity": 0.6422,
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "historical_problem": "I would take this is spam coz I don’t use that email account for my amazon account 🤔 https://t.co/Ip...",
+          "historical_resolution": "@406713 I understand your concern! Check here: https://t.co/MiVUQvl1wK to make sure this is a valid email. ^AH"
+        }
+      ]
+    },
+    {
+      "case_index": 6,
+      "conversation_id": "conv_279646",
+      "customer_message": "I have place a replacement request for faulty Moto G5s Plus. Still pending, should have been picked up on 7 September.",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "predicted_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "intent_classification_correct": true,
+      "difficulty": "hard",
+      "expected_action": "REPLACE_DAMAGED_DEFECTIVE_ITEM",
+      "top1_similarity": 0.8634,
+      "top1_retrieved_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "retrieval_quality_category": "retrieval_helps",
+      "generated_reply": "We're sorry to hear your replacement pickup for the Moto G5s Plus is still pending. Please send us a DM with your order details so we can look into this for you.",
+      "reasoning_summary": "Historical cases show that for issues requiring specific order investigation, @AmazonHelp asks customers to provide details privately to resolve the problem.",
+      "cited_evidence_ids": [
+        "conv_697240"
+      ],
+      "evidence_cited_count": 1,
+      "is_concise": true,
+      "word_count": 32,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 5.69,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_1572933",
+          "similarity": 0.8634,
+          "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+          "historical_problem": "I have bought a brand new MOTO G5S PLUS on 4th Nov which was defective however the replacement proce...",
+          "historical_resolution": "@484862 I'm sorry the replacement time upset you. I've forwarded your feedback to the concerned team for review. ^HA"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_697240",
+          "similarity": 0.825,
+          "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+          "historical_problem": "hey Amazon actually I buy Moto G5S plus on sep-11-17 Now it was physically damaged please suggest me...",
+          "historical_resolution": "@286365 Ouch! That looks painful, sorry to see it like that. Please connect with the manufacturer for warranty claims. ^..."
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_379774",
+          "similarity": 0.7218,
+          "intent": "ORDER_CANCELLATION",
+          "historical_problem": "I had ordered a Moto G5 plus and made a payment but it got cancelled without specifying any reason. ...",
+          "historical_resolution": "@206096 Canceled orders are followed by an email with the reason. Kindly check your registered email address for the sam..."
+        }
+      ]
+    },
+    {
+      "case_index": 7,
+      "conversation_id": "conv_238886",
+      "customer_message": ": Ours is a business account. Ordered 14 items for diwali gifts for staffs worth 10K INR. Order cancelled for 12 items. Order # 403-6277206-9111521. Customer service say, can't do anything. Why i should have business account then?",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "predicted_intent": "ORDER_CANCELLATION",
+      "intent_classification_correct": true,
+      "difficulty": "easy",
+      "expected_action": "PROCESS_ORDER_CANCELLATION",
+      "top1_similarity": 0.6784,
+      "top1_retrieved_intent": "ORDER_CANCELLATION",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "We understand your frustration regarding the cancellation of your Diwali gift order, especially for your business account. Order cancellations are usually followed by an email explaining the reason. To help us look into this for you, please share your details via https://t.co/ZcfWKuyGYX. We also recommend not sharing order details publicly for your privacy.",
+      "reasoning_summary": "The reply acknowledges the customer's frustration with the order cancellation and offers a private channel for investigation, consistent with historical cases where customers experienced order cancellations or needed assistance with Diwali-related orders. It also includes standard advice against sharing personal order details publicly and mentions that cancellation reasons are typically sent via email, as seen in similar resolutions.",
+      "cited_evidence_ids": [
+        "conv_380196",
+        "conv_970879",
+        "conv_420464"
+      ],
+      "evidence_cited_count": 3,
+      "is_concise": true,
+      "word_count": 53,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 6.52,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_380196",
+          "similarity": 0.6784,
+          "intent": "ORDER_CANCELLATION",
+          "historical_problem": "want to order Diwali gifts but my transactions keep getting cancelled",
+          "historical_resolution": "@206182 the products. If the order quantity limit is exceeded the order will be automatically closed. (2/3)^AP"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_970879",
+          "similarity": 0.6779,
+          "intent": "REFUND_STATUS_AND_DISPUTES",
+          "historical_problem": "Please Refund ASAP I Have to order for Diwali ORDER # 405-7452092-0382728",
+          "historical_resolution": "@350364 That's strange. Let us check this out for you. Please drop your details here: https://t.co/ZcfWKuyGYX (1/2) ^VM"
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_420464",
+          "similarity": 0.6329,
+          "intent": "ORDER_CANCELLATION",
+          "historical_problem": "can you tell me why my order get cancelled 402-9885493-7568327",
+          "historical_resolution": "@215205 A canceled order is followed by an email explaining the reason for cancellation. More info: https://t.co/NTkrxps..."
+        }
+      ]
+    },
+    {
+      "case_index": 8,
+      "conversation_id": "conv_183392",
+      "customer_message": "Refund not received for an order placed on 22nd September and cancelled.",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "predicted_intent": "ORDER_CANCELLATION",
+      "intent_classification_correct": true,
+      "difficulty": "hard",
+      "expected_action": "PROCESS_ORDER_CANCELLATION",
+      "top1_similarity": 0.8163,
+      "top1_retrieved_intent": "REFUND_STATUS_AND_DISPUTES",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "We're sorry to hear you haven't received your refund for your cancelled order. Please reach out to our support team here: https://t.co/vlvfJr4nN9 so we can investigate this for you.",
+      "reasoning_summary": "The reply directs the customer to a private support channel to investigate the missing refund, consistent with how @AmazonHelp has previously handled similar refund inquiries for cancelled orders.",
+      "cited_evidence_ids": [
+        "conv_2672281",
+        "conv_1094111"
+      ],
+      "evidence_cited_count": 2,
+      "is_concise": true,
+      "word_count": 29,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 6.17,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_379643",
+          "similarity": 0.8163,
+          "intent": "REFUND_STATUS_AND_DISPUTES",
+          "historical_problem": "I canceled an order on 5th October but haven't got my refund yet.. Please help",
+          "historical_resolution": "@206063 this time frame and I'm positive refund would be credited. 2/2 ^SH"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_2672281",
+          "similarity": 0.8048,
+          "intent": "ORDER_CANCELLATION",
+          "historical_problem": "i cancelled my order but didn't refund.",
+          "historical_resolution": "@752408 Sorry for the hassle. Please report this to our support team here: https://t.co/vlvfJr4nN9 and we'll check this...."
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_1094111",
+          "similarity": 0.804,
+          "intent": "REFUND_STATUS_AND_DISPUTES",
+          "historical_problem": "I didn’t got any Refund against my order #402-3206169-8563562 @45204",
+          "historical_resolution": "@378227 Apologies for the delay in refund, Devvrat. We'd like to check this. 1/2 ^HD"
+        }
+      ]
+    },
+    {
+      "case_index": 9,
+      "conversation_id": "conv_231797",
+      "customer_message": "And I am still waiting for my order which is showing out for delivery for 4 days..customer service took 11 miutes still couldn't clear. https://t.co/gACHtDftGZ",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "predicted_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "intent_classification_correct": true,
+      "difficulty": "easy",
+      "expected_action": "TRACK_SHIPMENT_AND_CARRIER_UPDATE",
+      "top1_similarity": 0.7233,
+      "top1_retrieved_intent": "ORDER_CANCELLATION",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "I'm sorry to hear your order has been showing 'out for delivery' for 4 days and for the trouble you've had with customer service. We'd be happy to look into this for you. Please reach out to us via DM with your order details so we can help.",
+      "reasoning_summary": "The reply acknowledges the customer's delivery issue and offers private assistance, consistent with how @AmazonHelp addresses delivery delays and requests for order-specific information in historical cases.",
+      "cited_evidence_ids": [
+        "conv_2276038",
+        "conv_2199109"
+      ],
+      "evidence_cited_count": 2,
+      "is_concise": true,
+      "word_count": 48,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 5.55,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_989116",
+          "similarity": 0.7233,
+          "intent": "ORDER_CANCELLATION",
+          "historical_problem": "Your customer service is awful! I have been told to wait for 72 hours & now my order has been cancel...",
+          "historical_resolution": "@354343 Sorry to hear this. Without sharing personal/account info, can you please advise what happened ? ^TD"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_2276038",
+          "similarity": 0.6971,
+          "intent": "ORDER_DELIVERY_AND_TRACKING",
+          "historical_problem": "Order# 406-0866441-8842738 Paid for One Day Delivery, but now it's showing delay in product delivery...",
+          "historical_resolution": "@661985 Looks like your order shipping method is dispatched on standard delivery method, this usually happens when expre..."
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_2199109",
+          "similarity": 0.6969,
+          "intent": "ORDER_CANCELLATION",
+          "historical_problem": "i had to cancel my order due to late delivery of Order# 407-5069560-4812362. For past 3 orders facin...",
+          "historical_resolution": "@643208 Sorry for the hassle you've been through so far for this order, Kaustubh. I’ll ensure to forward your feedback t..."
+        }
+      ]
+    },
+    {
+      "case_index": 10,
+      "conversation_id": "conv_179088",
+      "customer_message": "My Amazon ordered book has been damaged in transit. Has anyone received a message instructing communications with Amazon once received?",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "predicted_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "intent_classification_correct": false,
+      "difficulty": "hard",
+      "expected_action": "TRACK_SHIPMENT_AND_CARRIER_UPDATE",
+      "top1_similarity": 0.7193,
+      "top1_retrieved_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "I'm so sorry to hear your book arrived damaged! You can view options for damaged items here: https://t.co/J8N3PYHDS8",
+      "reasoning_summary": "Historical cases for damaged items consistently direct customers to a link to view their resolution options, which addresses the customer's need for communication instructions.",
+      "cited_evidence_ids": [
+        "conv_793919",
+        "conv_2522310"
+      ],
+      "evidence_cited_count": 2,
+      "is_concise": true,
+      "word_count": 18,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 4.82,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_793919",
+          "similarity": 0.7193,
+          "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+          "historical_problem": "Hey @115821 all the books I've ever ordered where damaged during delivery. I'm starting to get a bit...",
+          "historical_resolution": "@309299 I'm sorry your items were damaged. You can view your options here: https://t.co/J8N3PYHDS8 ^CO"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_2017585",
+          "similarity": 0.7035,
+          "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+          "historical_problem": "What has been wrong with Amazon lately? Shipments going out late and now I got an email about my pac...",
+          "historical_resolution": "@596668 Hi Amelia, are you currently waiting on an order? ^RS"
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_2522310",
+          "similarity": 0.6989,
+          "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+          "historical_problem": "Every book i order from Amazon seems to get damaged in transit Like. Just wrap the books! A little!!",
+          "historical_resolution": "@718361 Oh no! So sorry for the trouble! We'd love to help! Have you had the chance to review available options here?: h..."
+        }
+      ]
+    },
+    {
+      "case_index": 11,
+      "conversation_id": "conv_180983",
+      "customer_message": "sir i order samsung j7 prime rs 10'500 in amazon pay how many cash back i get?",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "predicted_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "intent_classification_correct": true,
+      "difficulty": "easy",
+      "expected_action": "RESOLVE_PAYMENT_BILLING_ERROR",
+      "top1_similarity": 0.8921,
+      "top1_retrieved_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "retrieval_quality_category": "retrieval_helps",
+      "generated_reply": "A maximum of Rs.450 cashback will be issued to your Amazon account as Amazon Pay balance within 5 days from the date of shipping for your Samsung J7 Prime order.",
+      "reasoning_summary": "The reply is grounded in a historical case where a customer inquired about cashback for a similar Samsung J7 Prime order made with Amazon Pay, and the agent provided the maximum cashback amount and the timeline for its issuance.",
+      "cited_evidence_ids": [
+        "conv_293802"
+      ],
+      "evidence_cited_count": 1,
+      "is_concise": true,
+      "word_count": 30,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 4.28,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_293802",
+          "similarity": 0.8921,
+          "intent": "PAYMENT_BILLING_AND_PROMOS",
+          "historical_problem": "sir i order samsung j7 prime black rs 10,590 with amazon pay when he give me cashback and how many?",
+          "historical_resolution": "@158508 A maximum of Rs.450 cashback will be issued to the eligible customer’s Amazon account as Amazon Pay balance (1/2..."
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_179423",
+          "similarity": 0.7007,
+          "intent": "PAYMENT_BILLING_AND_PROMOS",
+          "historical_problem": "I tried to book Samsung J 7 Prime at its offer price of Rs 10590 but when proceeded for payment, I a...",
+          "historical_resolution": "@158265 Looks like you were getting an additional discount of Rs 490. Can you please help us with the link to the item? ..."
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_226743",
+          "similarity": 0.6925,
+          "intent": "PAYMENT_BILLING_AND_PROMOS",
+          "historical_problem": "If I add Rs.500 in my Amazon pay balance. How much amount will I get as cash back?",
+          "historical_resolution": "@170126 When you shop with Amazon Pay balance for Rs.250 or more, you get 15% cashback up to a maximum of Rs.450. (1/2) ..."
+        }
+      ]
+    },
+    {
+      "case_index": 12,
+      "conversation_id": "conv_248682",
+      "customer_message": "I want my money back from Amazon pay .please help",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "predicted_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "intent_classification_correct": true,
+      "difficulty": "hard",
+      "expected_action": "RESOLVE_PAYMENT_BILLING_ERROR",
+      "top1_similarity": 0.8979,
+      "top1_retrieved_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "retrieval_quality_category": "retrieval_helps",
+      "generated_reply": "We understand you'd like your money back from Amazon Pay. Once funds are added to your Amazon Pay balance, they cannot be transferred back to a bank account. You can use your Amazon Pay balance for purchases on Amazon.",
+      "reasoning_summary": "Historical cases consistently show that funds added to Amazon Pay balance are non-transferable back to a bank account and can only be used for purchases on Amazon.",
+      "cited_evidence_ids": [
+        "conv_2291188",
+        "conv_1200075"
+      ],
+      "evidence_cited_count": 2,
+      "is_concise": true,
+      "word_count": 39,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 4.18,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_2291188",
+          "similarity": 0.8979,
+          "intent": "PAYMENT_BILLING_AND_PROMOS",
+          "historical_problem": "can I please get my money back from Amazon pay to my bank account?",
+          "historical_resolution": "@172091 I get your concern. However, the amount once transferred to Pay Balance can't be transferred to the bank account..."
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_2667383",
+          "similarity": 0.8176,
+          "intent": "REFUND_STATUS_AND_DISPUTES",
+          "historical_problem": "Hi team, please tell me how to refund money from Amazon account",
+          "historical_resolution": "@763364 Just to confirm, may I know if you are referring to Amazon pay balance? ^BS"
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_1200075",
+          "similarity": 0.8107,
+          "intent": "PAYMENT_BILLING_AND_PROMOS",
+          "historical_problem": "I hv purchased watch using Amazon pay & cancelled it and got refund in Amazon pay, how can I get my ...",
+          "historical_resolution": "@188731 The Amazon Pay balance is non-transferable and non-refundable. You may however use it to place orders on Amazon...."
+        }
+      ]
+    },
+    {
+      "case_index": 13,
+      "conversation_id": "conv_1293697",
+      "customer_message": "Heu ça marche pas le linkage de mon compte @120533 #premium & @54689 #prime Nous ne pouvons pas activer Twitch Prime sur votre compte.",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "predicted_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "intent_classification_correct": true,
+      "difficulty": "easy",
+      "expected_action": "MANAGE_PRIME_SUBSCRIPTION",
+      "top1_similarity": 0.615,
+      "top1_retrieved_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "Bonjour, je suis désolé d'apprendre que vous rencontrez des difficultés pour activer Twitch Prime. Nous aimerions vous aider à résoudre ce problème. Pour que nous puissions examiner cela de plus près, veuillez nous contacter ici : https://t.co/hgIrz98cdI",
+      "reasoning_summary": "The reply acknowledges the customer's Prime-related issue, expresses empathy, and directs them to a private support channel for further assistance, consistent with how @AmazonHelp has handled similar Prime membership inquiries historically.",
+      "cited_evidence_ids": [
+        "conv_1635218"
+      ],
+      "evidence_cited_count": 1,
+      "is_concise": true,
+      "word_count": 37,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 5.51,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_2603129",
+          "similarity": 0.615,
+          "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+          "historical_problem": "Vous êtes sérieux @120533 ? C’est la 3ème fois en 3 mois que vous me faites le coup. Je le précomman...",
+          "historical_resolution": "@736649 Je suis vraiment navré d'apprendre cela, avec vous contacté notre SAV dans ce sens ? ^AR"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_1635218",
+          "similarity": 0.6047,
+          "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+          "historical_problem": "Sinon j'aime bien @120533 Prime",
+          "historical_resolution": "@340677 Bonsoir, je suis désolée d'apprendre cela.Nous tenons à regarder cela de plus près et vous aidez. 1/2"
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_2627669",
+          "similarity": 0.5778,
+          "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+          "historical_problem": "Bon et bien grâce à l'incompétence de Colis Privé, je n'aurai pas mes jeux Pokémon USUL ni ma New 2D...",
+          "historical_resolution": "@742155 Bonjour, désolée pour cela. Que dit le suivi de votre colis ? ^MA"
+        }
+      ]
+    },
+    {
+      "case_index": 14,
+      "conversation_id": "conv_816091",
+      "customer_message": "Cancelled my Prime membership roughly 3 months ago, just noticed i've been charged for prime for the past 2 months. Any help.",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "predicted_intent": "ORDER_CANCELLATION",
+      "intent_classification_correct": false,
+      "difficulty": "hard",
+      "expected_action": "MANAGE_PRIME_SUBSCRIPTION",
+      "top1_similarity": 0.8975,
+      "top1_retrieved_intent": "ORDER_CANCELLATION",
+      "retrieval_quality_category": "retrieval_fails",
+      "generated_reply": "Oh no, we're sorry to hear you've been charged after cancelling your Prime membership! Please check your Prime membership status on your account. If it's still active and unused, you may be able to cancel for a refund there. If you need further assistance, please reach out to us directly.",
+      "reasoning_summary": "The reply acknowledges the customer's issue and directs them to check their Prime membership status for potential self-service cancellation and refund if unused, or to contact support for further assistance, consistent with historical resolutions for similar unexpected Prime charges after cancellation.",
+      "cited_evidence_ids": [
+        "conv_2910361",
+        "conv_1453744",
+        "conv_1252970"
+      ],
+      "evidence_cited_count": 3,
+      "is_concise": true,
+      "word_count": 50,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 8.3,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_2910361",
+          "similarity": 0.8975,
+          "intent": "ORDER_CANCELLATION",
+          "historical_problem": "hi i need help with my account. I've been charged for two months of prime membership when I cancelle...",
+          "historical_resolution": "@137390 Oh no! We'd love to help! Is the membership showing on your account here: https://t.co/yfDQs2di7b If so you can ..."
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_1453744",
+          "similarity": 0.865,
+          "intent": "ORDER_CANCELLATION",
+          "historical_problem": "Hi. I cancelled my prime subscription about 2 days ago but I was charged today my prime annual subsc...",
+          "historical_resolution": "@457369 Hi Gustavo. I'm sorry to hear that. Which Amazon site is the charge showing from? https://t.co/nUUp5MLhYl, .co.u..."
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_1252970",
+          "similarity": 0.8629,
+          "intent": "ORDER_CANCELLATION",
+          "historical_problem": "I cancelled my Prime membership and I STILL GOT CHARGED for another year. This is disgusting behavio...",
+          "historical_resolution": "@413925 Sorry to hear this. How much were you charged? What Amazon site do you use? For example .co.uk .com etc ^PK"
+        }
+      ]
+    },
+    {
+      "case_index": 15,
+      "conversation_id": "conv_648407",
+      "customer_message": "what in the world is a balance withheld? #customerservice doesnt seem to know!",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "predicted_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "intent_classification_correct": false,
+      "difficulty": "easy",
+      "expected_action": "TRACK_AND_DISBURSE_REFUND",
+      "top1_similarity": 0.5799,
+      "top1_retrieved_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "We understand your confusion about 'balance withheld.' To help us look into this for your specific account, please send us a DM with more details. We're here to help!",
+      "reasoning_summary": "The reply acknowledges the customer's confusion about a balance-related issue and directs them to a private channel for investigation, consistent with how @AmazonHelp handles similar payment and balance inquiries.",
+      "cited_evidence_ids": [
+        "conv_2630032",
+        "conv_2240636"
+      ],
+      "evidence_cited_count": 2,
+      "is_concise": true,
+      "word_count": 29,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 6.85,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_2630032",
+          "similarity": 0.5799,
+          "intent": "PAYMENT_BILLING_AND_PROMOS",
+          "historical_problem": "I loaded 2500 into pay balace & paid for 15% offer, its clear in my balance sheet but executives are...",
+          "historical_resolution": "@742717 I'm sorry to hear about the cash back issues. We'd like to take a closer look on this and help. Please share you..."
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_2240636",
+          "similarity": 0.5539,
+          "intent": "PAYMENT_BILLING_AND_PROMOS",
+          "historical_problem": "sucks . Worst ever experience . Have a gift card and balance also still the system says the balance ...",
+          "historical_resolution": "@653280 Looks like you've had an unpleasant experience with us and I'm sorry about it. Please tell us more about the iss..."
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_280455",
+          "similarity": 0.5517,
+          "intent": "REFUND_STATUS_AND_DISPUTES",
+          "historical_problem": "they make mistake we suffer. They said pay balance will be goodwill in addition to bank refund. Now ...",
+          "historical_resolution": "@170630 Please don’t provide your order details as it is personal information. Our page is visible to the public.2/2^HN"
+        }
+      ]
+    },
+    {
+      "case_index": 16,
+      "conversation_id": "conv_2549432",
+      "customer_message": "I am a Prime Member, my order not delivered but money also not refunded. Ord no 407-2724072-3557945. This is cheating a loyal cust",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "predicted_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "intent_classification_correct": false,
+      "difficulty": "hard",
+      "expected_action": "TRACK_AND_DISBURSE_REFUND",
+      "top1_similarity": 0.7908,
+      "top1_retrieved_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "retrieval_quality_category": "retrieval_fails",
+      "generated_reply": "I'm sorry to hear your Prime order wasn't delivered and you haven't received a refund. For your privacy, please avoid sharing order details publicly. We'd be happy to look into this for you; please reach out to our support team here: https://t.co/2t6DQoUmNZ.",
+      "reasoning_summary": "Historical cases show that for non-delivered orders, @AmazonHelp directs customers to a support link for investigation and advises against sharing personal details publicly.",
+      "cited_evidence_ids": [
+        "conv_132394",
+        "conv_773480"
+      ],
+      "evidence_cited_count": 2,
+      "is_concise": true,
+      "word_count": 42,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 5.92,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_419206",
+          "similarity": 0.7908,
+          "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+          "historical_problem": "This is the second time my @115821 order has been late on delivery & I pay good money to be a prime ...",
+          "historical_resolution": "@214980 I'm sorry your order has been delayed. Has the tracking updated with a new estimated delivery date https://t.co/..."
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_132394",
+          "similarity": 0.7709,
+          "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+          "historical_problem": "being a PRIME member this is unacceptable! My ORDER # 405-0766216-6561907 was scheduled to be delive...",
+          "historical_resolution": "@145870 I'm sorry your order shows as un-deliverable. Please report it to our support team here: https://t.co/2t6DQoUmNZ..."
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_773480",
+          "similarity": 0.7665,
+          "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+          "historical_problem": "my order not delivered in time as guaranteed no use of being a prime member.",
+          "historical_resolution": "@304766 Sorry to know the order wasn't delivered on time. Kindly fill in your details here: https://t.co/GIJyeYqKE0, I'l..."
+        }
+      ]
+    },
+    {
+      "case_index": 17,
+      "conversation_id": "conv_218201",
+      "customer_message": "Need to print a return label for @115821 but don’t have a printer. Now waiting on delivery of the printer that I’ve ordered from amazon.. 🤔",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "predicted_intent": "RETURNS_AND_EXCHANGES",
+      "intent_classification_correct": true,
+      "difficulty": "easy",
+      "expected_action": "INITIATE_RETURN_PICKUP_LABEL",
+      "top1_similarity": 0.7956,
+      "top1_retrieved_intent": "RETURNS_AND_EXCHANGES",
+      "retrieval_quality_category": "retrieval_helps",
+      "generated_reply": "We understand you need to print a return label but don't have a printer. Please reach out to us here so we can help you with alternative options: https://t.co/hApLpMlfHN",
+      "reasoning_summary": "The reply directs the customer to a private support channel for assistance with printer-less return label options, consistent with how @AmazonHelp resolved a similar issue in a historical case.",
+      "cited_evidence_ids": [
+        "conv_2671376"
+      ],
+      "evidence_cited_count": 1,
+      "is_concise": true,
+      "word_count": 29,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 3.14,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_2671376",
+          "similarity": 0.7956,
+          "intent": "RETURNS_AND_EXCHANGES",
+          "historical_problem": "hi I wanted to return a item but I don't have a printer to print out the return label, is there anyt...",
+          "historical_resolution": "@343341 Please reach out to us here so we can help you out https://t.co/hApLpMlfHN ^KM"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_1953581",
+          "similarity": 0.7145,
+          "intent": "RETURNS_AND_EXCHANGES",
+          "historical_problem": "I am unable to print return label for order id 406-2332029-3967524. Pls help.",
+          "historical_resolution": "@579972 Please note that if the product is scheduled to be picked up by our own transportation services, a return label ..."
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_1794124",
+          "similarity": 0.6983,
+          "intent": "RETURNS_AND_EXCHANGES",
+          "historical_problem": "Can you please help with being able to print a return label",
+          "historical_resolution": "@539145 Are you able to create a label through the Online Returns Center here: https://t.co/FRsodhtXKJ? Please keep us p..."
+        }
+      ]
+    },
+    {
+      "case_index": 18,
+      "conversation_id": "conv_222715",
+      "customer_message": "Pickup planned since 28sept and not yet done, inefficient people are sitting at customer care, postponed return pickup and refund",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "predicted_intent": "RETURNS_AND_EXCHANGES",
+      "intent_classification_correct": true,
+      "difficulty": "hard",
+      "expected_action": "INITIATE_RETURN_PICKUP_LABEL",
+      "top1_similarity": 0.7136,
+      "top1_retrieved_intent": "RETURNS_AND_EXCHANGES",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "We're sorry to hear about the delay with your return pickup and the trouble you've experienced. We'd like to help resolve this for you. Please share your details securely via this link so we can look into it: https://t.co/GIJyeYqKE0",
+      "reasoning_summary": "The reply apologizes for the delayed return pickup and directs the customer to a secure link to provide details, consistent with how @AmazonHelp handles similar return issues and requests for private information in the provided historical cases.",
+      "cited_evidence_ids": [
+        "conv_1916106",
+        "conv_757720",
+        "conv_349976"
+      ],
+      "evidence_cited_count": 3,
+      "is_concise": true,
+      "word_count": 39,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 11.23,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_1916106",
+          "similarity": 0.7136,
+          "intent": "RETURNS_AND_EXCHANGES",
+          "historical_problem": "Item is eligible for return but customer care is not ready for pickup.",
+          "historical_resolution": "@126720 I'm sorry but we could not comprehend your concern. Could you please elaborate so we can assist you here? ^OS"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_757720",
+          "similarity": 0.7003,
+          "intent": "RETURNS_AND_EXCHANGES",
+          "historical_problem": "need to return 1 item but ur CCR is sayin, no pickup can be scheduled for this. den y is it amazon s...",
+          "historical_resolution": "@301082 I'm sorry about the trouble with the return. We'd like to help, kindly share your details here: https://t.co/GIJ..."
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_349976",
+          "similarity": 0.6921,
+          "intent": "RETURNS_AND_EXCHANGES",
+          "historical_problem": "your return pickup has been delayed. When can I expect someone to pick it up? Order: 171-3098591-013...",
+          "historical_resolution": "@190545 I'm sorry for the delay with the return pick up, call us here: https://t.co/vlvfJr4nN9 & we'll fix this for you...."
+        }
+      ]
+    },
+    {
+      "case_index": 19,
+      "conversation_id": "conv_210319",
+      "customer_message": "#Suffering frm last 7 days, without any fault. Due to technical glitch/wrong info by @115821 Sorry to say but such service was not expected",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "predicted_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "intent_classification_correct": true,
+      "difficulty": "easy",
+      "expected_action": "TROUBLESHOOT_DIGITAL_OR_TECHNICAL",
+      "top1_similarity": 0.5932,
+      "top1_retrieved_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "retrieval_quality_category": "partially_useful",
+      "generated_reply": "We're sorry to hear you've been experiencing trouble due to a technical glitch or wrong information. Please tell us more about what happened so we can look into this for you.",
+      "reasoning_summary": "The reply expresses empathy for the customer's frustration and asks for more details, consistent with how @AmazonHelp responded to a customer expressing general dissatisfaction and service issues in a similar historical case.",
+      "cited_evidence_ids": [
+        "conv_34572"
+      ],
+      "evidence_cited_count": 1,
+      "is_concise": true,
+      "word_count": 31,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 5.02,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_34572",
+          "similarity": 0.5932,
+          "intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+          "historical_problem": "#worst ever customer service provided. Trying to contact since last 3 days but call is not happening...",
+          "historical_resolution": "@123488 I'm sorry about the trouble you had reaching us. Could you let us know more about your concern? ^GK"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_351443",
+          "similarity": 0.5806,
+          "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+          "historical_problem": "Received a faulty product n requested for return. 10 days still pick is not done. it keeps on re-sch...",
+          "historical_resolution": "@199603 I'm sorry about the delay in pick up. Please drop in your details here: https://t.co/GIJyeYqKE0. We will look in..."
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_1044994",
+          "similarity": 0.5788,
+          "intent": "RETURNS_AND_EXCHANGES",
+          "historical_problem": "I am very disappointed to your return service.I have requested 6 time for return,but till now no any...",
+          "historical_resolution": "@367063 I understand your disappointment regarding the pick up. Please drop in your details here: https://t.co/GIJyeYqKE..."
+        }
+      ]
+    },
+    {
+      "case_index": 20,
+      "conversation_id": "conv_246978",
+      "customer_message": "hi. Im trying to use my amazon firestick&its not working. Says theres network problems. But i tested the connection&its strong",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "predicted_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "intent_classification_correct": true,
+      "difficulty": "hard",
+      "expected_action": "TROUBLESHOOT_DIGITAL_OR_TECHNICAL",
+      "top1_similarity": 0.8274,
+      "top1_retrieved_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "retrieval_quality_category": "retrieval_helps",
+      "generated_reply": "Sorry to hear your Firestick is having network issues, even after you've checked your connection. We recommend trying these troubleshooting steps to help get it working: https://t.co/7tH2Nzt22a Let us know if you need more help!",
+      "reasoning_summary": "The reply addresses the customer's Firestick network issue by providing a troubleshooting link, consistent with how @AmazonHelp has historically resolved similar technical problems where customers reported good internet but device network issues.",
+      "cited_evidence_ids": [
+        "conv_1765197",
+        "conv_385894"
+      ],
+      "evidence_cited_count": 2,
+      "is_concise": true,
+      "word_count": 35,
+      "no_hidden_chain_of_thought": true,
+      "latency_seconds": 5.76,
+      "top_retrieved_cases": [
+        {
+          "rank": 1,
+          "conversation_id": "conv_1765197",
+          "similarity": 0.8274,
+          "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+          "historical_problem": "My Firestick Won't Connect To The Amazon Services Even Though I Have A Good Internet Connection http...",
+          "historical_resolution": "@530949 We recommend starting with these troubleshooting steps: https://t.co/7tH2Nzt22a Keep us posted! ^AF"
+        },
+        {
+          "rank": 2,
+          "conversation_id": "conv_385894",
+          "similarity": 0.7758,
+          "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+          "historical_problem": ".@AmazonHelp Firestick keeps saying no network when internet fine. We keep having to unplug and rebo...",
+          "historical_resolution": "@207361 Sorry to hear this. When you rebooted the device, did you plug it out from its mains for 40 seconds? ^PK"
+        },
+        {
+          "rank": 3,
+          "conversation_id": "conv_2332362",
+          "similarity": 0.7382,
+          "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+          "historical_problem": "My firestick won't work Help #Amazon",
+          "historical_resolution": "@675109 Could you let us know the error you're facing with the product? ^SQ"
+        }
+      ]
+    }
+  ]
+}

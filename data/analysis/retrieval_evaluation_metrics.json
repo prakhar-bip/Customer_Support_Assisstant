@@ -1,0 +1,771 @@
+{
+  "milestone": "Milestone 8: Historical Resolution Retrieval",
+  "timestamp": "2026-09-10 15:31:51",
+  "total_queries": 200,
+  "knowledge_base_size": 12000,
+  "global_metrics": {
+    "hit_at_1": 0.65,
+    "hit_at_3": 0.81,
+    "hit_at_5": 0.85,
+    "mean_reciprocal_rank_mrr": 0.7289,
+    "mean_average_precision_map5": 0.7053,
+    "mean_top1_similarity": 0.7209,
+    "mean_top5_similarity": 0.6858,
+    "average_query_latency_ms": 42.83
+  },
+  "difficulty_breakdown": {
+    "easy": {
+      "count": 90,
+      "hit_1": 0.7222,
+      "hit_3": 0.8778,
+      "hit_5": 0.8889,
+      "mrr": 0.7935,
+      "mean_top1_similarity": 0.7154
+    },
+    "medium": {
+      "count": 70,
+      "hit_1": 0.7143,
+      "hit_3": 0.8857,
+      "hit_5": 0.9286,
+      "mrr": 0.7988,
+      "mean_top1_similarity": 0.7103
+    },
+    "hard": {
+      "count": 40,
+      "hit_1": 0.375,
+      "hit_3": 0.525,
+      "hit_5": 0.625,
+      "mrr": 0.4612,
+      "mean_top1_similarity": 0.752
+    }
+  },
+  "intent_breakdown": {
+    "ACCOUNT_ACCESS_AND_SECURITY": {
+      "count": 15,
+      "hit_1": 0.8,
+      "hit_3": 0.8,
+      "hit_5": 0.9333,
+      "mrr": 0.8333,
+      "mean_top1_similarity": 0.7239
+    },
+    "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": {
+      "count": 16,
+      "hit_1": 0.5625,
+      "hit_3": 0.75,
+      "hit_5": 0.8125,
+      "mrr": 0.6583,
+      "mean_top1_similarity": 0.6744
+    },
+    "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": {
+      "count": 25,
+      "hit_1": 0.48,
+      "hit_3": 0.68,
+      "hit_5": 0.72,
+      "mrr": 0.5833,
+      "mean_top1_similarity": 0.6672
+    },
+    "ORDER_CANCELLATION": {
+      "count": 20,
+      "hit_1": 0.7,
+      "hit_3": 0.9,
+      "hit_5": 0.95,
+      "mrr": 0.7958,
+      "mean_top1_similarity": 0.7323
+    },
+    "ORDER_DELIVERY_AND_TRACKING": {
+      "count": 28,
+      "hit_1": 0.5,
+      "hit_3": 0.6786,
+      "hit_5": 0.6786,
+      "mrr": 0.5714,
+      "mean_top1_similarity": 0.7373
+    },
+    "PAYMENT_BILLING_AND_PROMOS": {
+      "count": 18,
+      "hit_1": 0.9444,
+      "hit_3": 0.9444,
+      "hit_5": 0.9444,
+      "mrr": 0.9444,
+      "mean_top1_similarity": 0.766
+    },
+    "PRIME_MEMBERSHIP_AND_DIGITAL": {
+      "count": 22,
+      "hit_1": 0.6818,
+      "hit_3": 0.9091,
+      "hit_5": 0.9091,
+      "mrr": 0.7879,
+      "mean_top1_similarity": 0.7553
+    },
+    "REFUND_STATUS_AND_DISPUTES": {
+      "count": 26,
+      "hit_1": 0.5,
+      "hit_3": 0.7692,
+      "hit_5": 0.8846,
+      "mrr": 0.6378,
+      "mean_top1_similarity": 0.7261
+    },
+    "RETURNS_AND_EXCHANGES": {
+      "count": 15,
+      "hit_1": 0.8667,
+      "hit_3": 0.9333,
+      "hit_5": 0.9333,
+      "mrr": 0.8889,
+      "mean_top1_similarity": 0.7209
+    },
+    "TECHNICAL_AND_PLATFORM_ISSUES": {
+      "count": 15,
+      "hit_1": 0.7333,
+      "hit_3": 0.8667,
+      "hit_5": 0.8667,
+      "mrr": 0.8,
+      "mean_top1_similarity": 0.698
+    }
+  },
+  "case_studies": {
+    "successful_retrievals": [
+      {
+        "golden_conv_id": "conv_182644",
+        "query": "again #bad #experience Product ordered, cancelled. Now not able to order tht product due to qty restrictions #badservice #amazon",
+        "ground_truth_intent": "ORDER_CANCELLATION",
+        "expected_action": "PROCESS_ORDER_CANCELLATION",
+        "difficulty": "easy",
+        "hit_1": true,
+        "hit_3": true,
+        "hit_5": true,
+        "reciprocal_rank": 1.0,
+        "ap_5": 1.0,
+        "top1_similarity": 1.0,
+        "top5_mean_similarity": 0.7222,
+        "retrieved_cases": [
+          {
+            "rank": 1,
+            "similarity_score": 1.0,
+            "conversation_id": "conv_215047",
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "again #bad #experience Product ordered, cancelled. Now not able to order tht product due to qty restrictions #badservice #amazon",
+            "brand_response": "@158949 My apologies for the trouble, Bishnu. Kindly reach out to us via: https://t.co/w6BThvCAjo and we will have this checked. ^KS",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115850 again #bad #experience Product ordered, cancelled. Now not able to order tht product due to qty restrictions #badservice #amazon\nTurn 2 [Agent (@AmazonHelp)]: @158949 My apologies for the trouble, Bishnu. Kindly reach out to us via: https://t.co/w6BThvCAjo and we will have this checked. ^KS\nTurn 3 [Customer]: @AmazonHelp I tried there but no help\nTurn 4 [Agent (@AmazonHelp)]: @158949 Sorry to know about this. Please share your details here: https://t.co/GIJyeYqKE0 I'll reach and assist you. ^SV\nTurn 5 [Customer]: @AmazonHelp already shared the details yesterday but no response yet\nTurn 6 [Agent (@AmazonHelp)]: @158949 You should've received an email correspondence from us here: https://t.co/8DAc10S7ww please refer. ^AG",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 2,
+            "similarity_score": 0.6643,
+            "conversation_id": "conv_1046674",
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "Very disappointed with my booked product because your had cancelled without any issue against the ORDER # 407-2812594-8809905",
+            "brand_response": "@367413 Sorry about your order, that was not intended. Please report this to our support team here: https://t.co/vlvfJr4nN9? ^BS",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp Very disappointed with my booked product because your had cancelled without any issue against the ORDER # 407-2812594-8809905\nTurn 2 [Customer]: @AmazonHelp This is really very bad because your offer #AmazonGreatIndianFestival for the customer but the customers being cheated by you.\nTurn 3 [Agent (@AmazonHelp)]: @367413 Sorry about your order, that was not intended. Please report this to our support team here: https://t.co/vlvfJr4nN9? ^BS\nTurn 4 [Agent (@AmazonHelp)]: @367413 Please don’t provide your order details as it is personal information. Our Twitter page is visible to the public. ^MS",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 3,
+            "similarity_score": 0.6513,
+            "conversation_id": "conv_1828716",
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "you are neither delivering the product nor i am allowed to cancel the Order # 171-8586533-0091511 . . What's going on????",
+            "brand_response": "@548804 I'm sorry your order hasn't been delivered. I'd like to look into the issue and assist you with it. Please provide 1/3 ^SH",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115850 you are neither delivering the product nor i am allowed to cancel the Order # 171-8586533-0091511 . . What's going on????\nTurn 2 [Agent (@AmazonHelp)]: @548804 I'm sorry your order hasn't been delivered. I'd like to look into the issue and assist you with it. Please provide 1/3 ^SH\nTurn 3 [Agent (@AmazonHelp)]: @548804 Please don’t provide your details as we consider them to be personal information. Our Twitter page is public. 3/3 ^SH\nTurn 4 [Agent (@AmazonHelp)]: @548804 your details here: https://t.co/xE3bGQUPLU and I'll get back to you. 2/3 ^SH\nTurn 5 [Customer]: @115850 Have furnished all the details . . Please resolve the issue @115850\nTurn 6 [Agent (@AmazonHelp)]: @548804 Thanks for sharing your details. We'll get in touch with you soon. ^AK\nTurn 7 [Customer]: @AmazonHelp Still have not received the product . . Neither replacement or refund isuued and nor i was contacted by you . Really frustrating @115850\nTurn 8 [Agent (@AmazonHelp)]: @548804 Apologies, Subhamoy. We have already responded to your query, request you to check and respond to that correspondence. ^NK",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 4,
+            "similarity_score": 0.6482,
+            "conversation_id": "conv_876301",
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "Amazon cancelled the order of a limited edition sold out product in response to me asking for help. I didn’t ask for cancel.",
+            "brand_response": "@328046 Have you received e-mail notification about your order cancellation? If so, was additional information provided? ^EB",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp Amazon cancelled the order of a limited edition sold out product in response to me asking for help. I didn’t ask for cancel.\nTurn 2 [Agent (@AmazonHelp)]: @328046 Have you received e-mail notification about your order cancellation? If so, was additional information provided? ^EB\nTurn 3 [Customer]: @AmazonHelp “I've check your order and we cannot be able to change it to a Xbox version, and to make things right for you I've cancelled the full order”\nTurn 4 [Agent (@AmazonHelp)]: @328046 I'm so sorry we let you down. Unfortunately, we are unable to reinstate canceled orders. ^LR",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          },
+          {
+            "rank": 5,
+            "similarity_score": 0.6473,
+            "conversation_id": "conv_312830",
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "my order gets cancelled for no reasons. Can you please sort out the matter. Starting to get disappointed with Amazon these days. https://t.co/Bz4dTW8BI4",
+            "brand_response": "@190706 Every canceled order is followed up with an email explaining the reason why. Request you to check the same. ^MM",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115850 my order gets cancelled for no reasons. Can you please sort out the matter. Starting to get disappointed with Amazon these days. https://t.co/Bz4dTW8BI4\nTurn 2 [Agent (@AmazonHelp)]: @190706 Every canceled order is followed up with an email explaining the reason why. Request you to check the same. ^MM",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          }
+        ]
+      },
+      {
+        "golden_conv_id": "conv_244944",
+        "query": "when will be Alexa app available on apple app store india?",
+        "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+        "expected_action": "TROUBLESHOOT_DIGITAL_OR_TECHNICAL",
+        "difficulty": "easy",
+        "hit_1": true,
+        "hit_3": true,
+        "hit_5": true,
+        "reciprocal_rank": 1.0,
+        "ap_5": 1.0,
+        "top1_similarity": 0.9543,
+        "top5_mean_similarity": 0.9161,
+        "retrieved_cases": [
+          {
+            "rank": 1,
+            "similarity_score": 0.9543,
+            "conversation_id": "conv_1018210",
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "When is the alexa app going to be available in India ?",
+            "brand_response": "@360909 The Alexa app will be available in the App Store / Play Store when the devices start shipping the week of Oct 30. ^HN",
+            "relevant_conversation_context": "Turn 1 [Customer]: @121284 When is the alexa app going to be available in India ?\nTurn 2 [Agent (@AmazonHelp)]: @360909 The Alexa app will be available in the App Store / Play Store when the devices start shipping the week of Oct 30. ^HN",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          },
+          {
+            "rank": 2,
+            "similarity_score": 0.9192,
+            "conversation_id": "conv_2454078",
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "what time will the Amazon Alexa App be released in India ?",
+            "brand_response": "@420872 You can now download the Amazon Alexa app from App store/ Play store. Please check and keep us posted. ^VG",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp what time will the Amazon Alexa App be released in India ?\nTurn 2 [Agent (@AmazonHelp)]: @420872 You can now download the Amazon Alexa app from App store/ Play store. Please check and keep us posted. ^VG",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          },
+          {
+            "rank": 3,
+            "similarity_score": 0.9092,
+            "conversation_id": "conv_1192315",
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "when are you launching Alexa app for India?",
+            "brand_response": "@400237 The Alexa app will be available in the App Store / Play Store when the devices start shipping the week of Oct 30. ^MM",
+            "relevant_conversation_context": "Turn 1 [Customer]: @118919 when are you launching Alexa app for India?\nTurn 2 [Agent (@AmazonHelp)]: @400237 The Alexa app will be available in the App Store / Play Store when the devices start shipping the week of Oct 30. ^MM",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          },
+          {
+            "rank": 4,
+            "similarity_score": 0.8992,
+            "conversation_id": "conv_917613",
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "when will alexa be available for download in india? https://t.co/CVp02N6VcS",
+            "brand_response": "@337850 The Alexa app would be available to download once the device gets shipped. Request you to wait until then. 1/2 ^SB",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115850 when will alexa be available for download in india? https://t.co/CVp02N6VcS\nTurn 2 [Agent (@AmazonHelp)]: @337850 The Alexa app would be available to download once the device gets shipped. Request you to wait until then. 1/2 ^SB\nTurn 3 [Agent (@AmazonHelp)]: @337850 We appreciate your patience. 2/2 ^SB\nTurn 4 [Customer]: @115850 So when is the device expected to be shipped? Is there a timeline?\nTurn 5 [Agent (@AmazonHelp)]: @337850 Echo devices will start shipping in the week of Oct 30. ^MP",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 5,
+            "similarity_score": 0.8984,
+            "conversation_id": "conv_1258268",
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "hi, now that Amazon Echo and the DOT are in India, when can we expect the Alexa app in playstore ?",
+            "brand_response": "@414840 The Alexa app will be available in the App Store / Play Store when the devices start shipping in the week of Oct 30. ^AP",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp hi, now that Amazon Echo and the DOT are in India, when can we expect the Alexa app in playstore ?\nTurn 2 [Agent (@AmazonHelp)]: @414840 The Alexa app will be available in the App Store / Play Store when the devices start shipping in the week of Oct 30. ^AP",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          }
+        ]
+      },
+      {
+        "golden_conv_id": "conv_423523",
+        "query": "when are you bringing Alexa app to India ?",
+        "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+        "expected_action": "TROUBLESHOOT_DIGITAL_OR_TECHNICAL",
+        "difficulty": "easy",
+        "hit_1": true,
+        "hit_3": true,
+        "hit_5": true,
+        "reciprocal_rank": 1.0,
+        "ap_5": 1.0,
+        "top1_similarity": 0.9474,
+        "top5_mean_similarity": 0.9012,
+        "retrieved_cases": [
+          {
+            "rank": 1,
+            "similarity_score": 0.9474,
+            "conversation_id": "conv_1192315",
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "when are you launching Alexa app for India?",
+            "brand_response": "@400237 The Alexa app will be available in the App Store / Play Store when the devices start shipping the week of Oct 30. ^MM",
+            "relevant_conversation_context": "Turn 1 [Customer]: @118919 when are you launching Alexa app for India?\nTurn 2 [Agent (@AmazonHelp)]: @400237 The Alexa app will be available in the App Store / Play Store when the devices start shipping the week of Oct 30. ^MM",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          },
+          {
+            "rank": 2,
+            "similarity_score": 0.9318,
+            "conversation_id": "conv_1018210",
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "When is the alexa app going to be available in India ?",
+            "brand_response": "@360909 The Alexa app will be available in the App Store / Play Store when the devices start shipping the week of Oct 30. ^HN",
+            "relevant_conversation_context": "Turn 1 [Customer]: @121284 When is the alexa app going to be available in India ?\nTurn 2 [Agent (@AmazonHelp)]: @360909 The Alexa app will be available in the App Store / Play Store when the devices start shipping the week of Oct 30. ^HN",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          },
+          {
+            "rank": 3,
+            "similarity_score": 0.8968,
+            "conversation_id": "conv_2454078",
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "what time will the Amazon Alexa App be released in India ?",
+            "brand_response": "@420872 You can now download the Amazon Alexa app from App store/ Play store. Please check and keep us posted. ^VG",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp what time will the Amazon Alexa App be released in India ?\nTurn 2 [Agent (@AmazonHelp)]: @420872 You can now download the Amazon Alexa app from App store/ Play store. Please check and keep us posted. ^VG",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          },
+          {
+            "rank": 4,
+            "similarity_score": 0.8671,
+            "conversation_id": "conv_917613",
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "when will alexa be available for download in india? https://t.co/CVp02N6VcS",
+            "brand_response": "@337850 The Alexa app would be available to download once the device gets shipped. Request you to wait until then. 1/2 ^SB",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115850 when will alexa be available for download in india? https://t.co/CVp02N6VcS\nTurn 2 [Agent (@AmazonHelp)]: @337850 The Alexa app would be available to download once the device gets shipped. Request you to wait until then. 1/2 ^SB\nTurn 3 [Agent (@AmazonHelp)]: @337850 We appreciate your patience. 2/2 ^SB\nTurn 4 [Customer]: @115850 So when is the device expected to be shipped? Is there a timeline?\nTurn 5 [Agent (@AmazonHelp)]: @337850 Echo devices will start shipping in the week of Oct 30. ^MP",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 5,
+            "similarity_score": 0.8629,
+            "conversation_id": "conv_1149771",
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "finally bought the new echo dot. Iam very excited😄. But when will the Alexa app launch in India.",
+            "brand_response": "@390566 The Alexa app will be available in the App Store / Play Store when the devices start shipping the week of Oct 30, Aditya. ^KS",
+            "relevant_conversation_context": "Turn 1 [Customer]: @121284 finally bought the new echo dot. Iam very excited😄. But when will the Alexa app launch in India.\nTurn 2 [Agent (@AmazonHelp)]: @390566 The Alexa app will be available in the App Store / Play Store when the devices start shipping the week of Oct 30, Aditya. ^KS",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          }
+        ]
+      }
+    ],
+    "partially_useful_retrievals": [
+      {
+        "golden_conv_id": "conv_219492",
+        "query": "hi there just got my account back from an issue. now i have lost my $5.00 gift card as well as my preorder for a game on sale..",
+        "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+        "expected_action": "RESOLVE_PAYMENT_BILLING_ERROR",
+        "difficulty": "easy",
+        "hit_1": true,
+        "hit_3": true,
+        "hit_5": true,
+        "reciprocal_rank": 1.0,
+        "ap_5": 0.95,
+        "top1_similarity": 0.6503,
+        "top5_mean_similarity": 0.6273,
+        "retrieved_cases": [
+          {
+            "rank": 1,
+            "similarity_score": 0.6503,
+            "conversation_id": "conv_2279417",
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "And I have received the gift card into my account finally. Thanks for the prompt action. Appreciate that! 🤩",
+            "brand_response": "@662708 If the details have been shared using the link, we'll work on it and get back with a correspondence to the registered email address soon. ^AR",
+            "relevant_conversation_context": "Turn 1 [Agent (@AmazonHelp)]: @662708 If the details have been shared using the link, we'll work on it and get back with a correspondence to the registered email address soon. ^AR\nTurn 2 [Customer]: @AmazonHelp And I have received the gift card into my account finally. Thanks for the prompt action. Appreciate that! 🤩\nTurn 3 [Agent (@AmazonHelp)]: @662708 You're welcome! We are happy that your issue has been resolved. It was pleasure assisting you. :) ^HS\nTurn 4 [Customer]: @AmazonHelp @115850 @AmazonHelp kindly look into the issue I have raised with respect to my mother’s account as well. The same issue exists of redemption of gift card. Multiple times raised an issue but no resolution. Look into that as well\nTurn 5 [Agent (@AmazonHelp)]: @662708 I'm sorry to know that the issue persists with your mother's account. Kindly drop in your mom's account details here: https://t.co/beaaDm0muc & we'll have this checked right away. ^EM\nTurn 6 [Customer]: @AmazonHelp @115850 @AmazonHelp details shared. Kindly check asap..\nTurn 7 [Agent (@AmazonHelp)]: @662708 Thanks for sharing the details Asmit. Our team will contact you with an update at the earliest. ^GD\nTurn 8 [Customer]: @AmazonHelp @115850 @AmazonHelp any updates? I still haven’t heard back from any of your executives..\nTurn 9 [Agent (@AmazonHelp)]: @662708 I understand it's taking time but please be assured, our team is working on it and will get back to you at the earliest. ^PB\nTurn 10 [Customer]: @AmazonHelp @115850 @AmazonHelp still no update from your end. Why is it taking so long? It’s been almost a month now.. 😠\nTurn 11 [Agent (@AmazonHelp)]: @662708 You might have received a correspondence from our team here: https://t.co/fYrzNInVt2. Kindly reply to the latest correspondence for further assistance. ^GD\nTurn 12 [Customer]: @AmazonHelp @115850 @AmazonHelp I haven’t received any message from you. Recheck at your end..\nTurn 13 [Agent (@AmazonHelp)]: @662708 You'd have received a correspondence from our team. Kindly check it here: https://t.co/8DAc10S7ww Since the issue is related to your moms account, please check the respective account. ^EM\nTurn 14 [Customer]: @AmazonHelp @115850 @AmazonHelp just checked the account again.. no message in her account as well as mine. Kindly recheck or send the message again or email..\nTurn 15 [Agent (@AmazonHelp)]: @662708 That's unusual. We'd like to have this checked. Please drop your details here: https://t.co/beaaDm0muc and we'll look into it. ^MO\nTurn 16 [Customer]: @AmazonHelp Have shared the details again.. @115850 @AmazonHelp\nTurn 17 [Agent (@AmazonHelp)]: @662708 Thank you for sharing the details. Once we receive them we'll get in touch with you shortly. ^RB\nTurn 18 [Customer]: @AmazonHelp Provided the necessary details to your team as required via email.. kindly resolve the matter asap now.. @115850 @AmazonHelp\nTurn 19 [Agent (@AmazonHelp)]: @662708 If you've shared the details with us, we'll get back to you with an update at the earliest. Request you to kindly wait till then. ^AU\nTurn 20 [Customer]: @AmazonHelp @115850 @AmazonHelp no update till now as well.. 😡\nTurn 21 [Agent (@AmazonHelp)]: @662708 I'm sorry about the stretch. Kindly reply to the email that we've sent. We'll get back to you with an update. ^SG\nTurn 22 [Customer]: @AmazonHelp Already replied to the email sent by you on Sunday.. Post that I haven’t received any more emails.. Which email are you talking about? I have already shared all the screenshots of the gift code long ago.. why still taking so long? @115850 @AmazonHelp\nTurn 23 [Agent (@AmazonHelp)]: @662708 If you have responded to the email sent by our team, we'll work on it and get back to you soon. ^RI\nTurn 24 [Customer]: @AmazonHelp Still no update.. 😡😡😡 @115850 @AmazonHelp\nTurn 25 [Agent (@AmazonHelp)]: @662708 You must've received the latest correspondence from us, here: https://t.co/NTkrxpsbHJ. If your concern remains unresolved, feel free to revert to it.^YP\nTurn 26 [Customer]: @AmazonHelp No correspondence received.. @115850 @AmazonHelp\nTurn 27 [Agent (@AmazonHelp)]: @662708 Upon checking with your recent Tweets, I see that you have shared details with the secured link. In this case, social Media team correspondence will be sent to your registered email account, please reply to our correspondence for further assistance. ^MJ",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 2,
+            "similarity_score": 0.6243,
+            "conversation_id": "conv_2766433",
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "My amazon.fr account was cancelled by amazon. But I bought an amazon gift card last day. I didn't receive the gift card. Would you mind help me check it. Order NO.#171-8677234-0033944 @AmazonHelp",
+            "brand_response": "@773652 Hi Molly, we don't have access to customer accounts over Twitter. Please reach out to us here so we can look into this further: https://t.co/hgIrz98cdI ^SA",
+            "relevant_conversation_context": "Turn 1 [Customer]: My amazon.fr account was cancelled by amazon. But I bought an amazon gift card last day. I didn't receive the gift card. Would you mind help me check it. Order NO.#171-8677234-0033944 @AmazonHelp\nTurn 2 [Agent (@AmazonHelp)]: @773652 Hi Molly, we don't have access to customer accounts over Twitter. Please reach out to us here so we can look into this further: https://t.co/hgIrz98cdI ^SA\nTurn 3 [Customer]: @AmazonHelp but my account has canceled by Amazon. I don't have an account to log in. What should I do?\nTurn 4 [Agent (@AmazonHelp)]: @773652 Have you received an e-mail asking you to send some documents by fax ? ^ARC",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 3,
+            "similarity_score": 0.6225,
+            "conversation_id": "conv_897598",
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "hi. Why won’t my gift card reload to my account?",
+            "brand_response": "@333163 I'm sorry for the trouble with the gift card. What error message are you seeing? Is this for an Amazon Gift Card? ^JM",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp hi. Why won’t my gift card reload to my account?\nTurn 2 [Agent (@AmazonHelp)]: @333163 I'm sorry for the trouble with the gift card. What error message are you seeing? Is this for an Amazon Gift Card? ^JM\nTurn 3 [Customer]: @AmazonHelp Yes\nTurn 4 [Agent (@AmazonHelp)]: @333163 Are you reloading from a physical Gift card or through our Gift card reload option on our site? ^AG\nTurn 5 [Customer]: @AmazonHelp Gift card reload\nTurn 6 [Agent (@AmazonHelp)]: @333163 Thanks for the info. Are you receiving an error message? If so, what does it state? ^GG",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          },
+          {
+            "rank": 4,
+            "similarity_score": 0.6201,
+            "conversation_id": "conv_2946739",
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "I've been fighting with your support for over two months. Someone hacked my account and placed a $4,000 order for gift cards. I told my CC company to file a chargeback and now you've locked my account! I won't pay for a $4,000 fraudulent order! Amazon doesn't care.",
+            "brand_response": "@266928 I can confirm a member of our team is taking a look into this for you. Please keep an eye on your e-mail for a response from us. ^KP",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp I've been fighting with your support for over two months. Someone hacked my account and placed a $4,000 order for gift cards. I told my CC company to file a chargeback and now you've locked my account! I won't pay for a $4,000 fraudulent order! Amazon doesn't care.\nTurn 2 [Agent (@AmazonHelp)]: @266928 I can confirm a member of our team is taking a look into this for you. Please keep an eye on your e-mail for a response from us. ^KP",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          },
+          {
+            "rank": 5,
+            "similarity_score": 0.6195,
+            "conversation_id": "conv_2481739",
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "if I've preordered something and I've used a gift card, can I cancel the pre order and get my gift card balance which was used back?",
+            "brand_response": "@504253 We won't charge you until your Pre-order is preparing for shipment. You can cancel a Pre-order before it ships at any time. ^DW",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp if I've preordered something and I've used a gift card, can I cancel the pre order and get my gift card balance which was used back?\nTurn 2 [Agent (@AmazonHelp)]: @504253 We won't charge you until your Pre-order is preparing for shipment. You can cancel a Pre-order before it ships at any time. ^DW",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          }
+        ]
+      },
+      {
+        "golden_conv_id": "conv_699493",
+        "query": "100s of ppl have been scammed from my Seller Acct that was hacked..called 2x about it 3wks ago. When will you actually do something?",
+        "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+        "expected_action": "RECOVER_ACCOUNT_SECURITY",
+        "difficulty": "easy",
+        "hit_1": true,
+        "hit_3": true,
+        "hit_5": true,
+        "reciprocal_rank": 1.0,
+        "ap_5": 1.0,
+        "top1_similarity": 0.651,
+        "top5_mean_similarity": 0.6354,
+        "retrieved_cases": [
+          {
+            "rank": 1,
+            "similarity_score": 0.651,
+            "conversation_id": "conv_930371",
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "account HACKED and all seller money stollen NO HELP > ANGRY",
+            "brand_response": "@340711 Hello, I am very sorry to hear this. What were you advised when you reached out to us ? ^CR",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115830 account HACKED and all seller money stollen NO HELP > ANGRY\nTurn 2 [Agent (@AmazonHelp)]: @340711 Hello, I am very sorry to hear this. What were you advised when you reached out to us ? ^CR\nTurn 3 [Customer]: @AmazonHelp i was told we will get back to you. The most annoying is i have raised this more than 5 times and customer service asked me to re-explain it every time. that shows they dont have the info . Said they will pass it on to Account Compromise department , who will call me. never did\nTurn 4 [Agent (@AmazonHelp)]: @340711 I'm very sorry to hear this. Have you checked your e-mail for a correspondence from them? The spam and junk folders? ^TH\nTurn 5 [Customer]: @AmazonHelp theres none\nTurn 6 [Agent (@AmazonHelp)]: @340711 Thank you for letting us know! I would like someone from our Social Media team to look into this for you. Please send us your info here: https://t.co/tpu3pfddAq. You can choose the \"skip login\" option. ^AL\nTurn 7 [Customer]: @AmazonHelp No HELP STILL\nTurn 8 [Agent (@AmazonHelp)]: @340711 Hi Saul. We sent you an email over the weekend, if you would like an update please reply directly to this email you received. Thank you. ^BD\nTurn 9 [Customer]: @AmazonHelp i did not receive this email . Can you resend the email ?\nTurn 10 [Agent (@AmazonHelp)]: @340711 Hi there, have you checked your spam or junk folders? Occasionally, e-mails from us will filter there on accident. ^DW",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 2,
+            "similarity_score": 0.6389,
+            "conversation_id": "conv_954149",
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "It's been over 55hrs and no help/call back after fraud on my account. 3 people have promised it. They even allowed further fraud.",
+            "brand_response": "@346398 I'm sorry to hear this! Have you checked your Spam/Junk folders for an e-mail from an Account Specialist? ^GL",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115830 It's been over 55hrs and no help/call back after fraud on my account. 3 people have promised it. They even allowed further fraud.\nTurn 2 [Agent (@AmazonHelp)]: @346398 I'm sorry to hear this! Have you checked your Spam/Junk folders for an e-mail from an Account Specialist? ^GL\nTurn 3 [Customer]: @AmazonHelp Yes. Not to mention I have been promised phone calls. Did you warn customers hacks are going on?\nTurn 4 [Agent (@AmazonHelp)]: @346398 Thanks for the info. We'd like to take a closer look into this. Please send us your details here: https://t.co/mgbgvyzQI2 ^GG\nTurn 5 [Customer]: @AmazonHelp My account was put on hold this afternoon asmftwr the girl yesterday failed to do it and more purchases got approved. I can't access that\nTurn 6 [Agent (@AmazonHelp)]: @346398 There should be a 'skip sign in' option towards the bottom of the page that you can select. ^KP",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 3,
+            "similarity_score": 0.6373,
+            "conversation_id": "conv_1135907",
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "Hello @AmazonHelp still waiting for someone to call me about my hacked account please 🙃🙃🙃🙃 haven’t got the spare money to just give away tnx",
+            "brand_response": "@162656 Apologies Poppy. Please forward your details - https://t.co/tkLCr7DNil we'd like to investigate further. ^TP",
+            "relevant_conversation_context": "Turn 1 [Customer]: Hello @AmazonHelp still waiting for someone to call me about my hacked account please 🙃🙃🙃🙃 haven’t got the spare money to just give away tnx\nTurn 2 [Agent (@AmazonHelp)]: @162656 Apologies Poppy. Please forward your details - https://t.co/tkLCr7DNil we'd like to investigate further. ^TP",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 4,
+            "similarity_score": 0.6329,
+            "conversation_id": "conv_2775898",
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "Someone hacked into/locked me out of my @115821 seller account & is posting bogus listings to con buyers then pocketing the cash & not shipping and I can't seem to get @AmazonHelp to help. I could understand messing up my case but at this point its affected 34 other customers. https://t.co/dLmANoE49J",
+            "brand_response": "@775647 Hello! Were you in contact with Seller Support regarding this issue? If so, what was advised? ^CN",
+            "relevant_conversation_context": "Turn 1 [Customer]: Someone hacked into/locked me out of my @115821 seller account & is posting bogus listings to con buyers then pocketing the cash & not shipping and I can't seem to get @AmazonHelp to help. I could understand messing up my case but at this point its affected 34 other customers. https://t.co/dLmANoE49J\nTurn 2 [Agent (@AmazonHelp)]: @775647 Hello! Were you in contact with Seller Support regarding this issue? If so, what was advised? ^CN\nTurn 3 [Customer]: @AmazonHelp Yes, 2 times now. The first time I was told that because I didn't know the email it was changed to they couldn't help. And the second time I was told that there was no security issues when there clearly were since I wasn't listing these items and the email was changed. https://t.co/aSFhtNOjVc\nTurn 4 [Agent (@AmazonHelp)]: @775647 We want to investigate this further with you. Please reach out to us using this secure link: https://t.co/tkFnXMW1Ea ^GR",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 5,
+            "similarity_score": 0.6171,
+            "conversation_id": "conv_372871",
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "Hey guys, just tried to buy something and got my order cancelled. Then got an email saying my account was hacked. Who do I call?",
+            "brand_response": "@204357 We'd like to take a deeper look into this with you. When you can, please reach out to us here: https://t.co/Q3x85Ic8Xo ^GM",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp Hey guys, just tried to buy something and got my order cancelled. Then got an email saying my account was hacked. Who do I call?\nTurn 2 [Agent (@AmazonHelp)]: @204357 We'd like to take a deeper look into this with you. When you can, please reach out to us here: https://t.co/Q3x85Ic8Xo ^GM\nTurn 3 [Customer]: @AmazonHelp All sent and done! Hope we can resolve this quickly!\nTurn 4 [Agent (@AmazonHelp)]: @204357 Keep us posted on the reply. Also be sure to keep an eye on your spam and junk folders too just in case. ^EP\nTurn 5 [Customer]: @AmazonHelp Got an email back saying to phone/chat with CS, but it requires me to log into my account. Can't do that if my account won't let me in...\nTurn 6 [Agent (@AmazonHelp)]: @204357 Can you respond directly to the email? ^MC",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          }
+        ]
+      },
+      {
+        "golden_conv_id": "conv_181157",
+        "query": "I got my redme 4 today. But I'm not satisfied with the product so I want to return d same. Kindly assist @115850 Order 408-1160678-3266756",
+        "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+        "expected_action": "INITIATE_RETURN_PICKUP_LABEL",
+        "difficulty": "medium",
+        "hit_1": true,
+        "hit_3": true,
+        "hit_5": true,
+        "reciprocal_rank": 1.0,
+        "ap_5": 0.8056,
+        "top1_similarity": 0.6542,
+        "top5_mean_similarity": 0.6282,
+        "retrieved_cases": [
+          {
+            "rank": 1,
+            "similarity_score": 0.6542,
+            "conversation_id": "conv_181061",
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "Customer care is not responding to my request & I am not able to return my Redme 4 cellph. Amazon acnt Registered no: 8856816009 @115850",
+            "brand_response": "@158526 We apologize for the inconvenience. Please share your details here: https://t.co/GIJyeYqKE0 and we'll help you. (1/2) ^ZH",
+            "relevant_conversation_context": "Turn 1 [Customer]: Customer care is not responding to my request & I am not able to return my Redme 4 cellph. Amazon acnt Registered no: 8856816009 @115850\nTurn 2 [Agent (@AmazonHelp)]: @158526 We apologize for the inconvenience. Please share your details here: https://t.co/GIJyeYqKE0 and we'll help you. (1/2) ^ZH\nTurn 3 [Agent (@AmazonHelp)]: @158526 Please don't provide your order details, we consider it personal information. Our Twitter page is visible to public (2/2) ^ZH\nTurn 4 [Customer]: @AmazonHelp Details are shared on provided link. Waiting for your response. Thank you :)\nTurn 5 [Agent (@AmazonHelp)]: @158526 We have received your details. We are working on it and will get back to you with an update at the earliest.^HR\nTurn 6 [Customer]: @AmazonHelp Amazon customer care just called me bt they didn't proceed my return request yet. They just askd me to confirm my order. Kindly resolve ASAP\nTurn 7 [Agent (@AmazonHelp)]: @158526 Suraj, you must've received an email from us. You can check your inbox here: https://t.co/DTSNmGldJf revert for updates. ^MS",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 2,
+            "similarity_score": 0.6439,
+            "conversation_id": "conv_135068",
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "Man dont Know whats Wrong with Redgear Every Product i order from them is Defective and i have to return it and now its also out of stock on @115850 dont know what to do",
+            "brand_response": "@121290 I'm sorry you've received a defective product. Please report it to our support tea here: https://t.co/2t6DQoUmNZ we'll look into it and help you. ^AP",
+            "relevant_conversation_context": "Turn 1 [Customer]: Man dont Know whats Wrong with Redgear Every Product i order from them is Defective and i have to return it and now its also out of stock on @115850 dont know what to do\nTurn 2 [Agent (@AmazonHelp)]: @121290 I'm sorry you've received a defective product. Please report it to our support tea here: https://t.co/2t6DQoUmNZ we'll look into it and help you. ^AP\nTurn 3 [Customer]: @AmazonHelp Also i didnt receive any Bill attached with the Package\nTurn 4 [Agent (@AmazonHelp)]: @121290 We can't gain access to your account details via Twitter. Please report the issue to our support team using the link provided earlier and we'll have the issue checked. ^KA",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 3,
+            "similarity_score": 0.6228,
+            "conversation_id": "conv_2162396",
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "Need to return this product. Please help. Order Id: 171-5424879-8622705",
+            "brand_response": "@634945 You may request a return here: https://t.co/3yqvLnyTxi. Please don't provide your order details, we 1/2^SC",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115850 Need to return this product. Please help. Order Id: 171-5424879-8622705\nTurn 2 [Agent (@AmazonHelp)]: @634945 You may request a return here: https://t.co/3yqvLnyTxi. Please don't provide your order details, we 1/2^SC\nTurn 3 [Customer]: @AmazonHelp Been trying the same. Can't proceed beyond this.. https://t.co/xYv8S52P8T\nTurn 4 [Agent (@AmazonHelp)]: @634945 If there is an issue with the item received kindly download the smartchk app for a preliminary diagnosis of the issues 1/n ^SH",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 4,
+            "similarity_score": 0.6131,
+            "conversation_id": "conv_2316996",
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "order no 407-3423526-5701123. Asking for return of product, but no response! very poor from @115850 . @120781 please help!",
+            "brand_response": "@671782 Sorry for the trouble with the return of the order. I'd like to take a closer look at this. Please fill in your details using the link: https://t.co/JzRdscmdH9 and I'll get in touch with you soon. ^AK (1/2)",
+            "relevant_conversation_context": "Turn 1 [Customer]: order no 407-3423526-5701123. Asking for return of product, but no response! very poor from @115850 . @120781 please help!\nTurn 2 [Agent (@AmazonHelp)]: @671782 Sorry for the trouble with the return of the order. I'd like to take a closer look at this. Please fill in your details using the link: https://t.co/JzRdscmdH9 and I'll get in touch with you soon. ^AK (1/2)\nTurn 3 [Agent (@AmazonHelp)]: @671782 Please don't provide your order details, we consider it personal information. Our Twitter page is visible to the public. ^AK 2/2",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 5,
+            "similarity_score": 0.607,
+            "conversation_id": "conv_347901",
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "I placed order for Redmi 4, but mins after it, it was cancelled automatically. order no is 402-9300257-9709134 want to know reason",
+            "brand_response": "@198852 Please don't provide your order details, we consider it personal information. Our Twitter page is visible to public. ^MJ",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115850 I placed order for Redmi 4, but mins after it, it was cancelled automatically. order no is 402-9300257-9709134 want to know reason\nTurn 2 [Agent (@AmazonHelp)]: @198852 Please don't provide your order details, we consider it personal information. Our Twitter page is visible to public. ^MJ",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          }
+        ]
+      }
+    ],
+    "bad_retrievals": [
+      {
+        "golden_conv_id": "conv_179301",
+        "query": "there is a serious bug on your website; when trying to navigate using Next page or Page Number it redirects to Home Page.",
+        "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+        "expected_action": "TROUBLESHOOT_DIGITAL_OR_TECHNICAL",
+        "difficulty": "easy",
+        "hit_1": false,
+        "hit_3": false,
+        "hit_5": false,
+        "reciprocal_rank": 0.0,
+        "ap_5": 0.0,
+        "top1_similarity": 0.5227,
+        "top5_mean_similarity": 0.4123,
+        "retrieved_cases": [
+          {
+            "rank": 1,
+            "similarity_score": 0.5227,
+            "conversation_id": "conv_1502859",
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "login > says im authorized to my merchant based on CID/MCID > \"go to homepage button\" isn't working, redirects to same page.",
+            "brand_response": "@128622 I'm sorry to hear this! Have you attempted clearing your cache and cookies or trying another browser? ^TH",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp login > says im authorized to my merchant based on CID/MCID > \"go to homepage button\" isn't working, redirects to same page.\nTurn 2 [Agent (@AmazonHelp)]: @128622 I'm sorry to hear this! Have you attempted clearing your cache and cookies or trying another browser? ^TH",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          },
+          {
+            "rank": 2,
+            "similarity_score": 0.4054,
+            "conversation_id": "conv_1097890",
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "link not working.",
+            "brand_response": "@348848 That's quite a comment, you may check here: https://t.co/XAxNIN7fux to view the offer you're referring to. ^AG",
+            "relevant_conversation_context": "Turn 1 [Agent (@AmazonHelp)]: @348848 That's quite a comment, you may check here: https://t.co/XAxNIN7fux to view the offer you're referring to. ^AG\nTurn 2 [Customer]: @AmazonHelp link not working.\nTurn 3 [Agent (@AmazonHelp)]: @348848 I just checked and the link seems to be working fine. Coming to the price of the item, pricing and offers are decision of 1/2 ^GK\nTurn 4 [Agent (@AmazonHelp)]: @348848 the sellers. The price offered on our website for the item is the best we can offer. 2/2 ^GK",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 3,
+            "similarity_score": 0.4025,
+            "conversation_id": "conv_277273",
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "Anyone else having problems with\"look inside\" asking you sign in for more pages with no effect. @115821 @AmazonHelp",
+            "brand_response": "@182232 Hi - have you tried a different Browser ? ^TD",
+            "relevant_conversation_context": "Turn 1 [Customer]: Anyone else having problems with\"look inside\" asking you sign in for more pages with no effect. @115821 @AmazonHelp\nTurn 2 [Agent (@AmazonHelp)]: @182232 Hi - have you tried a different Browser ? ^TD\nTurn 3 [Customer]: @AmazonHelp Different browsers, computers, operating systems!\nTurn 4 [Agent (@AmazonHelp)]: @182232 That's strange. Pls reach out here so we can look into this for you https://t.co/JzP7hlA23B ^KM",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 4,
+            "similarity_score": 0.3709,
+            "conversation_id": "conv_2376157",
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "why can't I click the continue button when purchasing with gift cards https://t.co/6I39bOnTdo",
+            "brand_response": "@685376 I'm sorry you're having trouble completing your order! This happens when the gift card balance is not enough to cover the cost of the order. Are you trying to pay with your gift card balance alone, or are you also trying to use a separate payment method? ^JS",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115821 why can't I click the continue button when purchasing with gift cards https://t.co/6I39bOnTdo\nTurn 2 [Agent (@AmazonHelp)]: @685376 I'm sorry you're having trouble completing your order! This happens when the gift card balance is not enough to cover the cost of the order. Are you trying to pay with your gift card balance alone, or are you also trying to use a separate payment method? ^JS",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 5,
+            "similarity_score": 0.36,
+            "conversation_id": "conv_989770",
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "hello, I am trying to cancel an order but the page is refusing to load. I’ve tried several browsers but still no luck",
+            "brand_response": "@354466 Hmm, that is rather odd! Have you tried canceling the order via the Amazon app? ^KI",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp hello, I am trying to cancel an order but the page is refusing to load. I’ve tried several browsers but still no luck\nTurn 2 [Agent (@AmazonHelp)]: @354466 Hmm, that is rather odd! Have you tried canceling the order via the Amazon app? ^KI\nTurn 3 [Customer]: @AmazonHelp I have indeed; the page just stays white. I’ve emailed customer services asking them to cancel it for me\nTurn 4 [Agent (@AmazonHelp)]: @354466 Hi Rob, the order may be too far into the shipping stage to cancel at this point but we don't have access to your orders over Twitter to check this. I'd ask that you call us and we will be happy to look into this for you. https://t.co/JzP7hlA23B ^KK\nTurn 5 [Customer]: @AmazonHelp I literally placed the order about half hour ago; it’s not even marked as dispatched yet\nTurn 6 [Agent (@AmazonHelp)]: @354466 Have you contacted us directly using the link provided by my colleague ^KK? If so what were you advised? ^BZ\nTurn 7 [Customer]: @AmazonHelp I have used the link; it advised me to send an email via the site which is what I did. I then had a response to say they aim to have it sorted in 6-12 hours\nTurn 8 [Agent (@AmazonHelp)]: @354466 Rob, after selecting your reason for contacting us, there should have been an option to call as well. That's odd that it wasn't an option for you. If you're able to call us, you can reach us at 866-216-1072. I hope this helps! ^SM",
+            "resolution_status": "resolved_customer_confirmed",
+            "has_url": true
+          }
+        ]
+      },
+      {
+        "golden_conv_id": "conv_227018",
+        "query": "Great sale started on Amazon today, if you login into the sites you can save up to 60%,But you can save 100% if you don't login 😂",
+        "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+        "expected_action": "RECOVER_ACCOUNT_SECURITY",
+        "difficulty": "medium",
+        "hit_1": false,
+        "hit_3": false,
+        "hit_5": true,
+        "reciprocal_rank": 0.25,
+        "ap_5": 0.25,
+        "top1_similarity": 0.5444,
+        "top5_mean_similarity": 0.5279,
+        "retrieved_cases": [
+          {
+            "rank": 1,
+            "similarity_score": 0.5444,
+            "conversation_id": "conv_2451334",
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "shopped on Amazon betn dates https://t.co/oWidheurkZ said 15% Cashback if I use Amazon Pay but I got just 3.6 %",
+            "brand_response": "@322303 We will be happy to have this checked, Anil. Please reply to the email sent by our team. ^KS",
+            "relevant_conversation_context": "Turn 1 [Customer]: @120781 @AmazonHelp shopped on Amazon betn dates https://t.co/oWidheurkZ said 15% Cashback if I use Amazon Pay but I got just 3.6 %\nTurn 2 [Agent (@AmazonHelp)]: @322303 We will be happy to have this checked, Anil. Please reply to the email sent by our team. ^KS\nTurn 3 [Customer]: @120781 @AmazonHelp I have already replied several times.@120781 #amazon #amazonpay\nTurn 4 [Agent (@AmazonHelp)]: @322303 I understand your concern, Anil. I'm afraid, the resolution provided to you over the email is the best we could offer. 1/2 ^HD\nTurn 5 [Agent (@AmazonHelp)]: @322303 Unfortunately, we'll not be able to provide any additional insight in this matter. 2/2 ^HD",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 2,
+            "similarity_score": 0.5375,
+            "conversation_id": "conv_125320",
+            "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+            "customer_problem": "Hi @115830 Can you please tell me if Amazon Prime membership is going to be discounted for black friday please? Thanks",
+            "brand_response": "@283192 Glad to hear you're interested in our Black Friday Deals! Here's a sneak peek at some deals that we'll have: https://t.co/AVcGhYl5L9 As far as any other deals or Prime savings, we won't know until they're live! Keep checking, and let us know if we can help! ^KN",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115830 Hi @115830 Can you please tell me if Amazon Prime membership is going to be discounted for black friday please? Thanks\nTurn 2 [Agent (@AmazonHelp)]: @283192 Glad to hear you're interested in our Black Friday Deals! Here's a sneak peek at some deals that we'll have: https://t.co/AVcGhYl5L9 As far as any other deals or Prime savings, we won't know until they're live! Keep checking, and let us know if we can help! ^KN\nTurn 3 [Customer]: @AmazonHelp Ok great thanks!\nTurn 4 [Agent (@AmazonHelp)]: @283192 You're welcome. Have a great day 😎",
+            "resolution_status": "resolved_customer_confirmed",
+            "has_url": true
+          },
+          {
+            "rank": 3,
+            "similarity_score": 0.5239,
+            "conversation_id": "conv_1714200",
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "Basically, my shopping experience has declined at amazon. Savings mean nothing when I have to spend extra effort to return your mistakes.",
+            "brand_response": "@519112 I'm sorry about the experience you've had with us! Do you have a return we can assist you with? ^AH",
+            "relevant_conversation_context": "Turn 1 [Customer]: @AmazonHelp Basically, my shopping experience has declined at amazon. Savings mean nothing when I have to spend extra effort to return your mistakes.\nTurn 2 [Agent (@AmazonHelp)]: @519112 I'm sorry about the experience you've had with us! Do you have a return we can assist you with? ^AH",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          },
+          {
+            "rank": 4,
+            "similarity_score": 0.5176,
+            "conversation_id": "conv_465774",
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "I had 60 dollars on my Amazon account and now I'm down to 29 I obviously need help",
+            "brand_response": "@225820 Oh no, Caroline! Unfortunately we are not able to see account information in Twitter. Please click here: https://t.co/hApLpMlfHN so that a team member can further assist you. ^TL",
+            "relevant_conversation_context": "Turn 1 [Customer]: I had 60 dollars on my Amazon account and now I'm down to 29 I obviously need help\nTurn 2 [Agent (@AmazonHelp)]: @225820 Oh no, Caroline! Unfortunately we are not able to see account information in Twitter. Please click here: https://t.co/hApLpMlfHN so that a team member can further assist you. ^TL",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 5,
+            "similarity_score": 0.516,
+            "conversation_id": "conv_926678",
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "is there any new user offer for joining amazon prime going on like 250 amazon pay cashback?",
+            "brand_response": "@339883 Currently, there are no such offers available for new Prime users. Kindly stay tuned to our website for future promotions. ^VN",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115850 is there any new user offer for joining amazon prime going on like 250 amazon pay cashback?\nTurn 2 [Agent (@AmazonHelp)]: @339883 Currently, there are no such offers available for new Prime users. Kindly stay tuned to our website for future promotions. ^VN",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          }
+        ]
+      },
+      {
+        "golden_conv_id": "conv_180222",
+        "query": "never expected a bullying & crooked behaviour from Amazon. I requested a return of defective iPhone SE, no one from Amazon..contd#",
+        "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+        "expected_action": "REPLACE_DAMAGED_DEFECTIVE_ITEM",
+        "difficulty": "medium",
+        "hit_1": false,
+        "hit_3": false,
+        "hit_5": true,
+        "reciprocal_rank": 0.25,
+        "ap_5": 0.325,
+        "top1_similarity": 0.5895,
+        "top5_mean_similarity": 0.5673,
+        "retrieved_cases": [
+          {
+            "rank": 1,
+            "similarity_score": 0.5895,
+            "conversation_id": "conv_1433094",
+            "intent": "REFUND_STATUS_AND_DISPUTES",
+            "customer_problem": "Ordered an #Iphone7 from @115850 and got a fake Chinese iPhone. What rubbish. Can't trust #Amazon for electronics. I want a refund. https://t.co/fPx3haGnRQ",
+            "brand_response": "@452743 Sorry for the mess. Please report this to our support team here: https://t.co/vlvfJr4nN9. They'll assist you with it. ^ST",
+            "relevant_conversation_context": "Turn 1 [Customer]: Ordered an #Iphone7 from @115850 and got a fake Chinese iPhone. What rubbish. Can't trust #Amazon for electronics. I want a refund. https://t.co/fPx3haGnRQ\nTurn 2 [Agent (@AmazonHelp)]: @452743 Sorry for the mess. Please report this to our support team here: https://t.co/vlvfJr4nN9. They'll assist you with it. ^ST\nTurn 3 [Customer]: @AmazonHelp Your customer support is not helping. All the more, the Facebook page on Amazon is Blackmailing me by saying they'll hide my post.\nTurn 4 [Agent (@AmazonHelp)]: @452743 I'd like to assist you with this, please provide your details here: https://t.co/cllwXc2HeK I'll look into it right away ^AR1/2\nTurn 5 [Agent (@AmazonHelp)]: @452743 and we consider it to be personal information. Our page is visible to the public. Hope you understand ^AR 2/2\nTurn 6 [Customer]: @AmazonHelp What does it mean \"URL to message\"? There is no time stamp, it's so confusing. Please call on +91 9916756662 #Pleasehelpsoon\nTurn 7 [Agent (@AmazonHelp)]: @452743 Please paste this link: https://t.co/NHRWqIl6yK Aneesha and fill the rest details. ^HN\nTurn 8 [Customer]: @AmazonHelp I have done as asked. The order was in the name of my brother - Ashwin Dhaka. Please check and help soon @AmazonHelp\nTurn 9 [Agent (@AmazonHelp)]: @452743 Thanks for sharing your details Aneesha. We'll work on it and get back to you at the earliest. ^HN",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 2,
+            "similarity_score": 0.5694,
+            "conversation_id": "conv_2856601",
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "Bad service day @AmazonHelp screwing up a simple return I can't count # of back and forth email by now An iPhone X case I bought in October was too big! DESIGN DEFECT I should have to work to get my money back?",
+            "brand_response": "@248186 Hello! I'm sorry you've had a difficult experience returning an item. Do you know if the case was shipped by Amazon or by a seller? When you contacted us via e-mail, what options were we able to provide? Let us know! We'd like to help if we can. ^SM",
+            "relevant_conversation_context": "Turn 1 [Customer]: Bad service day @AmazonHelp screwing up a simple return I can't count # of back and forth email by now An iPhone X case I bought in October was too big! DESIGN DEFECT I should have to work to get my money back?\nTurn 2 [Agent (@AmazonHelp)]: @248186 Hello! I'm sorry you've had a difficult experience returning an item. Do you know if the case was shipped by Amazon or by a seller? When you contacted us via e-mail, what options were we able to provide? Let us know! We'd like to help if we can. ^SM\nTurn 3 [Customer]: @AmazonHelp By a seller. @amazonhelp option was ship back at my expense for product refund. By email, I persuaded that, given design defect, I should not pay return shipping. Agreed, but now I can't see putative credits on my account. Ready to give up 😩⌚️🛍️\nTurn 4 [Agent (@AmazonHelp)]: @248186 For Third-Party orders, you will have to pay for the return and send a copy of the return cost to the Seller to be reimbursed for these charges. You can see this information provided here: https://t.co/VvpQ8TwIEo. ^RR",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 3,
+            "similarity_score": 0.5601,
+            "conversation_id": "conv_2545422",
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "Bought a phone. Having horrible experience. No one is allowing me to return it. Is this the great customer experience you boast of? I am starting to lose trust in amazon. Very unhappy. Order# 403-9833466-5427533",
+            "brand_response": "@723496 Apologies. We'd like to take a closer look into this. Kindly fill in your details here: https://t.co/beaaDm0muc and we’ll contact you soon. Please don't provide your order details, we consider it to be personal information. Our page is visible to the public. ^MN",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115850 Bought a phone. Having horrible experience. No one is allowing me to return it. Is this the great customer experience you boast of? I am starting to lose trust in amazon. Very unhappy. Order# 403-9833466-5427533\nTurn 2 [Agent (@AmazonHelp)]: @723496 Apologies. We'd like to take a closer look into this. Kindly fill in your details here: https://t.co/beaaDm0muc and we’ll contact you soon. Please don't provide your order details, we consider it to be personal information. Our page is visible to the public. ^MN",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 4,
+            "similarity_score": 0.5596,
+            "conversation_id": "conv_2514245",
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "Cheating n Harrassment by Amazon India They delivered Defective Mobile Phone and are not admatting it",
+            "brand_response": "@662537 Apologies for the trouble you've had. Have you escalated this to our support team here: https://t.co/2t6DQoUmNZ for help? ^MM",
+            "relevant_conversation_context": "Turn 1 [Customer]: Cheating n Harrassment by Amazon India They delivered Defective Mobile Phone and are not admatting it\nTurn 2 [Agent (@AmazonHelp)]: @662537 Apologies for the trouble you've had. Have you escalated this to our support team here: https://t.co/2t6DQoUmNZ for help? ^MM",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": true
+          },
+          {
+            "rank": 5,
+            "similarity_score": 0.5577,
+            "conversation_id": "conv_983323",
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "guys don't go for Amazon sale ... I purchased I phone SE. Ear phone not working one side. Given to iStore for replacement",
+            "brand_response": "@353122 All warranty related services are offered by the manufacturer. Do keep us posted for additional support. ^CB",
+            "relevant_conversation_context": "Turn 1 [Customer]: @115850 @115821 guys don't go for Amazon sale ... I purchased I phone SE. Ear phone not working one side. Given to iStore for replacement\nTurn 2 [Agent (@AmazonHelp)]: @353122 All warranty related services are offered by the manufacturer. Do keep us posted for additional support. ^CB\nTurn 3 [Customer]: @AmazonHelp I am just warning public and asking them to avoid gr8 India sale.... Who is running g around to service centre not you my dear...\nTurn 4 [Agent (@AmazonHelp)]: @353122 All items sold on our web page is genuine and authentic. We are always there to help you. ^CB\nTurn 5 [Customer]: @AmazonHelp That's what you tell... But the reality is what I am facing today... End sufferers are Customers... Time to fool more people with new sales.\nTurn 6 [Agent (@AmazonHelp)]: @353122 I'll be sure to pass on your comments to the concerned team. ^NS\nTurn 7 [Customer]: @AmazonHelp What about the discomfort you have given me ... even after buying so called genuine product from world brand amazon.\nTurn 8 [Agent (@AmazonHelp)]: @353122 I get your disappointment and I understand the time this has taken, I'm truly sorry about this. [1/2] ^HA\nTurn 9 [Agent (@AmazonHelp)]: @353122 Your feedback has already been passed on to the concerned team for review. [2/2] ^HA",
+            "resolution_status": "resolved_guidance_provided",
+            "has_url": false
+          }
+        ]
+      }
+    ]
+  }
+}
