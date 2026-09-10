@@ -1,0 +1,71 @@
+{
+  "Trustworthy / Conservative (Selected)": {
+    "thresholds": {
+      "min_intent_confidence": 0.7,
+      "min_intent_margin": 0.05,
+      "min_retrieval_score": 0.75,
+      "min_evidence_count": 1,
+      "evidence_similarity_threshold": 0.65
+    },
+    "accuracy": 0.475,
+    "automation_rate": 0.21,
+    "auto_handle_precision": 0.8333,
+    "auto_handle_recall": 0.2632,
+    "escalation_precision": 0.3797,
+    "escalation_recall": 0.8955,
+    "false_auto_handle_count": 7,
+    "false_auto_handle_rate_on_bot": 0.1667,
+    "confusion_matrix": {
+      "true_auto_handle": 35,
+      "false_auto_handle": 7,
+      "true_escalate": 60,
+      "false_escalate": 98
+    }
+  },
+  "Balanced / Pragmatic Enterprise": {
+    "thresholds": {
+      "min_intent_confidence": 0.55,
+      "min_intent_margin": 0.1,
+      "min_retrieval_score": 0.68,
+      "min_evidence_count": 1,
+      "evidence_similarity_threshold": 0.65
+    },
+    "accuracy": 0.605,
+    "automation_rate": 0.42,
+    "auto_handle_precision": 0.8214,
+    "auto_handle_recall": 0.5188,
+    "escalation_precision": 0.4483,
+    "escalation_recall": 0.7761,
+    "false_auto_handle_count": 15,
+    "false_auto_handle_rate_on_bot": 0.1786,
+    "confusion_matrix": {
+      "true_auto_handle": 69,
+      "false_auto_handle": 15,
+      "true_escalate": 52,
+      "false_escalate": 64
+    }
+  },
+  "Aggressive / High Automation": {
+    "thresholds": {
+      "min_intent_confidence": 0.35,
+      "min_intent_margin": 0.02,
+      "min_retrieval_score": 0.55,
+      "min_evidence_count": 0,
+      "evidence_similarity_threshold": 0.5
+    },
+    "accuracy": 0.74,
+    "automation_rate": 0.665,
+    "auto_handle_precision": 0.8045,
+    "auto_handle_recall": 0.8045,
+    "escalation_precision": 0.6119,
+    "escalation_recall": 0.6119,
+    "false_auto_handle_count": 26,
+    "false_auto_handle_rate_on_bot": 0.1955,
+    "confusion_matrix": {
+      "true_auto_handle": 107,
+      "false_auto_handle": 26,
+      "true_escalate": 41,
+      "false_escalate": 26
+    }
+  }
+}

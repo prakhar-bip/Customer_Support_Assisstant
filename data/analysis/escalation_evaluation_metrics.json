@@ -1,0 +1,4045 @@
+{
+  "milestone": "Milestone 10: Auto-Handle vs Human Escalation",
+  "benchmark_set": "Golden Evaluation Set (data/processed/golden_evaluation_set.jsonl)",
+  "total_samples": 200,
+  "operating_thresholds": {
+    "min_intent_confidence": 0.7,
+    "min_intent_margin": 0.05,
+    "min_retrieval_score": 0.75,
+    "min_evidence_count": 1,
+    "evidence_similarity_threshold": 0.65
+  },
+  "global_metrics": {
+    "accuracy": 0.475,
+    "automation_rate": 0.21,
+    "macro_f1": 0.4666666666666667,
+    "weighted_f1": 0.4446666666666667,
+    "auto_handle": {
+      "precision": 0.8333333333333334,
+      "recall": 0.2631578947368421,
+      "f1": 0.4,
+      "support": 133
+    },
+    "escalate": {
+      "precision": 0.379746835443038,
+      "recall": 0.8955223880597015,
+      "f1": 0.5333333333333333,
+      "support": 67
+    },
+    "confusion_matrix": {
+      "true_auto_handle": 35,
+      "false_auto_handle": 7,
+      "true_escalate": 60,
+      "false_escalate": 98
+    }
+  },
+  "difficulty_tier_breakdown": {
+    "easy": {
+      "sample_count": 90,
+      "accuracy": 0.4111,
+      "auto_precision": 0.8095,
+      "auto_recall": 0.2576,
+      "esc_precision": 0.2899,
+      "esc_recall": 0.8333,
+      "automation_rate": 0.2333
+    },
+    "medium": {
+      "sample_count": 70,
+      "accuracy": 0.4714,
+      "auto_precision": 0.9167,
+      "auto_recall": 0.234,
+      "esc_precision": 0.3793,
+      "esc_recall": 0.9565,
+      "automation_rate": 0.1714
+    },
+    "hard": {
+      "sample_count": 40,
+      "accuracy": 0.625,
+      "auto_precision": 0.7778,
+      "auto_recall": 0.35,
+      "esc_precision": 0.5806,
+      "esc_recall": 0.9,
+      "automation_rate": 0.225
+    }
+  },
+  "intent_breakdown": {
+    "ACCOUNT_ACCESS_AND_SECURITY": {
+      "sample_count": 15,
+      "actual_auto_count": 0,
+      "actual_esc_count": 15,
+      "predicted_auto_count": 0,
+      "predicted_esc_count": 15,
+      "accuracy": 1.0,
+      "automation_rate": 0.0
+    },
+    "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": {
+      "sample_count": 16,
+      "actual_auto_count": 0,
+      "actual_esc_count": 16,
+      "predicted_auto_count": 0,
+      "predicted_esc_count": 16,
+      "accuracy": 1.0,
+      "automation_rate": 0.0
+    },
+    "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": {
+      "sample_count": 25,
+      "actual_auto_count": 17,
+      "actual_esc_count": 8,
+      "predicted_auto_count": 0,
+      "predicted_esc_count": 25,
+      "accuracy": 0.32,
+      "automation_rate": 0.0
+    },
+    "ORDER_CANCELLATION": {
+      "sample_count": 20,
+      "actual_auto_count": 17,
+      "actual_esc_count": 3,
+      "predicted_auto_count": 3,
+      "predicted_esc_count": 17,
+      "accuracy": 0.3,
+      "automation_rate": 0.15
+    },
+    "ORDER_DELIVERY_AND_TRACKING": {
+      "sample_count": 28,
+      "actual_auto_count": 21,
+      "actual_esc_count": 7,
+      "predicted_auto_count": 4,
+      "predicted_esc_count": 24,
+      "accuracy": 0.3929,
+      "automation_rate": 0.1429
+    },
+    "PAYMENT_BILLING_AND_PROMOS": {
+      "sample_count": 18,
+      "actual_auto_count": 14,
+      "actual_esc_count": 4,
+      "predicted_auto_count": 12,
+      "predicted_esc_count": 6,
+      "accuracy": 0.4444,
+      "automation_rate": 0.6667
+    },
+    "PRIME_MEMBERSHIP_AND_DIGITAL": {
+      "sample_count": 22,
+      "actual_auto_count": 19,
+      "actual_esc_count": 3,
+      "predicted_auto_count": 11,
+      "predicted_esc_count": 11,
+      "accuracy": 0.5455,
+      "automation_rate": 0.5
+    },
+    "REFUND_STATUS_AND_DISPUTES": {
+      "sample_count": 26,
+      "actual_auto_count": 19,
+      "actual_esc_count": 7,
+      "predicted_auto_count": 3,
+      "predicted_esc_count": 23,
+      "accuracy": 0.3077,
+      "automation_rate": 0.1154
+    },
+    "RETURNS_AND_EXCHANGES": {
+      "sample_count": 15,
+      "actual_auto_count": 13,
+      "actual_esc_count": 2,
+      "predicted_auto_count": 5,
+      "predicted_esc_count": 10,
+      "accuracy": 0.3333,
+      "automation_rate": 0.3333
+    },
+    "TECHNICAL_AND_PLATFORM_ISSUES": {
+      "sample_count": 15,
+      "actual_auto_count": 13,
+      "actual_esc_count": 2,
+      "predicted_auto_count": 4,
+      "predicted_esc_count": 11,
+      "accuracy": 0.4,
+      "automation_rate": 0.2667
+    }
+  },
+  "qualitative_case_studies": {
+    "true_auto_handle_examples": [
+      {
+        "case_index": 6,
+        "conversation_id": "conv_182599",
+        "customer_message": "My parcel has been \"out for delivery\" for nearly 8 hours, where is it and when will it be here\ud83d\ude2b @AmazonHelp",
+        "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+        "difficulty": "easy",
+        "ground_truth_decision": "AUTO_HANDLE",
+        "predicted_decision": "AUTO_HANDLE",
+        "is_correct": true,
+        "reason": "High intent confidence (0.85), strong historical grounding (sim: 0.85, precedents: 5), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.8481,
+          "retrieval_score": 0.85,
+          "evidence_count": 5,
+          "intent_margin": 0.8171,
+          "risk_flags": []
+        }
+      },
+      {
+        "case_index": 21,
+        "conversation_id": "conv_754088",
+        "customer_message": "when I ordered on sep 23 this was in stock. But now the delivery date remains pending. Please clarify what is going on. https://t.co/3hZ2eb7ZI2",
+        "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+        "difficulty": "medium",
+        "ground_truth_decision": "AUTO_HANDLE",
+        "predicted_decision": "AUTO_HANDLE",
+        "is_correct": true,
+        "reason": "High intent confidence (0.79), strong historical grounding (sim: 0.79, precedents: 5), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.7875,
+          "retrieval_score": 0.7876,
+          "evidence_count": 5,
+          "intent_margin": 0.7424,
+          "risk_flags": []
+        }
+      },
+      {
+        "case_index": 22,
+        "conversation_id": "conv_180480",
+        "customer_message": "Still havent recieved my parcel. Could you track where abouts this is please. The tracking number is A10040684583",
+        "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+        "difficulty": "medium",
+        "ground_truth_decision": "AUTO_HANDLE",
+        "predicted_decision": "AUTO_HANDLE",
+        "is_correct": true,
+        "reason": "High intent confidence (0.95), strong historical grounding (sim: 0.81, precedents: 5), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.9468,
+          "retrieval_score": 0.8075,
+          "evidence_count": 5,
+          "intent_margin": 0.936,
+          "risk_flags": []
+        }
+      }
+    ],
+    "true_escalate_examples": [
+      {
+        "case_index": 11,
+        "conversation_id": "conv_206973",
+        "customer_message": "Watched the @118706 try to shove an @115821 package in my mailbox yesterday. By the time I beshoed, she had gone with it - marked delivered.",
+        "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+        "difficulty": "easy",
+        "ground_truth_decision": "ESCALATE",
+        "predicted_decision": "ESCALATE",
+        "is_correct": true,
+        "reason": "Novel or unsupported situation: historical similarity (0.7439 < 0.75).",
+        "signals": {
+          "intent_confidence": 0.8783,
+          "retrieval_score": 0.7439,
+          "evidence_count": 5,
+          "intent_margin": 0.8494,
+          "risk_flags": []
+        }
+      },
+      {
+        "case_index": 14,
+        "conversation_id": "conv_351646",
+        "customer_message": "What should i do if my order is not delivered to me but showing delivered in my orders?",
+        "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+        "difficulty": "medium",
+        "ground_truth_decision": "ESCALATE",
+        "predicted_decision": "ESCALATE",
+        "is_correct": true,
+        "reason": "Safety risk trigger detected: [FALSE_DELIVERY_DISPUTE] requiring immediate human intervention.",
+        "signals": {
+          "intent_confidence": 0.8125,
+          "retrieval_score": 0.8535,
+          "evidence_count": 5,
+          "intent_margin": 0.7705,
+          "risk_flags": [
+            "FALSE_DELIVERY_DISPUTE"
+          ]
+        }
+      },
+      {
+        "case_index": 16,
+        "conversation_id": "conv_227719",
+        "customer_message": "AMZN says it has left Krefeld (to Munich?) @AmazonHelp knows where the package is but you don't? Your site tracking is blocked to ystd 1 am!",
+        "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+        "difficulty": "medium",
+        "ground_truth_decision": "ESCALATE",
+        "predicted_decision": "ESCALATE",
+        "is_correct": true,
+        "reason": "Novel or unsupported situation: historical similarity (0.5927 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+        "signals": {
+          "intent_confidence": 0.806,
+          "retrieval_score": 0.5927,
+          "evidence_count": 0,
+          "intent_margin": 0.7748,
+          "risk_flags": []
+        }
+      }
+    ],
+    "false_escalate_examples": [
+      {
+        "case_index": 1,
+        "conversation_id": "conv_231797",
+        "customer_message": "And I am still waiting for my order which is showing out for delivery for 4 days..customer service took 11 miutes still couldn't clear. https://t.co/gACHtDftGZ",
+        "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+        "difficulty": "easy",
+        "ground_truth_decision": "AUTO_HANDLE",
+        "predicted_decision": "ESCALATE",
+        "is_correct": false,
+        "reason": "Novel or unsupported situation: historical similarity (0.7233 < 0.75).",
+        "signals": {
+          "intent_confidence": 0.7321,
+          "retrieval_score": 0.7233,
+          "evidence_count": 3,
+          "intent_margin": 0.6408,
+          "risk_flags": []
+        }
+      },
+      {
+        "case_index": 2,
+        "conversation_id": "conv_180377",
+        "customer_message": "After canceled orders and delayed order, the only thing left was your customer executives raising their voice. Pathetic services",
+        "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+        "difficulty": "easy",
+        "ground_truth_decision": "AUTO_HANDLE",
+        "predicted_decision": "ESCALATE",
+        "is_correct": false,
+        "reason": "Low intent confidence (0.2507 < 0.70). | Novel or unsupported situation: historical similarity (0.7393 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+        "signals": {
+          "intent_confidence": 0.2507,
+          "retrieval_score": 0.7393,
+          "evidence_count": 0,
+          "intent_margin": 0.0652,
+          "risk_flags": []
+        }
+      },
+      {
+        "case_index": 3,
+        "conversation_id": "conv_180584",
+        "customer_message": "assured delivery date was 3OCT, it has not even dispatched yet! Doing the service chat everyday, agent gives only excuses, false promises",
+        "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+        "difficulty": "easy",
+        "ground_truth_decision": "AUTO_HANDLE",
+        "predicted_decision": "ESCALATE",
+        "is_correct": false,
+        "reason": "Novel or unsupported situation: historical similarity (0.7261 < 0.75).",
+        "signals": {
+          "intent_confidence": 0.7911,
+          "retrieval_score": 0.7261,
+          "evidence_count": 5,
+          "intent_margin": 0.722,
+          "risk_flags": []
+        }
+      }
+    ],
+    "false_auto_handle_examples": [
+      {
+        "case_index": 35,
+        "conversation_id": "conv_183577",
+        "customer_message": "Hey @AmazonHelp I received refund for last amazon prime but now see that the past two months have been charged..I am still being charged https://t.co/ZYYf2D21Bq",
+        "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+        "difficulty": "easy",
+        "ground_truth_decision": "ESCALATE",
+        "predicted_decision": "AUTO_HANDLE",
+        "is_correct": false,
+        "reason": "High intent confidence (0.82), strong historical grounding (sim: 0.85, precedents: 1), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.8247,
+          "retrieval_score": 0.8523,
+          "evidence_count": 1,
+          "intent_margin": 0.7889,
+          "risk_flags": []
+        }
+      },
+      {
+        "case_index": 101,
+        "conversation_id": "conv_234829",
+        "customer_message": "appalled that when charged twice for my prime membership and asked for 1 refunded I now have ended up with no prime membership",
+        "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+        "difficulty": "hard",
+        "ground_truth_decision": "ESCALATE",
+        "predicted_decision": "AUTO_HANDLE",
+        "is_correct": false,
+        "reason": "High intent confidence (0.95), strong historical grounding (sim: 0.84, precedents: 2), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.947,
+          "retrieval_score": 0.8421,
+          "evidence_count": 2,
+          "intent_margin": 0.9273,
+          "risk_flags": []
+        }
+      },
+      {
+        "case_index": 125,
+        "conversation_id": "conv_210431",
+        "customer_message": "please help, I ordered a gift voucher which was allegedly signed for on Monday but it has not been received...",
+        "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+        "difficulty": "easy",
+        "ground_truth_decision": "ESCALATE",
+        "predicted_decision": "AUTO_HANDLE",
+        "is_correct": false,
+        "reason": "High intent confidence (0.78), strong historical grounding (sim: 0.77, precedents: 5), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.7778,
+          "retrieval_score": 0.77,
+          "evidence_count": 5,
+          "intent_margin": 0.7212,
+          "risk_flags": []
+        }
+      }
+    ]
+  },
+  "all_predictions": [
+    {
+      "case_index": 1,
+      "conversation_id": "conv_231797",
+      "customer_message": "And I am still waiting for my order which is showing out for delivery for 4 days..customer service took 11 miutes still couldn't clear. https://t.co/gACHtDftGZ",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7233 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.7321,
+        "retrieval_score": 0.7233,
+        "evidence_count": 3,
+        "intent_margin": 0.6408,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 2,
+      "conversation_id": "conv_180377",
+      "customer_message": "After canceled orders and delayed order, the only thing left was your customer executives raising their voice. Pathetic services",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.2507 < 0.70). | Novel or unsupported situation: historical similarity (0.7393 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.2507,
+        "retrieval_score": 0.7393,
+        "evidence_count": 0,
+        "intent_margin": 0.0652,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 3,
+      "conversation_id": "conv_180584",
+      "customer_message": "assured delivery date was 3OCT, it has not even dispatched yet! Doing the service chat everyday, agent gives only excuses, false promises",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7261 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.7911,
+        "retrieval_score": 0.7261,
+        "evidence_count": 5,
+        "intent_margin": 0.722,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 4,
+      "conversation_id": "conv_197714",
+      "customer_message": "AMAZON IN INDIA Deliver Damage good to there customer This is the tracking I.D. 216230107345 with following items:",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5202 < 0.70). | Novel or unsupported situation: historical similarity (0.7488 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.5202,
+        "retrieval_score": 0.7488,
+        "evidence_count": 0,
+        "intent_margin": 0.4203,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 5,
+      "conversation_id": "conv_191806",
+      "customer_message": "Delivery date changed to 19th October! What is going on @115821!? #justiceforLB https://t.co/lGcEvFubIY",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6867 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8922,
+        "retrieval_score": 0.6867,
+        "evidence_count": 5,
+        "intent_margin": 0.8704,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 6,
+      "conversation_id": "conv_182599",
+      "customer_message": "My parcel has been \"out for delivery\" for nearly 8 hours, where is it and when will it be here\ud83d\ude2b @AmazonHelp",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.85), strong historical grounding (sim: 0.85, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8481,
+        "retrieval_score": 0.85,
+        "evidence_count": 5,
+        "intent_margin": 0.8171,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 7,
+      "conversation_id": "conv_210326",
+      "customer_message": "... where is my order. U guys dont hve particular update abt my escalation ... is this the kind of services ur providing...",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.2662 < 0.70). | Novel or unsupported situation: historical similarity (0.7151 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.2662,
+        "retrieval_score": 0.7151,
+        "evidence_count": 0,
+        "intent_margin": 0.1364,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 8,
+      "conversation_id": "conv_210328",
+      "customer_message": "WHERE IS MY PACKAGE @AmazonHelp",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5195 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.5195,
+        "retrieval_score": 0.807,
+        "evidence_count": 3,
+        "intent_margin": 0.4124,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 9,
+      "conversation_id": "conv_210308",
+      "customer_message": "I have a proof that your accounts team can not differentiate between purchased date and delivery date of a product.",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6180 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7813,
+        "retrieval_score": 0.618,
+        "evidence_count": 0,
+        "intent_margin": 0.7106,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 10,
+      "conversation_id": "conv_210304",
+      "customer_message": "pay next day - Now expected 4 Oct - 6 Oct We\u2019re sorry your parcel is late. If it hasn\u2019t arrived by Saturday, 7 Oct - seems legit.",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6838 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8059,
+        "retrieval_score": 0.6838,
+        "evidence_count": 5,
+        "intent_margin": 0.7544,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 11,
+      "conversation_id": "conv_206973",
+      "customer_message": "Watched the @118706 try to shove an @115821 package in my mailbox yesterday. By the time I beshoed, she had gone with it - marked delivered.",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Novel or unsupported situation: historical similarity (0.7439 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8783,
+        "retrieval_score": 0.7439,
+        "evidence_count": 5,
+        "intent_margin": 0.8494,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 12,
+      "conversation_id": "conv_206760",
+      "customer_message": "So @115821 is really bad with their \"next day deliveries\", it's been two days since a book was ordered for me and it still hasn't arrived.",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5969 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.5969,
+        "retrieval_score": 0.8015,
+        "evidence_count": 3,
+        "intent_margin": 0.4909,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 13,
+      "conversation_id": "conv_218151",
+      "customer_message": "Your tracking info says it's still out fir delivery??????",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [LEGAL_REGULATORY_THREAT] requiring immediate human intervention.",
+      "signals": {
+        "intent_confidence": 0.974,
+        "retrieval_score": 0.7926,
+        "evidence_count": 5,
+        "intent_margin": 0.969,
+        "risk_flags": [
+          "LEGAL_REGULATORY_THREAT"
+        ]
+      }
+    },
+    {
+      "case_index": 14,
+      "conversation_id": "conv_351646",
+      "customer_message": "What should i do if my order is not delivered to me but showing delivered in my orders?",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [FALSE_DELIVERY_DISPUTE] requiring immediate human intervention.",
+      "signals": {
+        "intent_confidence": 0.8125,
+        "retrieval_score": 0.8535,
+        "evidence_count": 5,
+        "intent_margin": 0.7705,
+        "risk_flags": [
+          "FALSE_DELIVERY_DISPUTE"
+        ]
+      }
+    },
+    {
+      "case_index": 15,
+      "conversation_id": "conv_1104401",
+      "customer_message": "Great India festival sale. Order which was out for delivery more than 38 hour before not reached to me till now @@115850 . So called best",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.4993 < 0.70). | Novel or unsupported situation: historical similarity (0.6976 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.4993,
+        "retrieval_score": 0.6976,
+        "evidence_count": 1,
+        "intent_margin": 0.3984,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 16,
+      "conversation_id": "conv_227719",
+      "customer_message": "AMZN says it has left Krefeld (to Munich?) @AmazonHelp knows where the package is but you don't? Your site tracking is blocked to ystd 1 am!",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Novel or unsupported situation: historical similarity (0.5927 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.806,
+        "retrieval_score": 0.5927,
+        "evidence_count": 0,
+        "intent_margin": 0.7748,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 17,
+      "conversation_id": "conv_179924",
+      "customer_message": "I\u2019m surprised by d pathetic support recd on my super-delayed order. D seller and ur exec asked me2go collect it from post office. https://t.co/oM4UaqyAiN",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.3171 < 0.70). | Novel or unsupported situation: historical similarity (0.6355 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.3171,
+        "retrieval_score": 0.6355,
+        "evidence_count": 0,
+        "intent_margin": 0.1188,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 18,
+      "conversation_id": "conv_388797",
+      "customer_message": "Worst shopping n service. Unable to deliver the package even after 10 days of scheduled delivery date. Feeling cheated by Amazon",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6757 < 0.70). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.6757,
+        "retrieval_score": 0.77,
+        "evidence_count": 0,
+        "intent_margin": 0.5367,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 19,
+      "conversation_id": "conv_261746",
+      "customer_message": "Said they were lost in transit. https://t.co/MEPu5OwRnC",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Novel or unsupported situation: historical similarity (0.5060 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.8607,
+        "retrieval_score": 0.506,
+        "evidence_count": 0,
+        "intent_margin": 0.8289,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 20,
+      "conversation_id": "conv_240517",
+      "customer_message": "Amazon emailed me that my laptop charger delivery date has been delayed. I ORDERED IT SEPT 26TH WITH TWO DAY SHIPPING.",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6712 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8623,
+        "retrieval_score": 0.6712,
+        "evidence_count": 1,
+        "intent_margin": 0.8229,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 21,
+      "conversation_id": "conv_754088",
+      "customer_message": "when I ordered on sep 23 this was in stock. But now the delivery date remains pending. Please clarify what is going on. https://t.co/3hZ2eb7ZI2",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.79), strong historical grounding (sim: 0.79, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7875,
+        "retrieval_score": 0.7876,
+        "evidence_count": 5,
+        "intent_margin": 0.7424,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 22,
+      "conversation_id": "conv_180480",
+      "customer_message": "Still havent recieved my parcel. Could you track where abouts this is please. The tracking number is A10040684583",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.95), strong historical grounding (sim: 0.81, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9468,
+        "retrieval_score": 0.8075,
+        "evidence_count": 5,
+        "intent_margin": 0.936,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 23,
+      "conversation_id": "conv_182633",
+      "customer_message": "#AmazonIndia #Amazon This s ridiculous that I hve nt received ma order n it's showing delivered. Plz check n clarify.... https://t.co/XSQWMrMCcY",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Low intent confidence (0.5159 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.5159,
+        "retrieval_score": 0.7868,
+        "evidence_count": 2,
+        "intent_margin": 0.4049,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 24,
+      "conversation_id": "conv_179088",
+      "customer_message": "My Amazon ordered book has been damaged in transit. Has anyone received a message instructing communications with Amazon once received?",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Novel or unsupported situation: historical similarity (0.7193 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.7935,
+        "retrieval_score": 0.7193,
+        "evidence_count": 5,
+        "intent_margin": 0.7083,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 25,
+      "conversation_id": "conv_224633",
+      "customer_message": "Horrible customer experience from Amazon India. No tracking and No refund. What happened to customer first principle #Amazon",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5084 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.5084,
+        "retrieval_score": 0.8174,
+        "evidence_count": 1,
+        "intent_margin": 0.2856,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 26,
+      "conversation_id": "conv_319695",
+      "customer_message": "kindly track order no #4__credit_card__ neither product nor refund received even after a month",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.83), strong historical grounding (sim: 0.78, precedents: 4), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8349,
+        "retrieval_score": 0.7809,
+        "evidence_count": 4,
+        "intent_margin": 0.7834,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 27,
+      "conversation_id": "conv_179064",
+      "customer_message": "Hi @amazonhelp how do I get a refund on item which hasn't arrived in a group parcel ?",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6907 < 0.70). | Novel or unsupported situation: historical similarity (0.7498 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.6907,
+        "retrieval_score": 0.7498,
+        "evidence_count": 5,
+        "intent_margin": 0.5124,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 28,
+      "conversation_id": "conv_180934",
+      "customer_message": "My order says delivered but hasn\u2019t arrived. How do I get a refund?",
+      "ground_truth_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [FALSE_DELIVERY_DISPUTE] requiring immediate human intervention. | Low intent confidence (0.6683 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.6683,
+        "retrieval_score": 0.8327,
+        "evidence_count": 1,
+        "intent_margin": 0.3829,
+        "risk_flags": [
+          "FALSE_DELIVERY_DISPUTE"
+        ]
+      }
+    },
+    {
+      "case_index": 29,
+      "conversation_id": "conv_648407",
+      "customer_message": "what in the world is a balance withheld? #customerservice doesnt seem to know!",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.1919 < 0.70). | Novel or unsupported situation: historical similarity (0.5799 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.1919,
+        "retrieval_score": 0.5799,
+        "evidence_count": 0,
+        "intent_margin": 0.0222,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 30,
+      "conversation_id": "conv_348625",
+      "customer_message": "I want to buy mobile if I feel not satisfied this product so can i return ? So I will get money back",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6050 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.605,
+        "retrieval_score": 0.7675,
+        "evidence_count": 4,
+        "intent_margin": 0.4075,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 31,
+      "conversation_id": "conv_1381159",
+      "customer_message": "Still no resolution to my problem neither received the phone nor refund @115850 @AmazonHelp",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7309 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8446,
+        "retrieval_score": 0.7309,
+        "evidence_count": 1,
+        "intent_margin": 0.7891,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 32,
+      "conversation_id": "conv_1381155",
+      "customer_message": "Still no reply niether refund ??? @115850 @AmazonHelp",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.94), strong historical grounding (sim: 0.81, precedents: 4), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9414,
+        "retrieval_score": 0.8057,
+        "evidence_count": 4,
+        "intent_margin": 0.9275,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 33,
+      "conversation_id": "conv_232154",
+      "customer_message": "Under 407-0048975-7733909 buyer ordered 2 qty of product and returned 1 qty but amazon refunded for both qty. WHAT A SHAME. https://t.co/xelf2BIN2d",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Low intent confidence (0.4463 < 0.70). | Novel or unsupported situation: historical similarity (0.6567 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.4463,
+        "retrieval_score": 0.6567,
+        "evidence_count": 0,
+        "intent_margin": 0.2203,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 34,
+      "conversation_id": "conv_180116",
+      "customer_message": "I ordered motoG5S plus frm Amazon by credit card.But they giving me refund. I paid interest of credit card for nothing.",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.74), strong historical grounding (sim: 0.83, precedents: 3), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7374,
+        "retrieval_score": 0.832,
+        "evidence_count": 3,
+        "intent_margin": 0.6378,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 35,
+      "conversation_id": "conv_183577",
+      "customer_message": "Hey @AmazonHelp I received refund for last amazon prime but now see that the past two months have been charged..I am still being charged https://t.co/ZYYf2D21Bq",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": false,
+      "reason": "High intent confidence (0.82), strong historical grounding (sim: 0.85, precedents: 1), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8247,
+        "retrieval_score": 0.8523,
+        "evidence_count": 1,
+        "intent_margin": 0.7889,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 36,
+      "conversation_id": "conv_180609",
+      "customer_message": "Hello @115850 When I ordered a loafer, then a formal shoe came to me. But still in waiting for return &refund. https://t.co/zqsADKij0g",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6450 < 0.70). | Novel or unsupported situation: historical similarity (0.6604 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.645,
+        "retrieval_score": 0.6604,
+        "evidence_count": 1,
+        "intent_margin": 0.495,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 37,
+      "conversation_id": "conv_180915",
+      "customer_message": "Dear @115850 wish to know about my refund status , Your DA came and collected the package but status shows as return requested",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.3760 < 0.70). | Novel or unsupported situation: historical similarity (0.7171 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.376,
+        "retrieval_score": 0.7171,
+        "evidence_count": 5,
+        "intent_margin": 0.0685,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 38,
+      "conversation_id": "conv_179691",
+      "customer_message": "I'd like to thank you for the swift refund for my order that never arrived. Such quick actions engender great loyalty",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6426 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.786,
+        "retrieval_score": 0.6426,
+        "evidence_count": 0,
+        "intent_margin": 0.7282,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 39,
+      "conversation_id": "conv_197817",
+      "customer_message": "Hi there, a CD I ordered recently has a large crack on the front of it. I was wondering how it can be replaced; not refunded.",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5655 < 0.70). | Novel or unsupported situation: historical similarity (0.6052 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.5655,
+        "retrieval_score": 0.6052,
+        "evidence_count": 0,
+        "intent_margin": 0.4363,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 40,
+      "conversation_id": "conv_239638",
+      "customer_message": "placed 2 orders separately yesterday, at separate times, paid postage on both but you put them in the same \ud83d\udce6, can I get a refund?",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Novel or unsupported situation: historical similarity (0.7061 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.802,
+        "retrieval_score": 0.7061,
+        "evidence_count": 1,
+        "intent_margin": 0.7454,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 41,
+      "conversation_id": "conv_1564956",
+      "customer_message": "ordered yester a timex watch@999 via sbi INB refund not yet https:__email__",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6232 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.8968,
+        "retrieval_score": 0.6232,
+        "evidence_count": 0,
+        "intent_margin": 0.8629,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 42,
+      "conversation_id": "conv_234766",
+      "customer_message": "why i can't get refund of my headphone which is worth 8999. they are is no return only replace. Now i can't do anything.",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5394 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.5394,
+        "retrieval_score": 0.7502,
+        "evidence_count": 1,
+        "intent_margin": 0.1308,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 43,
+      "conversation_id": "conv_210339",
+      "customer_message": "order no 405-3129805-1022740 . its already been returned . i dont want the product . please initiate the refund",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.",
+      "signals": {
+        "intent_confidence": 0.8982,
+        "retrieval_score": 0.8334,
+        "evidence_count": 5,
+        "intent_margin": 0.8683,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 44,
+      "conversation_id": "conv_179197",
+      "customer_message": "This is very pathetic & painful to knw that @115850 forgt to refnd 45k. It means if customer wouldn't call then they won't refund ur money",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6062 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.9118,
+        "retrieval_score": 0.6062,
+        "evidence_count": 0,
+        "intent_margin": 0.8896,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 45,
+      "conversation_id": "conv_181071",
+      "customer_message": "Getting really pissed off w/ @115830 Charged me \u00a3308 on Friday 'in error' Still waiting for refund confirmation despite several phonecalls",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6958 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.7194,
+        "retrieval_score": 0.6958,
+        "evidence_count": 4,
+        "intent_margin": 0.6675,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 46,
+      "conversation_id": "conv_197724",
+      "customer_message": "Order id 408-9284363-8106739.Amazon cheat and dont refund my money.@115821",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.",
+      "signals": {
+        "intent_confidence": 0.9125,
+        "retrieval_score": 0.8076,
+        "evidence_count": 4,
+        "intent_margin": 0.8927,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 47,
+      "conversation_id": "conv_230127",
+      "customer_message": "You are doing fraud by selling amazon prime. U charge but do not provide services. Kindly refund my money.",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [ACCOUNT_COMPROMISE] requiring immediate human intervention.",
+      "signals": {
+        "intent_confidence": 0.8687,
+        "retrieval_score": 0.8042,
+        "evidence_count": 1,
+        "intent_margin": 0.8247,
+        "risk_flags": [
+          "ACCOUNT_COMPROMISE"
+        ]
+      }
+    },
+    {
+      "case_index": 48,
+      "conversation_id": "conv_224179",
+      "customer_message": "Worst Service i have not got my Refund Back post 22nd sep 2017 Order No ORDER # 404-2093874-6845963",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Low intent confidence (0.6869 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.6869,
+        "retrieval_score": 0.8019,
+        "evidence_count": 3,
+        "intent_margin": 0.6062,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 49,
+      "conversation_id": "conv_224277",
+      "customer_message": "what the fucking service. Didn't call to customer nd refunded products, order date-29sep2017,order id- 408-1407922-2237939",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Low intent confidence (0.5759 < 0.70). | Novel or unsupported situation: historical similarity (0.7408 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.5759,
+        "retrieval_score": 0.7408,
+        "evidence_count": 5,
+        "intent_margin": 0.4635,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 50,
+      "conversation_id": "conv_2549432",
+      "customer_message": "I am a Prime Member, my order not delivered but money also not refunded. Ord no 407-2724072-3557945. This is cheating a loyal cust",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Low intent confidence (0.5162 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.5162,
+        "retrieval_score": 0.7908,
+        "evidence_count": 4,
+        "intent_margin": 0.1687,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 51,
+      "conversation_id": "conv_222806",
+      "customer_message": "Please provide resolution, Amazon pay cashback not credited yet . 5days gone due date 21st sept 2017",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Low intent confidence (0.5079 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.5079,
+        "retrieval_score": 0.7829,
+        "evidence_count": 5,
+        "intent_margin": 0.1753,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 52,
+      "conversation_id": "conv_253942",
+      "customer_message": "you owe my 2500 rs as you forcibly refunded me in Amazon Pay despite taking bank details.Cant succumb to ur autocracy.",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Low intent confidence (0.5568 < 0.70). | Novel or unsupported situation: historical similarity (0.7241 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.5568,
+        "retrieval_score": 0.7241,
+        "evidence_count": 3,
+        "intent_margin": 0.283,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 53,
+      "conversation_id": "conv_381413",
+      "customer_message": "Gt my firestick tv 10 days bk now power adpter stop working.Wn I askd 4 rplacemnt thy suggstd buy new1 later wl refund",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.3566 < 0.70). | Novel or unsupported situation: historical similarity (0.6163 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.3566,
+        "retrieval_score": 0.6163,
+        "evidence_count": 0,
+        "intent_margin": 0.0703,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 54,
+      "conversation_id": "conv_179327",
+      "customer_message": "Talked nearly 7-8 times, for my refund. The product was cancelled on 25th. And still i haven't received any refund. Courtesy- @115850",
+      "ground_truth_intent": "REFUND_STATUS_AND_DISPUTES",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6794 < 0.70). | Novel or unsupported situation: historical similarity (0.7443 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.6794,
+        "retrieval_score": 0.7443,
+        "evidence_count": 5,
+        "intent_margin": 0.4023,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 55,
+      "conversation_id": "conv_130747",
+      "customer_message": "1/ @115850 Are you guys leaking email ids of user who applied for Amazon BTS offer?My bro got this spam email: http://t.co/6YtfYm0aLN",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling. | Low intent confidence (0.2261 < 0.70). | Novel or unsupported situation: historical similarity (0.6950 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.2261,
+        "retrieval_score": 0.695,
+        "evidence_count": 2,
+        "intent_margin": 0.0551,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 56,
+      "conversation_id": "conv_1331823",
+      "customer_message": "Purchased through @115821. The packages were opened tampered with, additional items inserted and then shipped to me. Reprehensible QC\u2757\ufe0f",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [HIGH_SEVERITY_PRODUCT_ISSUE] requiring immediate human intervention. | Low intent confidence (0.4478 < 0.70). | Novel or unsupported situation: historical similarity (0.7000 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.4478,
+        "retrieval_score": 0.7,
+        "evidence_count": 1,
+        "intent_margin": 0.3011,
+        "risk_flags": [
+          "HIGH_SEVERITY_PRODUCT_ISSUE"
+        ]
+      }
+    },
+    {
+      "case_index": 57,
+      "conversation_id": "conv_182606",
+      "customer_message": "Buying home appliances from you shakes a consumer's confidence in #ecommerce. A damaged product was covered up and sent! @115821",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Novel or unsupported situation: historical similarity (0.6479 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.9293,
+        "retrieval_score": 0.6479,
+        "evidence_count": 0,
+        "intent_margin": 0.9179,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 58,
+      "conversation_id": "conv_224831",
+      "customer_message": "it is highly regretted that a reputated online business set up has started behaving like others. A defective has delivered to me.",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6907 < 0.70). | Novel or unsupported situation: historical similarity (0.5948 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.6907,
+        "retrieval_score": 0.5948,
+        "evidence_count": 0,
+        "intent_margin": 0.6045,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 59,
+      "conversation_id": "conv_659446",
+      "customer_message": "Received empty box of one plus five . Dussehra enjoyed by Amazon team and they ruined my father's gift. @115851 @115830 @119356 https://t.co/uBHl6P3Dnn",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [HIGH_SEVERITY_PRODUCT_ISSUE] requiring immediate human intervention. | Low intent confidence (0.4789 < 0.70). | Novel or unsupported situation: historical similarity (0.5074 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.4789,
+        "retrieval_score": 0.5074,
+        "evidence_count": 0,
+        "intent_margin": 0.3042,
+        "risk_flags": [
+          "HIGH_SEVERITY_PRODUCT_ISSUE"
+        ]
+      }
+    },
+    {
+      "case_index": 60,
+      "conversation_id": "conv_179531",
+      "customer_message": "#SWBFII The Amazon Codes are Not Working",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6350 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.9679,
+        "retrieval_score": 0.635,
+        "evidence_count": 0,
+        "intent_margin": 0.9624,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 61,
+      "conversation_id": "conv_179305",
+      "customer_message": "got amazon uk beta code for bf2 and its not working??????",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6329 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.8052,
+        "retrieval_score": 0.6329,
+        "evidence_count": 0,
+        "intent_margin": 0.7492,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 62,
+      "conversation_id": "conv_183575",
+      "customer_message": "Worst customer svc, orderd moto G5s+ whch ws faulty & reqstd 4 refnd.pickd up after mre thn 2 wks and still nt refnded & no update @115850",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Low intent confidence (0.3720 < 0.70). | Novel or unsupported situation: historical similarity (0.6144 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.372,
+        "retrieval_score": 0.6144,
+        "evidence_count": 0,
+        "intent_margin": 0.0508,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 63,
+      "conversation_id": "conv_179722",
+      "customer_message": "hi i preordered star wars battle front II and you sent an email with beta code but its not working",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6726 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7258,
+        "retrieval_score": 0.6726,
+        "evidence_count": 0,
+        "intent_margin": 0.6376,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 64,
+      "conversation_id": "conv_607489",
+      "customer_message": "my kindle is not working and I find no Amazon service center in Hyderabad. Need help :(",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6727 < 0.70). | Novel or unsupported situation: historical similarity (0.7440 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.6727,
+        "retrieval_score": 0.744,
+        "evidence_count": 1,
+        "intent_margin": 0.6016,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 65,
+      "conversation_id": "conv_183182",
+      "customer_message": "my kindle not working. No Amazon service center in Hyderabad. Pls help :(",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6632 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.6632,
+        "retrieval_score": 0.7537,
+        "evidence_count": 1,
+        "intent_margin": 0.5968,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 66,
+      "conversation_id": "conv_18679",
+      "customer_message": "Amazon truck damaged my lawn my lawn .Love Amazon . So sad no one called me back today as promised! Why?",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Novel or unsupported situation: historical similarity (0.6404 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.8346,
+        "retrieval_score": 0.6404,
+        "evidence_count": 0,
+        "intent_margin": 0.7937,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 67,
+      "conversation_id": "conv_226057",
+      "customer_message": "On 25th sept, I have received 64 gb samsung memory card but its a faulty one. On 26th, I have sent a request for replacement but nothing has happened since then. I demand a swift action. Bill order is 408-9130123-3589128",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Low intent confidence (0.6263 < 0.70). | Novel or unsupported situation: historical similarity (0.6737 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.6263,
+        "retrieval_score": 0.6737,
+        "evidence_count": 0,
+        "intent_margin": 0.5639,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 68,
+      "conversation_id": "conv_286193",
+      "customer_message": "Bought a Whirlpool Solo Microwave oven 20ltrs from Amazon Sale. Received a faulty machine that doesn't work. Waiting response. Will update.",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.4396 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7148,
+        "retrieval_score": 0.4396,
+        "evidence_count": 0,
+        "intent_margin": 0.6547,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 69,
+      "conversation_id": "conv_180113",
+      "customer_message": "My shipment is supposed to arrive yesterday 3 Oct and I do not know why the delay was so much damaged by the delay of the shipment. https://t.co/3GU7MUmrvw",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.4157 < 0.70). | Novel or unsupported situation: historical similarity (0.7458 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.4157,
+        "retrieval_score": 0.7458,
+        "evidence_count": 5,
+        "intent_margin": 0.0043,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 70,
+      "conversation_id": "conv_180222",
+      "customer_message": "never expected a bullying & crooked behaviour from Amazon. I requested a return of defective iPhone SE, no one from Amazon..contd#",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.5895 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7064,
+        "retrieval_score": 0.5895,
+        "evidence_count": 0,
+        "intent_margin": 0.5618,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 71,
+      "conversation_id": "conv_180754",
+      "customer_message": "Broken product received for order 408-7624111-6539547 Looking for replacement, cu care was unable to register replace. Do check https://t.co/b9wltyKr7f",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Novel or unsupported situation: historical similarity (0.6544 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.9148,
+        "retrieval_score": 0.6544,
+        "evidence_count": 1,
+        "intent_margin": 0.8972,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 72,
+      "conversation_id": "conv_197845",
+      "customer_message": "my phone's finger print scanner is not working. Also the technician was supposed to arrive in the afternoon but still not here!",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.5815 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7412,
+        "retrieval_score": 0.5815,
+        "evidence_count": 0,
+        "intent_margin": 0.6678,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 73,
+      "conversation_id": "conv_199981",
+      "customer_message": "I received a damaged product today from amazon. order number 406-3167131-0133142 . amazon india https://t.co/VSy9XaQfQC",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.",
+      "signals": {
+        "intent_confidence": 0.9222,
+        "retrieval_score": 0.8133,
+        "evidence_count": 5,
+        "intent_margin": 0.8976,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 74,
+      "conversation_id": "conv_210440",
+      "customer_message": "I want to replace an item I received damaged, but it will only let me return it, rather than replace. Why is this?",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7141 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.7355,
+        "retrieval_score": 0.7141,
+        "evidence_count": 2,
+        "intent_margin": 0.5058,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 75,
+      "conversation_id": "conv_279646",
+      "customer_message": "I have place a replacement request for faulty Moto G5s Plus. Still pending, should have been picked up on 7 September.",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6314 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.6314,
+        "retrieval_score": 0.8634,
+        "evidence_count": 3,
+        "intent_margin": 0.4862,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 76,
+      "conversation_id": "conv_179747",
+      "customer_message": "I wish to exchange my working Dell laptop for new one.But one of the hinges of screen is broken. Is it eligible for exchange?",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Novel or unsupported situation: historical similarity (0.5161 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.9636,
+        "retrieval_score": 0.5161,
+        "evidence_count": 0,
+        "intent_margin": 0.9375,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 77,
+      "conversation_id": "conv_193073",
+      "customer_message": "m sorry2disturbed u but m mentally harassed by Amazon 405-6636472-3798710 not working booked another order but not getting refund",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Low intent confidence (0.5673 < 0.70). | Novel or unsupported situation: historical similarity (0.7211 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.5673,
+        "retrieval_score": 0.7211,
+        "evidence_count": 3,
+        "intent_margin": 0.2163,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 78,
+      "conversation_id": "conv_206777",
+      "customer_message": "bizarre! @117795 delivered the wrong item. insist we arrange return & not be refunded for a week?! 35mins on phone @115830",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [HIGH_SEVERITY_PRODUCT_ISSUE] requiring immediate human intervention. | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7062,
+        "retrieval_score": 0.7661,
+        "evidence_count": 0,
+        "intent_margin": 0.54,
+        "risk_flags": [
+          "HIGH_SEVERITY_PRODUCT_ISSUE"
+        ]
+      }
+    },
+    {
+      "case_index": 79,
+      "conversation_id": "conv_206692",
+      "customer_message": "You have the worst customer service..you basically stole money from us due to YOUR faulty gift card!!",
+      "ground_truth_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.4691 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.4691,
+        "retrieval_score": 0.7643,
+        "evidence_count": 4,
+        "intent_margin": 0.033,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 80,
+      "conversation_id": "conv_1293697",
+      "customer_message": "Heu \u00e7a marche pas le linkage de mon compte @120533 #premium & @54689 #prime Nous ne pouvons pas activer Twitch Prime sur votre compte.",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5032 < 0.70). | Novel or unsupported situation: historical similarity (0.6150 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.5032,
+        "retrieval_score": 0.615,
+        "evidence_count": 0,
+        "intent_margin": 0.3942,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 81,
+      "conversation_id": "conv_658849",
+      "customer_message": "Everything announced at Apple WWDC today \u203a\u203a\u203a Yawn. On the other hand, Amazon Prime Video coming to Apple TV \u203a\u203a\u203a Yes!!!",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.5010 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.8717,
+        "retrieval_score": 0.501,
+        "evidence_count": 0,
+        "intent_margin": 0.8453,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 82,
+      "conversation_id": "conv_726735",
+      "customer_message": "When are you planning to bring Kannada content in Prime Video? I've been waiting from quite long. @24233",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.80), strong historical grounding (sim: 0.76, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8005,
+        "retrieval_score": 0.7582,
+        "evidence_count": 5,
+        "intent_margin": 0.7648,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 83,
+      "conversation_id": "conv_1270132",
+      "customer_message": "Purchased Prime membership, still waiting for my cashback. SS attached https://t.co/Y1PEEXiMk2",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7423 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8744,
+        "retrieval_score": 0.7423,
+        "evidence_count": 1,
+        "intent_margin": 0.8449,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 84,
+      "conversation_id": "conv_241528",
+      "customer_message": "Surely preordering something means you get it delivered on release day, not 5 days later @115830 @AmazonHelp \ud83d\ude44 Seriously considering cancelling my Prime membership",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.73), strong historical grounding (sim: 0.81, precedents: 4), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.735,
+        "retrieval_score": 0.8136,
+        "evidence_count": 4,
+        "intent_margin": 0.6402,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 85,
+      "conversation_id": "conv_197681",
+      "customer_message": "What if I already have a prime subscription? Will that be added the next year?",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.98), strong historical grounding (sim: 0.85, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9759,
+        "retrieval_score": 0.8485,
+        "evidence_count": 5,
+        "intent_margin": 0.9702,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 86,
+      "conversation_id": "conv_191481",
+      "customer_message": "your description of echo dot includes \"play music on amazon prime music\". Is that available now in India or coming up?! yay!!",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.76), strong historical grounding (sim: 0.84, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.756,
+        "retrieval_score": 0.8429,
+        "evidence_count": 5,
+        "intent_margin": 0.6929,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 87,
+      "conversation_id": "conv_215210",
+      "customer_message": "5 days to deliver?? Really.... this is for prime subscription. https://t.co/1IsMRR5VdP",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7284 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8751,
+        "retrieval_score": 0.7284,
+        "evidence_count": 3,
+        "intent_margin": 0.845,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 88,
+      "conversation_id": "conv_215141",
+      "customer_message": "is #OneTreeHill available with a prime subscription? #OTH",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6577 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.9677,
+        "retrieval_score": 0.6577,
+        "evidence_count": 1,
+        "intent_margin": 0.961,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 89,
+      "conversation_id": "conv_224365",
+      "customer_message": "So my @121284 dot will ship on 3rd November. Safe to say, Amazon prime music will launch before that \ud83e\udd14",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6946 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.7297,
+        "retrieval_score": 0.6946,
+        "evidence_count": 3,
+        "intent_margin": 0.6645,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 90,
+      "conversation_id": "conv_578074",
+      "customer_message": "can you guys add an option to increase the playback speed on prime video? It will be greatly appreciated.",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.90), strong historical grounding (sim: 0.80, precedents: 2), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9036,
+        "retrieval_score": 0.7997,
+        "evidence_count": 2,
+        "intent_margin": 0.8857,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 91,
+      "conversation_id": "conv_344609",
+      "customer_message": "Did you know? Amazon India fools people by making them pay Prime Membership fees but rarely delivers products within 4 days? #amazonsucks",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.78), strong historical grounding (sim: 0.79, precedents: 4), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7774,
+        "retrieval_score": 0.7929,
+        "evidence_count": 4,
+        "intent_margin": 0.7202,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 92,
+      "conversation_id": "conv_2284171",
+      "customer_message": "Why Amazone has started deducting money from CC without customer knowledge for PRIME membership?? That's how you want to make mone",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6767 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.75,
+        "retrieval_score": 0.6767,
+        "evidence_count": 2,
+        "intent_margin": 0.6276,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 93,
+      "conversation_id": "conv_224353",
+      "customer_message": "benefit of being prime member? https://t.co/FIXq8A79zx",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.98), strong historical grounding (sim: 0.92, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9833,
+        "retrieval_score": 0.9174,
+        "evidence_count": 5,
+        "intent_margin": 0.9804,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 94,
+      "conversation_id": "conv_183721",
+      "customer_message": "Hey prime video team is there any option to change aspect ratio from 4:3 to 16:9. I am watching doreamon.",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Novel or unsupported situation: historical similarity (0.4893 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.8641,
+        "retrieval_score": 0.4893,
+        "evidence_count": 0,
+        "intent_margin": 0.8438,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 95,
+      "conversation_id": "conv_222722",
+      "customer_message": "how fast prime member gets dilevery bcoz i m a prime member and i think i m getting normal delivery as all people",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7094 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.9936,
+        "retrieval_score": 0.7094,
+        "evidence_count": 5,
+        "intent_margin": 0.9918,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 96,
+      "conversation_id": "conv_223853",
+      "customer_message": "Description on every Echo page on @115850 mention Prime Music. Don\u2019t think it is available in India yet. Or is it? No reference elsewhere.",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6983 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.6983,
+        "retrieval_score": 0.8464,
+        "evidence_count": 5,
+        "intent_margin": 0.6343,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 97,
+      "conversation_id": "conv_226118",
+      "customer_message": "Hey @115850 what happens to my existing Prime membership if I buy the echo? Do I get an additional year? Or could I gift someone the year?",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.86), strong historical grounding (sim: 0.86, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8609,
+        "retrieval_score": 0.8585,
+        "evidence_count": 5,
+        "intent_margin": 0.8078,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 98,
+      "conversation_id": "conv_816091",
+      "customer_message": "Cancelled my Prime membership roughly 3 months ago, just noticed i've been charged for prime for the past 2 months. Any help.",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Low intent confidence (0.6279 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.6279,
+        "retrieval_score": 0.8975,
+        "evidence_count": 5,
+        "intent_margin": 0.3137,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 99,
+      "conversation_id": "conv_180044",
+      "customer_message": "hav prime membership. used to b best platform to shop. but now bad services. hw to discontinue prime n get money back ?",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.96), strong historical grounding (sim: 0.76, precedents: 3), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9574,
+        "retrieval_score": 0.756,
+        "evidence_count": 3,
+        "intent_margin": 0.9403,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 100,
+      "conversation_id": "conv_183616",
+      "customer_message": "been charged for prime wrongly and can\u2019t find how to request a refund... can you help? Thanks",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.76), strong historical grounding (sim: 0.83, precedents: 3), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7595,
+        "retrieval_score": 0.8281,
+        "evidence_count": 3,
+        "intent_margin": 0.6865,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 101,
+      "conversation_id": "conv_234829",
+      "customer_message": "appalled that when charged twice for my prime membership and asked for 1 refunded I now have ended up with no prime membership",
+      "ground_truth_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": false,
+      "reason": "High intent confidence (0.95), strong historical grounding (sim: 0.84, precedents: 2), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.947,
+        "retrieval_score": 0.8421,
+        "evidence_count": 2,
+        "intent_margin": 0.9273,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 102,
+      "conversation_id": "conv_238886",
+      "customer_message": ": Ours is a business account. Ordered 14 items for diwali gifts for staffs worth 10K INR. Order cancelled for 12 items. Order # 403-6277206-9111521. Customer service say, can't do anything. Why i should have business account then?",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Novel or unsupported situation: historical similarity (0.6784 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8804,
+        "retrieval_score": 0.6784,
+        "evidence_count": 1,
+        "intent_margin": 0.8457,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 103,
+      "conversation_id": "conv_180735",
+      "customer_message": "Because while the savings are getting \"better\", Id rather not wait 4+ fucking months only to have it forcibly cancelled on me. Im not happy!",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.5615 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.9197,
+        "retrieval_score": 0.5615,
+        "evidence_count": 0,
+        "intent_margin": 0.904,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 104,
+      "conversation_id": "conv_183689",
+      "customer_message": "placed an order for AC, cancelled same day, amount pending from last 12 days #AmazonGreatIndianFestival not managed properly",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7261 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8727,
+        "retrieval_score": 0.7261,
+        "evidence_count": 5,
+        "intent_margin": 0.8292,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 105,
+      "conversation_id": "conv_182644",
+      "customer_message": "again #bad #experience Product ordered, cancelled. Now not able to order tht product due to qty restrictions #badservice #amazon",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.81), strong historical grounding (sim: 1.00, precedents: 3), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8073,
+        "retrieval_score": 1.0,
+        "evidence_count": 3,
+        "intent_margin": 0.7249,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 106,
+      "conversation_id": "conv_210378",
+      "customer_message": "I ordrd gifts for someone and you say its cancelled...nice diwali gift from you...thanks ton!!! hoping to get some solution <end> https://t.co/45jbpuLTxN",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6436 < 0.70). | Novel or unsupported situation: historical similarity (0.7222 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.6436,
+        "retrieval_score": 0.7222,
+        "evidence_count": 2,
+        "intent_margin": 0.5665,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 107,
+      "conversation_id": "conv_207763",
+      "customer_message": "Hey @AmazonHelp 4th day now without my order which is made up entirely of Prime items.. No cancellation allowed.. what the hell?",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5130 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.513,
+        "retrieval_score": 0.814,
+        "evidence_count": 4,
+        "intent_margin": 0.3756,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 108,
+      "conversation_id": "conv_622782",
+      "customer_message": "I'm trying to cancel an order, but there is not option to edit order also I didn't receive a email regarding the order",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.88), strong historical grounding (sim: 0.81, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8758,
+        "retrieval_score": 0.8089,
+        "evidence_count": 5,
+        "intent_margin": 0.85,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 109,
+      "conversation_id": "conv_215212",
+      "customer_message": "amazon keeps messing up my her order i got one email saying it was cancelled but when i go on the website it says its gonna be shipped i",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6853 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.7897,
+        "retrieval_score": 0.6853,
+        "evidence_count": 5,
+        "intent_margin": 0.7257,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 110,
+      "conversation_id": "conv_227114",
+      "customer_message": "Slow clap \ud83d\udc4f\ud83d\udc4f\ud83d\udc4f\ud83d\udc4f Product Cancelled by me, still getting notification that product will deliver to you today. Apni Dukaan.\ud83d\ude02\ud83e\udd23\ud83d\ude02\ud83e\udd23 https://t.co/RrWAFMmpbL",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.5195 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.8456,
+        "retrieval_score": 0.5195,
+        "evidence_count": 0,
+        "intent_margin": 0.7789,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 111,
+      "conversation_id": "conv_1745558",
+      "customer_message": "my order had been delayed twice and then cancelled for the 2nd time when I made that comment. But my latest order was on time.",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6835 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.818,
+        "retrieval_score": 0.6835,
+        "evidence_count": 4,
+        "intent_margin": 0.7168,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 112,
+      "conversation_id": "conv_728534",
+      "customer_message": "It's more than a week since picked up by Amazon delivery. It's showing the product is cancelled. Its not returned to me yet. @AmazonHelp https://t.co/ejquQyile9",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6656 < 0.70). | Novel or unsupported situation: historical similarity (0.7040 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.6656,
+        "retrieval_score": 0.704,
+        "evidence_count": 4,
+        "intent_margin": 0.5481,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 113,
+      "conversation_id": "conv_974800",
+      "customer_message": "Order ID : 407-3954265-1967543 7th time my order got cancelled within a period of 30 days.",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.",
+      "signals": {
+        "intent_confidence": 0.892,
+        "retrieval_score": 0.8674,
+        "evidence_count": 5,
+        "intent_margin": 0.8574,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 114,
+      "conversation_id": "conv_180277",
+      "customer_message": "Amazon India Not excpcted this kind of goof up from you guys.. My product has been cancelled without even notifying me",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.853,
+        "retrieval_score": 0.8071,
+        "evidence_count": 0,
+        "intent_margin": 0.799,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 115,
+      "conversation_id": "conv_179931",
+      "customer_message": "order id 406-0875156-9923538 i cancelled it as its taking forever to come nd you guys ask for pick up from home date.. #shitamazon",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.",
+      "signals": {
+        "intent_confidence": 0.8502,
+        "retrieval_score": 0.7508,
+        "evidence_count": 5,
+        "intent_margin": 0.8009,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 116,
+      "conversation_id": "conv_180523",
+      "customer_message": "Had to cancel my order today from @116090 2 day shipping item still not shipped, horrible experience with the CSR. @AmazonHelp",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7002 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.729,
+        "retrieval_score": 0.7002,
+        "evidence_count": 5,
+        "intent_margin": 0.6647,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 117,
+      "conversation_id": "conv_191616",
+      "customer_message": "I am unable to pay for my order id :- 405-2765780-7605958 and 2 more.Your team suggested to cancel the order. What should I do ?",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.",
+      "signals": {
+        "intent_confidence": 0.8363,
+        "retrieval_score": 0.8075,
+        "evidence_count": 5,
+        "intent_margin": 0.7845,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 118,
+      "conversation_id": "conv_183392",
+      "customer_message": "Refund not received for an order placed on 22nd September and cancelled.",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.82), strong historical grounding (sim: 0.82, precedents: 2), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8231,
+        "retrieval_score": 0.8163,
+        "evidence_count": 2,
+        "intent_margin": 0.6741,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 119,
+      "conversation_id": "conv_183643",
+      "customer_message": "customercare completely useless,not helping, act like written scripts, no supervisor to speak with, 32K not refunded, AC cancelled",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5905 < 0.70). | Novel or unsupported situation: historical similarity (0.6417 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.5905,
+        "retrieval_score": 0.6417,
+        "evidence_count": 0,
+        "intent_margin": 0.4053,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 120,
+      "conversation_id": "conv_180957",
+      "customer_message": "I have share details already. What should I do ? Can I cancel the order ? If I cancel , may be you will refund my money after 1 month",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Low intent confidence (0.6878 < 0.70). | Novel or unsupported situation: historical similarity (0.6945 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.6878,
+        "retrieval_score": 0.6945,
+        "evidence_count": 4,
+        "intent_margin": 0.3997,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 121,
+      "conversation_id": "conv_181005",
+      "customer_message": "Sir, two items hd ordered mistakely. Then i cancelled this order. But i caouldn't get refund rs 229 which was debited from my ac",
+      "ground_truth_intent": "ORDER_CANCELLATION",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6574 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.9341,
+        "retrieval_score": 0.6574,
+        "evidence_count": 0,
+        "intent_margin": 0.8866,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 122,
+      "conversation_id": "conv_180983",
+      "customer_message": "sir i order samsung j7 prime rs 10'500 in amazon pay how many cash back i get?",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.80), strong historical grounding (sim: 0.89, precedents: 3), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8033,
+        "retrieval_score": 0.8921,
+        "evidence_count": 3,
+        "intent_margin": 0.762,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 123,
+      "conversation_id": "conv_183067",
+      "customer_message": "you already has prepaid recharge option in Amazon pay India please add mobile bill payment option too. Thanks in advance",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7248 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8581,
+        "retrieval_score": 0.7248,
+        "evidence_count": 5,
+        "intent_margin": 0.824,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 124,
+      "conversation_id": "conv_210359",
+      "customer_message": "purchased #10.orG from Amazon site by Amazon pay balance please confirm if it eligible for cashback or I have to book from app",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.97), strong historical grounding (sim: 0.75, precedents: 4), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9726,
+        "retrieval_score": 0.7518,
+        "evidence_count": 4,
+        "intent_margin": 0.964,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 125,
+      "conversation_id": "conv_210431",
+      "customer_message": "please help, I ordered a gift voucher which was allegedly signed for on Monday but it has not been received...",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": false,
+      "reason": "High intent confidence (0.78), strong historical grounding (sim: 0.77, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7778,
+        "retrieval_score": 0.77,
+        "evidence_count": 5,
+        "intent_margin": 0.7212,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 126,
+      "conversation_id": "conv_210342",
+      "customer_message": "I paid the full order by Amazon Pay. Then why is it showing only Rs.235? Please update it so that I get 15% cashback. https://t.co/y1qwmLYg2v",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6821 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.9165,
+        "retrieval_score": 0.6821,
+        "evidence_count": 2,
+        "intent_margin": 0.8905,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 127,
+      "conversation_id": "conv_218137",
+      "customer_message": "I never got my gift card for doing a survey? I've emailed a couple times and never get a response?",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": false,
+      "reason": "High intent confidence (0.77), strong historical grounding (sim: 0.75, precedents: 1), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7669,
+        "retrieval_score": 0.7521,
+        "evidence_count": 1,
+        "intent_margin": 0.7208,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 128,
+      "conversation_id": "conv_219492",
+      "customer_message": "hi there just got my account back from an issue. now i have lost my $5.00 gift card as well as my preorder for a game on sale..",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6503 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8223,
+        "retrieval_score": 0.6503,
+        "evidence_count": 1,
+        "intent_margin": 0.7793,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 129,
+      "conversation_id": "conv_223923",
+      "customer_message": "Amazon pay coming to India \ud83c\uddee\ud83c\uddf3 @115850",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.99), strong historical grounding (sim: 0.79, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9889,
+        "retrieval_score": 0.7915,
+        "evidence_count": 5,
+        "intent_margin": 0.9866,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 130,
+      "conversation_id": "conv_322599",
+      "customer_message": "Gift card shows redeemed but the order not confirmed. Complaints done but no response. #AmazonIndia",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.89), strong historical grounding (sim: 0.75, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8909,
+        "retrieval_score": 0.752,
+        "evidence_count": 5,
+        "intent_margin": 0.8714,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 131,
+      "conversation_id": "conv_179581",
+      "customer_message": "1st mobile recharge with Amazon pay...but cashback not added to my Amazon wallet",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.94), strong historical grounding (sim: 0.81, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9408,
+        "retrieval_score": 0.8117,
+        "evidence_count": 5,
+        "intent_margin": 0.9239,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 132,
+      "conversation_id": "conv_179466",
+      "customer_message": "Naa Amazon cash back coupon code raledu mee company nundi \ud83d\ude20",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.5505 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7061,
+        "retrieval_score": 0.5505,
+        "evidence_count": 0,
+        "intent_margin": 0.6586,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 133,
+      "conversation_id": "conv_180064",
+      "customer_message": "Recharged with Amazon Pay Balance, how do I get to know that offer to win iPhone8 applied or not? @115850 @AmazonHelp https://t.co/d7CvlzmyPH",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": false,
+      "reason": "High intent confidence (0.97), strong historical grounding (sim: 0.76, precedents: 2), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9725,
+        "retrieval_score": 0.7572,
+        "evidence_count": 2,
+        "intent_margin": 0.9653,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 134,
+      "conversation_id": "conv_222671",
+      "customer_message": "i place an order of a laptop and its showing 15% cash back if u pay through Amazon pay but i don't received any Cashback plz help",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.95), strong historical grounding (sim: 0.87, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9467,
+        "retrieval_score": 0.866,
+        "evidence_count": 5,
+        "intent_margin": 0.9322,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 135,
+      "conversation_id": "conv_224399",
+      "customer_message": "there is an issue of recharge relience jio via Amazon pay so plz check this issue",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7476 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.9089,
+        "retrieval_score": 0.7476,
+        "evidence_count": 5,
+        "intent_margin": 0.8887,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 136,
+      "conversation_id": "conv_248682",
+      "customer_message": "I want my money back from Amazon pay .please help",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.84), strong historical grounding (sim: 0.90, precedents: 4), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8408,
+        "retrieval_score": 0.8979,
+        "evidence_count": 4,
+        "intent_margin": 0.6942,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 137,
+      "conversation_id": "conv_199977",
+      "customer_message": "Thanks again @115821 for the call & the gift card in addition to the refund of my order. I'm a happy Amazon customer again. @117795",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.4968 < 0.70). | Novel or unsupported situation: historical similarity (0.7450 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.4968,
+        "retrieval_score": 0.745,
+        "evidence_count": 0,
+        "intent_margin": 0.111,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 138,
+      "conversation_id": "conv_222751",
+      "customer_message": "When the 15% cash back is credited to Amazon Pay Balance in the ongoing deal?",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.82), strong historical grounding (sim: 0.83, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.819,
+        "retrieval_score": 0.8289,
+        "evidence_count": 5,
+        "intent_margin": 0.6864,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 139,
+      "conversation_id": "conv_269130",
+      "customer_message": "My Gift card code is not working. Please help",
+      "ground_truth_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": false,
+      "reason": "High intent confidence (0.75), strong historical grounding (sim: 0.82, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7524,
+        "retrieval_score": 0.8164,
+        "evidence_count": 5,
+        "intent_margin": 0.5398,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 140,
+      "conversation_id": "conv_420304",
+      "customer_message": "#fraud company#worst customer service # amazon https://t.co/V6CzaPwl6Y",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [ACCOUNT_COMPROMISE] requiring immediate human intervention. | Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling.",
+      "signals": {
+        "intent_confidence": 0.9538,
+        "retrieval_score": 0.7718,
+        "evidence_count": 4,
+        "intent_margin": 0.9426,
+        "risk_flags": [
+          "ACCOUNT_COMPROMISE"
+        ]
+      }
+    },
+    {
+      "case_index": 141,
+      "conversation_id": "conv_182837",
+      "customer_message": "poor customer service over phone, cannot contact carrier. Cannot even locate my item 26hrs... Cannot escalate locally.... https://t.co/IpvzNV1DlM",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Low intent confidence (0.6156 < 0.70). | Novel or unsupported situation: historical similarity (0.6548 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.6156,
+        "retrieval_score": 0.6548,
+        "evidence_count": 1,
+        "intent_margin": 0.4976,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 142,
+      "conversation_id": "conv_205106",
+      "customer_message": "You have the oddest worst customer service. Why would anyone want to use #amazonpay ?Cannot trust you due to bad customer service",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling.",
+      "signals": {
+        "intent_confidence": 0.9384,
+        "retrieval_score": 0.7619,
+        "evidence_count": 4,
+        "intent_margin": 0.9262,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 143,
+      "conversation_id": "conv_278659",
+      "customer_message": "Products which you sell on discount are basically outdated. My issue is not yet solved. Poor Customer service.",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Novel or unsupported situation: historical similarity (0.6079 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7921,
+        "retrieval_score": 0.6079,
+        "evidence_count": 0,
+        "intent_margin": 0.7419,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 144,
+      "conversation_id": "conv_279206",
+      "customer_message": "very poor and pathetic service from Amazon. Used product sent. And Packing too weak and below ordinary https://t.co/Yx0luSLkmT",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling.",
+      "signals": {
+        "intent_confidence": 0.8476,
+        "retrieval_score": 0.7655,
+        "evidence_count": 4,
+        "intent_margin": 0.757,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 145,
+      "conversation_id": "conv_279495",
+      "customer_message": "Poor customer service @115830 !! Week of confusion, slow progress. #notahappycustomer https://t.co/vMqF5Bg0Af",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Novel or unsupported situation: historical similarity (0.6960 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8159,
+        "retrieval_score": 0.696,
+        "evidence_count": 3,
+        "intent_margin": 0.7755,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 146,
+      "conversation_id": "conv_280706",
+      "customer_message": "absolutely terrible service from sellar central",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Novel or unsupported situation: historical similarity (0.6802 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.9723,
+        "retrieval_score": 0.6802,
+        "evidence_count": 4,
+        "intent_margin": 0.9668,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 147,
+      "conversation_id": "conv_180099",
+      "customer_message": "#AmazonGreatIndianFestival is a chuttiappa? U guys delivered me an empty pckg of Mi4i Tempered glass. Really pathetic service. https://t.co/ZI286FMIDm",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Novel or unsupported situation: historical similarity (0.5476 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7814,
+        "retrieval_score": 0.5476,
+        "evidence_count": 0,
+        "intent_margin": 0.7182,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 148,
+      "conversation_id": "conv_180495",
+      "customer_message": "you guyz fo me new way to cheat customers. Price on website 20K and when you buy,price is changed. You guys are cheaters https://t.co/cYJ6vH5BtD",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Low intent confidence (0.3517 < 0.70). | Novel or unsupported situation: historical similarity (0.6093 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.3517,
+        "retrieval_score": 0.6093,
+        "evidence_count": 0,
+        "intent_margin": 0.2203,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 149,
+      "conversation_id": "conv_215964",
+      "customer_message": "This is what I experienced with your GI festival. Ordered with prime.Worst experience.@115850 @AmazonHelp #AmazonGreatIndianFestival https://t.co/YZUMBHRmNd",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Novel or unsupported situation: historical similarity (0.6659 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7839,
+        "retrieval_score": 0.6659,
+        "evidence_count": 0,
+        "intent_margin": 0.729,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 150,
+      "conversation_id": "conv_226396",
+      "customer_message": "odr# 408-4662003-7122753 to b delivrd on 29Sep. Still waiting delivery. Disgusting service. Make it fast.",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Low intent confidence (0.5126 < 0.70). | Novel or unsupported situation: historical similarity (0.6614 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.5126,
+        "retrieval_score": 0.6614,
+        "evidence_count": 0,
+        "intent_margin": 0.3187,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 151,
+      "conversation_id": "conv_231518",
+      "customer_message": "order no 405-4417879-1189968 - ordered iPhone 7 rose gold 32gb but got used iPhone 7 blue 128 gb.. pathetic service.. https://t.co/04fxb6obCj",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Low intent confidence (0.6341 < 0.70). | Novel or unsupported situation: historical similarity (0.6648 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.6341,
+        "retrieval_score": 0.6648,
+        "evidence_count": 0,
+        "intent_margin": 0.5404,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 152,
+      "conversation_id": "conv_233431",
+      "customer_message": "Pathetic Service provided by Amazon to Costumer . Order I Phone 6 on 24th Sep but still not received any confirmation. https://t.co/zp5U0G4f9w",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Low intent confidence (0.6820 < 0.70). | Novel or unsupported situation: historical similarity (0.7295 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.682,
+        "retrieval_score": 0.7295,
+        "evidence_count": 3,
+        "intent_margin": 0.6134,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 153,
+      "conversation_id": "conv_182513",
+      "customer_message": "Hey @115850 Please arrange pickup for return, it was fixed today but nobody visited 4 pickup. Tracking ID: 710388293771 Worst experience\ud83d\udc4e\ud83d\udc4e",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Low intent confidence (0.4515 < 0.70). | Novel or unsupported situation: historical similarity (0.7086 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.4515,
+        "retrieval_score": 0.7086,
+        "evidence_count": 5,
+        "intent_margin": 0.2188,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 154,
+      "conversation_id": "conv_183075",
+      "customer_message": "Talked regarding delivery delay issue worst experience. Unprofessional cs agent",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Novel or unsupported situation: historical similarity (0.6914 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7734,
+        "retrieval_score": 0.6914,
+        "evidence_count": 0,
+        "intent_margin": 0.6846,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 155,
+      "conversation_id": "conv_227311",
+      "customer_message": "pathetic service. RPU cancelled for the 5th time. Amit Agarwal look into the concern. As uh have hired the >>",
+      "ground_truth_intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Low intent confidence (0.4754 < 0.70). | Novel or unsupported situation: historical similarity (0.5734 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.4754,
+        "retrieval_score": 0.5734,
+        "evidence_count": 0,
+        "intent_margin": 0.0351,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 156,
+      "conversation_id": "conv_699493",
+      "customer_message": "100s of ppl have been scammed from my Seller Acct that was hacked..called 2x about it 3wks ago. When will you actually do something?",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [ACCOUNT_COMPROMISE] requiring immediate human intervention. | Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling. | Low intent confidence (0.6262 < 0.70). | Novel or unsupported situation: historical similarity (0.6510 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.6262,
+        "retrieval_score": 0.651,
+        "evidence_count": 1,
+        "intent_margin": 0.5468,
+        "risk_flags": [
+          "ACCOUNT_COMPROMISE"
+        ]
+      }
+    },
+    {
+      "case_index": 157,
+      "conversation_id": "conv_1208789",
+      "customer_message": "No @AmazonHelp have replied. I seldom log in here but I 'll make sure I do give u a knock everytime I log in should u not heed to ur cstmrs",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling. | Novel or unsupported situation: historical similarity (0.6659 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.79,
+        "retrieval_score": 0.6659,
+        "evidence_count": 3,
+        "intent_margin": 0.7526,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 158,
+      "conversation_id": "conv_1516281",
+      "customer_message": "can't sign in due to forgotten password. Reset password does not work via web or customer service. How does one purchase?",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling. | Novel or unsupported situation: historical similarity (0.7067 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8647,
+        "retrieval_score": 0.7067,
+        "evidence_count": 5,
+        "intent_margin": 0.8263,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 159,
+      "conversation_id": "conv_954022",
+      "customer_message": "Dear @115821 my account officially has been hacked. I've NEVER purchased this or reviewed this item. #FixItNowPlease #Hacked https://t.co/qLtsqkQfzi",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [ACCOUNT_COMPROMISE] requiring immediate human intervention. | Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling.",
+      "signals": {
+        "intent_confidence": 0.9157,
+        "retrieval_score": 0.786,
+        "evidence_count": 5,
+        "intent_margin": 0.8913,
+        "risk_flags": [
+          "ACCOUNT_COMPROMISE"
+        ]
+      }
+    },
+    {
+      "case_index": 160,
+      "conversation_id": "conv_197728",
+      "customer_message": "trying to log in on the app & on the normal website and keep getting this and a random email address keeps coming up on the app? https://t.co/IaCLLx9bJf",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling. | Low intent confidence (0.4982 < 0.70). | Novel or unsupported situation: historical similarity (0.5997 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.4982,
+        "retrieval_score": 0.5997,
+        "evidence_count": 0,
+        "intent_margin": 0.1277,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 161,
+      "conversation_id": "conv_198442",
+      "customer_message": "someone has hacked my account and is buying \u00a3100s worth of gift vouchers please help \u2639\ufe0f\u2639\ufe0f\u2639\ufe0f\u2639\ufe0f",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [ACCOUNT_COMPROMISE] requiring immediate human intervention. | Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling. | Novel or unsupported situation: historical similarity (0.7271 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8562,
+        "retrieval_score": 0.7271,
+        "evidence_count": 4,
+        "intent_margin": 0.7993,
+        "risk_flags": [
+          "ACCOUNT_COMPROMISE"
+        ]
+      }
+    },
+    {
+      "case_index": 162,
+      "conversation_id": "conv_218170",
+      "customer_message": "I cannot login to my amazon account even if my password is correct.What is going on?",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling.",
+      "signals": {
+        "intent_confidence": 0.9853,
+        "retrieval_score": 0.8674,
+        "evidence_count": 5,
+        "intent_margin": 0.9822,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 163,
+      "conversation_id": "conv_675945",
+      "customer_message": "Still locked out of my account. 3 weeks now. Your support by telephone and email is awful",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling.",
+      "signals": {
+        "intent_confidence": 0.981,
+        "retrieval_score": 0.7698,
+        "evidence_count": 5,
+        "intent_margin": 0.9768,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 164,
+      "conversation_id": "conv_179320",
+      "customer_message": "whats going on, I have been locked out of my prime account for the past 4 days account specialists don't call or email me?",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling.",
+      "signals": {
+        "intent_confidence": 0.8099,
+        "retrieval_score": 0.8175,
+        "evidence_count": 4,
+        "intent_margin": 0.7579,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 165,
+      "conversation_id": "conv_197667",
+      "customer_message": "Not only was my @115821 account hacked for a third time, but their customer service had the nerve to be extremely rude to me about it.",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Safety risk trigger detected: [ACCOUNT_COMPROMISE] requiring immediate human intervention. | Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling.",
+      "signals": {
+        "intent_confidence": 0.8403,
+        "retrieval_score": 0.8339,
+        "evidence_count": 5,
+        "intent_margin": 0.7376,
+        "risk_flags": [
+          "ACCOUNT_COMPROMISE"
+        ]
+      }
+    },
+    {
+      "case_index": 166,
+      "conversation_id": "conv_659939",
+      "customer_message": "Hey @115821 I can't log in on my phone because your captchas are completely indecipherable. I've failed 4 in a row now. https://t.co/7LUbMU0ECR",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling. | Low intent confidence (0.5950 < 0.70). | Novel or unsupported situation: historical similarity (0.6300 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.595,
+        "retrieval_score": 0.63,
+        "evidence_count": 0,
+        "intent_margin": 0.4809,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 167,
+      "conversation_id": "conv_227018",
+      "customer_message": "Great sale started on Amazon today, if you login into the sites you can save up to 60%,But you can save 100% if you don't login \ud83d\ude02",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling. | Low intent confidence (0.6934 < 0.70). | Novel or unsupported situation: historical similarity (0.5444 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.6934,
+        "retrieval_score": 0.5444,
+        "evidence_count": 0,
+        "intent_margin": 0.6319,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 168,
+      "conversation_id": "conv_183045",
+      "customer_message": "trying to register my #firestick but says my login details are not valid, yet I am logged in on my phone on your website ??#help",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Low intent confidence (0.4650 < 0.70). | Novel or unsupported situation: historical similarity (0.6558 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.465,
+        "retrieval_score": 0.6558,
+        "evidence_count": 1,
+        "intent_margin": 0.0273,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 169,
+      "conversation_id": "conv_182574",
+      "customer_message": "hey @AmazonHelp - i am locked out of my account and i want to cancel my audible subscription ASAP. pls advise what to do. thanks.",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling. | Low intent confidence (0.4365 < 0.70). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.4365,
+        "retrieval_score": 0.783,
+        "evidence_count": 0,
+        "intent_margin": 0.0613,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 170,
+      "conversation_id": "conv_280676",
+      "customer_message": "How can someone hack into amazon.in account.Change email id, ph no.on top of it my order gets cancelled,paybalance account blocked",
+      "ground_truth_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Low intent confidence (0.4648 < 0.70). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.4648,
+        "retrieval_score": 0.8202,
+        "evidence_count": 0,
+        "intent_margin": 0.051,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 171,
+      "conversation_id": "conv_210319",
+      "customer_message": "#Suffering frm last 7 days, without any fault. Due to technical glitch/wrong info by @115821 Sorry to say but such service was not expected",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5757 < 0.70). | Novel or unsupported situation: historical similarity (0.5932 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.5757,
+        "retrieval_score": 0.5932,
+        "evidence_count": 0,
+        "intent_margin": 0.4785,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 172,
+      "conversation_id": "conv_179301",
+      "customer_message": "there is a serious bug on your website; when trying to navigate using Next page or Page Number it redirects to Home Page.",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.5227 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.813,
+        "retrieval_score": 0.5227,
+        "evidence_count": 0,
+        "intent_margin": 0.7597,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 173,
+      "conversation_id": "conv_423523",
+      "customer_message": "when are you bringing Alexa app to India ?",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.99), strong historical grounding (sim: 0.95, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9868,
+        "retrieval_score": 0.9474,
+        "evidence_count": 5,
+        "intent_margin": 0.9842,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 174,
+      "conversation_id": "conv_215087",
+      "customer_message": "Beginning to think @115821 is protesting @116602 Because the app never works on my firestick",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.95), strong historical grounding (sim: 0.75, precedents: 4), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.952,
+        "retrieval_score": 0.7531,
+        "evidence_count": 4,
+        "intent_margin": 0.9419,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 175,
+      "conversation_id": "conv_223883",
+      "customer_message": "what i will get if i will show you a real time bug of @115850 ?",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.5734 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.8777,
+        "retrieval_score": 0.5734,
+        "evidence_count": 0,
+        "intent_margin": 0.8551,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 176,
+      "conversation_id": "conv_235169",
+      "customer_message": "How about surprising me with a firestick this deepawali ?",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.5241 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.9999,
+        "retrieval_score": 0.5241,
+        "evidence_count": 0,
+        "intent_margin": 0.9999,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 177,
+      "conversation_id": "conv_244944",
+      "customer_message": "when will be Alexa app available on apple app store india?",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.97), strong historical grounding (sim: 0.95, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9709,
+        "retrieval_score": 0.9543,
+        "evidence_count": 5,
+        "intent_margin": 0.9655,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 178,
+      "conversation_id": "conv_183274",
+      "customer_message": "When ordering the cart becomes empty even in app and browser in computer. Is it a game show or glitch??? #worstcustomerservice",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.5897 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.9469,
+        "retrieval_score": 0.5897,
+        "evidence_count": 0,
+        "intent_margin": 0.9381,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 179,
+      "conversation_id": "conv_226423",
+      "customer_message": "android Alexa app says new version with calling available but play store installs old version?",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6625 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.9087,
+        "retrieval_score": 0.6625,
+        "evidence_count": 4,
+        "intent_margin": 0.8913,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 180,
+      "conversation_id": "conv_227921",
+      "customer_message": "Unable to add product in cart. What is the use of sale if the app crashes so frequently. @119356 @115850 @AmazonHelp https://t.co/ds3F5QbgnY",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.3184 < 0.70). | Novel or unsupported situation: historical similarity (0.6209 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.3184,
+        "retrieval_score": 0.6209,
+        "evidence_count": 0,
+        "intent_margin": 0.1321,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 181,
+      "conversation_id": "conv_248663",
+      "customer_message": "how come the Alexa app doesn\u2019t recognise my mobile number when I try and register it for messaging? Is there a bug?",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "medium",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Novel or unsupported situation: historical similarity (0.6726 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.9762,
+        "retrieval_score": 0.6726,
+        "evidence_count": 3,
+        "intent_margin": 0.9724,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 182,
+      "conversation_id": "conv_254627",
+      "customer_message": "Hi, can Alexa control Spotify on the Fire tv or just via echo ? When I go to the Alexa app It states app support unavailable",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.98), strong historical grounding (sim: 0.78, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9834,
+        "retrieval_score": 0.7817,
+        "evidence_count": 5,
+        "intent_margin": 0.9801,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 183,
+      "conversation_id": "conv_246978",
+      "customer_message": "hi. Im trying to use my amazon firestick&its not working. Says theres network problems. But i tested the connection&its strong",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5608 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.5608,
+        "retrieval_score": 0.8274,
+        "evidence_count": 5,
+        "intent_margin": 0.3516,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 184,
+      "conversation_id": "conv_311522",
+      "customer_message": "I\u2019m getting tired of kindle app not working. How many updates last week? Four? Get it together. Please!",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Low intent confidence (0.5954 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.5954,
+        "retrieval_score": 0.7511,
+        "evidence_count": 5,
+        "intent_margin": 0.2477,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 185,
+      "conversation_id": "conv_324374",
+      "customer_message": "I notice a possible glitch on the sign in page of your iPhone app https://t.co/iZx8z4vSMh",
+      "ground_truth_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6965 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8513,
+        "retrieval_score": 0.6965,
+        "evidence_count": 4,
+        "intent_margin": 0.7719,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 186,
+      "conversation_id": "conv_218201",
+      "customer_message": "Need to print a return label for @115821 but don\u2019t have a printer. Now waiting on delivery of the printer that I\u2019ve ordered from amazon.. \ud83e\udd14",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.5925 < 0.70).",
+      "signals": {
+        "intent_confidence": 0.5925,
+        "retrieval_score": 0.7956,
+        "evidence_count": 5,
+        "intent_margin": 0.4714,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 187,
+      "conversation_id": "conv_224603",
+      "customer_message": "frustrated with the return policy. I cant get back my money and the customer care doesn't receive the call.",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "easy",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": false,
+      "reason": "High intent confidence (0.92), strong historical grounding (sim: 0.76, precedents: 4), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9227,
+        "retrieval_score": 0.7604,
+        "evidence_count": 4,
+        "intent_margin": 0.8855,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 188,
+      "conversation_id": "conv_231726",
+      "customer_message": "Amazon is giving me a lot of stress. It failed to pick up the return item for the past three days. Reqst dt sept 29th. @115821 @AmazonHelp",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.79), strong historical grounding (sim: 0.77, precedents: 4), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7924,
+        "retrieval_score": 0.7668,
+        "evidence_count": 4,
+        "intent_margin": 0.7359,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 189,
+      "conversation_id": "conv_234519",
+      "customer_message": "what is your return policy on Samsung Gear S3?",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6477 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.9975,
+        "retrieval_score": 0.6477,
+        "evidence_count": 0,
+        "intent_margin": 0.9966,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 190,
+      "conversation_id": "conv_249969",
+      "customer_message": "Why My return pickup is still pending when it was scheduled for 3rd Oct? https://t.co/bKJXagb3fi",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.96), strong historical grounding (sim: 0.80, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9646,
+        "retrieval_score": 0.8001,
+        "evidence_count": 5,
+        "intent_margin": 0.9531,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 191,
+      "conversation_id": "conv_684324",
+      "customer_message": "thank you.. I have got return request approved.",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "easy",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.6829 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.9795,
+        "retrieval_score": 0.6829,
+        "evidence_count": 3,
+        "intent_margin": 0.9731,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 192,
+      "conversation_id": "conv_723930",
+      "customer_message": "I bought a mobile 4 days back, now I don't like dat mobile @ look and feel wise..I want to return..Plz assist..",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7368 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8775,
+        "retrieval_score": 0.7368,
+        "evidence_count": 2,
+        "intent_margin": 0.8447,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 193,
+      "conversation_id": "conv_240501",
+      "customer_message": "worst shopping app I bought a 25 let. Water heater. They returned it without my return request and said you have already requested",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.5004 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.7793,
+        "retrieval_score": 0.5004,
+        "evidence_count": 0,
+        "intent_margin": 0.718,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 194,
+      "conversation_id": "conv_181157",
+      "customer_message": "I got my redme 4 today. But I'm not satisfied with the product so I want to return d same. Kindly assist @115850 Order 408-1160678-3266756",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Novel or unsupported situation: historical similarity (0.6542 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.8436,
+        "retrieval_score": 0.6542,
+        "evidence_count": 1,
+        "intent_margin": 0.7799,
+        "risk_flags": [
+          "PII_LEAK_IN_PUBLIC"
+        ]
+      }
+    },
+    {
+      "case_index": 195,
+      "conversation_id": "conv_227036",
+      "customer_message": "return order placed long ago on this order, no one turns up to pick up d return Cud u help pls? https://t.co/bEQK4bUYqp",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.94), strong historical grounding (sim: 0.81, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9393,
+        "retrieval_score": 0.8053,
+        "evidence_count": 5,
+        "intent_margin": 0.9245,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 196,
+      "conversation_id": "conv_234146",
+      "customer_message": "I HAVE AN ORDER I NEED TO SEND BACK",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "medium",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.2797 < 0.70). | Novel or unsupported situation: historical similarity (0.7016 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.2797,
+        "retrieval_score": 0.7016,
+        "evidence_count": 4,
+        "intent_margin": 0.101,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 197,
+      "conversation_id": "conv_222715",
+      "customer_message": "Pickup planned since 28sept and not yet done, inefficient people are sitting at customer care, postponed return pickup and refund",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Novel or unsupported situation: historical similarity (0.7136 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.867,
+        "retrieval_score": 0.7136,
+        "evidence_count": 5,
+        "intent_margin": 0.7802,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 198,
+      "conversation_id": "conv_282173",
+      "customer_message": "hey how can I return my product and in how many days I\u2019ll get my money back?",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "AUTO_HANDLE",
+      "is_correct": true,
+      "reason": "High intent confidence (0.90), strong historical grounding (sim: 0.87, precedents: 2), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.899,
+        "retrieval_score": 0.8668,
+        "evidence_count": 2,
+        "intent_margin": 0.8588,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 199,
+      "conversation_id": "conv_283979",
+      "customer_message": "I buy everything through @115830 Had to return 1 item now i want to return another but my printer is broken.......no one is helping.",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "hard",
+      "ground_truth_decision": "ESCALATE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": true,
+      "reason": "Novel or unsupported situation: historical similarity (0.6829 < 0.75).",
+      "signals": {
+        "intent_confidence": 0.9899,
+        "retrieval_score": 0.6829,
+        "evidence_count": 1,
+        "intent_margin": 0.9808,
+        "risk_flags": []
+      }
+    },
+    {
+      "case_index": 200,
+      "conversation_id": "conv_291773",
+      "customer_message": "Hi, I have ordered fans . Unfortunately the product is not upto the mark. Placed refund and return request. Please help urgently",
+      "ground_truth_intent": "RETURNS_AND_EXCHANGES",
+      "difficulty": "hard",
+      "ground_truth_decision": "AUTO_HANDLE",
+      "predicted_decision": "ESCALATE",
+      "is_correct": false,
+      "reason": "Low intent confidence (0.6312 < 0.70). | Novel or unsupported situation: historical similarity (0.6977 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+      "signals": {
+        "intent_confidence": 0.6312,
+        "retrieval_score": 0.6977,
+        "evidence_count": 0,
+        "intent_margin": 0.44,
+        "risk_flags": []
+      }
+    }
+  ]
+}

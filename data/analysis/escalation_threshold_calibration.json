@@ -1,0 +1,126 @@
+{
+  "milestone": "Milestone 10: Auto-Handle vs Human Escalation",
+  "objective": "Trustworthy Automation Threshold Calibration",
+  "validation_sample_count": 500,
+  "selected_trustworthy_thresholds": {
+    "min_intent_confidence": 0.7,
+    "min_intent_margin": 0.05,
+    "min_retrieval_score": 0.75,
+    "min_evidence_count": 1,
+    "evidence_similarity_threshold": 0.65
+  },
+  "validation_performance": {
+    "accuracy": 0.712,
+    "automation_rate": 0.45,
+    "auto_handle_precision": 0.7467,
+    "auto_handle_recall": 0.6588,
+    "escalation_precision": 0.6836,
+    "escalation_recall": 0.7673,
+    "false_auto_handle_count": 57,
+    "false_auto_handle_rate": 0.2533,
+    "confusion_matrix": {
+      "true_auto_handle": 168,
+      "false_auto_handle": 57,
+      "true_escalate": 188,
+      "false_escalate": 87
+    }
+  },
+  "sample_tradeoff_grid": [
+    {
+      "automation_rate": 0.35,
+      "auto_handle_precision": 0.7314,
+      "escalation_recall": 0.8082,
+      "thresholds": {
+        "min_intent_confidence": 0.7,
+        "min_intent_margin": 0.05,
+        "min_retrieval_score": 0.75,
+        "min_evidence_count": 2,
+        "evidence_similarity_threshold": 0.65
+      }
+    },
+    {
+      "automation_rate": 0.392,
+      "auto_handle_precision": 0.6633,
+      "escalation_recall": 0.7306,
+      "thresholds": {
+        "min_intent_confidence": 0.7,
+        "min_intent_margin": 0.15,
+        "min_retrieval_score": 0.65,
+        "min_evidence_count": 2,
+        "evidence_similarity_threshold": 0.65
+      }
+    },
+    {
+      "automation_rate": 0.44,
+      "auto_handle_precision": 0.6455,
+      "escalation_recall": 0.6816,
+      "thresholds": {
+        "min_intent_confidence": 0.6,
+        "min_intent_margin": 0.1,
+        "min_retrieval_score": 0.6,
+        "min_evidence_count": 2,
+        "evidence_similarity_threshold": 0.65
+      }
+    },
+    {
+      "automation_rate": 0.458,
+      "auto_handle_precision": 0.655,
+      "escalation_recall": 0.6776,
+      "thresholds": {
+        "min_intent_confidence": 0.5,
+        "min_intent_margin": 0.05,
+        "min_retrieval_score": 0.55,
+        "min_evidence_count": 2,
+        "evidence_similarity_threshold": 0.65
+      }
+    },
+    {
+      "automation_rate": 0.464,
+      "auto_handle_precision": 0.6595,
+      "escalation_recall": 0.6776,
+      "thresholds": {
+        "min_intent_confidence": 0.4,
+        "min_intent_margin": 0.05,
+        "min_retrieval_score": 0.65,
+        "min_evidence_count": 2,
+        "evidence_similarity_threshold": 0.65
+      }
+    },
+    {
+      "automation_rate": 0.504,
+      "auto_handle_precision": 0.7381,
+      "escalation_recall": 0.7306,
+      "thresholds": {
+        "min_intent_confidence": 0.6,
+        "min_intent_margin": 0.05,
+        "min_retrieval_score": 0.75,
+        "min_evidence_count": 1,
+        "evidence_similarity_threshold": 0.65
+      }
+    },
+    {
+      "automation_rate": 0.572,
+      "auto_handle_precision": 0.6713,
+      "escalation_recall": 0.6163,
+      "thresholds": {
+        "min_intent_confidence": 0.6,
+        "min_intent_margin": 0.1,
+        "min_retrieval_score": 0.6,
+        "min_evidence_count": 1,
+        "evidence_similarity_threshold": 0.65
+      }
+    },
+    {
+      "automation_rate": 0.606,
+      "auto_handle_precision": 0.6733,
+      "escalation_recall": 0.5959,
+      "thresholds": {
+        "min_intent_confidence": 0.5,
+        "min_intent_margin": 0.05,
+        "min_retrieval_score": 0.6,
+        "min_evidence_count": 1,
+        "evidence_similarity_threshold": 0.65
+      }
+    }
+  ]
+}
