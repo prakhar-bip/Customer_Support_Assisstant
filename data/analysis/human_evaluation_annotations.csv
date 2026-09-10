@@ -1,0 +1,21 @@
+case_num,conversation_id,intent,decision,correctness,grounding,helpfulness,brand,safety,overall,human_summary
+1,conv_231797,ORDER_DELIVERY_AND_TRACKING,ESCALATE,4,4,3,5,5,4.2,"Appropriately escalates a 4-day courier deadlock where phone support already failed, avoiding fabricating package coordinates."
+2,conv_180377,ORDER_DELIVERY_AND_TRACKING,ESCALATE,5,4,3,5,5,4.4,Immediate escalation is the only correct response when customer reports representative verbal abuse.
+3,conv_648407,REFUND_STATUS_AND_DISPUTES,ESCALATE,3,3,2,4,5,3.4,"Escalation is safe, but the customer asked a conceptual question that could have been clarified directly."
+4,conv_348625,REFUND_STATUS_AND_DISPUTES,ESCALATE,2,1,1,4,5,2.6,Customer is asking a straightforward pre-purchase return policy question; escalating is unnecessary deflection.
+5,conv_130747,DAMAGED_DEFECTIVE_OR_WRONG_ITEM,ESCALATE,3,2,2,4,5,3.2,"Escalating data leak allegations is necessary, but fails to advise customer against clicking the suspicious link."
+6,conv_1331823,DAMAGED_DEFECTIVE_OR_WRONG_ITEM,ESCALATE,5,4,4,5,5,4.6,Physical tampering and contaminated delivery is an urgent fulfillment safety issue that must be escalated immediately.
+7,conv_1293697,PRIME_MEMBERSHIP_AND_DIGITAL,ESCALATE,4,3,3,4,5,3.8,Correctly routes complex third-party account linkage error in French to human support.
+8,conv_658849,PRIME_MEMBERSHIP_AND_DIGITAL,ESCALATE,1,1,1,3,5,2.2,"Complete misinterpretation: customer is expressing positive excitement about Prime Video, not reporting an issue."
+9,conv_238886,ORDER_CANCELLATION,ESCALATE,4,4,3,5,5,4.2,High-value business account cancellation with prior phone agent impasse requires senior commercial review.
+10,conv_180735,ORDER_CANCELLATION,ESCALATE,5,4,3,5,5,4.4,Strong profanity and intense dissatisfaction regarding forced cancellation strictly requires human handling.
+11,conv_180983,PAYMENT_BILLING_AND_PROMOS,AUTO_HANDLE,4,4,5,5,4,4.4,Directly answers the promotional query with concrete cashback figures.
+12,conv_183067,PAYMENT_BILLING_AND_PROMOS,ESCALATE,2,2,2,4,4,2.8,Misinterprets a product feature suggestion as an individual support ticket.
+13,conv_420304,CUSTOMER_SERVICE_AND_COURIER_FEEDBACK,ESCALATE,2,2,2,4,5,3.0,"Over-indexed on the word 'fraud' to assume account takeover, whereas customer was expressing generic frustration."
+14,conv_182837,CUSTOMER_SERVICE_AND_COURIER_FEEDBACK,ESCALATE,4,4,3,5,5,4.2,Correctly escalates when multi-channel phone and carrier tracking systems have broken down.
+15,conv_699493,ACCOUNT_ACCESS_AND_SECURITY,ESCALATE,5,5,4,5,5,4.8,Flawless response to active account takeover allegation; prioritizes confidential security routing.
+16,conv_1208789,ACCOUNT_ACCESS_AND_SECURITY,ESCALATE,4,4,4,5,5,4.4,Appropriately intercepts missed customer interaction for manual tracking.
+17,conv_210319,TECHNICAL_AND_PLATFORM_ISSUES,ESCALATE,4,4,3,5,5,4.2,Correctly escalates an unresolved week-long system error with prior misinformation.
+18,conv_179301,TECHNICAL_AND_PLATFORM_ISSUES,ESCALATE,4,3,4,5,5,4.2,Correctly logs reproducible website navigation bug for technical review.
+19,conv_218201,RETURNS_AND_EXCHANGES,ESCALATE,3,2,3,5,5,3.6,"Safe to escalate, but Amazon offers carrier pickup with courier-provided labels; bot could have shared this alternative."
+20,conv_224603,RETURNS_AND_EXCHANGES,AUTO_HANDLE,5,5,5,5,5,5.0,Directly addresses return difficulty and phone support barrier with verified secure link.
