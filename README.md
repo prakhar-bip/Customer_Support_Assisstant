@@ -2,53 +2,72 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Status](https://img.shields.io/badge/Status-Milestones%201--7%20Complete-success.svg)]()
+[![Status](https://img.shields.io/badge/Status-Milestones%201--11%20Complete-success.svg)]()
+[![Tests](https://img.shields.io/badge/Tests-19%2F19%20Passing%20(100%25)-brightgreen.svg)]()
 [![Evaluated on](https://img.shields.io/badge/Golden%20Set-200%20Hand--Reviewed%20Cases-purple.svg)]()
 
-An end-to-end intelligent customer support classification and routing system built on Twitter Customer Support (TWCS) data, specialized for `@AmazonHelp`.
+An end-to-end, enterprise-grade hybrid customer support pipeline built on Twitter Customer Support (TWCS) data, specialized for `@AmazonHelp`.
 
 ---
 
-## 📌 Project Overview
+## 📌 Project Architecture
 
-This repository develops an enterprise-grade customer support assistant through systematic engineering milestones:
-1. **Exploratory Data Analysis:** Profiled 2.8M customer support tweets and isolated 127K `@AmazonHelp` records.
-2. **Conversation Thread Reconstruction:** Linked customer root tweets and agent replies into 79,665 clean multi-turn dialogue trees.
-3. **Data-Driven Intent Discovery:** Empirically clustered customer problem spaces to formulate a robust 10-intent taxonomy ([`INTENT_GUIDE.md`](INTENT_GUIDE.md)).
-4. **Golden Evaluation Benchmark:** Hand-reviewed and curated a quarantined 200-sample evaluation dataset stratified across intents, difficulty tiers, turn lengths, and escalation criteria ([`LABELING_GUIDE.md`](LABELING_GUIDE.md)).
-5. **Baseline Benchmarks:**
-   - **Milestone 6 (Trivial Majority Baseline):** Lower bound established at 14.00% Accuracy and 2.46% Macro F1.
-   - **Milestone 7 (Classical ML Baseline):** TF-IDF + Logistic Regression pipeline achieving **90.50% Accuracy** and **91.05% Macro F1** on the quarantined golden evaluation set.
+The pipeline seamlessly unifies classical machine learning, dense semantic vector search, deterministic safety guardrails, and structured LLM response generation into a clean, reproducible workflow:
+
+```
+                      Incoming Customer Message
+                                 │
+                                 ▼
+                     [Stage 1: Preprocessing]
+                  (Unicode normalization, whitespace
+                   collapse, control char cleanup)
+                                 │
+                                 ▼
+                 [Stage 2: Intent Classification]
+              (TF-IDF + Multinomial Logistic Regression:
+               predicts intent, confidence, and margin)
+                                 │
+                                 ▼
+                [Stage 3: Historical Precedent Retrieval]
+             (Dense FAISS IndexFlatIP + all-MiniLM-L6-v2:
+              retrieves top-k verified resolution precedents)
+                                 │
+                                 ▼
+                   [Stage 4: Escalation Routing Policy]
+              (Multi-signal evaluation: confidence, margin,
+               similarity, evidence count, and 7 safety rules)
+                                 │
+                 ┌───────────────┴───────────────┐
+                 ▼                               ▼
+       Decision: `AUTO_HANDLE`         Decision: `ESCALATE`
+                 │                               │
+                 ▼                               ▼
+     [Stage 5A: Grounded LLM Gen]     [Stage 5B: Empathetic Handoff]
+    (Vertex AI gemini-2.5-flash:     (Immediate confidential transfer
+     structured grounded reply)       message protecting customer PII)
+                 │                               │
+                 └───────────────┬───────────────┘
+                                 │
+                                 ▼
+                    Final Standardized Output
+             {"intent", "intent_confidence", "retrieved_cases",
+              "reply", "decision", "reason"}
+```
 
 ---
 
-## 📊 Benchmark Results
+## 📊 Benchmark Highlights
 
 Evaluated blindly on the quarantined **Golden Evaluation Set ($N = 200$)** with zero data leakage:
 
-| Metric | Majority Baseline (M6) | Classical ML Baseline (M7) | Absolute Gain |
-| :--- | :---: | :---: | :---: |
-| **Accuracy** | 14.00% | **90.50%** | **+76.50%** |
-| **Macro Precision** | 1.40% | **90.87%** | **+89.47%** |
-| **Macro Recall** | 10.00% | **91.80%** | **+81.80%** |
-| **Macro F1-Score** | 2.46% | **91.05%** | **+88.59%** |
-| **Weighted F1-Score** | 3.44% | **90.43%** | **+86.99%** |
-
-### Per-Intent Performance Breakdown (Classical ML)
-
-| Intent Code | Support | Predicted | Precision | Recall | F1-Score |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| `ORDER_DELIVERY_AND_TRACKING` | 28 | 25 | 96.00% | 85.71% | **90.57%** |
-| `REFUND_STATUS_AND_DISPUTES` | 26 | 25 | 80.00% | 76.92% | **78.43%** |
-| `DAMAGED_DEFECTIVE_OR_WRONG_ITEM` | 25 | 22 | 95.45% | 84.00% | **89.36%** |
-| `PRIME_MEMBERSHIP_AND_DIGITAL` | 22 | 21 | 95.24% | 90.91% | **93.02%** |
-| `ORDER_CANCELLATION` | 20 | 22 | 90.91% | 100.00% | **95.24%** |
-| `PAYMENT_BILLING_AND_PROMOS` | 18 | 22 | 81.82% | 100.00% | **90.00%** |
-| `CUSTOMER_SERVICE_AND_COURIER_FEEDBACK` | 16 | 15 | 100.00% | 93.75% | **96.77%** |
-| `ACCOUNT_ACCESS_AND_SECURITY` | 15 | 14 | 92.86% | 86.67% | **89.66%** |
-| `TECHNICAL_AND_PLATFORM_ISSUES` | 15 | 17 | 88.24% | 100.00% | **93.75%** |
-| `RETURNS_AND_EXCHANGES` | 15 | 17 | 88.24% | 100.00% | **93.75%** |
-| **Macro Average** | **200** | **200** | **90.87%** | **91.80%** | **91.05%** |
+| Pipeline Component | Metric | Benchmark Score | Target Standard |
+| :--- | :--- | :---: | :---: |
+| **Milestone 6: Trivial Baseline** | Accuracy / Macro F1 | 14.00% / 2.46% | Lower bound |
+| **Milestone 7: Classical ML Baseline** | Accuracy / Macro F1 | **90.50% / 91.05%** | $\ge 75.0\%$ |
+| **Milestone 8: Historical FAISS Retrieval** | Top-3 Recall / MRR | **81.00% / 0.7289** | $\ge 70.0\%$ |
+| **Milestone 9: Grounded Response Generation**| Evidence Citation / Conciseness | **100.0% / 100.0%** | $\ge 90.0\%$ |
+| **Milestone 10: Escalation Policy** | Auto-Handle Precision / Esc Recall | **83.33% / 89.55%** | $\ge 80.0\%$ |
+| **Milestone 11: End-to-End Pipeline** | Stage Verification / Unit Tests | **100.0% / 100.0%** | $100\%$ |
 
 ---
 
@@ -58,37 +77,61 @@ Evaluated blindly on the quarantined **Golden Evaluation Set ($N = 200$)** with 
 .
 ├── INTENT_GUIDE.md               # 10-intent taxonomy specification & boundary rules
 ├── LABELING_GUIDE.md             # Golden set annotation specification & triage rubric
-├── README.md                     # Project documentation & benchmark overview
+├── README.md                     # Project documentation & operational guide
 ├── requirements.txt              # Environment dependencies
 ├── data/
 │   ├── analysis/                 # Machine-readable evaluation metrics & JSON reports
 │   │   ├── baseline_logistic_regression_metrics.json
 │   │   ├── baseline_majority_metrics.json
-│   │   └── intent_metrics.json
+│   │   ├── escalation_evaluation_metrics.json
+│   │   ├── escalation_threshold_calibration.json
+│   │   ├── escalation_tradeoff_comparison.json
+│   │   ├── generation_evaluation_results.json
+│   │   ├── intent_metrics.json
+│   │   ├── pipeline_verification_results.json
+│   │   └── retrieval_evaluation_metrics.json
 │   └── processed/
-│       ├── golden_evaluation_set.jsonl  # 200 hand-reviewed evaluation records
-│       └── golden_evaluation_set.csv    # Spreadsheet version of golden set
+│       ├── golden_evaluation_set.jsonl  # 200 hand-reviewed golden evaluation records
+│       ├── golden_evaluation_set.csv    # Spreadsheet version of golden set
+│       └── historical_knowledge_base.jsonl # 12,000 historical resolution records
 ├── models/
+│   ├── historical_knowledge_base.faiss  # Exact cosine similarity FAISS vector index (18 MB)
 │   └── intent_tfidf_logistic_regression.joblib  # Trained production model (1.2 MB)
-├── notebooks/
-│   └── 01_dataset_exploration.ipynb
-├── reports/                      # Detailed milestone engineering reports
+├── reports/                      # Formal engineering reports for every milestone
 │   ├── dataset_analysis.md
 │   ├── milestone_3_conversation_reconstruction.md
 │   ├── milestone_4_intent_discovery.md
 │   ├── milestone_5_golden_evaluation_set.md
 │   ├── milestone_6_trivial_baseline.md
-│   └── milestone_7_classical_ml_baseline.md
-└── src/                          # Production Python modules
-    ├── baseline_majority.py          # Milestone 6 Majority Baseline evaluator
-    ├── create_golden_set.py          # Stratified sampling and dataset assembly
-    ├── discover_intents.py           # Corpus frequency analysis and taxonomy matcher
-    ├── explore_dataset.py            # Initial TWCS dataset exploration
-    ├── extract_brand_subset.py       # Brand isolation script
-    ├── predict_intent.py             # Production CLI and Python inference API
-    ├── reconstruct_conversations.py  # Graph-based conversation thread rebuilder
-    ├── train_classical_baseline.py   # TF-IDF + Logistic Regression training pipeline
-    └── validate_golden_set.py        # 10-gate automated golden set validation suite
+│   ├── milestone_7_classical_ml_baseline.md
+│   ├── milestone_8_historical_resolution_retrieval.md
+│   ├── milestone_9_grounded_response_generation.md
+│   ├── milestone_10_auto_handle_vs_escalation.md
+│   └── milestone_11_final_hybrid_support_agent.md
+├── src/                          # Production Python modules
+│   ├── baseline_majority.py          # Milestone 6 Majority Baseline evaluator
+│   ├── build_knowledge_base.py       # Milestone 8 12k-dialogue KB indexer
+│   ├── create_golden_set.py          # Milestone 5 Stratified sampling and dataset assembly
+│   ├── discover_intents.py           # Milestone 4 Corpus analysis and intent clustering
+│   ├── escalation_policy.py          # Milestone 10 Multi-signal escalation routing policy
+│   ├── evaluate_escalation.py        # Milestone 10 Golden set escalation benchmark
+│   ├── evaluate_generation.py        # Milestone 9 20-sample grounded response evaluator
+│   ├── evaluate_pipeline.py          # Milestone 11 End-to-end pipeline verification suite
+│   ├── evaluate_retrieval.py         # Milestone 8 Golden set retrieval evaluator
+│   ├── generate_response.py          # Milestone 9 Vertex AI structured response generator
+│   ├── pipeline.py                   # Milestone 11 Unified Hybrid Support Agent orchestrator
+│   ├── predict_intent.py             # Milestone 7 Classical ML inference engine
+│   ├── preprocessing.py              # Milestone 11 Text normalization & cleaning module
+│   ├── retrieve_resolutions.py       # Milestone 8 FAISS dense semantic retrieval engine
+│   ├── train_classical_baseline.py   # Milestone 7 TF-IDF + Logistic Regression training
+│   ├── tune_escalation_thresholds.py # Milestone 10 Validation threshold grid tuner
+│   └── validate_golden_set.py        # Milestone 5 10-gate quality test suite
+└── tests/                        # Automated unit tests (pytest)
+    ├── test_classification.py
+    ├── test_escalation.py
+    ├── test_pipeline.py
+    ├── test_preprocessing.py
+    └── test_retrieval.py
 ```
 
 ---
@@ -109,49 +152,54 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Run Instant Inference
-Use the pre-trained production model (`models/intent_tfidf_logistic_regression.joblib`) via CLI:
+### 2. Run the End-to-End Pipeline (CLI)
+Execute the unified hybrid support agent on any customer inquiry:
 ```bash
-python src/predict_intent.py --text "My package is 3 days late and hasn't arrived, where is my order?" --json
+# Standard Output
+python src/pipeline.py --message "Where is my parcel? The tracking status says out for delivery."
+
+# Machine-Readable Structured JSON Output
+python src/pipeline.py --message "Where is my parcel? The tracking status says out for delivery." --json
 ```
-Output:
+
+Sample JSON Output:
 ```json
 {
-  "text": "My package is 3 days late and hasn't arrived, where is my order?",
-  "predicted_intent": "ORDER_DELIVERY_AND_TRACKING",
-  "confidence": 0.919,
-  "all_probabilities": {
-    "ORDER_DELIVERY_AND_TRACKING": 0.919,
-    "REFUND_STATUS_AND_DISPUTES": 0.0245,
-    "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": 0.0152, ...
-  }
+  "intent": "ORDER_DELIVERY_AND_TRACKING",
+  "intent_confidence": 0.9859,
+  "retrieved_cases": [
+    {
+      "conversation_id": "conv_1461510",
+      "similarity_score": 0.8288,
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "customer_problem": "do you know where my parcel is?? Says Dispatched Wed 1st but its not even out for delivery and should be coming today!",
+      "brand_response": "@326241 Hey, Emily! I totally understand your concern. Parcels can be delivered until 21:00- please keep us posted! ^BL"
+    }
+  ],
+  "reply": "I understand your concern about your parcel! Most couriers deliver until 9 PM. Please keep an eye on the tracking, and let us know if it doesn't arrive by then.",
+  "decision": "AUTO_HANDLE",
+  "reason": "High intent confidence (0.99), strong historical grounding (sim: 0.83, precedents: 3), and zero safety risk flags detected."
 }
 ```
 
-Or invoke in Python:
+### 3. Python API Integration
 ```python
-from src.predict_intent import predict_intent
+from src.pipeline import run_support_agent
 
-result = predict_intent("I received a broken laptop screen!")
-print(result["predicted_intent"])  # DAMAGED_DEFECTIVE_OR_WRONG_ITEM
-print(result["confidence"])        # 0.919
+result = run_support_agent("My seller account was hacked and money stolen!")
+print(result["decision"])  # ESCALATE
+print(result["reason"])    # Safety risk trigger detected: [ACCOUNT_COMPROMISE]...
+print(result["reply"])     # Confidential handoff message
 ```
 
-### 3. Validate the Golden Evaluation Set
-Run the 10-gate quality test suite on the quarantined 200-sample benchmark:
+### 4. Run Automated Unit Tests
 ```bash
-python src/validate_golden_set.py
+pytest tests/ -v
 ```
 
-### 4. Train & Evaluate Baselines
-Run the zero-rule majority-class baseline:
+### 5. Run Full Pipeline Verification Suite
 ```bash
-python src/baseline_majority.py
-```
-
-Train and evaluate the classical ML pipeline (80/20 train/val split on 14.5k records, tested on golden set):
-```bash
-python src/train_classical_baseline.py
+python src/evaluate_pipeline.py
 ```
 
 ---
@@ -166,8 +214,10 @@ python src/train_classical_baseline.py
 | **M5** | Golden Evaluation Set | 200 hand-reviewed ground truth cases | ✅ Complete | [`LABELING_GUIDE.md`](LABELING_GUIDE.md), [`data/processed/golden_evaluation_set.jsonl`](data/processed/golden_evaluation_set.jsonl) |
 | **M6** | Trivial Baseline | Majority-class baseline (Macro F1: 2.46%) | ✅ Complete | [`src/baseline_majority.py`](src/baseline_majority.py), [`reports/milestone_6_trivial_baseline.md`](reports/milestone_6_trivial_baseline.md) |
 | **M7** | Classical ML Baseline | TF-IDF + Logistic Regression (Macro F1: 91.05%) | ✅ Complete | [`src/predict_intent.py`](src/predict_intent.py), [`reports/milestone_7_classical_ml_baseline.md`](reports/milestone_7_classical_ml_baseline.md) |
-| **M8** | Dense Semantic / Neural Model | Embeddings & Transformer classification | 🔄 Planned | In progress |
-| **M9** | Automated Resolution & Routing | Action routing & safety guardrails | 🔄 Planned | Upcoming |
+| **M8** | Historical Retrieval | Dense FAISS index over 12k resolved cases | ✅ Complete | [`src/retrieve_resolutions.py`](src/retrieve_resolutions.py), [`reports/milestone_8_historical_resolution_retrieval.md`](reports/milestone_8_historical_resolution_retrieval.md) |
+| **M9** | Grounded Generation | Vertex AI structured grounded generation | ✅ Complete | [`src/generate_response.py`](src/generate_response.py), [`reports/milestone_9_grounded_response_generation.md`](reports/milestone_9_grounded_response_generation.md) |
+| **M10**| Escalation Routing | Multi-signal trustworthy auto-handle policy | ✅ Complete | [`src/escalation_policy.py`](src/escalation_policy.py), [`reports/milestone_10_auto_handle_vs_escalation.md`](reports/milestone_10_auto_handle_vs_escalation.md) |
+| **M11**| Final Hybrid Agent | Unified pipeline, unit tests & verification | ✅ Complete | [`src/pipeline.py`](src/pipeline.py), [`reports/milestone_11_final_hybrid_support_agent.md`](reports/milestone_11_final_hybrid_support_agent.md) |
 
 ---
 

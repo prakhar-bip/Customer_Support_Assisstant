@@ -1,0 +1,891 @@
+{
+  "milestone": "Milestone 11: Final Hybrid Support Agent",
+  "verification_timestamp": "2026-09-10 16:22:32",
+  "total_test_queries": 20,
+  "total_duration_seconds": 58.45,
+  "average_latency_seconds": 2.922,
+  "stage_verification_rates": {
+    "preprocessing": 1.0,
+    "classification": 1.0,
+    "retrieval": 1.0,
+    "escalation_decision": 1.0,
+    "response_generation": 1.0,
+    "schema_conformance": 1.0
+  },
+  "decision_distribution": {
+    "auto_handle_count": 7,
+    "escalate_count": 13
+  },
+  "detailed_results": [
+    {
+      "test_case_id": "sample_01",
+      "category": "ORDER_DELIVERY_AND_TRACKING",
+      "input_message": "Where is my parcel? The tracking status says out for delivery for 6 hours.",
+      "latency_seconds": 15.34,
+      "pipeline_output": {
+        "intent": "ORDER_DELIVERY_AND_TRACKING",
+        "intent_confidence": 0.9859,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_1461510",
+            "similarity_score": 0.8288,
+            "intent": "ORDER_DELIVERY_AND_TRACKING",
+            "customer_problem": "do you know where my parcel is?? Says Dispatched Wed 1st but its not even out for delivery and should be coming today!",
+            "brand_response": "@326241 Hey, Emily! I totally understand your concern. Parcels can be delivered until 21:00- please keep us posted! ^BL"
+          },
+          {
+            "conversation_id": "conv_2113679",
+            "similarity_score": 0.8136,
+            "intent": "ORDER_DELIVERY_AND_TRACKING",
+            "customer_problem": "been waiting all day for my parcel. But the tracking just says out for delivery, due today. Any help",
+            "brand_response": "@623212 Sorry for the wait, Natalie! Most couriers will make deliveries until 21:00! Have we missed that time window? ^JZ"
+          },
+          {
+            "conversation_id": "conv_2762082",
+            "similarity_score": 0.8097,
+            "intent": "ORDER_DELIVERY_AND_TRACKING",
+            "customer_problem": "my parcel was meant to be delivered yesterday but hasn\u2019t arrived, can you tell me where it is please?",
+            "brand_response": "@367348 I'm sorry for the wait! What's the most recent tracking update on the order: https://t.co/aaDyEz1VgE? Is there any new information available? ^EP"
+          }
+        ],
+        "reply": "I understand your concern about your parcel! Most couriers deliver until 9 PM. Please keep an eye on the tracking, and let us know if it doesn't arrive by then.",
+        "decision": "AUTO_HANDLE",
+        "reason": "High intent confidence (0.99), strong historical grounding (sim: 0.83, precedents: 3), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.9859,
+          "retrieval_score": 0.8288,
+          "evidence_count": 3,
+          "intent_margin": 0.9832,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_02",
+      "category": "ORDER_DELIVERY_AND_TRACKING",
+      "input_message": "Order says delivered but I never received it! Checked everywhere, nowhere to be found.",
+      "latency_seconds": 0.042,
+      "pipeline_output": {
+        "intent": "ORDER_DELIVERY_AND_TRACKING",
+        "intent_confidence": 0.9114,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_2198999",
+            "similarity_score": 0.792,
+            "intent": "ORDER_DELIVERY_AND_TRACKING",
+            "customer_problem": "A package that i ordered a couple days ago says it was delivered this morning but i never received it.",
+            "brand_response": "@643184 I'm sorry about that! You can check the following link for some tips: https://t.co/QM1s0hi6o9 ^TR"
+          },
+          {
+            "conversation_id": "conv_1016711",
+            "similarity_score": 0.778,
+            "intent": "ORDER_DELIVERY_AND_TRACKING",
+            "customer_problem": "my order says it was delivered but it\u2019s nowhere to be found",
+            "brand_response": "@360555 I'm sorry to hear this! Have you tried these steps on locating a missing package: https://t.co/98Tpfm6ZUO? ^GL"
+          },
+          {
+            "conversation_id": "conv_2369697",
+            "similarity_score": 0.7682,
+            "intent": "ORDER_DELIVERY_AND_TRACKING",
+            "customer_problem": "My amazon order says it was delivered.... yet it\u2019s nowhere to be found\ud83e\udd2c",
+            "brand_response": "@683860 I'm sorry for the conflicting information. Have you tried these helpful tips: https://t.co/0w0TChRLT3 ^RR"
+          }
+        ],
+        "reply": "I'm sorry your tracking shows delivered but you haven't received your package. Because this requires a carrier trace, I am transferring your case to a human support agent to look into this for you right away.",
+        "decision": "ESCALATE",
+        "reason": "Safety risk trigger detected: [FALSE_DELIVERY_DISPUTE] requiring immediate human intervention.",
+        "signals": {
+          "intent_confidence": 0.9114,
+          "retrieval_score": 0.792,
+          "evidence_count": 3,
+          "intent_margin": 0.8909,
+          "risk_flags": [
+            "FALSE_DELIVERY_DISPUTE"
+          ]
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_03",
+      "category": "REFUND_STATUS_AND_DISPUTES",
+      "input_message": "How long does it take for a refund to show on my credit card after cancellation?",
+      "latency_seconds": 0.041,
+      "pipeline_output": {
+        "intent": "REFUND_STATUS_AND_DISPUTES",
+        "intent_confidence": 0.5151,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_452012",
+            "similarity_score": 0.8184,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "how long does it take to get a refund after a cancelled order?",
+            "brand_response": "@222206 Hi Hannah! If your order was canceled before dispatch, you may be seeing an authorisation. We have more information listed here: https://t.co/UdgqdTOraO ^WT"
+          },
+          {
+            "conversation_id": "conv_2283942",
+            "similarity_score": 0.7767,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "I cancelled an order, and it successfully cancelled. How long will it take to get refunded?",
+            "brand_response": "@663728 Hello, if the order was canceled successfully we would expect the authorization charge to be reversed within 3-5 business days. ^CR"
+          },
+          {
+            "conversation_id": "conv_1335100",
+            "similarity_score": 0.7624,
+            "intent": "REFUND_STATUS_AND_DISPUTES",
+            "customer_problem": "what time will take to refund money if cancel an item",
+            "brand_response": "@431443 Once an order is canceled it usually takes 3-5 business days for the refund to process. ^SG"
+          }
+        ],
+        "reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "decision": "ESCALATE",
+        "reason": "Low intent confidence (0.5151 < 0.70).",
+        "signals": {
+          "intent_confidence": 0.5151,
+          "retrieval_score": 0.8184,
+          "evidence_count": 1,
+          "intent_margin": 0.2161,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_04",
+      "category": "REFUND_STATUS_AND_DISPUTES",
+      "input_message": "It has been over 3 weeks and multiple chats, still no refund for order 402-1234567-8901234!",
+      "latency_seconds": 0.042,
+      "pipeline_output": {
+        "intent": "REFUND_STATUS_AND_DISPUTES",
+        "intent_confidence": 0.9196,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_554655",
+            "similarity_score": 0.7697,
+            "intent": "REFUND_STATUS_AND_DISPUTES",
+            "customer_problem": "email reply from Amazon says I get a refund, I go on the chat to get the refund and get denied. Great service Amazon!",
+            "brand_response": "@249448 I'm sorry for the trouble. Without posting personal account information, can you tell us what the refund was regarding? When you spoke with us, did we mention why we weren't able to issue a refund? ^KP"
+          },
+          {
+            "conversation_id": "conv_1167715",
+            "similarity_score": 0.7297,
+            "intent": "REFUND_STATUS_AND_DISPUTES",
+            "customer_problem": "was talking to someone yesterday on your chat to us, told I would get a refund, had no confirmation for this....",
+            "brand_response": "@198930 Hello, Tasha! You can see how to check your refund status here: https://t.co/INLNNEv8dX ^EA"
+          },
+          {
+            "conversation_id": "conv_721745",
+            "similarity_score": 0.7297,
+            "intent": "REFUND_STATUS_AND_DISPUTES",
+            "customer_problem": "three chat sessions and a phone call and my order and refund are still messed up. help plz",
+            "brand_response": "@292778 That's not the experience we'd like you to have. Without posting personal info, can you please tell us what's going on? ^JM"
+          }
+        ],
+        "reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "decision": "ESCALATE",
+        "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.",
+        "signals": {
+          "intent_confidence": 0.9196,
+          "retrieval_score": 0.7697,
+          "evidence_count": 3,
+          "intent_margin": 0.8996,
+          "risk_flags": [
+            "PII_LEAK_IN_PUBLIC"
+          ]
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_05",
+      "category": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "input_message": "Received a broken ceramic mug in my delivery today. How can I get a replacement?",
+      "latency_seconds": 0.041,
+      "pipeline_output": {
+        "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+        "intent_confidence": 0.8764,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_1058034",
+            "similarity_score": 0.7097,
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "when you get your order and 2 of the mugs are damaged... please help. I have emailed customer service https://t.co/KcIDHhFsql",
+            "brand_response": "@369807 I'm sorry your mugs were damaged in transit. To return, you can click the link provided here: https://t.co/b5S92KWYo4 ^EM"
+          },
+          {
+            "conversation_id": "conv_231766",
+            "similarity_score": 0.6979,
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "I ordered a @12300 hot chocolate mug set and its arrived with the spoon inside broken, can I have a replacement/refund?\u2639\ufe0f",
+            "brand_response": "@171202 Hi, I am sorry to hear this. You can certainly check the options for a replacement here:https://t.co/NNpYljXLtk ^CR"
+          },
+          {
+            "conversation_id": "conv_924424",
+            "similarity_score": 0.5907,
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "hi, I've just received a package but the item inside was damaged. How do I get it replaced?",
+            "brand_response": "@339381 Oh goodness! Sorry for the damage, Matt. Is this item sold by Amazon or a seller: https://t.co/aaDyEz1VgE? ^AB"
+          }
+        ],
+        "reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "decision": "ESCALATE",
+        "reason": "Novel or unsupported situation: historical similarity (0.7097 < 0.75).",
+        "signals": {
+          "intent_confidence": 0.8764,
+          "retrieval_score": 0.7097,
+          "evidence_count": 2,
+          "intent_margin": 0.7895,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_06",
+      "category": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "input_message": "The package arrived with seal tampered and empty box! The phone inside was stolen.",
+      "latency_seconds": 0.036,
+      "pipeline_output": {
+        "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+        "intent_confidence": 0.6947,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_843174",
+            "similarity_score": 0.6201,
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": ". @AmazonHelp what the hell, I was sent a stolen phone, and now I've been sent \"a replacement\" but it's just an empty box! https://t.co/ckHkAnqqE4",
+            "brand_response": "@320514 Hey, please reach out so we can investigate further: https://t.co/ukWT9X5eNx Keep us posted. ^TP"
+          },
+          {
+            "conversation_id": "conv_384828",
+            "similarity_score": 0.5944,
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "Ordered an iPhone7 from GreenMobiles and got an opened box/seal broken iPhone box !! And the phone was missing.. Filed an issue https://t.co/huf8vSoPTJ",
+            "brand_response": "@207110 That's unusual & we are sorry for the inconvenience with the order delivered. 1/2 ^MJ"
+          },
+          {
+            "conversation_id": "conv_1082283",
+            "similarity_score": 0.5881,
+            "intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+            "customer_problem": "when the box i received was sealed and gift wrapped?? This is the worst kind of customer service experience ever! I demand my",
+            "brand_response": "@375298 We've responded to you here: https://t.co/5zTxjeavqR, request you to check. ^MA"
+          }
+        ],
+        "reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "decision": "ESCALATE",
+        "reason": "Safety risk trigger detected: [HIGH_SEVERITY_PRODUCT_ISSUE] requiring immediate human intervention. | Low intent confidence (0.6947 < 0.70). | Novel or unsupported situation: historical similarity (0.6201 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+        "signals": {
+          "intent_confidence": 0.6947,
+          "retrieval_score": 0.6201,
+          "evidence_count": 0,
+          "intent_margin": 0.5858,
+          "risk_flags": [
+            "HIGH_SEVERITY_PRODUCT_ISSUE"
+          ]
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_07",
+      "category": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "input_message": "How do I cancel my Amazon Prime membership auto-renewal before next month?",
+      "latency_seconds": 0.029,
+      "pipeline_output": {
+        "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+        "intent_confidence": 0.92,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_1427148",
+            "similarity_score": 0.8254,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "I want to cancel my amazon prime, how do I go about that?",
+            "brand_response": "@451514 Hi! We're sorry to see you go! You can cancel your Prime membership here: https://t.co/P2wcHxwQNC (left side of screen). ^SE"
+          },
+          {
+            "conversation_id": "conv_319479",
+            "similarity_score": 0.8036,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "How do I request a refund for being charged for amazon prime when i cancelled the membership prior to the renewal date?",
+            "brand_response": "@192174 Hi Danni- You should be able to cancel via: https://t.co/IVSS4tFXDp If you haven't used the subscription a refund is automatic.^NV"
+          },
+          {
+            "conversation_id": "conv_2238664",
+            "similarity_score": 0.7857,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "I've just been trying to pay for my Amazon order & due to misleading wording on the site, I've now somehow ended up with an unwanted Prime membership? I've 'Cancelled' it on settings & it says it will end Dec 29th? Just to clarify, I won't be charged. I do not want it.",
+            "brand_response": "@652751 Sorry for the trouble. Yes, if it says you have the one-month free trial of Prime, then it will not renew into the full membership. You can still use the benefits till the trial expires (and not be charged). ^MG"
+          }
+        ],
+        "reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "decision": "ESCALATE",
+        "reason": "Insufficient verified historical precedents matching intent (0 < 1).",
+        "signals": {
+          "intent_confidence": 0.92,
+          "retrieval_score": 0.8254,
+          "evidence_count": 0,
+          "intent_margin": 0.8565,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_08",
+      "category": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "input_message": "Subtitles are out of sync on Prime Video app when watching on Samsung TV.",
+      "latency_seconds": 5.238,
+      "pipeline_output": {
+        "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+        "intent_confidence": 0.9151,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_1002913",
+            "similarity_score": 0.8743,
+            "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+            "customer_problem": "I have issues with subtitles out of sync on Prime Video, on browser and Android app, with almost all the videos. How to solve?",
+            "brand_response": "@357395 Please contact my colleagues in the costumer service: https://t.co/aAfOxTGpe1 They will be pleased to assist you. ^BL"
+          },
+          {
+            "conversation_id": "conv_1080329",
+            "similarity_score": 0.7595,
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "Can't choose subtitles on downloaded videos!! Had to reinstall app. They work fine while streaming!! It sucks! #AmazonPrime https://t.co/dLURWlf8eU",
+            "brand_response": "@374857 That's odd, could you please let us know the specific title you are facing the problem with? ^SS"
+          },
+          {
+            "conversation_id": "conv_536626",
+            "similarity_score": 0.6807,
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "subtitles aren't working on Lethal Weapon, both on mobile and laptop. Any way to fix that? :)",
+            "brand_response": "@244344 I understand your concern regarding the subtitles. Our prime video support team would be glad to assist you with this. Please reach out to them here: https://t.co/rS49hgaADF. ^BV"
+          }
+        ],
+        "reply": "Sorry to hear you're having trouble with subtitles being out of sync on Prime Video on your Samsung TV. Our Prime Video support team can help troubleshoot this. Please reach out to them here: https://t.co/aAfOxTGpe1",
+        "decision": "AUTO_HANDLE",
+        "reason": "High intent confidence (0.92), strong historical grounding (sim: 0.87, precedents: 1), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.9151,
+          "retrieval_score": 0.8743,
+          "evidence_count": 1,
+          "intent_margin": 0.8771,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_09",
+      "category": "ORDER_CANCELLATION",
+      "input_message": "Ordered the wrong size by mistake 5 minutes ago. How do I cancel the order?",
+      "latency_seconds": 7.003,
+      "pipeline_output": {
+        "intent": "ORDER_CANCELLATION",
+        "intent_confidence": 0.802,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_1860095",
+            "similarity_score": 0.7577,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "Help me cancel an order.",
+            "brand_response": "@556077 Please contact our support team here: https://t.co/vlvfJr4nN9 & we will assist you. ^AH"
+          },
+          {
+            "conversation_id": "conv_2841703",
+            "similarity_score": 0.7488,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "I need help canceling a order",
+            "brand_response": "@790705 You can make changes to your order here: https://t.co/Y5jpI9gRhE If you still need assistance let us know, we are here to help! ^DJ"
+          },
+          {
+            "conversation_id": "conv_224199",
+            "similarity_score": 0.748,
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "how do I return something? Ordered wrong size \ud83d\ude05",
+            "brand_response": "@169571 We're here to help! You can find info on returns here: https://t.co/pxWGjp0Dec. Let us know if you have any more questions. ^CL"
+          }
+        ],
+        "reply": "We understand you'd like to cancel your recent order. You can often manage or cancel orders directly from your Amazon account here: https://t.co/Y5jpI9gRhE. If you need further assistance, please let us know!",
+        "decision": "AUTO_HANDLE",
+        "reason": "High intent confidence (0.80), strong historical grounding (sim: 0.76, precedents: 2), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.802,
+          "retrieval_score": 0.7577,
+          "evidence_count": 2,
+          "intent_margin": 0.6617,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_10",
+      "category": "ORDER_CANCELLATION",
+      "input_message": "Tried to cancel my order but the button is greyed out saying dispatching soon.",
+      "latency_seconds": 19.996,
+      "pipeline_output": {
+        "intent": "ORDER_CANCELLATION",
+        "intent_confidence": 0.9596,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_346221",
+            "similarity_score": 0.7978,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "hi, like to cancel dispatching order. Could you help?",
+            "brand_response": "@197718 Kindly connect with our team here: https://t.co/R3EfhzgU8B. We'll help you cancel the order. ^PS"
+          },
+          {
+            "conversation_id": "conv_1379545",
+            "similarity_score": 0.781,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "how do I cancel dispatched order?",
+            "brand_response": "@441155 time of delivery. Alternatively, you can contact our support team here: https://t.co/rS49hgaADF for assistance. (2/2) ^SY"
+          },
+          {
+            "conversation_id": "conv_1124638",
+            "similarity_score": 0.7609,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "want cancel the order, but cancel button not found... https://t.co/3HQQfZKgE7",
+            "brand_response": "@385182 I get your concern. Please connect with us here: https://t.co/00q4Sqj9zL we'll check and assist you accordingly. ^KA"
+          }
+        ],
+        "reply": "We understand you're having trouble canceling your order because the button is greyed out. Once an order is dispatching soon, online cancellation may not be possible. Please connect with our team here for assistance: https://t.co/R3EfhzgU8B.",
+        "decision": "AUTO_HANDLE",
+        "reason": "High intent confidence (0.96), strong historical grounding (sim: 0.80, precedents: 3), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.9596,
+          "retrieval_score": 0.7978,
+          "evidence_count": 3,
+          "intent_margin": 0.9519,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_11",
+      "category": "PAYMENT_BILLING_AND_PROMOS",
+      "input_message": "Can I transfer my Amazon Pay balance back to my bank account?",
+      "latency_seconds": 3.057,
+      "pipeline_output": {
+        "intent": "PAYMENT_BILLING_AND_PROMOS",
+        "intent_confidence": 0.9764,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_1672844",
+            "similarity_score": 0.9543,
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "can I transfer Amazon pay balance to a bank account ?",
+            "brand_response": "@509104 I'm afraid we don't have the requested feature yet, Sharad. Stay tuned to our website for further updates. ^HD"
+          },
+          {
+            "conversation_id": "conv_2200710",
+            "similarity_score": 0.8595,
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "can refund received in the form of amazon pay balance be transfred to bank account ?",
+            "brand_response": "@344648 Unfortunately, the amount from amazon pay balance cannot be transferred to your bank account. However, you may utilize this amount for placing orders on our website or our partner websites listed here: https://t.co/QniX1wY4ev. ^GD"
+          },
+          {
+            "conversation_id": "conv_746781",
+            "similarity_score": 0.8562,
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "how do I send my my Amazon pay balance to my bank account?",
+            "brand_response": "@191968 We don't have the transfer feature available currently. For more info: https://t.co/jTRDpqC6sp. ^HD"
+          }
+        ],
+        "reply": "Unfortunately, Amazon Pay balance cannot be transferred to a bank account. You can, however, use your balance for purchases on Amazon or partner websites. ^HD",
+        "decision": "AUTO_HANDLE",
+        "reason": "High intent confidence (0.98), strong historical grounding (sim: 0.95, precedents: 3), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.9764,
+          "retrieval_score": 0.9543,
+          "evidence_count": 3,
+          "intent_margin": 0.9692,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_12",
+      "category": "PAYMENT_BILLING_AND_PROMOS",
+      "input_message": "I was charged twice on my card for the same purchase! Will dispute with my bank.",
+      "latency_seconds": 0.036,
+      "pipeline_output": {
+        "intent": "PAYMENT_BILLING_AND_PROMOS",
+        "intent_confidence": 0.8677,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_931834",
+            "similarity_score": 0.7107,
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "I think I was charged twice it only should have been once. https://t.co/HkLJVw1iRn",
+            "brand_response": "@275246 We'd like to check this out with you in real-time! Please use the link to contact in directly: https://t.co/EKXRLsnxJu ^GL"
+          },
+          {
+            "conversation_id": "conv_1297951",
+            "similarity_score": 0.6922,
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "hi there. My account was charged twice for a recent order. What should I do?",
+            "brand_response": "@423333 One may be an authorisation, which will drop off in line with your bank's policies. More info: https://t.co/Qed1XD0a3x ^TN"
+          },
+          {
+            "conversation_id": "conv_2580499",
+            "similarity_score": 0.6855,
+            "intent": "PAYMENT_BILLING_AND_PROMOS",
+            "customer_problem": "it appears you\u2019ve charged me twice for the same item. What do I do? (UK customer)",
+            "brand_response": "@731401 Do not fear! Amazon places an authorisation hold on the item total before actually charging it to your card. Sometimes you're charged before your bank has cleared the authorisation, but it will fall off naturally within your bank policies. https://t.co/H8HG0NQ4ko ^RM"
+          }
+        ],
+        "reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "decision": "ESCALATE",
+        "reason": "Novel or unsupported situation: historical similarity (0.7107 < 0.75).",
+        "signals": {
+          "intent_confidence": 0.8677,
+          "retrieval_score": 0.7107,
+          "evidence_count": 3,
+          "intent_margin": 0.821,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_13",
+      "category": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "input_message": "Delivery driver was extremely rude and threw the box across my front porch!",
+      "latency_seconds": 0.039,
+      "pipeline_output": {
+        "intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+        "intent_confidence": 0.6218,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_534238",
+            "similarity_score": 0.6606,
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "parcel arrived soaking wet, electrical items inside. chatted to an advisor who sent me a returns form for the completely wrong item!! not happy. driver was rude",
+            "brand_response": "@243733 Sorry to hear that, Vicki. It's not what we want our customers to experience. Have you been able to get this resolved? If not, please get in touch here: https://t.co/JzP7hlA23B ^TI"
+          },
+          {
+            "conversation_id": "conv_2766929",
+            "similarity_score": 0.6602,
+            "intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+            "customer_problem": "Your delivery driver left packages outside my flat door the other day, for anyone to take. Can someone sort this out? He never delivers safely to our building! @AmazonHelp",
+            "brand_response": "@429347 Hey, I'm sorry to hear this. Could you contact us so that we can look into this further: https://t.co/oGDklGgbCZ? ^PJ"
+          },
+          {
+            "conversation_id": "conv_285561",
+            "similarity_score": 0.6569,
+            "intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+            "customer_problem": "Amazon delivery is the worst!Had a package stolen yesterday..I'm thinking the delivery driver left it at the wrong house..AGAIN! @AmazonHelp",
+            "brand_response": "@184031 Hey Esha! My team would like to look into this with you. Please give us more details about this here: https://t.co/snoL6orqYb"
+          }
+        ],
+        "reply": "We are truly sorry for your experience with the delivery service. We have escalated this courier report to our logistics escalation team for investigation and immediate corrective action.",
+        "decision": "ESCALATE",
+        "reason": "Safety risk trigger detected: [COURIER_MISCONDUCT] requiring immediate human intervention. | Intent 'CUSTOMER_SERVICE_AND_COURIER_FEEDBACK' is a sensitive category requiring verified human handling. | Low intent confidence (0.6218 < 0.70). | Novel or unsupported situation: historical similarity (0.6606 < 0.75).",
+        "signals": {
+          "intent_confidence": 0.6218,
+          "retrieval_score": 0.6606,
+          "evidence_count": 2,
+          "intent_margin": 0.4884,
+          "risk_flags": [
+            "COURIER_MISCONDUCT"
+          ]
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_14",
+      "category": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "input_message": "Your phone agent just hung up on me after keeping me on hold for 40 minutes!",
+      "latency_seconds": 0.041,
+      "pipeline_output": {
+        "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+        "intent_confidence": 0.1806,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_28460",
+            "similarity_score": 0.5976,
+            "intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+            "customer_problem": "customer service keep putting me on hold!!!!",
+            "brand_response": "@122105 Please keep us informed about the outcome of your call. ^MW"
+          },
+          {
+            "conversation_id": "conv_145808",
+            "similarity_score": 0.5756,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "been trying to cancel my amazon order which I ordered but has hasn\u2019t even been dispatched. Your agent spent 10 minutes faffing on the phone only to say she can\u2019t cancel it today as the windows gone but can cancel it on the sunday LOL. Please cancel my order",
+            "brand_response": "@149046 Unfortunately we aren't able to cancel it during the dispatch process Please wait for our associate to get back to you to confirm if they are able to cancel it on Sunday.^SM"
+          },
+          {
+            "conversation_id": "conv_30514",
+            "similarity_score": 0.5532,
+            "intent": "ORDER_CANCELLATION",
+            "customer_problem": "No agent shows up on Mon, Wed get a call in the morning while the slot is for 1-4pm. Now I get an SMS that pick up is cancelled. Why?",
+            "brand_response": "@122720 We've responded to your DM. Request you to please check it. ^AM"
+          }
+        ],
+        "reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "decision": "ESCALATE",
+        "reason": "Low intent confidence (0.1806 < 0.70). | Novel or unsupported situation: historical similarity (0.5976 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+        "signals": {
+          "intent_confidence": 0.1806,
+          "retrieval_score": 0.5976,
+          "evidence_count": 0,
+          "intent_margin": 0.0245,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_15",
+      "category": "ACCOUNT_ACCESS_AND_SECURITY",
+      "input_message": "My seller account was hacked and unauthorized orders were placed! Please lock it now.",
+      "latency_seconds": 0.047,
+      "pipeline_output": {
+        "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+        "intent_confidence": 0.8429,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_373288",
+            "similarity_score": 0.7514,
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "account was hacked and I can't access any of my orders. Customer service was no help. \ud83d\ude20",
+            "brand_response": "@204453 I'm sorry for the trouble! When you reached out to us, what options did we provide? ^GM"
+          },
+          {
+            "conversation_id": "conv_2741824",
+            "similarity_score": 0.7474,
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "Account locked! no e-mail to unlock. please help! I have an important order on my account.",
+            "brand_response": "@768042 Unfortunately we have no access to your costumer account via Twitter. Please use the following link to contact my colleagues from the customer service: https://t.co/hj5JcATiID ^BL"
+          },
+          {
+            "conversation_id": "conv_243165",
+            "similarity_score": 0.7455,
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "hello. My amazon account has been hacked and I can\u2019t get into it. Would you be able to lock my account?",
+            "brand_response": "@173742 Oh no! We'd need you to contact our live support for us to look into it. Please reach out here: https://t.co/hApLpMlfHN ^MJ"
+          }
+        ],
+        "reply": "We take account security very seriously. Because this involves confidential account verification, I am immediately escalating your inquiry to an Account Specialist. Please do not share sensitive passwords or personal details on this public forum.",
+        "decision": "ESCALATE",
+        "reason": "Safety risk trigger detected: [ACCOUNT_COMPROMISE] requiring immediate human intervention. | Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling.",
+        "signals": {
+          "intent_confidence": 0.8429,
+          "retrieval_score": 0.7514,
+          "evidence_count": 3,
+          "intent_margin": 0.8155,
+          "risk_flags": [
+            "ACCOUNT_COMPROMISE"
+          ]
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_16",
+      "category": "ACCOUNT_ACCESS_AND_SECURITY",
+      "input_message": "I am locked out of my account because I no longer have access to my old phone for OTP.",
+      "latency_seconds": 0.048,
+      "pipeline_output": {
+        "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+        "intent_confidence": 0.894,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_643883",
+            "similarity_score": 0.7827,
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "reset the password of my account,if you want that but do the grace of sending the otp on phone number-+918884133898",
+            "brand_response": "@272847 Being a social platform we'll not be able to arrange a call from Twitter. 1/2 ^MJ"
+          },
+          {
+            "conversation_id": "conv_1159238",
+            "similarity_score": 0.6531,
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "\ud83d\ude21 totally irritated by service ! There trouble in recovering my password ! I have changed password using OTP,still they asking ID",
+            "brand_response": "@392704 I'm sorry to know that you're having trouble with your Amazon account. Our support team would be glad to help you with your account login issue here: https://t.co/nAU6LPuHai. ^MP"
+          },
+          {
+            "conversation_id": "conv_2832839",
+            "similarity_score": 0.6444,
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "my account has been locked tried talking to someone but phones playing up. Please help.",
+            "brand_response": "@788657 Oh no! Try reaching us here; https://t.co/JzP7hlA23B so we can take a look into this for you. ^AV"
+          }
+        ],
+        "reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "decision": "ESCALATE",
+        "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling.",
+        "signals": {
+          "intent_confidence": 0.894,
+          "retrieval_score": 0.7827,
+          "evidence_count": 2,
+          "intent_margin": 0.8772,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_17",
+      "category": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "input_message": "My Firestick is saying network error even though my Wi-Fi is working on my phone.",
+      "latency_seconds": 3.36,
+      "pipeline_output": {
+        "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+        "intent_confidence": 0.787,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_1185038",
+            "similarity_score": 0.756,
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "Why won't my firestick stay connected to my wireless network \ud83e\udd37\u200d\u2640\ufe0f\ud83e\udd37\u200d\u2640\ufe0f",
+            "brand_response": "@398646 Oh no! We are here to help! You can find some tips for troubleshooting internet connection here: https://t.co/uNqeQ4DVnr"
+          },
+          {
+            "conversation_id": "conv_1832137",
+            "similarity_score": 0.7552,
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "can you help? My firestick won't connect to wifi. 1000% sure I'm using the correct wifi password. Unplugged for 30 seconds + 2x as well and still no luck",
+            "brand_response": "@549705 We'd love to help! Let's try the troubleshooting tips here: https://t.co/ainOOagcaE! ^SH"
+          },
+          {
+            "conversation_id": "conv_385894",
+            "similarity_score": 0.6974,
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": ".@AmazonHelp Firestick keeps saying no network when internet fine. We keep having to unplug and reboot - almost every time we use. Help pls",
+            "brand_response": "@207361 Sorry to hear this. When you rebooted the device, did you plug it out from its mains for 40 seconds? ^PK"
+          }
+        ],
+        "reply": "Oh no! We're sorry to hear your Firestick is having network issues. We'd love to help you get this resolved. Please try these troubleshooting tips: https://t.co/uNqeQ4DVnr",
+        "decision": "AUTO_HANDLE",
+        "reason": "High intent confidence (0.79), strong historical grounding (sim: 0.76, precedents: 3), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.787,
+          "retrieval_score": 0.756,
+          "evidence_count": 3,
+          "intent_margin": 0.6424,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_18",
+      "category": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "input_message": "Website keeps throwing error 500 every time I click proceed to checkout in cart.",
+      "latency_seconds": 0.041,
+      "pipeline_output": {
+        "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+        "intent_confidence": 0.5902,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_2789086",
+            "similarity_score": 0.5539,
+            "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+            "customer_problem": "Hey AmazonIndia, is your sign in page working ? I am getting 500 error.",
+            "brand_response": "@778527 Sorry to know about this issue. Is this on the amazon application or the website? ^NR"
+          },
+          {
+            "conversation_id": "conv_2003968",
+            "similarity_score": 0.5183,
+            "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+            "customer_problem": "Are your online shopping carts broken? I keep getting an error after I tap the \u201cpurchase items\u201d button.",
+            "brand_response": "@592581 Hey there! Sorry it's giving you trouble. Please try closing the browser and clearing cache/cookies. Thanks ^AP"
+          },
+          {
+            "conversation_id": "conv_1115219",
+            "similarity_score": 0.5101,
+            "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+            "customer_problem": "Can't checkout a 25k cart @115850 - neither on app nor on site, stuck at \"Choose your delivery options\". At least tell me what's wrong!",
+            "brand_response": "@383162 That is unusual, Anuj. Kindly reach out to us via: https://t.co/trUXjeeyZS and our team will have this checked. ^KS"
+          }
+        ],
+        "reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "decision": "ESCALATE",
+        "reason": "Low intent confidence (0.5902 < 0.70). | Novel or unsupported situation: historical similarity (0.5539 < 0.75). | Insufficient verified historical precedents matching intent (0 < 1).",
+        "signals": {
+          "intent_confidence": 0.5902,
+          "retrieval_score": 0.5539,
+          "evidence_count": 0,
+          "intent_margin": 0.5143,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_19",
+      "category": "RETURNS_AND_EXCHANGES",
+      "input_message": "Need to return a shirt but I don't have a printer for the return shipping label.",
+      "latency_seconds": 3.919,
+      "pipeline_output": {
+        "intent": "RETURNS_AND_EXCHANGES",
+        "intent_confidence": 0.9137,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_2671376",
+            "similarity_score": 0.8118,
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "hi I wanted to return a item but I don't have a printer to print out the return label, is there anything else I can do? Thank u",
+            "brand_response": "@343341 Please reach out to us here so we can help you out https://t.co/hApLpMlfHN ^KM"
+          },
+          {
+            "conversation_id": "conv_675266",
+            "similarity_score": 0.6831,
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "hi I've printed my return label and packaged up the parcel but do not if it is the post office or a shop I return it too. Please advise. Thanks",
+            "brand_response": "@281047 Hi Nicola, the name of the carrier should be presented on the label. It will say for example: Royal Mail, Collect+ or Pass my Parcel. What does it say on yours?^MA"
+          },
+          {
+            "conversation_id": "conv_364690",
+            "similarity_score": 0.653,
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "I picked ups pick up return option because it said I didn\u2019t need a printer. Next page opens up and it says print label? \ud83e\udd37\u200d\u2642\ufe0f",
+            "brand_response": "@202399 No worries, the carrier will bring their own label if they're coming to do a pick up. ^NC"
+          }
+        ],
+        "reply": "We can definitely help with that! Please reach out to us here so we can explore options for your return without a printer: https://t.co/hApLpMlfHN",
+        "decision": "AUTO_HANDLE",
+        "reason": "High intent confidence (0.91), strong historical grounding (sim: 0.81, precedents: 3), and zero safety risk flags detected.",
+        "signals": {
+          "intent_confidence": 0.9137,
+          "retrieval_score": 0.8118,
+          "evidence_count": 3,
+          "intent_margin": 0.8863,
+          "risk_flags": []
+        }
+      }
+    },
+    {
+      "test_case_id": "sample_20",
+      "category": "RETURNS_AND_EXCHANGES",
+      "input_message": "Return pickup was scheduled 4 days ago and courier never showed up! When are they coming?",
+      "latency_seconds": 0.037,
+      "pipeline_output": {
+        "intent": "RETURNS_AND_EXCHANGES",
+        "intent_confidence": 0.9427,
+        "retrieved_cases": [
+          {
+            "conversation_id": "conv_349976",
+            "similarity_score": 0.7262,
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "your return pickup has been delayed. When can I expect someone to pick it up? Order: 171-3098591-0132320",
+            "brand_response": "@190545 I'm sorry for the delay with the return pick up, call us here: https://t.co/vlvfJr4nN9 & we'll fix this for you. ^MJ"
+          },
+          {
+            "conversation_id": "conv_1850552",
+            "similarity_score": 0.7123,
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "Dear Amazon ,when will your pick up courier take my return item.Reschedule 3 times.Will u dare do same with US customers ever ?",
+            "brand_response": "@307196 We're sorry for the delay in the return. Please share your details here: https://t.co/GIJyeYqKE0 and we'll help you. ^ZH"
+          },
+          {
+            "conversation_id": "conv_158839",
+            "similarity_score": 0.7036,
+            "intent": "RETURNS_AND_EXCHANGES",
+            "customer_problem": "where is my pickup for return item tracking # 710400450663, scheduled for October 29 and now 8 days late?",
+            "brand_response": "@389118 I'm sorry about the pending pick-up, being a social platform we'll not be able to access you order from Twitter. 1/2 ^MJ"
+          }
+        ],
+        "reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "decision": "ESCALATE",
+        "reason": "Novel or unsupported situation: historical similarity (0.7262 < 0.75).",
+        "signals": {
+          "intent_confidence": 0.9427,
+          "retrieval_score": 0.7262,
+          "evidence_count": 3,
+          "intent_margin": 0.9283,
+          "risk_flags": []
+        }
+      }
+    }
+  ]
+}

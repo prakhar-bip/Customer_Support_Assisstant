@@ -18,6 +18,10 @@ from sentence_transformers import SentenceTransformer
 sys.path.insert(0, os.path.abspath("."))
 
 
+DEFAULT_INDEX_PATH = "models/historical_knowledge_base.faiss"
+DEFAULT_METADATA_PATH = "data/processed/historical_knowledge_base.jsonl"
+
+
 class ResolutionRetriever:
     """
     Retrieval engine for finding historically resolved customer-support cases
@@ -26,8 +30,8 @@ class ResolutionRetriever:
 
     def __init__(
         self,
-        faiss_index_path: str = "models/historical_knowledge_base.faiss",
-        metadata_path: str = "data/processed/historical_knowledge_base.jsonl",
+        faiss_index_path: str = DEFAULT_INDEX_PATH,
+        metadata_path: str = DEFAULT_METADATA_PATH,
         model_name: str = "all-MiniLM-L6-v2",
     ):
         if not os.path.exists(faiss_index_path):

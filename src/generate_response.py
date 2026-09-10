@@ -265,6 +265,31 @@ class ResponseGenerator:
         }
 
 
+_cached_response_generator: Optional[ResponseGenerator] = None
+
+def generate_grounded_response(
+    customer_message: str,
+    top_k: int = 3,
+    intent: Optional[str] = None
+) -> GroundedResponse:
+    """
+    Convenience function to generate a grounded response using cached ResponseGenerator.
+    """
+    global _cached_response_generator
+    if _cached_response_generator is None:
+        _cached_response_generator = ResponseGenerator()
+    res = _cached_response_generator.generate(
+        customer_message=customer_message,
+        top_k=top_k,
+        intent_override=intent
+    )
+    return GroundedResponse(
+        reply=res["reply"],
+        reasoning_summary=res["reasoning_summary"],
+        evidence_ids=res["evidence_ids"]
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Historically Grounded Customer Support Response Generator")
     parser.add_argument("--query", type=str, required=True, help="Customer message / tweet")
