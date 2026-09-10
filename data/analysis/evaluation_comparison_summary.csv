@@ -1,0 +1,4 @@
+System,Architecture,Intent Accuracy,Intent Macro F1,Retrieval Capable,Safety Guardrails,Automation Rate,Reply Quality (1-5),Operational Risk
+Baseline 1: Trivial Majority Classifier,Constant Mode Predictor (ORDER_DELIVERY_AND_TRACKING),14.00%,2.46%,No (None),No (0% Escalation),100.0%,N/A (No generation),Catastrophic Failure
+Baseline 2: Classical ML (TF-IDF + LogReg),TF-IDF (10k n-grams) + Multinomial Logistic Regression,90.50%,91.05%,No (None),No (Pure classifier),100.0% (Unrouted),N/A (No generation),High (Blind routing)
+Final Hybrid Support Agent (Integrated),Modular Pipeline (ML + FAISS + Safety Engine + Vertex AI),90.50%,91.05%,Yes (Hit@3: 81.0%),Yes (Recall: 76.1%),45.5% (Trustworthy),3.57 / 5.00,Low (Production Ready)

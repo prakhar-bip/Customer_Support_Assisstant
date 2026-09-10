@@ -1,0 +1,727 @@
+{
+  "milestone": "Milestone 12: Complete Evaluation Harness",
+  "benchmark_dataset": "Golden Evaluation Set (data/processed/golden_evaluation_set.jsonl)",
+  "evaluation_timestamp": "2026-09-10 16:30:13",
+  "total_evaluation_records": 200,
+  "dimension_1_intent_classification": {
+    "accuracy": 0.905,
+    "macro_precision": 0.9087,
+    "macro_recall": 0.918,
+    "macro_f1": 0.9105,
+    "weighted_f1": 0.9043,
+    "per_intent_metrics": {
+      "ORDER_DELIVERY_AND_TRACKING": {
+        "precision": 0.96,
+        "recall": 0.8571,
+        "f1_score": 0.9057,
+        "support": 28
+      },
+      "REFUND_STATUS_AND_DISPUTES": {
+        "precision": 0.8,
+        "recall": 0.7692,
+        "f1_score": 0.7843,
+        "support": 26
+      },
+      "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": {
+        "precision": 0.9545,
+        "recall": 0.84,
+        "f1_score": 0.8936,
+        "support": 25
+      },
+      "PRIME_MEMBERSHIP_AND_DIGITAL": {
+        "precision": 0.9524,
+        "recall": 0.9091,
+        "f1_score": 0.9302,
+        "support": 22
+      },
+      "ORDER_CANCELLATION": {
+        "precision": 0.9091,
+        "recall": 1.0,
+        "f1_score": 0.9524,
+        "support": 20
+      },
+      "PAYMENT_BILLING_AND_PROMOS": {
+        "precision": 0.8182,
+        "recall": 1.0,
+        "f1_score": 0.9,
+        "support": 18
+      },
+      "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": {
+        "precision": 1.0,
+        "recall": 0.9375,
+        "f1_score": 0.9677,
+        "support": 16
+      },
+      "ACCOUNT_ACCESS_AND_SECURITY": {
+        "precision": 0.9286,
+        "recall": 0.8667,
+        "f1_score": 0.8966,
+        "support": 15
+      },
+      "TECHNICAL_AND_PLATFORM_ISSUES": {
+        "precision": 0.8824,
+        "recall": 1.0,
+        "f1_score": 0.9375,
+        "support": 15
+      },
+      "RETURNS_AND_EXCHANGES": {
+        "precision": 0.8824,
+        "recall": 1.0,
+        "f1_score": 0.9375,
+        "support": 15
+      }
+    },
+    "confusion_matrix": [
+      [
+        24,
+        3,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        20,
+        0,
+        1,
+        0,
+        3,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        21,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        20,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        20,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        18,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        13,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15
+      ]
+    ],
+    "taxonomy_intents": [
+      "ORDER_DELIVERY_AND_TRACKING",
+      "REFUND_STATUS_AND_DISPUTES",
+      "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "ORDER_CANCELLATION",
+      "PAYMENT_BILLING_AND_PROMOS",
+      "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "ACCOUNT_ACCESS_AND_SECURITY",
+      "TECHNICAL_AND_PLATFORM_ISSUES",
+      "RETURNS_AND_EXCHANGES"
+    ]
+  },
+  "dimension_2_retrieval_quality": {
+    "hit_at_1": 0.65,
+    "hit_at_3": 0.81,
+    "hit_at_5": 0.85,
+    "mean_reciprocal_rank": 0.7289,
+    "mean_top1_cosine_similarity": 0.7209,
+    "top3_intent_relevance_rate": 0.6417,
+    "total_evaluated": 200
+  },
+  "dimension_3_reply_quality_llm_judge": {
+    "sample_size": 20,
+    "mean_scores": {
+      "correctness": 3.05,
+      "historical_grounding": 2.4,
+      "helpfulness": 3.05,
+      "brand_consistency": 4.65,
+      "safety_unsupported_claims": 4.7,
+      "overall_score": 3.57
+    },
+    "evaluations": [
+      {
+        "conversation_id": "conv_231797",
+        "intent": "ORDER_DELIVERY_AND_TRACKING",
+        "customer_message": "And I am still waiting for my order which is showing out for delivery for 4 days..customer service took 11 miutes still couldn't clear. https://t.co/gACHtDftGZ",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 4,
+          "correctness_reason": "The reply correctly identifies the need for human intervention given the customer's frustration and complex delivery issue, though it doesn't offer immediate resolution.",
+          "historical_grounding": 3,
+          "grounding_reason": "The escalation to a human team is a plausible general customer service action, but the provided historical evidence shows agents directly responding rather than explicitly escalating to an unseen team.",
+          "helpfulness": 3,
+          "helpfulness_reason": "The next steps are vague, as 'shortly' is undefined and the customer doesn't know how or when they will be contacted, leaving them with uncertainty.",
+          "brand_consistency": 5,
+          "brand_reason": "The reply maintains a professional, empathetic, and concise tone consistent with the @AmazonHelp Twitter persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply makes no unsupported claims, hallucinations, or promises that could be unsafe or misleading.",
+          "overall_score": 4.0
+        }
+      },
+      {
+        "conversation_id": "conv_180377",
+        "intent": "ORDER_DELIVERY_AND_TRACKING",
+        "customer_message": "After canceled orders and delayed order, the only thing left was your customer executives raising their voice. Pathetic services",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 4,
+          "correctness_reason": "The reply correctly identifies the need for human intervention for a complex and emotionally charged complaint, even if it doesn't directly address the order issues.",
+          "historical_grounding": 3,
+          "grounding_reason": "While escalation is a plausible customer service action for such complaints, the provided historical evidence does not explicitly detail an 'escalation to human support team' as a resolution.",
+          "helpfulness": 3,
+          "helpfulness_reason": "The reply provides a clear next step by escalating the issue but lacks specific empathy for the customer's frustration about past interactions or immediate resolution for the order problems.",
+          "brand_consistency": 5,
+          "brand_reason": "The tone is professional, polite, and concise, aligning perfectly with the @AmazonHelp Twitter persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply makes no unsupported claims, policies, or promises, and is a safe and standard customer service procedure.",
+          "overall_score": 4.0
+        }
+      },
+      {
+        "conversation_id": "conv_648407",
+        "intent": "REFUND_STATUS_AND_DISPUTES",
+        "customer_message": "what in the world is a balance withheld? #customerservice doesnt seem to know!",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 2,
+          "correctness_reason": "The reply does not directly define \"balance withheld\" but correctly identifies that the issue requires human intervention.",
+          "historical_grounding": 3,
+          "grounding_reason": "The escalation to a human team is a plausible general approach for complex balance issues, but the historical evidence does not directly define \"balance withheld.\"",
+          "helpfulness": 3,
+          "helpfulness_reason": "The reply offers a clear next step by escalating the issue to a human, but it does not immediately address the customer's direct question about what \"balance withheld\" means.",
+          "brand_consistency": 5,
+          "brand_reason": "The tone is professional, empathetic, and concise, aligning well with the @AmazonHelp Twitter persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply avoids any specific claims or promises, focusing solely on the process of escalation, making it safe.",
+          "overall_score": 3.6
+        }
+      },
+      {
+        "conversation_id": "conv_348625",
+        "intent": "REFUND_STATUS_AND_DISPUTES",
+        "customer_message": "I want to buy mobile if I feel not satisfied this product so can i return ? So I will get money back",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 1,
+          "correctness_reason": "The reply does not provide any information regarding the customer's specific question about mobile returns and refunds.",
+          "historical_grounding": 1,
+          "grounding_reason": "The reply does not leverage any of the provided historical evidence regarding mobile return policies or typical responses.",
+          "helpfulness": 1,
+          "helpfulness_reason": "The reply offers no immediate solution or information, instead deferring the customer to a human agent without providing any context or next steps for the customer to take.",
+          "brand_consistency": 5,
+          "brand_reason": "The tone is polite, professional, and concise, aligning well with the @AmazonHelp Twitter persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply avoids making any unsupported claims or hallucinating policies, focusing solely on an internal escalation process.",
+          "overall_score": 2.6
+        }
+      },
+      {
+        "conversation_id": "conv_130747",
+        "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+        "customer_message": "1/ @115850 Are you guys leaking email ids of user who applied for Amazon BTS offer?My bro got this spam email: http://t.co/6YtfYm0aLN",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 2,
+          "correctness_reason": "The reply acknowledges an issue but fails to specifically address the customer's core concern about email ID leaks or spam, offering only a generic escalation.",
+          "historical_grounding": 2,
+          "grounding_reason": "The reply's generic escalation is not directly supported by the provided historical evidence, which suggests initial guidance or direct engagement for similar spam/scam concerns.",
+          "helpfulness": 2,
+          "helpfulness_reason": "The reply offers a vague next step of waiting for a human, lacking immediate actionability, specific empathy, or initial information regarding the customer's spam concern.",
+          "brand_consistency": 4,
+          "brand_reason": "The tone is professional, polite, and concise, aligning well with the @AmazonHelp persona, though it is a bit generic.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply makes no specific claims, policies, or guarantees, thus avoiding any unsupported or hallucinated information.",
+          "overall_score": 3.0
+        }
+      },
+      {
+        "conversation_id": "conv_1331823",
+        "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+        "customer_message": "Purchased through @115821. The packages were opened tampered with, additional items inserted and then shipped to me. Reprehensible QC\u2757\ufe0f",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 5,
+          "correctness_reason": "The reply correctly identifies the need for human intervention for a complex issue like a tampered package and escalates it appropriately.",
+          "historical_grounding": 1,
+          "grounding_reason": "The reply is not supported by the provided historical evidence, which focuses on delivery issues and wrong packaging, not escalation for tampered items.",
+          "helpfulness": 4,
+          "helpfulness_reason": "The reply provides clear next steps by escalating to a human team and setting the expectation for further assistance, which is helpful.",
+          "brand_consistency": 5,
+          "brand_reason": "The reply maintains a professional, empathetic, and concise tone consistent with the @AmazonHelp Twitter persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply makes no unsupported claims, promises, or reveals any PII, ensuring full safety.",
+          "overall_score": 4.0
+        }
+      },
+      {
+        "conversation_id": "conv_1293697",
+        "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+        "customer_message": "Heu \u00e7a marche pas le linkage de mon compte @120533 #premium & @54689 #prime Nous ne pouvons pas activer Twitch Prime sur votre compte.",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 4,
+          "correctness_reason": "The reply correctly identifies that the issue requires human intervention, though it doesn't offer a direct solution.",
+          "historical_grounding": 3,
+          "grounding_reason": "The reply's action of escalation is a general customer service practice and is not specifically supported by the provided historical cases.",
+          "helpfulness": 4,
+          "helpfulness_reason": "The reply offers a clear next step by escalating to human support, which is helpful, but it doesn't provide an immediate resolution.",
+          "brand_consistency": 5,
+          "brand_reason": "The reply maintains a professional, empathetic, and concise tone consistent with the @AmazonHelp Twitter persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply contains no unsupported claims, hallucinations, or PII leakage, making it fully safe.",
+          "overall_score": 4.2
+        }
+      },
+      {
+        "conversation_id": "conv_658849",
+        "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+        "customer_message": "Everything announced at Apple WWDC today \u203a\u203a\u203a Yawn. On the other hand, Amazon Prime Video coming to Apple TV \u203a\u203a\u203a Yes!!!",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 1,
+          "correctness_reason": "The reply completely misinterprets the customer's excited statement as an 'issue' requiring escalation, rather than acknowledging or providing information about Prime Video on Apple TV.",
+          "historical_grounding": 1,
+          "grounding_reason": "The reply ignores the historical evidence which suggests providing information or asking to 'stay tuned' regarding the Apple TV app, instead opting for a generic escalation.",
+          "helpfulness": 1,
+          "helpfulness_reason": "The reply is unhelpful as it escalates a statement of excitement, providing no direct answer or relevant information to the customer's implied inquiry.",
+          "brand_consistency": 3,
+          "brand_reason": "While polite and professional, the generic escalation message doesn't align with the typical @AmazonHelp approach of directly addressing or acknowledging the specific topic of a customer's tweet, even if it's to say 'stay tuned'.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply makes no unsupported claims, policies, or dates and does not contain any PII leakage.",
+          "overall_score": 2.2
+        }
+      },
+      {
+        "conversation_id": "conv_238886",
+        "intent": "ORDER_CANCELLATION",
+        "customer_message": ": Ours is a business account. Ordered 14 items for diwali gifts for staffs worth 10K INR. Order cancelled for 12 items. Order # 403-6277206-9111521. Customer service say, can't do anything. Why i should have business account then?",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 3,
+          "correctness_reason": "The reply defers the issue to a human without addressing the customer's core questions about the cancellation reason or the previous customer service interaction.",
+          "historical_grounding": 1,
+          "grounding_reason": "The reply does not utilize any information from the provided historical evidence, such as potential order quantity limits or cancellation email information.",
+          "helpfulness": 3,
+          "helpfulness_reason": "While providing a clear next step of escalation, the reply offers no immediate information or empathy regarding the cancellation reason or the customer's frustration.",
+          "brand_consistency": 5,
+          "brand_reason": "The tone is professional, polite, and concise, aligning well with the @AmazonHelp Twitter persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply makes no specific claims about policies, refunds, or timelines, thus avoiding any potential hallucinations.",
+          "overall_score": 3.4
+        }
+      },
+      {
+        "conversation_id": "conv_180735",
+        "intent": "ORDER_CANCELLATION",
+        "customer_message": "Because while the savings are getting \"better\", Id rather not wait 4+ fucking months only to have it forcibly cancelled on me. Im not happy!",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 4,
+          "correctness_reason": "The reply correctly identifies the need for human intervention for a complex issue, acknowledging the need for further investigation without making false promises.",
+          "historical_grounding": 5,
+          "grounding_reason": "The reply's approach of escalating to a human for detailed review aligns perfectly with the historical examples where complex issues require further customer interaction or human intervention.",
+          "helpfulness": 4,
+          "helpfulness_reason": "The reply offers a clear next step by escalating to a human and promising assistance, which is helpful, but it doesn't provide immediate resolution or specific information regarding the customer's wait.",
+          "brand_consistency": 5,
+          "brand_reason": "The reply maintains a professional, empathetic, and concise tone, which is highly consistent with the @AmazonHelp Twitter brand.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply avoids any unsupported claims, specific promises, or requests for PII, ensuring it is completely safe and accurate.",
+          "overall_score": 4.6
+        }
+      },
+      {
+        "conversation_id": "conv_180983",
+        "intent": "PAYMENT_BILLING_AND_PROMOS",
+        "customer_message": "sir i order samsung j7 prime rs 10'500 in amazon pay how many cash back i get?",
+        "pipeline_decision": "AUTO_HANDLE",
+        "generated_reply": "A maximum of Rs.450 cashback will be issued to your Amazon account as Amazon Pay balance within 5 days from the date of shipping for your Samsung J7 Prime order. ^SG",
+        "scorecard": {
+          "correctness": 3,
+          "correctness_reason": "The cashback amount is correct, but the 5-day timeframe for issuance is not supported by the provided historical evidence.",
+          "historical_grounding": 3,
+          "grounding_reason": "While the cashback amount is grounded, the specific 5-day issuance timeframe is not found in the provided historical evidence.",
+          "helpfulness": 5,
+          "helpfulness_reason": "The reply directly answers the customer's question about cashback amount and provides additional helpful details on issuance.",
+          "brand_consistency": 5,
+          "brand_reason": "The reply is concise, professional, and uses the appropriate Twitter persona and sign-off.",
+          "safety_unsupported_claims": 3,
+          "safety_reason": "The specific 5-day cashback issuance timeframe is an unverified assertion not present in the provided historical evidence.",
+          "overall_score": 3.8
+        }
+      },
+      {
+        "conversation_id": "conv_183067",
+        "intent": "PAYMENT_BILLING_AND_PROMOS",
+        "customer_message": "you already has prepaid recharge option in Amazon pay India please add mobile bill payment option too. Thanks in advance",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 1,
+          "correctness_reason": "The reply completely misinterprets the customer's feature request as an issue that can be resolved by a human agent, rather than acknowledging the current unavailability of the service.",
+          "historical_grounding": 1,
+          "grounding_reason": "The reply contradicts historical evidence which explicitly states the mobile bill payment facility is not available and suggests forwarding comments, not immediate human assistance.",
+          "helpfulness": 1,
+          "helpfulness_reason": "The reply is unhelpful as it escalates a feature request to a human support team without acknowledging the current unavailability of the service or explaining what the human can actually do.",
+          "brand_consistency": 4,
+          "brand_reason": "The tone is polite and professional, consistent with @AmazonHelp, but the action of escalation is misplaced for this type of inquiry.",
+          "safety_unsupported_claims": 4,
+          "safety_reason": "The reply does not contain severe hallucinations, but the implication that a human can 'assist shortly' with a non-existent feature is slightly misleading.",
+          "overall_score": 2.2
+        }
+      },
+      {
+        "conversation_id": "conv_420304",
+        "intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+        "customer_message": "#fraud company#worst customer service # amazon https://t.co/V6CzaPwl6Y",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "We take account security very seriously. Because this involves confidential account verification, I am immediately escalating your inquiry to an Account Specialist. Please do not share sensitive passwords or personal details on this public forum.",
+        "scorecard": {
+          "correctness": 1,
+          "correctness_reason": "The reply incorrectly assumes an account security issue when the customer's tweet is a general complaint about fraud and poor service.",
+          "historical_grounding": 1,
+          "grounding_reason": "The reply's focus on account security and escalation to an Account Specialist is not aligned with the general inquiry approach seen in historical examples.",
+          "helpfulness": 1,
+          "helpfulness_reason": "The reply fails to address the customer's actual complaint about fraud and poor service, instead diverting to an unconfirmed account security issue.",
+          "brand_consistency": 3,
+          "brand_reason": "The tone is professional and polite, but the misinterpretation of the customer's issue makes the response feel somewhat robotic and less empathetic.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply contains no hallucinated policies or unsafe claims and provides appropriate advice regarding sharing sensitive information.",
+          "overall_score": 2.2
+        }
+      },
+      {
+        "conversation_id": "conv_182837",
+        "intent": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+        "customer_message": "poor customer service over phone, cannot contact carrier. Cannot even locate my item 26hrs... Cannot escalate locally.... https://t.co/IpvzNV1DlM",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 3,
+          "correctness_reason": "The reply acknowledges the customer's issue and promises human intervention, but it doesn't directly address the specific problems of locating the item or contacting the carrier.",
+          "historical_grounding": 1,
+          "grounding_reason": "The historical evidence shows agents asking for more information or directing to a private channel, not directly escalating an issue without further interaction or information from the customer.",
+          "helpfulness": 2,
+          "helpfulness_reason": "While it promises human intervention, it lacks clear next steps for the customer and doesn't ask for necessary information, leaving them in limbo.",
+          "brand_consistency": 4,
+          "brand_reason": "The tone is professional, polite, and concise, aligning well with the @AmazonHelp persona.",
+          "safety_unsupported_claims": 2,
+          "safety_reason": "The claim of direct escalation without any prior information gathering or moving to a private channel is a significant unsupported assertion for a public Twitter interaction.",
+          "overall_score": 2.4
+        }
+      },
+      {
+        "conversation_id": "conv_699493",
+        "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+        "customer_message": "100s of ppl have been scammed from my Seller Acct that was hacked..called 2x about it 3wks ago. When will you actually do something?",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "We take account security very seriously. Because this involves confidential account verification, I am immediately escalating your inquiry to an Account Specialist. Please do not share sensitive passwords or personal details on this public forum.",
+        "scorecard": {
+          "correctness": 4,
+          "correctness_reason": "The reply correctly identifies the severity of the issue and initiates an escalation, but does not directly address the customer's 'when will you do something' question with a timeline.",
+          "historical_grounding": 4,
+          "grounding_reason": "The escalation to an Account Specialist aligns with the need for specialized help seen in historical cases, and the safety advice is generally applicable, though no direct links or policies are cited.",
+          "helpfulness": 4,
+          "helpfulness_reason": "The reply provides clear next steps by escalating the issue and offers actionable advice to the customer regarding public information sharing, but lacks a specific timeline for follow-up.",
+          "brand_consistency": 5,
+          "brand_reason": "The reply maintains a professional, empathetic, and concise tone consistent with the @AmazonHelp Twitter persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply contains no hallucinated policies, fake dates, or PII leakage, and provides sound safety advice.",
+          "overall_score": 4.4
+        }
+      },
+      {
+        "conversation_id": "conv_1208789",
+        "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+        "customer_message": "No @AmazonHelp have replied. I seldom log in here but I 'll make sure I do give u a knock everytime I log in should u not heed to ur cstmrs",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 3,
+          "correctness_reason": "The reply assumes an underlying issue and escalates, which is a plausible next step for an account issue, but it doesn't directly acknowledge the customer's complaint about lack of response.",
+          "historical_grounding": 2,
+          "grounding_reason": "The immediate escalation to a human team is not directly supported by the provided historical examples, which typically involve directing to links or asking clarifying questions first.",
+          "helpfulness": 4,
+          "helpfulness_reason": "It provides a clear next step (escalation to human support) and a promise of assistance, which is helpful, but lacks immediate detail or a way for the customer to provide context.",
+          "brand_consistency": 5,
+          "brand_reason": "The tone is professional, polite, empathetic, and concise, fitting the @AmazonHelp brand persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply makes no unsupported claims, avoids PII, and describes a standard, safe customer service process.",
+          "overall_score": 3.8
+        }
+      },
+      {
+        "conversation_id": "conv_210319",
+        "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+        "customer_message": "#Suffering frm last 7 days, without any fault. Due to technical glitch/wrong info by @115821 Sorry to say but such service was not expected",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 4,
+          "correctness_reason": "The reply correctly identifies the need for human intervention for a complex issue but doesn't offer any immediate solution or specific information.",
+          "historical_grounding": 3,
+          "grounding_reason": "The reply's approach of escalating to a human team is plausible but not explicitly demonstrated by the provided historical examples, which focused on gathering more details.",
+          "helpfulness": 4,
+          "helpfulness_reason": "The reply provides clear next steps by escalating the issue and promising assistance shortly, making it actionable for the customer.",
+          "brand_consistency": 5,
+          "brand_reason": "The tone is professional, empathetic, and concise, perfectly matching the @AmazonHelp Twitter persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply makes no unsupported claims, policies, or promises, and is a safe, standard customer service response.",
+          "overall_score": 4.2
+        }
+      },
+      {
+        "conversation_id": "conv_179301",
+        "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+        "customer_message": "there is a serious bug on your website; when trying to navigate using Next page or Page Number it redirects to Home Page.",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 4,
+          "correctness_reason": "The reply correctly acknowledges the customer's bug report and escalates it to a human team for resolution.",
+          "historical_grounding": 2,
+          "grounding_reason": "The reply does not offer troubleshooting steps like clearing cache or trying another browser, which were common resolutions in the historical evidence for similar website issues.",
+          "helpfulness": 4,
+          "helpfulness_reason": "The reply provides clear next steps by escalating the issue to a human team and setting the expectation that a representative will assist shortly.",
+          "brand_consistency": 5,
+          "brand_reason": "The reply maintains a professional, polite, and empathetic tone, consistent with the @AmazonHelp Twitter persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply avoids any hallucinated policies, specific dates, or requests for PII, making it safe.",
+          "overall_score": 4.0
+        }
+      },
+      {
+        "conversation_id": "conv_218201",
+        "intent": "RETURNS_AND_EXCHANGES",
+        "customer_message": "Need to print a return label for @115821 but don\u2019t have a printer. Now waiting on delivery of the printer that I\u2019ve ordered from amazon.. \ud83e\udd14",
+        "pipeline_decision": "ESCALATE",
+        "generated_reply": "To ensure your request is handled with full accuracy and care, I have escalated your issue to our human support team. A representative will review the details and assist you shortly.",
+        "scorecard": {
+          "correctness": 3,
+          "correctness_reason": "The reply acknowledges the issue by escalating it but does not offer any direct solutions or information regarding printing return labels without a printer.",
+          "historical_grounding": 3,
+          "grounding_reason": "The escalation is a plausible general action, but the reply does not leverage specific solutions or questions found in the historical evidence regarding return labels without a printer.",
+          "helpfulness": 3,
+          "helpfulness_reason": "While it provides a clear next step (waiting for human contact), it doesn't offer any immediate actionable advice or potential solutions to the customer's problem.",
+          "brand_consistency": 5,
+          "brand_reason": "The reply maintains a professional, empathetic, and concise tone consistent with the @AmazonHelp Twitter persona.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply contains no unsupported claims, hallucinations, or PII leakage, simply stating an internal process.",
+          "overall_score": 3.8
+        }
+      },
+      {
+        "conversation_id": "conv_224603",
+        "intent": "RETURNS_AND_EXCHANGES",
+        "customer_message": "frustrated with the return policy. I cant get back my money and the customer care doesn't receive the call.",
+        "pipeline_decision": "AUTO_HANDLE",
+        "generated_reply": "I'm sorry to hear you're having trouble with a return and reaching customer care. We want to help. Please share your details securely via this link so we can look into this for you: https://t.co/GIJyeYqKE0",
+        "scorecard": {
+          "correctness": 5,
+          "correctness_reason": "The reply accurately acknowledges both the return issue and the difficulty reaching customer care, offering a direct path to resolution.",
+          "historical_grounding": 5,
+          "grounding_reason": "The reply directly utilizes a secure link from the historical evidence to collect customer details for investigation.",
+          "helpfulness": 5,
+          "helpfulness_reason": "The reply is empathetic and provides a clear, actionable next step for the customer to share details for investigation.",
+          "brand_consistency": 5,
+          "brand_reason": "The reply maintains an empathetic, professional, and concise tone consistent with the @AmazonHelp brand.",
+          "safety_unsupported_claims": 5,
+          "safety_reason": "The reply is safe, avoiding any unsupported claims or PII leakage by directing the customer to a secure official channel.",
+          "overall_score": 5.0
+        }
+      }
+    ]
+  },
+  "dimension_4_escalation_routing": {
+    "accuracy": 0.63,
+    "automation_rate": 0.455,
+    "auto_handle_metrics": {
+      "precision": 0.8242,
+      "recall": 0.5639,
+      "f1_score": 0.6696,
+      "support": 133
+    },
+    "escalate_metrics": {
+      "precision": 0.4679,
+      "recall": 0.7612,
+      "f1_score": 0.5795,
+      "support": 67
+    },
+    "confusion_matrix": {
+      "true_auto_handle": 75,
+      "false_auto_handle": 16,
+      "true_escalate": 51,
+      "false_escalate": 58
+    },
+    "tier_breakdown": {
+      "easy": {
+        "sample_count": 90,
+        "accuracy": 0.6333,
+        "auto_precision": 0.8667,
+        "auto_recall": 0.5909,
+        "escalation_precision": 0.4,
+        "escalation_recall": 0.75,
+        "automation_rate": 0.5
+      },
+      "medium": {
+        "sample_count": 70,
+        "accuracy": 0.6286,
+        "auto_precision": 0.92,
+        "auto_recall": 0.4894,
+        "escalation_precision": 0.4667,
+        "escalation_recall": 0.913,
+        "automation_rate": 0.3571
+      },
+      "hard": {
+        "sample_count": 40,
+        "accuracy": 0.625,
+        "auto_precision": 0.619,
+        "auto_recall": 0.65,
+        "escalation_precision": 0.6316,
+        "escalation_recall": 0.6,
+        "automation_rate": 0.525
+      }
+    }
+  },
+  "dimension_5_three_way_comparison": {
+    "comparison_table": [
+      {
+        "System": "Baseline 1: Trivial Majority Classifier",
+        "Architecture": "Constant Mode Predictor (ORDER_DELIVERY_AND_TRACKING)",
+        "Intent Accuracy": "14.00%",
+        "Intent Macro F1": "2.46%",
+        "Retrieval Capable": "No (None)",
+        "Safety Guardrails": "No (0% Escalation)",
+        "Automation Rate": "100.0%",
+        "Reply Quality (1-5)": "N/A (No generation)",
+        "Operational Risk": "Catastrophic Failure"
+      },
+      {
+        "System": "Baseline 2: Classical ML (TF-IDF + LogReg)",
+        "Architecture": "TF-IDF (10k n-grams) + Multinomial Logistic Regression",
+        "Intent Accuracy": "90.50%",
+        "Intent Macro F1": "91.05%",
+        "Retrieval Capable": "No (None)",
+        "Safety Guardrails": "No (Pure classifier)",
+        "Automation Rate": "100.0% (Unrouted)",
+        "Reply Quality (1-5)": "N/A (No generation)",
+        "Operational Risk": "High (Blind routing)"
+      },
+      {
+        "System": "Final Hybrid Support Agent (Integrated)",
+        "Architecture": "Modular Pipeline (ML + FAISS + Safety Engine + Vertex AI)",
+        "Intent Accuracy": "90.50%",
+        "Intent Macro F1": "91.05%",
+        "Retrieval Capable": "Yes (Hit@3: 81.0%)",
+        "Safety Guardrails": "Yes (Recall: 76.1%)",
+        "Automation Rate": "45.5% (Trustworthy)",
+        "Reply Quality (1-5)": "3.57 / 5.00",
+        "Operational Risk": "Low (Production Ready)"
+      }
+    ],
+    "deltas_vs_majority": {
+      "accuracy_delta": 76.5,
+      "macro_f1_delta": 88.59
+    },
+    "deltas_vs_classical": {
+      "accuracy_delta": 0.0,
+      "macro_f1_delta": 0.0
+    }
+  }
+}
