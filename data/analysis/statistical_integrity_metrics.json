@@ -1,0 +1,210 @@
+{
+  "milestone": "Milestone 15: Honest Interpretation of Results",
+  "timestamp": "2026-09-10 17:35:00",
+  "confidence_intervals": {
+    "intent_classification_accuracy": {
+      "description": "Overall Intent Accuracy on Golden Set",
+      "k": 181,
+      "n": 200,
+      "point_estimate": 0.905,
+      "percentage": "90.50%",
+      "ci_95_lower": 0.8564,
+      "ci_95_upper": 0.9383,
+      "ci_95_range_str": "[85.64%, 93.83%]",
+      "margin_of_error": 0.041,
+      "span_percentage": "8.19%"
+    },
+    "retrieval_hit_at_1": {
+      "description": "Top-1 Intent Hit Rate",
+      "k": 130,
+      "n": 200,
+      "point_estimate": 0.65,
+      "percentage": "65.00%",
+      "ci_95_lower": 0.5816,
+      "ci_95_upper": 0.7127,
+      "ci_95_range_str": "[58.16%, 71.27%]",
+      "margin_of_error": 0.0655,
+      "span_percentage": "13.11%"
+    },
+    "retrieval_hit_at_3": {
+      "description": "Top-3 Intent Hit Rate",
+      "k": 162,
+      "n": 200,
+      "point_estimate": 0.81,
+      "percentage": "81.00%",
+      "ci_95_lower": 0.75,
+      "ci_95_upper": 0.8583,
+      "ci_95_range_str": "[75.00%, 85.83%]",
+      "margin_of_error": 0.0542,
+      "span_percentage": "10.83%"
+    },
+    "retrieval_hit_at_5": {
+      "description": "Top-5 Intent Hit Rate",
+      "k": 170,
+      "n": 200,
+      "point_estimate": 0.85,
+      "percentage": "85.00%",
+      "ci_95_lower": 0.7939,
+      "ci_95_upper": 0.8929,
+      "ci_95_range_str": "[79.39%, 89.29%]",
+      "margin_of_error": 0.0495,
+      "span_percentage": "9.89%"
+    },
+    "escalation_policy_accuracy": {
+      "description": "Overall Policy Routing Accuracy",
+      "k": 126,
+      "n": 200,
+      "point_estimate": 0.63,
+      "percentage": "63.00%",
+      "ci_95_lower": 0.5612,
+      "ci_95_upper": 0.6939,
+      "ci_95_range_str": "[56.12%, 69.39%]",
+      "margin_of_error": 0.0663,
+      "span_percentage": "13.26%"
+    },
+    "automation_rate": {
+      "description": "Proportion of Inquiries Auto-Handled",
+      "k": 91,
+      "n": 200,
+      "point_estimate": 0.455,
+      "percentage": "45.50%",
+      "ci_95_lower": 0.3875,
+      "ci_95_upper": 0.5242,
+      "ci_95_range_str": "[38.75%, 52.42%]",
+      "margin_of_error": 0.0684,
+      "span_percentage": "13.67%"
+    },
+    "escalation_safety_recall": {
+      "description": "True Human Escalations Caught (Safety Recall)",
+      "k": 51,
+      "n": 67,
+      "point_estimate": 0.7612,
+      "percentage": "76.12%",
+      "ci_95_lower": 0.6467,
+      "ci_95_upper": 0.8473,
+      "ci_95_range_str": "[64.67%, 84.73%]",
+      "margin_of_error": 0.1003,
+      "span_percentage": "20.06%"
+    },
+    "escalation_false_negative_rate": {
+      "description": "Critical Escalations Missed (False Auto-Handle)",
+      "k": 16,
+      "n": 67,
+      "point_estimate": 0.2388,
+      "percentage": "23.88%",
+      "ci_95_lower": 0.1527,
+      "ci_95_upper": 0.3533,
+      "ci_95_range_str": "[15.27%, 35.33%]",
+      "margin_of_error": 0.1003,
+      "span_percentage": "20.06%"
+    },
+    "auto_handle_precision": {
+      "description": "Auto-Handled Cases that were Truly Safe",
+      "k": 75,
+      "n": 91,
+      "point_estimate": 0.8242,
+      "percentage": "82.42%",
+      "ci_95_lower": 0.7333,
+      "ci_95_upper": 0.8888,
+      "ci_95_range_str": "[73.33%, 88.88%]",
+      "margin_of_error": 0.0777,
+      "span_percentage": "15.55%"
+    },
+    "false_escalation_rate": {
+      "description": "Benign Cases Unnecessarily Escalated (Efficiency Loss)",
+      "k": 58,
+      "n": 133,
+      "point_estimate": 0.4361,
+      "percentage": "43.61%",
+      "ci_95_lower": 0.3548,
+      "ci_95_upper": 0.521,
+      "ci_95_range_str": "[35.48%, 52.10%]",
+      "margin_of_error": 0.0831,
+      "span_percentage": "16.62%"
+    }
+  },
+  "frequency_reweighting": {
+    "macro_f1": 0.9105,
+    "golden_weighted_f1": 0.9043,
+    "natural_weighted_f1": 0.8925,
+    "delta_natural_vs_macro": -0.0181,
+    "per_intent_f1": {
+      "ORDER_DELIVERY_AND_TRACKING": 0.9057,
+      "REFUND_STATUS_AND_DISPUTES": 0.7843,
+      "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": 0.8936,
+      "PRIME_MEMBERSHIP_AND_DIGITAL": 0.9302,
+      "ORDER_CANCELLATION": 0.9524,
+      "PAYMENT_BILLING_AND_PROMOS": 0.9,
+      "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": 0.9677,
+      "ACCOUNT_ACCESS_AND_SECURITY": 0.8966,
+      "TECHNICAL_AND_PLATFORM_ISSUES": 0.9375,
+      "RETURNS_AND_EXCHANGES": 0.9375
+    },
+    "natural_counts": {
+      "ORDER_DELIVERY_AND_TRACKING": 3686,
+      "REFUND_STATUS_AND_DISPUTES": 3108,
+      "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": 2382,
+      "PRIME_MEMBERSHIP_AND_DIGITAL": 1973,
+      "ORDER_CANCELLATION": 1430,
+      "PAYMENT_BILLING_AND_PROMOS": 1075,
+      "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": 862,
+      "ACCOUNT_ACCESS_AND_SECURITY": 709,
+      "TECHNICAL_AND_PLATFORM_ISSUES": 546,
+      "RETURNS_AND_EXCHANGES": 541
+    },
+    "golden_counts": {
+      "ORDER_DELIVERY_AND_TRACKING": 28,
+      "REFUND_STATUS_AND_DISPUTES": 26,
+      "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": 25,
+      "PRIME_MEMBERSHIP_AND_DIGITAL": 22,
+      "ORDER_CANCELLATION": 20,
+      "PAYMENT_BILLING_AND_PROMOS": 18,
+      "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": 16,
+      "ACCOUNT_ACCESS_AND_SECURITY": 15,
+      "TECHNICAL_AND_PLATFORM_ISSUES": 15,
+      "RETURNS_AND_EXCHANGES": 15
+    }
+  },
+  "difficulty_tier_breakdown": {
+    "easy": {
+      "n": 90,
+      "retrieval_hit_at_1": 0.7222,
+      "retrieval_hit_at_3": 0.8778,
+      "retrieval_hit_at_5": 0.8889,
+      "mrr": 0.7935,
+      "escalation_accuracy": 0.6333,
+      "escalation_recall": 0.75,
+      "auto_precision": 0.8667
+    },
+    "medium": {
+      "n": 70,
+      "retrieval_hit_at_1": 0.7143,
+      "retrieval_hit_at_3": 0.8857,
+      "retrieval_hit_at_5": 0.9286,
+      "mrr": 0.7988,
+      "escalation_accuracy": 0.6286,
+      "escalation_recall": 0.913,
+      "auto_precision": 0.92
+    },
+    "hard": {
+      "n": 40,
+      "retrieval_hit_at_1": 0.375,
+      "retrieval_hit_at_3": 0.525,
+      "retrieval_hit_at_5": 0.625,
+      "mrr": 0.4612,
+      "escalation_accuracy": 0.625,
+      "escalation_recall": 0.6,
+      "auto_precision": 0.619
+    }
+  },
+  "domain_coverage_horizon": {
+    "total_clean_conversations": 79665,
+    "matched_taxonomy_conversations": 14729,
+    "matched_coverage_percentage": 18.49,
+    "unmatched_conversations": 64936,
+    "unmatched_percentage": 81.51,
+    "survivorship_kb_size": 12000,
+    "survivorship_pool_total": 79665,
+    "survivorship_percentage": 15.06
+  }
+}
