@@ -1,0 +1,377 @@
+=== TOP FALSE AUTO-HANDLES (TOTAL: 16) ===
+
+1. [conv_206973] GT: ORDER_DELIVERY_AND_TRACKING | Pred: ORDER_DELIVERY_AND_TRACKING | Diff: easy
+   Msg: Watched the @118706 try to shove an @115821 package in my mailbox yesterday. By the time I beshoed, she had gone with it - marked delivered.
+   Signals: Conf=0.878, Margin=0.849, Sim=0.744, EvCount=5
+   Reason: High intent confidence (0.88), strong historical grounding (sim: 0.74, precedents: 5), and zero safety risk flags detected.
+
+2. [conv_179088] GT: ORDER_DELIVERY_AND_TRACKING | Pred: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: hard
+   Msg: My Amazon ordered book has been damaged in transit. Has anyone received a message instructing communications with Amazon once received?
+   Signals: Conf=0.793, Margin=0.708, Sim=0.719, EvCount=5
+   Reason: High intent confidence (0.79), strong historical grounding (sim: 0.72, precedents: 5), and zero safety risk flags detected.
+
+3. [conv_183577] GT: REFUND_STATUS_AND_DISPUTES | Pred: REFUND_STATUS_AND_DISPUTES | Diff: easy
+   Msg: Hey @AmazonHelp I received refund for last amazon prime but now see that the past two months have been charged..I am still being charged https://t.co/ZYYf2D21Bq
+   Signals: Conf=0.825, Margin=0.789, Sim=0.852, EvCount=1
+   Reason: High intent confidence (0.82), strong historical grounding (sim: 0.85, precedents: 1), and zero safety risk flags detected.
+
+4. [conv_239638] GT: REFUND_STATUS_AND_DISPUTES | Pred: REFUND_STATUS_AND_DISPUTES | Diff: easy
+   Msg: placed 2 orders separately yesterday, at separate times, paid postage on both but you put them in the same 📦, can I get a refund?
+   Signals: Conf=0.802, Margin=0.745, Sim=0.706, EvCount=1
+   Reason: High intent confidence (0.80), strong historical grounding (sim: 0.71, precedents: 1), and zero safety risk flags detected.
+
+5. [conv_253942] GT: REFUND_STATUS_AND_DISPUTES | Pred: PAYMENT_BILLING_AND_PROMOS | Diff: hard
+   Msg: you owe my 2500 rs as you forcibly refunded me in Amazon Pay despite taking bank details.Cant succumb to ur autocracy.
+   Signals: Conf=0.557, Margin=0.283, Sim=0.724, EvCount=3
+   Reason: High intent confidence (0.56), strong historical grounding (sim: 0.72, precedents: 3), and zero safety risk flags detected.
+
+6. [conv_816091] GT: PRIME_MEMBERSHIP_AND_DIGITAL | Pred: ORDER_CANCELLATION | Diff: hard
+   Msg: Cancelled my Prime membership roughly 3 months ago, just noticed i've been charged for prime for the past 2 months. Any help.
+   Signals: Conf=0.628, Margin=0.314, Sim=0.897, EvCount=5
+   Reason: High intent confidence (0.63), strong historical grounding (sim: 0.90, precedents: 5), and zero safety risk flags detected.
+
+7. [conv_234829] GT: PRIME_MEMBERSHIP_AND_DIGITAL | Pred: PRIME_MEMBERSHIP_AND_DIGITAL | Diff: hard
+   Msg: appalled that when charged twice for my prime membership and asked for 1 refunded I now have ended up with no prime membership
+   Signals: Conf=0.947, Margin=0.927, Sim=0.842, EvCount=2
+   Reason: High intent confidence (0.95), strong historical grounding (sim: 0.84, precedents: 2), and zero safety risk flags detected.
+
+8. [conv_180957] GT: ORDER_CANCELLATION | Pred: ORDER_CANCELLATION | Diff: hard
+   Msg: I have share details already. What should I do ? Can I cancel the order ? If I cancel , may be you will refund my money after 1 month
+   Signals: Conf=0.688, Margin=0.400, Sim=0.695, EvCount=4
+   Reason: High intent confidence (0.69), strong historical grounding (sim: 0.69, precedents: 4), and zero safety risk flags detected.
+
+9. [conv_210431] GT: PAYMENT_BILLING_AND_PROMOS | Pred: PAYMENT_BILLING_AND_PROMOS | Diff: easy
+   Msg: please help, I ordered a gift voucher which was allegedly signed for on Monday but it has not been received...
+   Signals: Conf=0.778, Margin=0.721, Sim=0.770, EvCount=5
+   Reason: High intent confidence (0.78), strong historical grounding (sim: 0.77, precedents: 5), and zero safety risk flags detected.
+
+10. [conv_218137] GT: PAYMENT_BILLING_AND_PROMOS | Pred: PAYMENT_BILLING_AND_PROMOS | Diff: easy
+   Msg: I never got my gift card for doing a survey? I've emailed a couple times and never get a response?
+   Signals: Conf=0.767, Margin=0.721, Sim=0.752, EvCount=1
+   Reason: High intent confidence (0.77), strong historical grounding (sim: 0.75, precedents: 1), and zero safety risk flags detected.
+
+11. [conv_180064] GT: PAYMENT_BILLING_AND_PROMOS | Pred: PAYMENT_BILLING_AND_PROMOS | Diff: medium
+   Msg: Recharged with Amazon Pay Balance, how do I get to know that offer to win iPhone8 applied or not? @115850 @AmazonHelp https://t.co/d7CvlzmyPH
+   Signals: Conf=0.973, Margin=0.965, Sim=0.757, EvCount=2
+   Reason: High intent confidence (0.97), strong historical grounding (sim: 0.76, precedents: 2), and zero safety risk flags detected.
+
+12. [conv_269130] GT: PAYMENT_BILLING_AND_PROMOS | Pred: PAYMENT_BILLING_AND_PROMOS | Diff: hard
+   Msg: My Gift card code is not working. Please help
+   Signals: Conf=0.752, Margin=0.540, Sim=0.816, EvCount=5
+   Reason: High intent confidence (0.75), strong historical grounding (sim: 0.82, precedents: 5), and zero safety risk flags detected.
+
+13. [conv_248663] GT: TECHNICAL_AND_PLATFORM_ISSUES | Pred: TECHNICAL_AND_PLATFORM_ISSUES | Diff: medium
+   Msg: how come the Alexa app doesn’t recognise my mobile number when I try and register it for messaging? Is there a bug?
+   Signals: Conf=0.976, Margin=0.972, Sim=0.673, EvCount=3
+   Reason: High intent confidence (0.98), strong historical grounding (sim: 0.67, precedents: 3), and zero safety risk flags detected.
+
+14. [conv_311522] GT: TECHNICAL_AND_PLATFORM_ISSUES | Pred: TECHNICAL_AND_PLATFORM_ISSUES | Diff: hard
+   Msg: I’m getting tired of kindle app not working. How many updates last week? Four? Get it together. Please!
+   Signals: Conf=0.595, Margin=0.248, Sim=0.751, EvCount=5
+   Reason: High intent confidence (0.60), strong historical grounding (sim: 0.75, precedents: 5), and zero safety risk flags detected.
+
+15. [conv_224603] GT: RETURNS_AND_EXCHANGES | Pred: RETURNS_AND_EXCHANGES | Diff: easy
+   Msg: frustrated with the return policy. I cant get back my money and the customer care doesn't receive the call.
+   Signals: Conf=0.923, Margin=0.885, Sim=0.760, EvCount=4
+   Reason: High intent confidence (0.92), strong historical grounding (sim: 0.76, precedents: 4), and zero safety risk flags detected.
+
+16. [conv_283979] GT: RETURNS_AND_EXCHANGES | Pred: RETURNS_AND_EXCHANGES | Diff: hard
+   Msg: I buy everything through @115830 Had to return 1 item now i want to return another but my printer is broken.......no one is helping.
+   Signals: Conf=0.990, Margin=0.981, Sim=0.683, EvCount=1
+   Reason: High intent confidence (0.99), strong historical grounding (sim: 0.68, precedents: 1), and zero safety risk flags detected.
+
+
+=== TOP MISCLASSIFICATIONS (TOTAL: 19) ===
+
+1. [conv_179088] GT: ORDER_DELIVERY_AND_TRACKING -> Pred: DAMAGED_DEFECTIVE_OR_WRONG_ITEM (Conf: 0.793, Diff: hard)
+   Msg: My Amazon ordered book has been damaged in transit. Has anyone received a message instructing communications with Amazon once received?
+
+2. [conv_224633] GT: ORDER_DELIVERY_AND_TRACKING -> Pred: REFUND_STATUS_AND_DISPUTES (Conf: 0.508, Diff: hard)
+   Msg: Horrible customer experience from Amazon India. No tracking and No refund. What happened to customer first principle #Amazon
+
+3. [conv_319695] GT: ORDER_DELIVERY_AND_TRACKING -> Pred: REFUND_STATUS_AND_DISPUTES (Conf: 0.835, Diff: hard)
+   Msg: kindly track order no #4__credit_card__ neither product nor refund received even after a month
+
+4. [conv_179064] GT: ORDER_DELIVERY_AND_TRACKING -> Pred: REFUND_STATUS_AND_DISPUTES (Conf: 0.691, Diff: hard)
+   Msg: Hi @amazonhelp how do I get a refund on item which hasn't arrived in a group parcel ?
+
+5. [conv_648407] GT: REFUND_STATUS_AND_DISPUTES -> Pred: PAYMENT_BILLING_AND_PROMOS (Conf: 0.192, Diff: easy)
+   Msg: what in the world is a balance withheld? #customerservice doesnt seem to know!
+
+6. [conv_348625] GT: REFUND_STATUS_AND_DISPUTES -> Pred: RETURNS_AND_EXCHANGES (Conf: 0.605, Diff: easy)
+   Msg: I want to buy mobile if I feel not satisfied this product so can i return ? So I will get money back
+
+7. [conv_2549432] GT: REFUND_STATUS_AND_DISPUTES -> Pred: PRIME_MEMBERSHIP_AND_DIGITAL (Conf: 0.516, Diff: hard)
+   Msg: I am a Prime Member, my order not delivered but money also not refunded. Ord no 407-2724072-3557945. This is cheating a loyal cust
+
+8. [conv_222806] GT: REFUND_STATUS_AND_DISPUTES -> Pred: PAYMENT_BILLING_AND_PROMOS (Conf: 0.508, Diff: hard)
+   Msg: Please provide resolution, Amazon pay cashback not credited yet . 5days gone due date 21st sept 2017
+
+9. [conv_253942] GT: REFUND_STATUS_AND_DISPUTES -> Pred: PAYMENT_BILLING_AND_PROMOS (Conf: 0.557, Diff: hard)
+   Msg: you owe my 2500 rs as you forcibly refunded me in Amazon Pay despite taking bank details.Cant succumb to ur autocracy.
+
+10. [conv_381413] GT: REFUND_STATUS_AND_DISPUTES -> Pred: TECHNICAL_AND_PLATFORM_ISSUES (Conf: 0.357, Diff: hard)
+   Msg: Gt my firestick tv 10 days bk now power adpter stop working.Wn I askd 4 rplacemnt thy suggstd buy new1 later wl refund
+
+11. [conv_130747] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM -> Pred: ACCOUNT_ACCESS_AND_SECURITY (Conf: 0.226, Diff: easy)
+   Msg: 1/ @115850 Are you guys leaking email ids of user who applied for Amazon BTS offer?My bro got this spam email: http://t.co/6YtfYm0aLN
+
+12. [conv_180113] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM -> Pred: ORDER_DELIVERY_AND_TRACKING (Conf: 0.416, Diff: medium)
+   Msg: My shipment is supposed to arrive yesterday 3 Oct and I do not know why the delay was so much damaged by the delay of the shipment. https://t.co/3GU7MUmrvw
+
+13. [conv_193073] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM -> Pred: REFUND_STATUS_AND_DISPUTES (Conf: 0.567, Diff: hard)
+   Msg: m sorry2disturbed u but m mentally harassed by Amazon 405-6636472-3798710 not working booked another order but not getting refund
+
+14. [conv_206692] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM -> Pred: PAYMENT_BILLING_AND_PROMOS (Conf: 0.469, Diff: hard)
+   Msg: You have the worst customer service..you basically stole money from us due to YOUR faulty gift card!!
+
+15. [conv_816091] GT: PRIME_MEMBERSHIP_AND_DIGITAL -> Pred: ORDER_CANCELLATION (Conf: 0.628, Diff: hard)
+   Msg: Cancelled my Prime membership roughly 3 months ago, just noticed i've been charged for prime for the past 2 months. Any help.
+
+16. [conv_183616] GT: PRIME_MEMBERSHIP_AND_DIGITAL -> Pred: REFUND_STATUS_AND_DISPUTES (Conf: 0.759, Diff: hard)
+   Msg: been charged for prime wrongly and can’t find how to request a refund... can you help? Thanks
+
+17. [conv_182513] GT: CUSTOMER_SERVICE_AND_COURIER_FEEDBACK -> Pred: RETURNS_AND_EXCHANGES (Conf: 0.452, Diff: hard)
+   Msg: Hey @115850 Please arrange pickup for return, it was fixed today but nobody visited 4 pickup. Tracking ID: 710388293771 Worst experience👎👎
+
+18. [conv_183045] GT: ACCOUNT_ACCESS_AND_SECURITY -> Pred: TECHNICAL_AND_PLATFORM_ISSUES (Conf: 0.465, Diff: hard)
+   Msg: trying to register my #firestick but says my login details are not valid, yet I am logged in on my phone on your website ??#help
+
+19. [conv_280676] GT: ACCOUNT_ACCESS_AND_SECURITY -> Pred: ORDER_CANCELLATION (Conf: 0.465, Diff: hard)
+   Msg: How can someone hack into amazon.in account.Change email id, ph no.on top of it my order gets cancelled,paybalance account blocked
+
+
+=== TOP FALSE ESCALATIONS (TOTAL: 58) ===
+
+1. [conv_180377] GT: ORDER_DELIVERY_AND_TRACKING | Diff: easy
+   Msg: After canceled orders and delayed order, the only thing left was your customer executives raising their voice. Pathetic services
+   Reason: Low intent confidence (0.2507 < 0.55). | Insufficient verified historical precedents matching intent (0 < 1).
+
+2. [conv_197714] GT: ORDER_DELIVERY_AND_TRACKING | Diff: easy
+   Msg: AMAZON IN INDIA Deliver Damage good to there customer This is the tracking I.D. 216230107345 with following items:
+   Reason: Low intent confidence (0.5202 < 0.55). | Insufficient verified historical precedents matching intent (0 < 1).
+
+3. [conv_210326] GT: ORDER_DELIVERY_AND_TRACKING | Diff: easy
+   Msg: ... where is my order. U guys dont hve particular update abt my escalation ... is this the kind of services ur providing...
+   Reason: Low intent confidence (0.2662 < 0.55). | Insufficient verified historical precedents matching intent (0 < 1).
+
+4. [conv_210328] GT: ORDER_DELIVERY_AND_TRACKING | Diff: easy
+   Msg: WHERE IS MY PACKAGE @AmazonHelp
+   Reason: Low intent confidence (0.5195 < 0.55).
+
+5. [conv_210308] GT: ORDER_DELIVERY_AND_TRACKING | Diff: easy
+   Msg: I have a proof that your accounts team can not differentiate between purchased date and delivery date of a product.
+   Reason: Novel or unsupported situation: historical similarity (0.6180 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+6. [conv_218151] GT: ORDER_DELIVERY_AND_TRACKING | Diff: easy
+   Msg: Your tracking info says it's still out fir delivery??????
+   Reason: Safety risk trigger detected: [LEGAL_REGULATORY_THREAT] requiring immediate human intervention.
+
+7. [conv_1104401] GT: ORDER_DELIVERY_AND_TRACKING | Diff: medium
+   Msg: Great India festival sale. Order which was out for delivery more than 38 hour before not reached to me till now @@115850 . So called best
+   Reason: Low intent confidence (0.4993 < 0.55).
+
+8. [conv_179924] GT: ORDER_DELIVERY_AND_TRACKING | Diff: medium
+   Msg: I’m surprised by d pathetic support recd on my super-delayed order. D seller and ur exec asked me2go collect it from post office. https://t.co/oM4UaqyAiN
+   Reason: Low intent confidence (0.3171 < 0.55). | Novel or unsupported situation: historical similarity (0.6355 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+9. [conv_388797] GT: ORDER_DELIVERY_AND_TRACKING | Diff: medium
+   Msg: Worst shopping n service. Unable to deliver the package even after 10 days of scheduled delivery date. Feeling cheated by Amazon
+   Reason: Insufficient verified historical precedents matching intent (0 < 1).
+
+10. [conv_224633] GT: ORDER_DELIVERY_AND_TRACKING | Diff: hard
+   Msg: Horrible customer experience from Amazon India. No tracking and No refund. What happened to customer first principle #Amazon
+   Reason: Low intent confidence (0.5084 < 0.55).
+
+11. [conv_648407] GT: REFUND_STATUS_AND_DISPUTES | Diff: easy
+   Msg: what in the world is a balance withheld? #customerservice doesnt seem to know!
+   Reason: Low intent confidence (0.1919 < 0.55). | Novel or unsupported situation: historical similarity (0.5799 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+12. [conv_232154] GT: REFUND_STATUS_AND_DISPUTES | Diff: easy
+   Msg: Under 407-0048975-7733909 buyer ordered 2 qty of product and returned 1 qty but amazon refunded for both qty. WHAT A SHAME. https://t.co/xelf2BIN2d
+   Reason: Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Low intent confidence (0.4463 < 0.55). | Insufficient verified historical precedents matching intent (0 < 1).
+
+13. [conv_180915] GT: REFUND_STATUS_AND_DISPUTES | Diff: easy
+   Msg: Dear @115850 wish to know about my refund status , Your DA came and collected the package but status shows as return requested
+   Reason: Low intent confidence (0.3760 < 0.55).
+
+14. [conv_179691] GT: REFUND_STATUS_AND_DISPUTES | Diff: easy
+   Msg: I'd like to thank you for the swift refund for my order that never arrived. Such quick actions engender great loyalty
+   Reason: Novel or unsupported situation: historical similarity (0.6426 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+15. [conv_197817] GT: REFUND_STATUS_AND_DISPUTES | Diff: easy
+   Msg: Hi there, a CD I ordered recently has a large crack on the front of it. I was wondering how it can be replaced; not refunded.
+   Reason: Novel or unsupported situation: historical similarity (0.6052 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+16. [conv_1564956] GT: REFUND_STATUS_AND_DISPUTES | Diff: medium
+   Msg: ordered yester a timex watch@999 via sbi INB refund not yet https:__email__
+   Reason: Novel or unsupported situation: historical similarity (0.6232 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+17. [conv_234766] GT: REFUND_STATUS_AND_DISPUTES | Diff: medium
+   Msg: why i can't get refund of my headphone which is worth 8999. they are is no return only replace. Now i can't do anything.
+   Reason: Low intent confidence (0.5394 < 0.55).
+
+18. [conv_210339] GT: REFUND_STATUS_AND_DISPUTES | Diff: medium
+   Msg: order no 405-3129805-1022740 . its already been returned . i dont want the product . please initiate the refund
+   Reason: Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.
+
+19. [conv_179197] GT: REFUND_STATUS_AND_DISPUTES | Diff: medium
+   Msg: This is very pathetic & painful to knw that @115850 forgt to refnd 45k. It means if customer wouldn't call then they won't refund ur money
+   Reason: Novel or unsupported situation: historical similarity (0.6062 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+20. [conv_197724] GT: REFUND_STATUS_AND_DISPUTES | Diff: medium
+   Msg: Order id 408-9284363-8106739.Amazon cheat and dont refund my money.@115821
+   Reason: Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.
+
+21. [conv_224277] GT: REFUND_STATUS_AND_DISPUTES | Diff: medium
+   Msg: what the fucking service. Didn't call to customer nd refunded products, order date-29sep2017,order id- 408-1407922-2237939
+   Reason: Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.
+
+22. [conv_381413] GT: REFUND_STATUS_AND_DISPUTES | Diff: hard
+   Msg: Gt my firestick tv 10 days bk now power adpter stop working.Wn I askd 4 rplacemnt thy suggstd buy new1 later wl refund
+   Reason: Low intent confidence (0.3566 < 0.55). | Novel or unsupported situation: historical similarity (0.6163 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+23. [conv_130747] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: easy
+   Msg: 1/ @115850 Are you guys leaking email ids of user who applied for Amazon BTS offer?My bro got this spam email: http://t.co/6YtfYm0aLN
+   Reason: Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling. | Low intent confidence (0.2261 < 0.55).
+
+24. [conv_224831] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: easy
+   Msg: it is highly regretted that a reputated online business set up has started behaving like others. A defective has delivered to me.
+   Reason: Novel or unsupported situation: historical similarity (0.5948 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+25. [conv_179531] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: easy
+   Msg: #SWBFII The Amazon Codes are Not Working
+   Reason: Novel or unsupported situation: historical similarity (0.6350 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+26. [conv_179305] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: easy
+   Msg: got amazon uk beta code for bf2 and its not working??????
+   Reason: Novel or unsupported situation: historical similarity (0.6329 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+27. [conv_179722] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: easy
+   Msg: hi i preordered star wars battle front II and you sent an email with beta code but its not working
+   Reason: Insufficient verified historical precedents matching intent (0 < 1).
+
+28. [conv_226057] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: medium
+   Msg: On 25th sept, I have received 64 gb samsung memory card but its a faulty one. On 26th, I have sent a request for replacement but nothing has happened since then. I demand a swift action. Bill order is 408-9130123-3589128
+   Reason: Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Insufficient verified historical precedents matching intent (0 < 1).
+
+29. [conv_286193] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: medium
+   Msg: Bought a Whirlpool Solo Microwave oven 20ltrs from Amazon Sale. Received a faulty machine that doesn't work. Waiting response. Will update.
+   Reason: Novel or unsupported situation: historical similarity (0.4396 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+30. [conv_180113] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: medium
+   Msg: My shipment is supposed to arrive yesterday 3 Oct and I do not know why the delay was so much damaged by the delay of the shipment. https://t.co/3GU7MUmrvw
+   Reason: Low intent confidence (0.4157 < 0.55).
+
+31. [conv_180222] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: medium
+   Msg: never expected a bullying & crooked behaviour from Amazon. I requested a return of defective iPhone SE, no one from Amazon..contd#
+   Reason: Novel or unsupported situation: historical similarity (0.5895 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+32. [conv_180754] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: medium
+   Msg: Broken product received for order 408-7624111-6539547 Looking for replacement, cu care was unable to register replace. Do check https://t.co/b9wltyKr7f
+   Reason: Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.
+
+33. [conv_197845] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: medium
+   Msg: my phone's finger print scanner is not working. Also the technician was supposed to arrive in the afternoon but still not here!
+   Reason: Novel or unsupported situation: historical similarity (0.5815 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+34. [conv_199981] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: medium
+   Msg: I received a damaged product today from amazon. order number 406-3167131-0133142 . amazon india https://t.co/VSy9XaQfQC
+   Reason: Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.
+
+35. [conv_206692] GT: DAMAGED_DEFECTIVE_OR_WRONG_ITEM | Diff: hard
+   Msg: You have the worst customer service..you basically stole money from us due to YOUR faulty gift card!!
+   Reason: Low intent confidence (0.4691 < 0.55).
+
+36. [conv_1293697] GT: PRIME_MEMBERSHIP_AND_DIGITAL | Diff: easy
+   Msg: Heu ça marche pas le linkage de mon compte @120533 #premium & @54689 #prime Nous ne pouvons pas activer Twitch Prime sur votre compte.
+   Reason: Low intent confidence (0.5032 < 0.55). | Novel or unsupported situation: historical similarity (0.6150 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+37. [conv_658849] GT: PRIME_MEMBERSHIP_AND_DIGITAL | Diff: easy
+   Msg: Everything announced at Apple WWDC today ››› Yawn. On the other hand, Amazon Prime Video coming to Apple TV ››› Yes!!!
+   Reason: Novel or unsupported situation: historical similarity (0.5010 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+38. [conv_238886] GT: ORDER_CANCELLATION | Diff: easy
+   Msg: : Ours is a business account. Ordered 14 items for diwali gifts for staffs worth 10K INR. Order cancelled for 12 items. Order # 403-6277206-9111521. Customer service say, can't do anything. Why i should have business account then?
+   Reason: Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.
+
+39. [conv_180735] GT: ORDER_CANCELLATION | Diff: easy
+   Msg: Because while the savings are getting "better", Id rather not wait 4+ fucking months only to have it forcibly cancelled on me. Im not happy!
+   Reason: Novel or unsupported situation: historical similarity (0.5615 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+40. [conv_207763] GT: ORDER_CANCELLATION | Diff: easy
+   Msg: Hey @AmazonHelp 4th day now without my order which is made up entirely of Prime items.. No cancellation allowed.. what the hell?
+   Reason: Low intent confidence (0.5130 < 0.55).
+
+41. [conv_227114] GT: ORDER_CANCELLATION | Diff: easy
+   Msg: Slow clap 👏👏👏👏 Product Cancelled by me, still getting notification that product will deliver to you today. Apni Dukaan.😂🤣😂🤣 https://t.co/RrWAFMmpbL
+   Reason: Novel or unsupported situation: historical similarity (0.5195 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+42. [conv_179931] GT: ORDER_CANCELLATION | Diff: medium
+   Msg: order id 406-0875156-9923538 i cancelled it as its taking forever to come nd you guys ask for pick up from home date.. #shitamazon
+   Reason: Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.
+
+43. [conv_191616] GT: ORDER_CANCELLATION | Diff: medium
+   Msg: I am unable to pay for my order id :- 405-2765780-7605958 and 2 more.Your team suggested to cancel the order. What should I do ?
+   Reason: Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.
+
+44. [conv_183643] GT: ORDER_CANCELLATION | Diff: hard
+   Msg: customercare completely useless,not helping, act like written scripts, no supervisor to speak with, 32K not refunded, AC cancelled
+   Reason: Novel or unsupported situation: historical similarity (0.6417 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+45. [conv_181005] GT: ORDER_CANCELLATION | Diff: hard
+   Msg: Sir, two items hd ordered mistakely. Then i cancelled this order. But i caouldn't get refund rs 229 which was debited from my ac
+   Reason: Insufficient verified historical precedents matching intent (0 < 1).
+
+46. [conv_179466] GT: PAYMENT_BILLING_AND_PROMOS | Diff: medium
+   Msg: Naa Amazon cash back coupon code raledu mee company nundi 😠
+   Reason: Novel or unsupported situation: historical similarity (0.5505 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+47. [conv_199977] GT: PAYMENT_BILLING_AND_PROMOS | Diff: hard
+   Msg: Thanks again @115821 for the call & the gift card in addition to the refund of my order. I'm a happy Amazon customer again. @117795
+   Reason: Low intent confidence (0.4968 < 0.55). | Insufficient verified historical precedents matching intent (0 < 1).
+
+48. [conv_210319] GT: TECHNICAL_AND_PLATFORM_ISSUES | Diff: easy
+   Msg: #Suffering frm last 7 days, without any fault. Due to technical glitch/wrong info by @115821 Sorry to say but such service was not expected
+   Reason: Novel or unsupported situation: historical similarity (0.5932 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+49. [conv_179301] GT: TECHNICAL_AND_PLATFORM_ISSUES | Diff: easy
+   Msg: there is a serious bug on your website; when trying to navigate using Next page or Page Number it redirects to Home Page.
+   Reason: Novel or unsupported situation: historical similarity (0.5227 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+50. [conv_223883] GT: TECHNICAL_AND_PLATFORM_ISSUES | Diff: easy
+   Msg: what i will get if i will show you a real time bug of @115850 ?
+   Reason: Novel or unsupported situation: historical similarity (0.5734 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+51. [conv_235169] GT: TECHNICAL_AND_PLATFORM_ISSUES | Diff: easy
+   Msg: How about surprising me with a firestick this deepawali ?
+   Reason: Novel or unsupported situation: historical similarity (0.5241 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+52. [conv_183274] GT: TECHNICAL_AND_PLATFORM_ISSUES | Diff: medium
+   Msg: When ordering the cart becomes empty even in app and browser in computer. Is it a game show or glitch??? #worstcustomerservice
+   Reason: Novel or unsupported situation: historical similarity (0.5897 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+53. [conv_227921] GT: TECHNICAL_AND_PLATFORM_ISSUES | Diff: medium
+   Msg: Unable to add product in cart. What is the use of sale if the app crashes so frequently. @119356 @115850 @AmazonHelp https://t.co/ds3F5QbgnY
+   Reason: Low intent confidence (0.3184 < 0.55). | Novel or unsupported situation: historical similarity (0.6209 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+54. [conv_234519] GT: RETURNS_AND_EXCHANGES | Diff: easy
+   Msg: what is your return policy on Samsung Gear S3?
+   Reason: Novel or unsupported situation: historical similarity (0.6477 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+55. [conv_240501] GT: RETURNS_AND_EXCHANGES | Diff: medium
+   Msg: worst shopping app I bought a 25 let. Water heater. They returned it without my return request and said you have already requested
+   Reason: Novel or unsupported situation: historical similarity (0.5004 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1).
+
+56. [conv_181157] GT: RETURNS_AND_EXCHANGES | Diff: medium
+   Msg: I got my redme 4 today. But I'm not satisfied with the product so I want to return d same. Kindly assist @115850 Order 408-1160678-3266756
+   Reason: Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention.
+
+57. [conv_234146] GT: RETURNS_AND_EXCHANGES | Diff: medium
+   Msg: I HAVE AN ORDER I NEED TO SEND BACK
+   Reason: Low intent confidence (0.2797 < 0.55).
+
+58. [conv_291773] GT: RETURNS_AND_EXCHANGES | Diff: hard
+   Msg: Hi, I have ordered fans . Unfortunately the product is not upto the mark. Placed refund and return request. Please help urgently
+   Reason: Insufficient verified historical precedents matching intent (0 < 1).
+

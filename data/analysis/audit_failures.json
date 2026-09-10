@@ -1,0 +1,864 @@
+{
+  "misclassifications": [
+    {
+      "cid": "conv_179088",
+      "msg": "My Amazon ordered book has been damaged in transit. Has anyone received a message instructing communications with Amazon once received?",
+      "gt": "ORDER_DELIVERY_AND_TRACKING",
+      "pred": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "conf": 0.7935,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_224633",
+      "msg": "Horrible customer experience from Amazon India. No tracking and No refund. What happened to customer first principle #Amazon",
+      "gt": "ORDER_DELIVERY_AND_TRACKING",
+      "pred": "REFUND_STATUS_AND_DISPUTES",
+      "conf": 0.5084,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_319695",
+      "msg": "kindly track order no #4__credit_card__ neither product nor refund received even after a month",
+      "gt": "ORDER_DELIVERY_AND_TRACKING",
+      "pred": "REFUND_STATUS_AND_DISPUTES",
+      "conf": 0.8349,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_179064",
+      "msg": "Hi @amazonhelp how do I get a refund on item which hasn't arrived in a group parcel ?",
+      "gt": "ORDER_DELIVERY_AND_TRACKING",
+      "pred": "REFUND_STATUS_AND_DISPUTES",
+      "conf": 0.6907,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_648407",
+      "msg": "what in the world is a balance withheld? #customerservice doesnt seem to know!",
+      "gt": "REFUND_STATUS_AND_DISPUTES",
+      "pred": "PAYMENT_BILLING_AND_PROMOS",
+      "conf": 0.1919,
+      "diff": "easy"
+    },
+    {
+      "cid": "conv_348625",
+      "msg": "I want to buy mobile if I feel not satisfied this product so can i return ? So I will get money back",
+      "gt": "REFUND_STATUS_AND_DISPUTES",
+      "pred": "RETURNS_AND_EXCHANGES",
+      "conf": 0.605,
+      "diff": "easy"
+    },
+    {
+      "cid": "conv_2549432",
+      "msg": "I am a Prime Member, my order not delivered but money also not refunded. Ord no 407-2724072-3557945. This is cheating a loyal cust",
+      "gt": "REFUND_STATUS_AND_DISPUTES",
+      "pred": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "conf": 0.5162,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_222806",
+      "msg": "Please provide resolution, Amazon pay cashback not credited yet . 5days gone due date 21st sept 2017",
+      "gt": "REFUND_STATUS_AND_DISPUTES",
+      "pred": "PAYMENT_BILLING_AND_PROMOS",
+      "conf": 0.5079,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_253942",
+      "msg": "you owe my 2500 rs as you forcibly refunded me in Amazon Pay despite taking bank details.Cant succumb to ur autocracy.",
+      "gt": "REFUND_STATUS_AND_DISPUTES",
+      "pred": "PAYMENT_BILLING_AND_PROMOS",
+      "conf": 0.5568,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_381413",
+      "msg": "Gt my firestick tv 10 days bk now power adpter stop working.Wn I askd 4 rplacemnt thy suggstd buy new1 later wl refund",
+      "gt": "REFUND_STATUS_AND_DISPUTES",
+      "pred": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "conf": 0.3566,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_130747",
+      "msg": "1/ @115850 Are you guys leaking email ids of user who applied for Amazon BTS offer?My bro got this spam email: http://t.co/6YtfYm0aLN",
+      "gt": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred": "ACCOUNT_ACCESS_AND_SECURITY",
+      "conf": 0.2261,
+      "diff": "easy"
+    },
+    {
+      "cid": "conv_180113",
+      "msg": "My shipment is supposed to arrive yesterday 3 Oct and I do not know why the delay was so much damaged by the delay of the shipment. https://t.co/3GU7MUmrvw",
+      "gt": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred": "ORDER_DELIVERY_AND_TRACKING",
+      "conf": 0.4157,
+      "diff": "medium"
+    },
+    {
+      "cid": "conv_193073",
+      "msg": "m sorry2disturbed u but m mentally harassed by Amazon 405-6636472-3798710 not working booked another order but not getting refund",
+      "gt": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred": "REFUND_STATUS_AND_DISPUTES",
+      "conf": 0.5673,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_206692",
+      "msg": "You have the worst customer service..you basically stole money from us due to YOUR faulty gift card!!",
+      "gt": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred": "PAYMENT_BILLING_AND_PROMOS",
+      "conf": 0.4691,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_816091",
+      "msg": "Cancelled my Prime membership roughly 3 months ago, just noticed i've been charged for prime for the past 2 months. Any help.",
+      "gt": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "pred": "ORDER_CANCELLATION",
+      "conf": 0.6279,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_183616",
+      "msg": "been charged for prime wrongly and can\u2019t find how to request a refund... can you help? Thanks",
+      "gt": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "pred": "REFUND_STATUS_AND_DISPUTES",
+      "conf": 0.7595,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_182513",
+      "msg": "Hey @115850 Please arrange pickup for return, it was fixed today but nobody visited 4 pickup. Tracking ID: 710388293771 Worst experience\ud83d\udc4e\ud83d\udc4e",
+      "gt": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "pred": "RETURNS_AND_EXCHANGES",
+      "conf": 0.4515,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_183045",
+      "msg": "trying to register my #firestick but says my login details are not valid, yet I am logged in on my phone on your website ??#help",
+      "gt": "ACCOUNT_ACCESS_AND_SECURITY",
+      "pred": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "conf": 0.465,
+      "diff": "hard"
+    },
+    {
+      "cid": "conv_280676",
+      "msg": "How can someone hack into amazon.in account.Change email id, ph no.on top of it my order gets cancelled,paybalance account blocked",
+      "gt": "ACCOUNT_ACCESS_AND_SECURITY",
+      "pred": "ORDER_CANCELLATION",
+      "conf": 0.4648,
+      "diff": "hard"
+    }
+  ],
+  "false_auto_handles": [
+    {
+      "cid": "conv_206973",
+      "msg": "Watched the @118706 try to shove an @115821 package in my mailbox yesterday. By the time I beshoed, she had gone with it - marked delivered.",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "diff": "easy",
+      "reason": "High intent confidence (0.88), strong historical grounding (sim: 0.74, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8783,
+        "retrieval_score": 0.7439,
+        "evidence_count": 5,
+        "intent_margin": 0.8494,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_179088",
+      "msg": "My Amazon ordered book has been damaged in transit. Has anyone received a message instructing communications with Amazon once received?",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "diff": "hard",
+      "reason": "High intent confidence (0.79), strong historical grounding (sim: 0.72, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7935,
+        "retrieval_score": 0.7193,
+        "evidence_count": 5,
+        "intent_margin": 0.7083,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_183577",
+      "msg": "Hey @AmazonHelp I received refund for last amazon prime but now see that the past two months have been charged..I am still being charged https://t.co/ZYYf2D21Bq",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "easy",
+      "reason": "High intent confidence (0.82), strong historical grounding (sim: 0.85, precedents: 1), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.8247,
+        "retrieval_score": 0.8523,
+        "evidence_count": 1,
+        "intent_margin": 0.7889,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_239638",
+      "msg": "placed 2 orders separately yesterday, at separate times, paid postage on both but you put them in the same \ud83d\udce6, can I get a refund?",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "easy",
+      "reason": "High intent confidence (0.80), strong historical grounding (sim: 0.71, precedents: 1), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.802,
+        "retrieval_score": 0.7061,
+        "evidence_count": 1,
+        "intent_margin": 0.7454,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_253942",
+      "msg": "you owe my 2500 rs as you forcibly refunded me in Amazon Pay despite taking bank details.Cant succumb to ur autocracy.",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "diff": "hard",
+      "reason": "High intent confidence (0.56), strong historical grounding (sim: 0.72, precedents: 3), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.5568,
+        "retrieval_score": 0.7241,
+        "evidence_count": 3,
+        "intent_margin": 0.283,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_816091",
+      "msg": "Cancelled my Prime membership roughly 3 months ago, just noticed i've been charged for prime for the past 2 months. Any help.",
+      "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "pred_intent": "ORDER_CANCELLATION",
+      "diff": "hard",
+      "reason": "High intent confidence (0.63), strong historical grounding (sim: 0.90, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.6279,
+        "retrieval_score": 0.8975,
+        "evidence_count": 5,
+        "intent_margin": 0.3137,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_234829",
+      "msg": "appalled that when charged twice for my prime membership and asked for 1 refunded I now have ended up with no prime membership",
+      "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "pred_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "diff": "hard",
+      "reason": "High intent confidence (0.95), strong historical grounding (sim: 0.84, precedents: 2), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.947,
+        "retrieval_score": 0.8421,
+        "evidence_count": 2,
+        "intent_margin": 0.9273,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_180957",
+      "msg": "I have share details already. What should I do ? Can I cancel the order ? If I cancel , may be you will refund my money after 1 month",
+      "intent": "ORDER_CANCELLATION",
+      "pred_intent": "ORDER_CANCELLATION",
+      "diff": "hard",
+      "reason": "High intent confidence (0.69), strong historical grounding (sim: 0.69, precedents: 4), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.6878,
+        "retrieval_score": 0.6945,
+        "evidence_count": 4,
+        "intent_margin": 0.3997,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_210431",
+      "msg": "please help, I ordered a gift voucher which was allegedly signed for on Monday but it has not been received...",
+      "intent": "PAYMENT_BILLING_AND_PROMOS",
+      "pred_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "diff": "easy",
+      "reason": "High intent confidence (0.78), strong historical grounding (sim: 0.77, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7778,
+        "retrieval_score": 0.77,
+        "evidence_count": 5,
+        "intent_margin": 0.7212,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_218137",
+      "msg": "I never got my gift card for doing a survey? I've emailed a couple times and never get a response?",
+      "intent": "PAYMENT_BILLING_AND_PROMOS",
+      "pred_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "diff": "easy",
+      "reason": "High intent confidence (0.77), strong historical grounding (sim: 0.75, precedents: 1), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7669,
+        "retrieval_score": 0.7521,
+        "evidence_count": 1,
+        "intent_margin": 0.7208,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_180064",
+      "msg": "Recharged with Amazon Pay Balance, how do I get to know that offer to win iPhone8 applied or not? @115850 @AmazonHelp https://t.co/d7CvlzmyPH",
+      "intent": "PAYMENT_BILLING_AND_PROMOS",
+      "pred_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "diff": "medium",
+      "reason": "High intent confidence (0.97), strong historical grounding (sim: 0.76, precedents: 2), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9725,
+        "retrieval_score": 0.7572,
+        "evidence_count": 2,
+        "intent_margin": 0.9653,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_269130",
+      "msg": "My Gift card code is not working. Please help",
+      "intent": "PAYMENT_BILLING_AND_PROMOS",
+      "pred_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "diff": "hard",
+      "reason": "High intent confidence (0.75), strong historical grounding (sim: 0.82, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.7524,
+        "retrieval_score": 0.8164,
+        "evidence_count": 5,
+        "intent_margin": 0.5398,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_248663",
+      "msg": "how come the Alexa app doesn\u2019t recognise my mobile number when I try and register it for messaging? Is there a bug?",
+      "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "pred_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "diff": "medium",
+      "reason": "High intent confidence (0.98), strong historical grounding (sim: 0.67, precedents: 3), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9762,
+        "retrieval_score": 0.6726,
+        "evidence_count": 3,
+        "intent_margin": 0.9724,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_311522",
+      "msg": "I\u2019m getting tired of kindle app not working. How many updates last week? Four? Get it together. Please!",
+      "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "pred_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "diff": "hard",
+      "reason": "High intent confidence (0.60), strong historical grounding (sim: 0.75, precedents: 5), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.5954,
+        "retrieval_score": 0.7511,
+        "evidence_count": 5,
+        "intent_margin": 0.2477,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_224603",
+      "msg": "frustrated with the return policy. I cant get back my money and the customer care doesn't receive the call.",
+      "intent": "RETURNS_AND_EXCHANGES",
+      "pred_intent": "RETURNS_AND_EXCHANGES",
+      "diff": "easy",
+      "reason": "High intent confidence (0.92), strong historical grounding (sim: 0.76, precedents: 4), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9227,
+        "retrieval_score": 0.7604,
+        "evidence_count": 4,
+        "intent_margin": 0.8855,
+        "risk_flags": []
+      }
+    },
+    {
+      "cid": "conv_283979",
+      "msg": "I buy everything through @115830 Had to return 1 item now i want to return another but my printer is broken.......no one is helping.",
+      "intent": "RETURNS_AND_EXCHANGES",
+      "pred_intent": "RETURNS_AND_EXCHANGES",
+      "diff": "hard",
+      "reason": "High intent confidence (0.99), strong historical grounding (sim: 0.68, precedents: 1), and zero safety risk flags detected.",
+      "signals": {
+        "intent_confidence": 0.9899,
+        "retrieval_score": 0.6829,
+        "evidence_count": 1,
+        "intent_margin": 0.9808,
+        "risk_flags": []
+      }
+    }
+  ],
+  "false_escalates": [
+    {
+      "cid": "conv_180377",
+      "msg": "After canceled orders and delayed order, the only thing left was your customer executives raising their voice. Pathetic services",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "diff": "easy",
+      "reason": "Low intent confidence (0.2507 < 0.55). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_197714",
+      "msg": "AMAZON IN INDIA Deliver Damage good to there customer This is the tracking I.D. 216230107345 with following items:",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "diff": "easy",
+      "reason": "Low intent confidence (0.5202 < 0.55). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_210326",
+      "msg": "... where is my order. U guys dont hve particular update abt my escalation ... is this the kind of services ur providing...",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "diff": "easy",
+      "reason": "Low intent confidence (0.2662 < 0.55). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_210328",
+      "msg": "WHERE IS MY PACKAGE @AmazonHelp",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "diff": "easy",
+      "reason": "Low intent confidence (0.5195 < 0.55)."
+    },
+    {
+      "cid": "conv_210308",
+      "msg": "I have a proof that your accounts team can not differentiate between purchased date and delivery date of a product.",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.6180 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_218151",
+      "msg": "Your tracking info says it's still out fir delivery??????",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "diff": "easy",
+      "reason": "Safety risk trigger detected: [LEGAL_REGULATORY_THREAT] requiring immediate human intervention."
+    },
+    {
+      "cid": "conv_1104401",
+      "msg": "Great India festival sale. Order which was out for delivery more than 38 hour before not reached to me till now @@115850 . So called best",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "diff": "medium",
+      "reason": "Low intent confidence (0.4993 < 0.55)."
+    },
+    {
+      "cid": "conv_179924",
+      "msg": "I\u2019m surprised by d pathetic support recd on my super-delayed order. D seller and ur exec asked me2go collect it from post office. https://t.co/oM4UaqyAiN",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "diff": "medium",
+      "reason": "Low intent confidence (0.3171 < 0.55). | Novel or unsupported situation: historical similarity (0.6355 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_388797",
+      "msg": "Worst shopping n service. Unable to deliver the package even after 10 days of scheduled delivery date. Feeling cheated by Amazon",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "diff": "medium",
+      "reason": "Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_224633",
+      "msg": "Horrible customer experience from Amazon India. No tracking and No refund. What happened to customer first principle #Amazon",
+      "intent": "ORDER_DELIVERY_AND_TRACKING",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "hard",
+      "reason": "Low intent confidence (0.5084 < 0.55)."
+    },
+    {
+      "cid": "conv_648407",
+      "msg": "what in the world is a balance withheld? #customerservice doesnt seem to know!",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "diff": "easy",
+      "reason": "Low intent confidence (0.1919 < 0.55). | Novel or unsupported situation: historical similarity (0.5799 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_232154",
+      "msg": "Under 407-0048975-7733909 buyer ordered 2 qty of product and returned 1 qty but amazon refunded for both qty. WHAT A SHAME. https://t.co/xelf2BIN2d",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "easy",
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Low intent confidence (0.4463 < 0.55). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_180915",
+      "msg": "Dear @115850 wish to know about my refund status , Your DA came and collected the package but status shows as return requested",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "easy",
+      "reason": "Low intent confidence (0.3760 < 0.55)."
+    },
+    {
+      "cid": "conv_179691",
+      "msg": "I'd like to thank you for the swift refund for my order that never arrived. Such quick actions engender great loyalty",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.6426 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_197817",
+      "msg": "Hi there, a CD I ordered recently has a large crack on the front of it. I was wondering how it can be replaced; not refunded.",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.6052 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_1564956",
+      "msg": "ordered yester a timex watch@999 via sbi INB refund not yet https:__email__",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "medium",
+      "reason": "Novel or unsupported situation: historical similarity (0.6232 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_234766",
+      "msg": "why i can't get refund of my headphone which is worth 8999. they are is no return only replace. Now i can't do anything.",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "medium",
+      "reason": "Low intent confidence (0.5394 < 0.55)."
+    },
+    {
+      "cid": "conv_210339",
+      "msg": "order no 405-3129805-1022740 . its already been returned . i dont want the product . please initiate the refund",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "medium",
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention."
+    },
+    {
+      "cid": "conv_179197",
+      "msg": "This is very pathetic & painful to knw that @115850 forgt to refnd 45k. It means if customer wouldn't call then they won't refund ur money",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "medium",
+      "reason": "Novel or unsupported situation: historical similarity (0.6062 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_197724",
+      "msg": "Order id 408-9284363-8106739.Amazon cheat and dont refund my money.@115821",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "medium",
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention."
+    },
+    {
+      "cid": "conv_224277",
+      "msg": "what the fucking service. Didn't call to customer nd refunded products, order date-29sep2017,order id- 408-1407922-2237939",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "REFUND_STATUS_AND_DISPUTES",
+      "diff": "medium",
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention."
+    },
+    {
+      "cid": "conv_381413",
+      "msg": "Gt my firestick tv 10 days bk now power adpter stop working.Wn I askd 4 rplacemnt thy suggstd buy new1 later wl refund",
+      "intent": "REFUND_STATUS_AND_DISPUTES",
+      "pred_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "diff": "hard",
+      "reason": "Low intent confidence (0.3566 < 0.55). | Novel or unsupported situation: historical similarity (0.6163 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_130747",
+      "msg": "1/ @115850 Are you guys leaking email ids of user who applied for Amazon BTS offer?My bro got this spam email: http://t.co/6YtfYm0aLN",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "ACCOUNT_ACCESS_AND_SECURITY",
+      "diff": "easy",
+      "reason": "Intent 'ACCOUNT_ACCESS_AND_SECURITY' is a sensitive category requiring verified human handling. | Low intent confidence (0.2261 < 0.55)."
+    },
+    {
+      "cid": "conv_224831",
+      "msg": "it is highly regretted that a reputated online business set up has started behaving like others. A defective has delivered to me.",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.5948 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_179531",
+      "msg": "#SWBFII The Amazon Codes are Not Working",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.6350 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_179305",
+      "msg": "got amazon uk beta code for bf2 and its not working??????",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.6329 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_179722",
+      "msg": "hi i preordered star wars battle front II and you sent an email with beta code but its not working",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "diff": "easy",
+      "reason": "Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_226057",
+      "msg": "On 25th sept, I have received 64 gb samsung memory card but its a faulty one. On 26th, I have sent a request for replacement but nothing has happened since then. I demand a swift action. Bill order is 408-9130123-3589128",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "diff": "medium",
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention. | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_286193",
+      "msg": "Bought a Whirlpool Solo Microwave oven 20ltrs from Amazon Sale. Received a faulty machine that doesn't work. Waiting response. Will update.",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "diff": "medium",
+      "reason": "Novel or unsupported situation: historical similarity (0.4396 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_180113",
+      "msg": "My shipment is supposed to arrive yesterday 3 Oct and I do not know why the delay was so much damaged by the delay of the shipment. https://t.co/3GU7MUmrvw",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "ORDER_DELIVERY_AND_TRACKING",
+      "diff": "medium",
+      "reason": "Low intent confidence (0.4157 < 0.55)."
+    },
+    {
+      "cid": "conv_180222",
+      "msg": "never expected a bullying & crooked behaviour from Amazon. I requested a return of defective iPhone SE, no one from Amazon..contd#",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "diff": "medium",
+      "reason": "Novel or unsupported situation: historical similarity (0.5895 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_180754",
+      "msg": "Broken product received for order 408-7624111-6539547 Looking for replacement, cu care was unable to register replace. Do check https://t.co/b9wltyKr7f",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "diff": "medium",
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention."
+    },
+    {
+      "cid": "conv_197845",
+      "msg": "my phone's finger print scanner is not working. Also the technician was supposed to arrive in the afternoon but still not here!",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "diff": "medium",
+      "reason": "Novel or unsupported situation: historical similarity (0.5815 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_199981",
+      "msg": "I received a damaged product today from amazon. order number 406-3167131-0133142 . amazon india https://t.co/VSy9XaQfQC",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "diff": "medium",
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention."
+    },
+    {
+      "cid": "conv_206692",
+      "msg": "You have the worst customer service..you basically stole money from us due to YOUR faulty gift card!!",
+      "intent": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "pred_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "diff": "hard",
+      "reason": "Low intent confidence (0.4691 < 0.55)."
+    },
+    {
+      "cid": "conv_1293697",
+      "msg": "Heu \u00e7a marche pas le linkage de mon compte @120533 #premium & @54689 #prime Nous ne pouvons pas activer Twitch Prime sur votre compte.",
+      "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "pred_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "diff": "easy",
+      "reason": "Low intent confidence (0.5032 < 0.55). | Novel or unsupported situation: historical similarity (0.6150 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_658849",
+      "msg": "Everything announced at Apple WWDC today \u203a\u203a\u203a Yawn. On the other hand, Amazon Prime Video coming to Apple TV \u203a\u203a\u203a Yes!!!",
+      "intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "pred_intent": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.5010 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_238886",
+      "msg": ": Ours is a business account. Ordered 14 items for diwali gifts for staffs worth 10K INR. Order cancelled for 12 items. Order # 403-6277206-9111521. Customer service say, can't do anything. Why i should have business account then?",
+      "intent": "ORDER_CANCELLATION",
+      "pred_intent": "ORDER_CANCELLATION",
+      "diff": "easy",
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention."
+    },
+    {
+      "cid": "conv_180735",
+      "msg": "Because while the savings are getting \"better\", Id rather not wait 4+ fucking months only to have it forcibly cancelled on me. Im not happy!",
+      "intent": "ORDER_CANCELLATION",
+      "pred_intent": "ORDER_CANCELLATION",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.5615 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_207763",
+      "msg": "Hey @AmazonHelp 4th day now without my order which is made up entirely of Prime items.. No cancellation allowed.. what the hell?",
+      "intent": "ORDER_CANCELLATION",
+      "pred_intent": "ORDER_CANCELLATION",
+      "diff": "easy",
+      "reason": "Low intent confidence (0.5130 < 0.55)."
+    },
+    {
+      "cid": "conv_227114",
+      "msg": "Slow clap \ud83d\udc4f\ud83d\udc4f\ud83d\udc4f\ud83d\udc4f Product Cancelled by me, still getting notification that product will deliver to you today. Apni Dukaan.\ud83d\ude02\ud83e\udd23\ud83d\ude02\ud83e\udd23 https://t.co/RrWAFMmpbL",
+      "intent": "ORDER_CANCELLATION",
+      "pred_intent": "ORDER_CANCELLATION",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.5195 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_179931",
+      "msg": "order id 406-0875156-9923538 i cancelled it as its taking forever to come nd you guys ask for pick up from home date.. #shitamazon",
+      "intent": "ORDER_CANCELLATION",
+      "pred_intent": "ORDER_CANCELLATION",
+      "diff": "medium",
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention."
+    },
+    {
+      "cid": "conv_191616",
+      "msg": "I am unable to pay for my order id :- 405-2765780-7605958 and 2 more.Your team suggested to cancel the order. What should I do ?",
+      "intent": "ORDER_CANCELLATION",
+      "pred_intent": "ORDER_CANCELLATION",
+      "diff": "medium",
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention."
+    },
+    {
+      "cid": "conv_183643",
+      "msg": "customercare completely useless,not helping, act like written scripts, no supervisor to speak with, 32K not refunded, AC cancelled",
+      "intent": "ORDER_CANCELLATION",
+      "pred_intent": "ORDER_CANCELLATION",
+      "diff": "hard",
+      "reason": "Novel or unsupported situation: historical similarity (0.6417 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_181005",
+      "msg": "Sir, two items hd ordered mistakely. Then i cancelled this order. But i caouldn't get refund rs 229 which was debited from my ac",
+      "intent": "ORDER_CANCELLATION",
+      "pred_intent": "ORDER_CANCELLATION",
+      "diff": "hard",
+      "reason": "Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_179466",
+      "msg": "Naa Amazon cash back coupon code raledu mee company nundi \ud83d\ude20",
+      "intent": "PAYMENT_BILLING_AND_PROMOS",
+      "pred_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "diff": "medium",
+      "reason": "Novel or unsupported situation: historical similarity (0.5505 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_199977",
+      "msg": "Thanks again @115821 for the call & the gift card in addition to the refund of my order. I'm a happy Amazon customer again. @117795",
+      "intent": "PAYMENT_BILLING_AND_PROMOS",
+      "pred_intent": "PAYMENT_BILLING_AND_PROMOS",
+      "diff": "hard",
+      "reason": "Low intent confidence (0.4968 < 0.55). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_210319",
+      "msg": "#Suffering frm last 7 days, without any fault. Due to technical glitch/wrong info by @115821 Sorry to say but such service was not expected",
+      "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "pred_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.5932 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_179301",
+      "msg": "there is a serious bug on your website; when trying to navigate using Next page or Page Number it redirects to Home Page.",
+      "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "pred_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.5227 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_223883",
+      "msg": "what i will get if i will show you a real time bug of @115850 ?",
+      "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "pred_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.5734 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_235169",
+      "msg": "How about surprising me with a firestick this deepawali ?",
+      "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "pred_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.5241 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_183274",
+      "msg": "When ordering the cart becomes empty even in app and browser in computer. Is it a game show or glitch??? #worstcustomerservice",
+      "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "pred_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "diff": "medium",
+      "reason": "Novel or unsupported situation: historical similarity (0.5897 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_227921",
+      "msg": "Unable to add product in cart. What is the use of sale if the app crashes so frequently. @119356 @115850 @AmazonHelp https://t.co/ds3F5QbgnY",
+      "intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "pred_intent": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "diff": "medium",
+      "reason": "Low intent confidence (0.3184 < 0.55). | Novel or unsupported situation: historical similarity (0.6209 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_234519",
+      "msg": "what is your return policy on Samsung Gear S3?",
+      "intent": "RETURNS_AND_EXCHANGES",
+      "pred_intent": "RETURNS_AND_EXCHANGES",
+      "diff": "easy",
+      "reason": "Novel or unsupported situation: historical similarity (0.6477 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_240501",
+      "msg": "worst shopping app I bought a 25 let. Water heater. They returned it without my return request and said you have already requested",
+      "intent": "RETURNS_AND_EXCHANGES",
+      "pred_intent": "RETURNS_AND_EXCHANGES",
+      "diff": "medium",
+      "reason": "Novel or unsupported situation: historical similarity (0.5004 < 0.65). | Insufficient verified historical precedents matching intent (0 < 1)."
+    },
+    {
+      "cid": "conv_181157",
+      "msg": "I got my redme 4 today. But I'm not satisfied with the product so I want to return d same. Kindly assist @115850 Order 408-1160678-3266756",
+      "intent": "RETURNS_AND_EXCHANGES",
+      "pred_intent": "RETURNS_AND_EXCHANGES",
+      "diff": "medium",
+      "reason": "Safety risk trigger detected: [PII_LEAK_IN_PUBLIC] requiring immediate human intervention."
+    },
+    {
+      "cid": "conv_234146",
+      "msg": "I HAVE AN ORDER I NEED TO SEND BACK",
+      "intent": "RETURNS_AND_EXCHANGES",
+      "pred_intent": "RETURNS_AND_EXCHANGES",
+      "diff": "medium",
+      "reason": "Low intent confidence (0.2797 < 0.55)."
+    },
+    {
+      "cid": "conv_291773",
+      "msg": "Hi, I have ordered fans . Unfortunately the product is not upto the mark. Placed refund and return request. Please help urgently",
+      "intent": "RETURNS_AND_EXCHANGES",
+      "pred_intent": "RETURNS_AND_EXCHANGES",
+      "diff": "hard",
+      "reason": "Insufficient verified historical precedents matching intent (0 < 1)."
+    }
+  ]
+}
