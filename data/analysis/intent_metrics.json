@@ -1,0 +1,165 @@
+{
+  "dataset_total_conversations": 79665,
+  "matched_conversations": 14729,
+  "matched_percentage": 18.49,
+  "taxonomy_intents_count": 10,
+  "intent_distributions": [
+    {
+      "intent_name": "ORDER_DELIVERY_AND_TRACKING",
+      "total_count": 3686,
+      "total_percentage": 4.63,
+      "pure_count": 3347,
+      "pure_percentage": 4.2,
+      "overlap_count": 339
+    },
+    {
+      "intent_name": "REFUND_STATUS_AND_DISPUTES",
+      "total_count": 3108,
+      "total_percentage": 3.9,
+      "pure_count": 2271,
+      "pure_percentage": 2.85,
+      "overlap_count": 837
+    },
+    {
+      "intent_name": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "total_count": 2382,
+      "total_percentage": 2.99,
+      "pure_count": 1953,
+      "pure_percentage": 2.45,
+      "overlap_count": 429
+    },
+    {
+      "intent_name": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "total_count": 1973,
+      "total_percentage": 2.48,
+      "pure_count": 1665,
+      "pure_percentage": 2.09,
+      "overlap_count": 308
+    },
+    {
+      "intent_name": "ORDER_CANCELLATION",
+      "total_count": 1430,
+      "total_percentage": 1.8,
+      "pure_count": 984,
+      "pure_percentage": 1.24,
+      "overlap_count": 446
+    },
+    {
+      "intent_name": "PAYMENT_BILLING_AND_PROMOS",
+      "total_count": 1075,
+      "total_percentage": 1.35,
+      "pure_count": 841,
+      "pure_percentage": 1.06,
+      "overlap_count": 234
+    },
+    {
+      "intent_name": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "total_count": 862,
+      "total_percentage": 1.08,
+      "pure_count": 676,
+      "pure_percentage": 0.85,
+      "overlap_count": 186
+    },
+    {
+      "intent_name": "ACCOUNT_ACCESS_AND_SECURITY",
+      "total_count": 709,
+      "total_percentage": 0.89,
+      "pure_count": 655,
+      "pure_percentage": 0.82,
+      "overlap_count": 54
+    },
+    {
+      "intent_name": "TECHNICAL_AND_PLATFORM_ISSUES",
+      "total_count": 546,
+      "total_percentage": 0.69,
+      "pure_count": 490,
+      "pure_percentage": 0.62,
+      "overlap_count": 56
+    },
+    {
+      "intent_name": "RETURNS_AND_EXCHANGES",
+      "total_count": 541,
+      "total_percentage": 0.68,
+      "pure_count": 369,
+      "pure_percentage": 0.46,
+      "overlap_count": 172
+    }
+  ],
+  "top_overlaps": [
+    {
+      "intent_a": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "intent_b": "REFUND_STATUS_AND_DISPUTES",
+      "overlap_count": 228
+    },
+    {
+      "intent_a": "ORDER_CANCELLATION",
+      "intent_b": "REFUND_STATUS_AND_DISPUTES",
+      "overlap_count": 216
+    },
+    {
+      "intent_a": "PAYMENT_BILLING_AND_PROMOS",
+      "intent_b": "REFUND_STATUS_AND_DISPUTES",
+      "overlap_count": 140
+    },
+    {
+      "intent_a": "ORDER_DELIVERY_AND_TRACKING",
+      "intent_b": "REFUND_STATUS_AND_DISPUTES",
+      "overlap_count": 100
+    },
+    {
+      "intent_a": "ORDER_CANCELLATION",
+      "intent_b": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "overlap_count": 96
+    },
+    {
+      "intent_a": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "intent_b": "REFUND_STATUS_AND_DISPUTES",
+      "overlap_count": 81
+    },
+    {
+      "intent_a": "REFUND_STATUS_AND_DISPUTES",
+      "intent_b": "RETURNS_AND_EXCHANGES",
+      "overlap_count": 79
+    },
+    {
+      "intent_a": "ORDER_CANCELLATION",
+      "intent_b": "ORDER_DELIVERY_AND_TRACKING",
+      "overlap_count": 76
+    },
+    {
+      "intent_a": "ORDER_DELIVERY_AND_TRACKING",
+      "intent_b": "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "overlap_count": 70
+    },
+    {
+      "intent_a": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "intent_b": "RETURNS_AND_EXCHANGES",
+      "overlap_count": 68
+    },
+    {
+      "intent_a": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "intent_b": "REFUND_STATUS_AND_DISPUTES",
+      "overlap_count": 61
+    },
+    {
+      "intent_a": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "intent_b": "ORDER_DELIVERY_AND_TRACKING",
+      "overlap_count": 46
+    },
+    {
+      "intent_a": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "intent_b": "ORDER_DELIVERY_AND_TRACKING",
+      "overlap_count": 40
+    },
+    {
+      "intent_a": "ORDER_CANCELLATION",
+      "intent_b": "PAYMENT_BILLING_AND_PROMOS",
+      "overlap_count": 36
+    },
+    {
+      "intent_a": "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "intent_b": "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "overlap_count": 34
+    }
+  ]
+}

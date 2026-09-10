@@ -1,0 +1,29 @@
+{
+  "brand": "AmazonHelp",
+  "execution_timestamp": "2026-09-10 13:13:33",
+  "runtime_seconds": 90.72,
+  "total_raw_records": 324816,
+  "total_thread_components": 86672,
+  "clean_conversations_count": 79665,
+  "noisy_conversations_count": 7007,
+  "clean_ratio_pct": 91.92,
+  "single_turn_conversations_2_tweets": 40792,
+  "multi_turn_conversations_3_plus_tweets": 38873,
+  "multi_turn_ratio_pct": 48.8,
+  "median_latency_minutes": 10.7,
+  "resolution_distribution": {
+    "resolved_guidance_provided": 60878,
+    "escalated_private_channel": 12355,
+    "resolved_customer_confirmed": 6432
+  },
+  "noise_reason_distribution": {
+    "cjk_language": 6758,
+    "empty_or_degenerate_customer_message": 227,
+    "missing_customer_query": 29
+  },
+  "output_files": [
+    "C:\\Users\\prakh\\OneDrive\\Desktop\\Hiver\\data\\processed\\amazonhelp_conversations_clean.jsonl",
+    "C:\\Users\\prakh\\OneDrive\\Desktop\\Hiver\\data\\processed\\amazonhelp_conversations_clean.csv",
+    "C:\\Users\\prakh\\OneDrive\\Desktop\\Hiver\\data\\processed\\amazonhelp_conversations_noisy.jsonl"
+  ]
+}

@@ -1,0 +1,52 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# Environment & credentials
+.env
+.env.*
+*.secret
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large Raw & Intermediate Data Files (>100MB or raw dumps)
+data/twcs/
+data/sample.csv
+data/processed/amazonhelp_conversations_clean.csv
+data/processed/amazonhelp_conversations_clean.jsonl
+data/processed/amazonhelp_conversations_noisy.jsonl
+data/processed/amazonhelp_pairs.csv
+data/processed/amazonhelp_twcs_records.csv
+data/processed/applesupport_pairs.csv
+data/processed/applesupport_twcs_records.csv
+
+# Keep essential benchmark sets & analysis metrics in git
+!data/processed/golden_evaluation_set.jsonl
+!data/processed/golden_evaluation_set.csv
+!data/processed/conversation_examples.json
+!data/processed/amazonhelp_conversation_summary.json
+!data/processed/amazonhelp_subset_summary.json
+!data/processed/applesupport_subset_summary.json
+!data/analysis/
+
+# Logs
+*.log

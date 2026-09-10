@@ -1,0 +1,17 @@
+{
+  "brand": "AmazonHelp",
+  "extraction_timestamp": "2026-09-10 13:02:03",
+  "runtime_seconds": 56.17,
+  "total_twcs_records_scanned": 2811774,
+  "brand_outbound_tweets": 169840,
+  "unique_customer_queries_targeted": 155445,
+  "matched_customer_queries": 154985,
+  "inquiry_match_rate_pct": 99.7,
+  "total_combined_records": 324816,
+  "total_structured_pairs": 168823,
+  "avg_response_time_minutes": 11.47,
+  "files_generated": [
+    "C:\\Users\\prakh\\OneDrive\\Desktop\\Hiver\\data\\processed\\amazonhelp_twcs_records.csv",
+    "C:\\Users\\prakh\\OneDrive\\Desktop\\Hiver\\data\\processed\\amazonhelp_pairs.csv"
+  ]
+}

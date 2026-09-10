@@ -1,0 +1,295 @@
+{
+  "clean_single": {
+    "conversation_id": "conv_648407",
+    "timestamp": "2015-06-13T01:34:49Z",
+    "customer_message": "what in the world is a balance withheld? #customerservice doesnt seem to know!",
+    "brand_response": "@274086 Sorry, I'm not quite sure what you're having trouble with. Was there an authorization you were wondering about? ^JY",
+    "conversation_history": [
+      {
+        "turn": 1,
+        "tweet_id": 648407,
+        "role": "customer",
+        "author_id": "274086",
+        "created_at": "Sat Jun 13 01:34:49 +0000 2015",
+        "text": "@115821 what in the world is a balance withheld? #customerservice doesnt seem to know!",
+        "text_raw": "@115821  what in the world is a balance withheld?  #customerservice doesnt seem to know!"
+      },
+      {
+        "turn": 2,
+        "tweet_id": 648405,
+        "role": "brand",
+        "author_id": "AmazonHelp",
+        "created_at": "Sat Jun 13 02:16:59 +0000 2015",
+        "text": "@274086 Sorry, I'm not quite sure what you're having trouble with. Was there an authorization you were wondering about? ^JY",
+        "text_raw": "@274086 Sorry, I'm not quite sure what you're having trouble with. Was there an authorization you were wondering about? ^JY"
+      }
+    ],
+    "metadata": {
+      "turn_count": 2,
+      "customer_author_id": "274086",
+      "brand_author_id": "AmazonHelp",
+      "initial_response_latency_seconds": 2530.0,
+      "initial_response_latency_minutes": 42.17,
+      "resolution_status": "resolved_guidance_provided",
+      "resolution_confidence": 0.75,
+      "has_url": false,
+      "is_multi_turn": false,
+      "noise_reasons": []
+    }
+  },
+  "clean_multi": {
+    "conversation_id": "conv_1631089",
+    "timestamp": "2017-09-10T17:55:59Z",
+    "customer_message": "Wish soon i can save money and buy @117634 so that i can contribute to nature and read all my favorite books on @115850 Kindle!",
+    "brand_response": "@499198 You are awesome, salute to your belief. I'm sure you're gonna change the world one day. What kind of Kindle do you like? ^HA",
+    "conversation_history": [
+      {
+        "turn": 1,
+        "tweet_id": 1631089,
+        "role": "customer",
+        "author_id": "499198",
+        "created_at": "Sun Sep 10 17:55:59 +0000 2017",
+        "text": "Wish soon i can save money and buy @117634 so that i can contribute to nature and read all my favorite books on @115850 Kindle!",
+        "text_raw": "Wish soon i can save money and buy @117634 so that i can contribute to nature and read all my favorite books on @115850 Kindle!"
+      },
+      {
+        "turn": 2,
+        "tweet_id": 1631087,
+        "role": "brand",
+        "author_id": "AmazonHelp",
+        "created_at": "Sun Sep 10 18:53:00 +0000 2017",
+        "text": "@499198 You are awesome, salute to your belief. I'm sure you're gonna change the world one day. What kind of Kindle do you like? ^HA",
+        "text_raw": "@499198 You are awesome, salute to your belief. I'm sure you're gonna change the world one day. What kind of Kindle do you like? ^HA"
+      },
+      {
+        "turn": 3,
+        "tweet_id": 1631088,
+        "role": "customer",
+        "author_id": "499198",
+        "created_at": "Sat Sep 16 17:57:56 +0000 2017",
+        "text": "@AmazonHelp I wish for all new kindle eReader white! Thanks for replying to my tweet and acknowledging my views.",
+        "text_raw": "@AmazonHelp I wish for all new kindle eReader white! Thanks for replying to my tweet and acknowledging my views."
+      },
+      {
+        "turn": 4,
+        "tweet_id": 1631090,
+        "role": "brand",
+        "author_id": "AmazonHelp",
+        "created_at": "Sat Sep 16 18:24:30 +0000 2017",
+        "text": "@499198 That definitely is a very great choice! We hope you get one soon! All power to you. Nature is waiting 😊. ^ZH",
+        "text_raw": "@499198 That definitely is a very great choice! We hope you get one soon! All power to you. Nature is waiting 😊. ^ZH"
+      }
+    ],
+    "metadata": {
+      "turn_count": 4,
+      "customer_author_id": "499198",
+      "brand_author_id": "AmazonHelp",
+      "initial_response_latency_seconds": 3421.0,
+      "initial_response_latency_minutes": 57.02,
+      "resolution_status": "resolved_customer_confirmed",
+      "resolution_confidence": 0.95,
+      "has_url": false,
+      "is_multi_turn": true,
+      "noise_reasons": []
+    }
+  },
+  "unresolved": {
+    "conversation_id": "conv_313821",
+    "timestamp": "2016-05-06T14:21:46Z",
+    "customer_message": "Hy friends don't buy any products form Amazon India because I have one product returned at 6-02-16 but still we not get any refund",
+    "brand_response": "@15547 automatically to your original payment method. (2/2)^KJ",
+    "conversation_history": [
+      {
+        "turn": 1,
+        "tweet_id": 313821,
+        "role": "customer",
+        "author_id": "190936",
+        "created_at": "Fri May 06 14:21:46 +0000 2016",
+        "text": "@115850 Hy friends don't buy any products form Amazon India because I have one product returned at 6-02-16 but still we not get any refund",
+        "text_raw": "@115850 Hy friends don't buy any products form Amazon India because I have one product returned at 6-02-16 but still we not get any refund"
+      },
+      {
+        "turn": 2,
+        "tweet_id": 313820,
+        "role": "brand",
+        "author_id": "AmazonHelp",
+        "created_at": "Fri May 06 14:27:30 +0000 2016",
+        "text": "@15547 automatically to your original payment method. (2/2)^KJ",
+        "text_raw": "@15547 automatically to your original payment method. (2/2)^KJ"
+      },
+      {
+        "turn": 3,
+        "tweet_id": 313819,
+        "role": "customer",
+        "author_id": "190936",
+        "created_at": "Fri May 06 15:20:12 +0000 2016",
+        "text": "@amazonhelp seller already received package before 2 month but not get still not get any refund or help form your side",
+        "text_raw": "@amazonhelp seller already received package before 2 month but not get still not get  any refund or help form your side"
+      },
+      {
+        "turn": 4,
+        "tweet_id": 313818,
+        "role": "brand",
+        "author_id": "AmazonHelp",
+        "created_at": "Fri May 06 15:26:27 +0000 2016",
+        "text": "@15547 Hi! you may file a claim against the seller in this case. Please reach to us here: https://t.co/vlvfJr4nN9 for more help. ^HK",
+        "text_raw": "@15547 Hi! you may file a claim against the seller in this case. Please reach to us here: https://t.co/vlvfJr4nN9 for more help. ^HK"
+      },
+      {
+        "turn": 5,
+        "tweet_id": 313816,
+        "role": "customer",
+        "author_id": "190936",
+        "created_at": "Fri May 06 15:57:59 +0000 2016",
+        "text": "@amazonhelp I already A2Z claims 2 times on seller in 23-3-16 but not get any result /refund even today I call but not any reason 😡",
+        "text_raw": "@amazonhelp I already A2Z claims 2 times on seller  in 23-3-16 but not get any result /refund even today I call but not any reason 😡"
+      },
+      {
+        "turn": 6,
+        "tweet_id": 313814,
+        "role": "brand",
+        "author_id": "AmazonHelp",
+        "created_at": "Fri May 06 16:06:00 +0000 2016",
+        "text": "@15547 Hi there! kindly refer to the email sent by our buyer guarantee team. I'm sure they must've sent a correspondence. ^HK",
+        "text_raw": "@15547 Hi there! kindly refer to the email sent by our buyer guarantee team. I'm sure they must've sent a correspondence.  ^HK"
+      }
+    ],
+    "metadata": {
+      "turn_count": 6,
+      "customer_author_id": "190936",
+      "brand_author_id": "AmazonHelp",
+      "initial_response_latency_seconds": 344.0,
+      "initial_response_latency_minutes": 5.73,
+      "resolution_status": "resolved_guidance_provided",
+      "resolution_confidence": 0.75,
+      "has_url": true,
+      "is_multi_turn": true,
+      "noise_reasons": []
+    }
+  },
+  "noisy_cjk": {
+    "conversation_id": "conv_1115726",
+    "timestamp": "2017-06-17T06:44:19Z",
+    "customer_message": "すとくくん初めてのAmazon",
+    "brand_response": "@383277 初めてのAmazonのご利用、誠にありがとうございました(*ˊ˘ˋ*) HM",
+    "conversation_history": [
+      {
+        "turn": 1,
+        "tweet_id": 1115726,
+        "role": "customer",
+        "author_id": "383277",
+        "created_at": "Sat Jun 17 06:44:19 +0000 2017",
+        "text": "すとくくん初めてのAmazon",
+        "text_raw": "すとくくん初めてのAmazon"
+      },
+      {
+        "turn": 2,
+        "tweet_id": 1115724,
+        "role": "brand",
+        "author_id": "AmazonHelp",
+        "created_at": "Sat Jun 17 06:55:27 +0000 2017",
+        "text": "@383277 初めてのAmazonのご利用、誠にありがとうございました(*ˊ˘ˋ*) HM",
+        "text_raw": "@383277 初めてのAmazonのご利用、誠にありがとうございました(*ˊ˘ˋ*) HM"
+      }
+    ],
+    "metadata": {
+      "turn_count": 2,
+      "customer_author_id": "383277",
+      "brand_author_id": "AmazonHelp",
+      "initial_response_latency_seconds": 668.0,
+      "initial_response_latency_minutes": 11.13,
+      "resolution_status": "resolved_guidance_provided",
+      "resolution_confidence": 0.75,
+      "has_url": false,
+      "is_multi_turn": false,
+      "noise_reasons": [
+        "cjk_language"
+      ]
+    }
+  },
+  "noisy_empty": {
+    "conversation_id": "conv_249941",
+    "timestamp": "2017-09-12T12:10:50Z",
+    "customer_message": "Yes",
+    "brand_response": "@175393 We'd like to provide an update. Have you shared your details through the link provided earlier? ^HK",
+    "conversation_history": [
+      {
+        "turn": 1,
+        "tweet_id": 249941,
+        "role": "brand",
+        "author_id": "AmazonHelp",
+        "created_at": "Tue Sep 12 12:10:50 +0000 2017",
+        "text": "@175393 We'd like to provide an update. Have you shared your details through the link provided earlier? ^HK",
+        "text_raw": "@175393 We'd like to provide an update. Have you shared your details through the link provided earlier? ^HK"
+      },
+      {
+        "turn": 2,
+        "tweet_id": 249940,
+        "role": "customer",
+        "author_id": "175393",
+        "created_at": "Tue Sep 12 17:05:51 +0000 2017",
+        "text": "@AmazonHelp Yes",
+        "text_raw": "@AmazonHelp Yes"
+      },
+      {
+        "turn": 3,
+        "tweet_id": 249939,
+        "role": "brand",
+        "author_id": "AmazonHelp",
+        "created_at": "Tue Sep 12 17:19:00 +0000 2017",
+        "text": "@175393 Thank you for the confirmation. We've also sent you a correspondence to your registered email address. ^AM",
+        "text_raw": "@175393 Thank you for the confirmation. We've also sent you a correspondence to your registered email address. ^AM"
+      },
+      {
+        "turn": 4,
+        "tweet_id": 249937,
+        "role": "customer",
+        "author_id": "175393",
+        "created_at": "Thu Oct 05 16:58:20 +0000 2017",
+        "text": "@AmazonHelp I am not agree with you. you have deduct around rs. 5500 Amazon's balance. Kindly check and resolve issue.",
+        "text_raw": "@AmazonHelp I am not agree with you. \nyou have deduct around rs. 5500 Amazon's balance. Kindly check and resolve issue."
+      },
+      {
+        "turn": 5,
+        "tweet_id": 249935,
+        "role": "brand",
+        "author_id": "AmazonHelp",
+        "created_at": "Thu Oct 05 17:08:00 +0000 2017",
+        "text": "@175393 Apologies for the hassle. Have you reported this to our support team here: https://t.co/vlvfJr4nN9? ^RB",
+        "text_raw": "@175393 Apologies for the hassle. Have you reported this to our support team here: https://t.co/vlvfJr4nN9? ^RB"
+      },
+      {
+        "turn": 6,
+        "tweet_id": 249936,
+        "role": "customer",
+        "author_id": "175393",
+        "created_at": "Thu Oct 05 17:44:53 +0000 2017",
+        "text": "@AmazonHelp Yes, but support team not solve the issue. Kindly give me your nodal officers contact no.",
+        "text_raw": "@AmazonHelp Yes, but support team not solve the issue. Kindly give me your nodal officers contact no."
+      },
+      {
+        "turn": 7,
+        "tweet_id": 249938,
+        "role": "brand",
+        "author_id": "AmazonHelp",
+        "created_at": "Thu Oct 05 17:59:25 +0000 2017",
+        "text": "@175393 We would like to help you. Please share your details with us here: https://t.co/GIJyeYqKE0. We'll get in touch shortly.^CB",
+        "text_raw": "@175393 We would like to help you. Please share your details with us here: https://t.co/GIJyeYqKE0. We'll get in touch shortly.^CB"
+      }
+    ],
+    "metadata": {
+      "turn_count": 7,
+      "customer_author_id": "175393",
+      "brand_author_id": "AmazonHelp",
+      "initial_response_latency_seconds": 0.0,
+      "initial_response_latency_minutes": 0.0,
+      "resolution_status": "resolved_guidance_provided",
+      "resolution_confidence": 0.75,
+      "has_url": true,
+      "is_multi_turn": true,
+      "noise_reasons": [
+        "empty_or_degenerate_customer_message"
+      ]
+    }
+  }
+}

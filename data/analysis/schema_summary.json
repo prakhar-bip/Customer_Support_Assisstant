@@ -1,0 +1,53 @@
+{
+  "columns": [
+    "tweet_id",
+    "author_id",
+    "inbound",
+    "created_at",
+    "text",
+    "response_tweet_id",
+    "in_response_to_tweet_id"
+  ],
+  "dtypes": {
+    "tweet_id": "int64",
+    "author_id": "str",
+    "inbound": "bool",
+    "created_at": "str",
+    "text": "str",
+    "response_tweet_id": "str",
+    "in_response_to_tweet_id": "float64"
+  },
+  "shape_sample": [
+    93,
+    7
+  ],
+  "sample_records": [
+    {
+      "tweet_id": 119237,
+      "author_id": "105834",
+      "inbound": true,
+      "created_at": "Wed Oct 11 06:55:44 +0000 2017",
+      "text": "@AppleSupport causing the reply to be disregarded and the tapped notification under the keyboard is opened\ud83d\ude21\ud83d\ude21\ud83d\ude21",
+      "response_tweet_id": "119236",
+      "in_response_to_tweet_id": NaN
+    },
+    {
+      "tweet_id": 119238,
+      "author_id": "ChaseSupport",
+      "inbound": false,
+      "created_at": "Wed Oct 11 13:25:49 +0000 2017",
+      "text": "@105835 Your business means a lot to us. Please DM your name, zip code and additional details about your concern. ^RR https://t.co/znUu1VJn9r",
+      "response_tweet_id": NaN,
+      "in_response_to_tweet_id": 119239.0
+    },
+    {
+      "tweet_id": 119239,
+      "author_id": "105835",
+      "inbound": true,
+      "created_at": "Wed Oct 11 13:00:09 +0000 2017",
+      "text": "@76328 I really hope you all change but I'm sure you won't! Because you don't have to!",
+      "response_tweet_id": "119238",
+      "in_response_to_tweet_id": NaN
+    }
+  ]
+}

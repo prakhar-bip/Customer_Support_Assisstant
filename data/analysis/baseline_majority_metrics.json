@@ -1,0 +1,216 @@
+{
+  "benchmark_name": "Milestone 6 Trivial Majority-Class Baseline",
+  "model_type": "MajorityClassClassifier",
+  "majority_intent": "ORDER_DELIVERY_AND_TRACKING",
+  "training_pool_size": 79465,
+  "golden_set_size": 200,
+  "data_leakage_overlap": 0,
+  "metrics": {
+    "accuracy": 0.14,
+    "macro_precision": 0.014,
+    "weighted_precision": 0.0196,
+    "macro_recall": 0.1,
+    "weighted_recall": 0.14,
+    "macro_f1": 0.0246,
+    "weighted_f1": 0.0344
+  },
+  "per_intent_metrics": {
+    "ORDER_DELIVERY_AND_TRACKING": {
+      "precision": 0.14,
+      "recall": 1.0,
+      "f1_score": 0.2456,
+      "support": 28
+    },
+    "REFUND_STATUS_AND_DISPUTES": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 26
+    },
+    "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 25
+    },
+    "PRIME_MEMBERSHIP_AND_DIGITAL": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 22
+    },
+    "ORDER_CANCELLATION": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 20
+    },
+    "PAYMENT_BILLING_AND_PROMOS": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 18
+    },
+    "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 16
+    },
+    "ACCOUNT_ACCESS_AND_SECURITY": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 15
+    },
+    "TECHNICAL_AND_PLATFORM_ISSUES": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 15
+    },
+    "RETURNS_AND_EXCHANGES": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 15
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "ORDER_DELIVERY_AND_TRACKING",
+      "REFUND_STATUS_AND_DISPUTES",
+      "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "ORDER_CANCELLATION",
+      "PAYMENT_BILLING_AND_PROMOS",
+      "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "ACCOUNT_ACCESS_AND_SECURITY",
+      "TECHNICAL_AND_PLATFORM_ISSUES",
+      "RETURNS_AND_EXCHANGES"
+    ],
+    "matrix": [
+      [
+        28,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        26,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        25,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        22,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        20,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        18,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        16,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "baseline_purpose_and_justification": "Establishes the absolute performance floor for intent classification. A model that always predicts the majority intent achieves 14.0% accuracy on this stratified golden set solely by exploiting class prior frequency, but scores an abysmal 2.46% Macro F1 because it has zero recall and zero precision across all other 9 customer support intents. Any viable operational ML/LLM system must comfortably surpass these scores."
+}

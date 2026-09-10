@@ -1,0 +1,248 @@
+{
+  "benchmark_name": "Milestone 7 Classical ML Baseline",
+  "model_architecture": {
+    "pipeline": "TfidfVectorizer + LogisticRegression",
+    "vectorizer": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "max_features": 10000,
+      "sublinear_tf": true,
+      "stop_words": "english"
+    },
+    "classifier": {
+      "C": 1.0,
+      "max_iter": 1000,
+      "class_weight": "balanced",
+      "solver": "lbfgs",
+      "random_state": 42
+    }
+  },
+  "dataset_splits": {
+    "clean_total": 79665,
+    "golden_quarantined": 200,
+    "training_pool": 14529,
+    "train_split": 11623,
+    "validation_split": 2906
+  },
+  "validation_performance": {
+    "accuracy": 0.935,
+    "macro_f1": 0.9277
+  },
+  "golden_set_performance": {
+    "accuracy": 0.905,
+    "macro_precision": 0.9087,
+    "weighted_precision": 0.909,
+    "macro_recall": 0.918,
+    "weighted_recall": 0.905,
+    "macro_f1": 0.9105,
+    "weighted_f1": 0.9043
+  },
+  "per_intent_metrics": {
+    "ORDER_DELIVERY_AND_TRACKING": {
+      "precision": 0.96,
+      "recall": 0.8571,
+      "f1_score": 0.9057,
+      "support": 28
+    },
+    "REFUND_STATUS_AND_DISPUTES": {
+      "precision": 0.8,
+      "recall": 0.7692,
+      "f1_score": 0.7843,
+      "support": 26
+    },
+    "DAMAGED_DEFECTIVE_OR_WRONG_ITEM": {
+      "precision": 0.9545,
+      "recall": 0.84,
+      "f1_score": 0.8936,
+      "support": 25
+    },
+    "PRIME_MEMBERSHIP_AND_DIGITAL": {
+      "precision": 0.9524,
+      "recall": 0.9091,
+      "f1_score": 0.9302,
+      "support": 22
+    },
+    "ORDER_CANCELLATION": {
+      "precision": 0.9091,
+      "recall": 1.0,
+      "f1_score": 0.9524,
+      "support": 20
+    },
+    "PAYMENT_BILLING_AND_PROMOS": {
+      "precision": 0.8182,
+      "recall": 1.0,
+      "f1_score": 0.9,
+      "support": 18
+    },
+    "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK": {
+      "precision": 1.0,
+      "recall": 0.9375,
+      "f1_score": 0.9677,
+      "support": 16
+    },
+    "ACCOUNT_ACCESS_AND_SECURITY": {
+      "precision": 0.9286,
+      "recall": 0.8667,
+      "f1_score": 0.8966,
+      "support": 15
+    },
+    "TECHNICAL_AND_PLATFORM_ISSUES": {
+      "precision": 0.8824,
+      "recall": 1.0,
+      "f1_score": 0.9375,
+      "support": 15
+    },
+    "RETURNS_AND_EXCHANGES": {
+      "precision": 0.8824,
+      "recall": 1.0,
+      "f1_score": 0.9375,
+      "support": 15
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "ORDER_DELIVERY_AND_TRACKING",
+      "REFUND_STATUS_AND_DISPUTES",
+      "DAMAGED_DEFECTIVE_OR_WRONG_ITEM",
+      "PRIME_MEMBERSHIP_AND_DIGITAL",
+      "ORDER_CANCELLATION",
+      "PAYMENT_BILLING_AND_PROMOS",
+      "CUSTOMER_SERVICE_AND_COURIER_FEEDBACK",
+      "ACCOUNT_ACCESS_AND_SECURITY",
+      "TECHNICAL_AND_PLATFORM_ISSUES",
+      "RETURNS_AND_EXCHANGES"
+    ],
+    "matrix": [
+      [
+        24,
+        3,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        20,
+        0,
+        1,
+        0,
+        3,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        21,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        20,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        20,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        18,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        13,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15
+      ]
+    ]
+  },
+  "comparison_vs_majority_baseline": {
+    "accuracy_delta": 0.765,
+    "macro_precision_delta": 0.8947,
+    "macro_recall_delta": 0.818,
+    "macro_f1_delta": 0.8859,
+    "weighted_f1_delta": 0.8699
+  },
+  "model_artifact_path": "models\\intent_tfidf_logistic_regression.joblib"
+}
